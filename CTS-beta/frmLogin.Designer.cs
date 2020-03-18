@@ -33,7 +33,6 @@
             this.txtID = new Telerik.WinControls.UI.RadTextBox();
             this.txtPassword = new Telerik.WinControls.UI.RadTextBox();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
-            this.fluentDarkTheme1 = new Telerik.WinControls.Themes.FluentDarkTheme();
             this.radCheckBox1 = new Telerik.WinControls.UI.RadCheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
@@ -45,6 +44,7 @@
             // 
             // txtID
             // 
+            this.txtID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtID.BackColor = System.Drawing.Color.Transparent;
             this.txtID.ForeColor = System.Drawing.Color.Black;
             this.txtID.Location = new System.Drawing.Point(41, 130);
@@ -59,6 +59,7 @@
             // txtPassword
             // 
             this.txtPassword.AcceptsReturn = true;
+            this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.Location = new System.Drawing.Point(41, 203);
             this.txtPassword.Name = "txtPassword";
@@ -72,6 +73,7 @@
             // 
             // radButton1
             // 
+            this.radButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.radButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(92)))), ((int)(((byte)(250)))));
             this.radButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.radButton1.ForeColor = System.Drawing.Color.White;
@@ -86,6 +88,7 @@
             // 
             // radCheckBox1
             // 
+            this.radCheckBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.radCheckBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.radCheckBox1.Location = new System.Drawing.Point(107, 256);
             this.radCheckBox1.Name = "radCheckBox1";
@@ -96,12 +99,13 @@
             // 
             // linkLabel1
             // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this.linkLabel1.ForeColor = System.Drawing.Color.Blue;
             this.linkLabel1.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.Location = new System.Drawing.Point(222, 429);
+            this.linkLabel1.Location = new System.Drawing.Point(226, 503);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(101, 15);
             this.linkLabel1.TabIndex = 4;
@@ -114,7 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(335, 453);
+            this.ClientSize = new System.Drawing.Size(339, 527);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.radCheckBox1);
             this.Controls.Add(this.radButton1);
@@ -145,7 +149,6 @@
         private Telerik.WinControls.UI.RadTextBox txtID;
         private Telerik.WinControls.UI.RadTextBox txtPassword;
         private Telerik.WinControls.UI.RadButton radButton1;
-        private Telerik.WinControls.Themes.FluentDarkTheme fluentDarkTheme1;
         private Telerik.WinControls.UI.RadCheckBox radCheckBox1;
         private System.Windows.Forms.LinkLabel linkLabel1;
     }
