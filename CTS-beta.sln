@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTS_beta", "CTS-beta\CTS_beta.csproj", "{213804BD-2471-4DD1-9347-64BF430843DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{213804BD-2471-4DD1-9347-64BF430843DC}.Debug|x86.ActiveCfg = Debug|x86
+		{213804BD-2471-4DD1-9347-64BF430843DC}.Debug|x86.Build.0 = Debug|x86
+		{213804BD-2471-4DD1-9347-64BF430843DC}.Release|x86.ActiveCfg = Release|x86
+		{213804BD-2471-4DD1-9347-64BF430843DC}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3BF148DA-6E79-4F3D-9373-1DD853097973}
+	EndGlobalSection
+EndGlobal
