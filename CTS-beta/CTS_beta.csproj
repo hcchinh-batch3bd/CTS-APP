@@ -214,6 +214,7 @@
     <None Include="Resources\nen-powerpoint-mau-xanh-duong-dep_012325143.jpg" />
     <None Include="Resources\eye_10px.png" />
     <None Include="Resources\eye_32px.png" />
+    <None Include="Resources\logo.png" />
     <Content Include="Resources\profile.ico" />
     <Content Include="Resources\profile.png" />
     <None Include="Resources\profile1.png" />

@@ -32,15 +32,15 @@
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.txtID = new Telerik.WinControls.UI.RadTextBox();
             this.txtPassword = new Telerik.WinControls.UI.RadTextBox();
-            this.radButton1 = new Telerik.WinControls.UI.RadButton();
             this.radCheckBox1 = new Telerik.WinControls.UI.RadCheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.radButton1 = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCheckBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,21 +72,6 @@
             this.txtPassword.Size = new System.Drawing.Size(259, 36);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.ThemeName = "Material";
-            // 
-            // radButton1
-            // 
-            this.radButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(92)))), ((int)(((byte)(250)))));
-            this.radButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.radButton1.ForeColor = System.Drawing.Color.White;
-            this.radButton1.Image = global::CTS_beta.Properties.Resources.login_32px;
-            this.radButton1.Location = new System.Drawing.Point(163, 355);
-            this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(135, 36);
-            this.radButton1.TabIndex = 3;
-            this.radButton1.Text = "Đăng nhập";
-            this.radButton1.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            this.radButton1.ThemeName = "Material";
             // 
             // radCheckBox1
             // 
@@ -126,11 +111,26 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // radButton1
+            // 
+            this.radButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(92)))), ((int)(((byte)(250)))));
+            this.radButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.radButton1.ForeColor = System.Drawing.Color.White;
+            this.radButton1.Image = global::CTS_beta.Properties.Resources.login_32px;
+            this.radButton1.Location = new System.Drawing.Point(163, 355);
+            this.radButton1.Name = "radButton1";
+            this.radButton1.Size = new System.Drawing.Size(135, 36);
+            this.radButton1.TabIndex = 3;
+            this.radButton1.Text = "Đăng nhập";
+            this.radButton1.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            this.radButton1.ThemeName = "Material";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::CTS_beta.Properties.Resources.abc;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(339, 527);
             this.Controls.Add(this.pictureBox1);
@@ -150,9 +150,9 @@
             this.ThemeName = "Material";
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCheckBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
