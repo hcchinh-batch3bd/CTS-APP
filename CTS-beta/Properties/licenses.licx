@@ -1,3 +1,4 @@
+Telerik.WinControls.UI.RadSyntaxEditor, Telerik.WinControls.SyntaxEditor, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.Themes.FluentTheme, Telerik.WinControls.Themes.Fluent, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.Themes.DesertTheme, Telerik.WinControls.Themes.Desert, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.UI.RadButton, Telerik.WinControls.UI, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
@@ -12,6 +13,7 @@ Telerik.WinControls.Themes.TelerikMetroTheme, Telerik.WinControls.Themes.Telerik
 Telerik.WinControls.Themes.Windows7Theme, Telerik.WinControls.Themes.Windows7, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.Themes.Windows8Theme, Telerik.WinControls.Themes.Windows8, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.UI.RadRadioButton, Telerik.WinControls.UI, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
+Telerik.WinControls.UI.RadChartView, Telerik.WinControls.ChartView, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.Themes.TelerikMetroBlueTheme, Telerik.WinControls.Themes.TelerikMetroBlue, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.Themes.CrystalTheme, Telerik.WinControls.Themes.Crystal, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.Themes.TelerikMetroTouchTheme, Telerik.WinControls.Themes.TelerikMetroTouch, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e

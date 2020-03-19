@@ -35,10 +35,12 @@
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
             this.radCheckBox1 = new Telerik.WinControls.UI.RadCheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCheckBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +49,7 @@
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtID.BackColor = System.Drawing.Color.Transparent;
             this.txtID.ForeColor = System.Drawing.Color.Black;
-            this.txtID.Location = new System.Drawing.Point(41, 130);
+            this.txtID.Location = new System.Drawing.Point(39, 194);
             this.txtID.Name = "txtID";
             this.txtID.NullText = "Mã đăng nhập";
             this.txtID.ShowClearButton = true;
@@ -61,14 +63,14 @@
             this.txtPassword.AcceptsReturn = true;
             this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPassword.ForeColor = System.Drawing.Color.Black;
-            this.txtPassword.Location = new System.Drawing.Point(41, 203);
+            this.txtPassword.Location = new System.Drawing.Point(39, 267);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.NullText = "Mật khẩu";
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.ShowClearButton = true;
             this.txtPassword.ShowNullText = true;
             this.txtPassword.Size = new System.Drawing.Size(259, 36);
-            this.txtPassword.TabIndex = 2;
+            this.txtPassword.TabIndex = 1;
             this.txtPassword.ThemeName = "Material";
             // 
             // radButton1
@@ -78,7 +80,7 @@
             this.radButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.radButton1.ForeColor = System.Drawing.Color.White;
             this.radButton1.Image = global::CTS_beta.Properties.Resources.login_32px;
-            this.radButton1.Location = new System.Drawing.Point(165, 291);
+            this.radButton1.Location = new System.Drawing.Point(163, 355);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(135, 36);
             this.radButton1.TabIndex = 3;
@@ -90,10 +92,10 @@
             // 
             this.radCheckBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.radCheckBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.radCheckBox1.Location = new System.Drawing.Point(107, 256);
+            this.radCheckBox1.Location = new System.Drawing.Point(105, 320);
             this.radCheckBox1.Name = "radCheckBox1";
             this.radCheckBox1.Size = new System.Drawing.Size(125, 18);
-            this.radCheckBox1.TabIndex = 0;
+            this.radCheckBox1.TabIndex = 2;
             this.radCheckBox1.Tag = "";
             this.radCheckBox1.Text = "Ghi nhớ đăng nhập ?";
             // 
@@ -112,6 +114,18 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Quên mật khẩu ?";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::CTS_beta.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(75, 58);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(213, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,6 +133,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(339, 527);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.radCheckBox1);
             this.Controls.Add(this.radButton1);
@@ -137,6 +152,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radCheckBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -151,5 +167,6 @@
         private Telerik.WinControls.UI.RadButton radButton1;
         private Telerik.WinControls.UI.RadCheckBox radCheckBox1;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
