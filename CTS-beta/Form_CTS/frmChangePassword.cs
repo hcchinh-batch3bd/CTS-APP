@@ -15,5 +15,10 @@ namespace CTS_beta
         {
             InitializeComponent();
         }
+
+        private void frmChangePassword_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
