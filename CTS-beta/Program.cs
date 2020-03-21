@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-
-namespace CTS_beta
+namespace CTS_beta.Form_CTS
 {
     static class Program
     {
@@ -14,7 +13,7 @@ namespace CTS_beta
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmUser());
         }
     }
 }

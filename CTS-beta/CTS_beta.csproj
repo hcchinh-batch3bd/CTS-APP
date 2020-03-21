@@ -33,6 +33,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FlatButton">
+      <HintPath>..\..\Contribute Tracking System-logo\JControls\FlatButton.dll</HintPath>
+    </Reference>
+    <Reference Include="JDragControl">
+      <HintPath>..\..\Contribute Tracking System-logo\JControls\JDragControl.dll</HintPath>
+    </Reference>
+    <Reference Include="JGradient Panel">
+      <HintPath>..\..\Contribute Tracking System-logo\JControls\JGradient Panel.dll</HintPath>
+    </Reference>
+    <Reference Include="JMaterialTextbox">
+      <HintPath>..\..\Contribute Tracking System-logo\JControls\JMaterialTextbox.dll</HintPath>
+    </Reference>
+    <Reference Include="JMetroTextBox">
+      <HintPath>..\..\Contribute Tracking System-logo\JControls\JMetroTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="JTextBox">
+      <HintPath>..\..\Contribute Tracking System-logo\JControls\JTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="JTextBox2">
+      <HintPath>..\..\Contribute Tracking System-logo\JControls\JTextBox2.dll</HintPath>
+    </Reference>
+    <Reference Include="JThinButton">
+      <HintPath>..\..\Contribute Tracking System-logo\JControls\JThinButton.dll</HintPath>
+    </Reference>
+    <Reference Include="LollipoUi">
+      <HintPath>..\..\Contribute Tracking System-logo\LollipoUi\LollipoUi.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +73,7 @@
     <Reference Include="Telerik.WinControls, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <HintPath>..\packages\UI.for.WinForms.Common.Trial.2020.1.218\lib\net40\Telerik.WinControls.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.WinControls.GridView, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.Themes.Aqua, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <HintPath>..\packages\UI.for.WinForms.Themes.Trial.2020.1.218\lib\net40\Telerik.WinControls.Themes.Aqua.dll</HintPath>
     </Reference>
@@ -135,45 +163,92 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs">
+    <Compile Include="ChildForm.cs" />
+    <Compile Include="CTSButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="frmChangePassword.cs">
+    <Compile Include="Form_CTS\frmAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmChangePassword.Designer.cs">
+    <Compile Include="Form_CTS\frmAccount.Designer.cs">
+      <DependentUpon>frmAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CTS\frmAddMission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CTS\frmAddMission.Designer.cs">
+      <DependentUpon>frmAddMission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CTS\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CTS\frmChangePassword.Designer.cs">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmForgotPassword.cs">
+    <Compile Include="Form_CTS\frmForgotPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmForgotPassword.Designer.cs">
+    <Compile Include="Form_CTS\frmForgotPassword.Designer.cs">
       <DependentUpon>frmForgotPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="Form_CTS\frmListMission.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
+    <Compile Include="Form_CTS\frmListMission.Designer.cs">
+      <DependentUpon>frmListMission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CTS\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CTS\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmChangePassword.resx">
+    <Compile Include="Form_CTS\frmTypeMission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CTS\frmTypeMission.Designer.cs">
+      <DependentUpon>frmTypeMission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoundBorder.cs" />
+    <EmbeddedResource Include="Form_CTS\frmAccount.resx">
+      <DependentUpon>frmAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CTS\frmAddMission.resx">
+      <DependentUpon>frmAddMission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CTS\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmForgotPassword.resx">
+    <EmbeddedResource Include="Form_CTS\frmForgotPassword.resx">
       <DependentUpon>frmForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUser.resx">
-      <DependentUpon>frmUser.cs</DependentUpon>
+    <EmbeddedResource Include="Form_CTS\frmListMission.resx">
+      <DependentUpon>frmListMission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CTS\frmStatistical.resx">
+      <DependentUpon>frmStatistical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CTS\frmAdmin.resx">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CTS\frmTypeMission.resx">
+      <DependentUpon>frmTypeMission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="frmLogin.resx">
+    <EmbeddedResource Include="Form_CTS\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="frmUser.cs">
+    <Compile Include="Form_CTS\frmStatistical.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUser.Designer.cs">
-      <DependentUpon>frmUser.cs</DependentUpon>
+    <Compile Include="Form_CTS\frmStatistical.Designer.cs">
+      <DependentUpon>frmStatistical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CTS\frmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CTS\frmAdmin.Designer.cs">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -211,10 +286,42 @@
     <None Include="Resources\login_32px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\task_completed_30px.png" />
+    <None Include="Resources\settings_32px1.png" />
+    <None Include="Resources\sphere_10px.png" />
+    <None Include="Resources\task_planning_32px.png" />
+    <None Include="Resources\settings_32px.png" />
+    <None Include="Resources\user_account_32px.png" />
+    <None Include="Resources\repository_32px.png" />
     <None Include="Resources\nen-powerpoint-mau-xanh-duong-dep_012325143.jpg" />
     <None Include="Resources\eye_10px.png" />
     <None Include="Resources\eye_32px.png" />
     <None Include="Resources\logo.png" />
+    <None Include="Resources\nen-powerpoint-mau-xanh-duong-dep_0123251431.jpg" />
+    <None Include="Resources\increase_32px.png" />
+    <None Include="Resources\networking.png" />
+    <None Include="Resources\export_32px.png" />
+    <None Include="Resources\exit_24px.png" />
+    <None Include="Resources\envelope_24px.png" />
+    <None Include="Resources\alarm_24px.png" />
+    <None Include="Resources\notification_32px.png" />
+    <None Include="Resources\notification_32px1.png" />
+    <None Include="Resources\increase_32px1.png" />
+    <None Include="Resources\combo_chart_30px.png" />
+    <None Include="Resources\customer_32px.png" />
+    <None Include="Resources\plus_math_32px.png" />
+    <None Include="Resources\plus_math_32px1.png" />
+    <None Include="Resources\add_new_32px.png" />
+    <None Include="Resources\Picture1.jpg" />
+    <None Include="Resources\Picture11.jpg" />
+    <None Include="Resources\add_new_32pxz.png" />
+    <None Include="Resources\delete_trash_32px.png" />
+    <None Include="Resources\close_window_32px.png" />
+    <None Include="Resources\close_window_132px.png" />
+    <None Include="Resources\close_window_30px.png" />
+    <None Include="Resources\minus_26px.png" />
+    <None Include="Resources\close_window_26px.png" />
+    <None Include="Resources\close_window_20px.png" />
     <Content Include="Resources\profile.ico" />
     <Content Include="Resources\profile.png" />
     <None Include="Resources\profile1.png" />

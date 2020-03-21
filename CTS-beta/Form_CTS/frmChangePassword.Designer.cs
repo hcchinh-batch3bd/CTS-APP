@@ -93,11 +93,11 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::CTS_beta.Properties.Resources.profile;
-            this.pictureBox1.Location = new System.Drawing.Point(116, 12);
+            this.pictureBox1.Image = global::CTS_beta.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(81, 7);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(143, 87);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.Size = new System.Drawing.Size(213, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
@@ -121,6 +121,7 @@
             this.RootElement.ApplyShapeToControl = true;
             this.Text = "ĐỔI MẬT KHẨU";
             this.ThemeName = "Material";
+            this.Load += new System.EventHandler(this.frmChangePassword_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox3)).EndInit();
