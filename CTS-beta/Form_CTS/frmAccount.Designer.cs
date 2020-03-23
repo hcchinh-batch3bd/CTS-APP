@@ -39,18 +39,21 @@
             this.radGridView1 = new Telerik.WinControls.UI.RadGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).BeginInit();
             this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // radGridView1
             // 
-            this.radGridView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.radGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGridView1.Location = new System.Drawing.Point(0, 42);
             // 
             // 
@@ -90,7 +93,7 @@
             // 
             this.radGridView1.RootElement.AutoSize = false;
             this.radGridView1.ShowHeaderCellButtons = true;
-            this.radGridView1.Size = new System.Drawing.Size(921, 501);
+            this.radGridView1.Size = new System.Drawing.Size(921, 578);
             this.radGridView1.TabIndex = 8;
             this.radGridView1.ThemeName = "MaterialTeal";
             // 
@@ -110,20 +113,49 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(392, 12);
+            this.label3.Location = new System.Drawing.Point(364, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(193, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "DANH SÁCH TÀI KHOẢN";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.radTextBox1);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 552);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(921, 68);
+            this.panel1.TabIndex = 34;
+            // 
             // radTextBox1
             // 
-            this.radTextBox1.Location = new System.Drawing.Point(14, 565);
+            this.radTextBox1.Location = new System.Drawing.Point(12, 15);
             this.radTextBox1.Name = "radTextBox1";
             this.radTextBox1.NullText = "Tìm kiếm";
             this.radTextBox1.Size = new System.Drawing.Size(247, 36);
-            this.radTextBox1.TabIndex = 33;
+            this.radTextBox1.TabIndex = 36;
             this.radTextBox1.ThemeName = "MaterialTeal";
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(733, 13);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(158, 40);
+            this.button3.TabIndex = 37;
+            this.button3.Text = "Tạo tài khoản";
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -134,10 +166,10 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button2.Image = global::CTS_beta.Properties.Resources.close_window_20px;
-            this.button2.Location = new System.Drawing.Point(345, 565);
+            this.button2.Location = new System.Drawing.Point(343, 15);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(84, 36);
-            this.button2.TabIndex = 31;
+            this.button2.TabIndex = 34;
             this.button2.Text = " Xóa";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button2.UseVisualStyleBackColor = false;
@@ -149,10 +181,10 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(263, 565);
+            this.button1.Location = new System.Drawing.Point(261, 15);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(64, 36);
-            this.button1.TabIndex = 32;
+            this.button1.TabIndex = 35;
             this.button1.UseVisualStyleBackColor = false;
             // 
             // frmAccount
@@ -161,22 +193,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(921, 620);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.radTextBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.radGridView1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAccount";
             this.Text = "DANH SÁCH TÀI KHOẢN";
-            this.Load += new System.EventHandler(this.frmAccount_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -185,8 +215,10 @@
         private Telerik.WinControls.UI.RadGridView radGridView1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button2;
         private Telerik.WinControls.UI.RadTextBox radTextBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

@@ -109,7 +109,6 @@
             this.radLabel5.Size = new System.Drawing.Size(73, 22);
             this.radLabel5.TabIndex = 23;
             this.radLabel5.Text = "Điểm số:";
-            this.radLabel5.Click += new System.EventHandler(this.radLabel5_Click);
             // 
             // jTextBox1
             // 
@@ -129,7 +128,6 @@
             this.jTextBox1.TabIndex = 0;
             this.jTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.jTextBox1.TextName = "";
-            this.jTextBox1.Load += new System.EventHandler(this.jTextBox1_Load);
             // 
             // jTextBox2
             // 
@@ -209,11 +207,13 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(453, 42);
             this.panel3.TabIndex = 29;
+            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
             // 
             // button13
             // 
             this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.ForeColor = System.Drawing.Color.White;
@@ -292,7 +292,7 @@
             this.Name = "frmAddMission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "a";
-            this.Load += new System.EventHandler(this.frmAddMission_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmAddMission_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();

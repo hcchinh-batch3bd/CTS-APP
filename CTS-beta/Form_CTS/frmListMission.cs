@@ -20,17 +20,17 @@ namespace CTS_beta.Form_CTS
             this.radGridView1.MasterTemplate.AutoExpandGroups = false;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            frmAddMission fAdd = new frmAddMission();
-            fAdd.Show();
-        }
-
         private void frmListMission_Load(object sender, EventArgs e)
         {
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
             button1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 5, 5));
             button2.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button2.Width, button2.Height, 5, 5));
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            frmAddMission fAdd = new frmAddMission();
+            fAdd.Show();
         }
     }
 }

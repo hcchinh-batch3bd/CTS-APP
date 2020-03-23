@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.radGridView1 = new Telerik.WinControls.UI.RadGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.jTextBox1 = new JTextBox2.JTextBox();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).BeginInit();
             this.panel3.SuspendLayout();
@@ -51,26 +51,25 @@
             // 
             // radGridView1
             // 
-            this.radGridView1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.radGridView1.Location = new System.Drawing.Point(0, 151);
             // 
             // 
             // 
             this.radGridView1.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn3.HeaderText = "ID";
-            gridViewTextBoxColumn3.Name = "column3";
-            gridViewTextBoxColumn3.RowSpan = 50;
-            gridViewTextBoxColumn3.Width = 240;
-            gridViewTextBoxColumn4.HeaderText = "Loại nhiệm vụ";
-            gridViewTextBoxColumn4.Name = "column1";
-            gridViewTextBoxColumn4.Width = 664;
+            gridViewTextBoxColumn1.HeaderText = "ID";
+            gridViewTextBoxColumn1.Name = "column3";
+            gridViewTextBoxColumn1.RowSpan = 50;
+            gridViewTextBoxColumn1.Width = 240;
+            gridViewTextBoxColumn2.HeaderText = "Loại nhiệm vụ";
+            gridViewTextBoxColumn2.Name = "column1";
+            gridViewTextBoxColumn2.Width = 664;
             this.radGridView1.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn3,
-            gridViewTextBoxColumn4});
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2});
             this.radGridView1.MasterTemplate.ShowHeaderCellButtons = true;
             this.radGridView1.MasterTemplate.ShowRowHeaderColumn = false;
             this.radGridView1.MasterTemplate.VerticalScrollState = Telerik.WinControls.UI.ScrollState.AlwaysShow;
-            this.radGridView1.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.radGridView1.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.radGridView1.Name = "radGridView1";
             this.radGridView1.ReadOnly = true;
             // 
@@ -78,7 +77,7 @@
             // 
             this.radGridView1.RootElement.AutoSize = false;
             this.radGridView1.ShowHeaderCellButtons = true;
-            this.radGridView1.Size = new System.Drawing.Size(921, 420);
+            this.radGridView1.Size = new System.Drawing.Size(921, 398);
             this.radGridView1.TabIndex = 8;
             this.radGridView1.ThemeName = "MaterialTeal";
             // 
@@ -126,17 +125,6 @@
             this.label3.Size = new System.Drawing.Size(187, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "DANH SÁCH NHIỆM VỤ";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.ForeColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(0, 572);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(921, 48);
-            this.panel2.TabIndex = 10;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // jTextBox1
             // 
@@ -201,17 +189,26 @@
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 552);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(921, 68);
+            this.panel2.TabIndex = 1;
+            // 
             // frmTypeMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(921, 620);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.jTextBox1);
             this.Controls.Add(this.radLabel1);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.radGridView1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -237,10 +234,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
         private JTextBox2.JTextBox jTextBox1;
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel2;
     }
 }

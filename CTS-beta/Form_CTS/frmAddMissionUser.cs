@@ -4,17 +4,15 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CTS_beta.Form_CTS
 {
-    public partial class frmAddMission : Form
+    public partial class frmAddMissionUser : Form
     {
-
-        public frmAddMission()
+        public frmAddMissionUser()
         {
             InitializeComponent();
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
@@ -25,30 +23,6 @@ namespace CTS_beta.Form_CTS
             jTextBox4.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, jTextBox4.Width, jTextBox4.Height, 10, 10));
             button1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
             richTextBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, richTextBox1.Width, richTextBox1.Height, 10, 10));
-        }
-        
-        
-
-        private void button13_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void frmAddMission_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_MouseDown(object sender, MouseEventArgs e)
-        {
-            MoveControl.ReleaseCapture();
-            MoveControl.SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void frmAddMission_MouseDown(object sender, MouseEventArgs e)
-        {
-            MoveControl.ReleaseCapture();
-            MoveControl.SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }
