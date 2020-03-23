@@ -33,32 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FlatButton">
-      <HintPath>..\..\Contribute Tracking System-logo\JControls\FlatButton.dll</HintPath>
-    </Reference>
-    <Reference Include="JDragControl">
-      <HintPath>..\..\Contribute Tracking System-logo\JControls\JDragControl.dll</HintPath>
-    </Reference>
-    <Reference Include="JGradient Panel">
-      <HintPath>..\..\Contribute Tracking System-logo\JControls\JGradient Panel.dll</HintPath>
-    </Reference>
-    <Reference Include="JMaterialTextbox">
-      <HintPath>..\..\Contribute Tracking System-logo\JControls\JMaterialTextbox.dll</HintPath>
-    </Reference>
-    <Reference Include="JMetroTextBox">
-      <HintPath>..\..\Contribute Tracking System-logo\JControls\JMetroTextBox.dll</HintPath>
-    </Reference>
-    <Reference Include="JTextBox">
-      <HintPath>..\..\Contribute Tracking System-logo\JControls\JTextBox.dll</HintPath>
-    </Reference>
     <Reference Include="JTextBox2">
-      <HintPath>..\..\Contribute Tracking System-logo\JControls\JTextBox2.dll</HintPath>
-    </Reference>
-    <Reference Include="JThinButton">
-      <HintPath>..\..\Contribute Tracking System-logo\JControls\JThinButton.dll</HintPath>
-    </Reference>
-    <Reference Include="LollipoUi">
-      <HintPath>..\..\Contribute Tracking System-logo\LollipoUi\LollipoUi.dll</HintPath>
+      <HintPath>D:\monhoc\Thực tập\JControls\JTextBox2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
