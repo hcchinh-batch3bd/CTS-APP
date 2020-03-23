@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CTS_beta.Models;
+using Newtonsoft.Json;
+using System.Threading;
 
 namespace CTS_beta.Form_CTS
 {
@@ -16,9 +20,37 @@ namespace CTS_beta.Form_CTS
         {
             InitializeComponent();
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 5, 5));
-            this.radGridView1.MasterTemplate.EnableGrouping = false;
-            this.radGridView1.MasterTemplate.AllowDragToGroup = false;
-            this.radGridView1.MasterTemplate.AutoExpandGroups = false;
+            this.data.MasterTemplate.EnableGrouping = false;
+            this.data.MasterTemplate.AllowDragToGroup = false;
+            this.data.MasterTemplate.AutoExpandGroups = false;
+        }
+
+        private void frmMissionCompleted_Load(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(new ThreadStart(LoadData));
+            thread.Start();
+
+        }
+        void LoadData()
+        {
+            var client = new RestClient("https://api.hotrogame.online/Mission/ListMissionComplete?apiKey=MTg5MjAwNjMx%3D%3D");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            RootObject obj= JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+            List<MissionComplete> missionCompletes = obj.results;
+            foreach(var mission in missionCompletes)
+            {
+                data.Rows.Add(mission.name_mission, mission.date, mission.id_type, mission.point, "Đã hoàn thành");
+                //data.Invoke(new Action(() => data.Rows.Add(mission.name_mission, mission.date, mission.id_type, mission.point, "Đã hoàn thành")));               
+            }
+            
+            
+        }
+        class RootObject
+        {
+            public List<MissionComplete> results { get; set; }
+            public bool status { get; set; }
+            public string message { get; set; }
         }
     }
 }

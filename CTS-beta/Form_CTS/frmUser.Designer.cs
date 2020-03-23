@@ -52,18 +52,18 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button14 = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnMissionAreThere = new System.Windows.Forms.Button();
-            this.btnMissionDoing = new System.Windows.Forms.Button();
-            this.btnMissionCompleted = new System.Windows.Forms.Button();
-            this.btnCreateMission = new System.Windows.Forms.Button();
-            this.btnChangePass = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnChangePass = new System.Windows.Forms.Button();
+            this.btnCreateMission = new System.Windows.Forms.Button();
+            this.btnMissionCompleted = new System.Windows.Forms.Button();
+            this.btnMissionDoing = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.btnMissionAreThere = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
@@ -320,7 +320,7 @@
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktop.Location = new System.Drawing.Point(265, 134);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1055, 654);
+            this.panelDesktop.Size = new System.Drawing.Size(1055, 649);
             this.panelDesktop.TabIndex = 28;
             this.panelDesktop.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDesktop_Paint);
             // 
@@ -337,7 +337,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(1320, 134);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 659);
+            this.panel3.Size = new System.Drawing.Size(10, 654);
             this.panel3.TabIndex = 31;
             // 
             // panel5
@@ -354,94 +354,44 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel5.Location = new System.Drawing.Point(0, 39);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(255, 754);
+            this.panel5.Size = new System.Drawing.Size(255, 749);
             this.panel5.TabIndex = 40;
             // 
-            // button14
+            // btnLogout
             // 
-            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.ForeColor = System.Drawing.Color.White;
-            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(0, 717);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(36, 34);
-            this.button14.TabIndex = 4;
-            this.button14.Text = "?";
-            this.button14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button14.UseVisualStyleBackColor = true;
+            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(0, 418);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(255, 54);
+            this.btnLogout.TabIndex = 4;
+            this.btnLogout.Text = "       Đăng xuất";
+            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLogout.UseVisualStyleBackColor = true;
             // 
-            // panel4
+            // btnChangePass
             // 
-            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.pictureBox1);
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.label1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(255, 148);
-            this.panel4.TabIndex = 5;
-            // 
-            // btnMissionAreThere
-            // 
-            this.btnMissionAreThere.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMissionAreThere.FlatAppearance.BorderSize = 0;
-            this.btnMissionAreThere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMissionAreThere.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMissionAreThere.ForeColor = System.Drawing.Color.White;
-            this.btnMissionAreThere.Image = ((System.Drawing.Image)(resources.GetObject("btnMissionAreThere.Image")));
-            this.btnMissionAreThere.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMissionAreThere.Location = new System.Drawing.Point(0, 148);
-            this.btnMissionAreThere.Name = "btnMissionAreThere";
-            this.btnMissionAreThere.Size = new System.Drawing.Size(255, 54);
-            this.btnMissionAreThere.TabIndex = 4;
-            this.btnMissionAreThere.Text = "       Nhiệm vụ đang có";
-            this.btnMissionAreThere.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMissionAreThere.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMissionAreThere.UseVisualStyleBackColor = true;
-            this.btnMissionAreThere.Click += new System.EventHandler(this.btnMissionAreThere_Click);
-            // 
-            // btnMissionDoing
-            // 
-            this.btnMissionDoing.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMissionDoing.FlatAppearance.BorderSize = 0;
-            this.btnMissionDoing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMissionDoing.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMissionDoing.ForeColor = System.Drawing.Color.White;
-            this.btnMissionDoing.Image = ((System.Drawing.Image)(resources.GetObject("btnMissionDoing.Image")));
-            this.btnMissionDoing.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMissionDoing.Location = new System.Drawing.Point(0, 202);
-            this.btnMissionDoing.Name = "btnMissionDoing";
-            this.btnMissionDoing.Size = new System.Drawing.Size(255, 54);
-            this.btnMissionDoing.TabIndex = 4;
-            this.btnMissionDoing.Text = "       Nhiệm vụ đang làm";
-            this.btnMissionDoing.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMissionDoing.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMissionDoing.UseVisualStyleBackColor = true;
-            this.btnMissionDoing.Click += new System.EventHandler(this.btnMissionDoing_Click);
-            // 
-            // btnMissionCompleted
-            // 
-            this.btnMissionCompleted.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMissionCompleted.FlatAppearance.BorderSize = 0;
-            this.btnMissionCompleted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMissionCompleted.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMissionCompleted.ForeColor = System.Drawing.Color.White;
-            this.btnMissionCompleted.Image = ((System.Drawing.Image)(resources.GetObject("btnMissionCompleted.Image")));
-            this.btnMissionCompleted.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMissionCompleted.Location = new System.Drawing.Point(0, 256);
-            this.btnMissionCompleted.Name = "btnMissionCompleted";
-            this.btnMissionCompleted.Size = new System.Drawing.Size(255, 54);
-            this.btnMissionCompleted.TabIndex = 4;
-            this.btnMissionCompleted.Text = "       Nhiệm vụ hoàn thành";
-            this.btnMissionCompleted.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMissionCompleted.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMissionCompleted.UseVisualStyleBackColor = true;
-            this.btnMissionCompleted.Click += new System.EventHandler(this.btnMissionCompleted_Click);
+            this.btnChangePass.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnChangePass.FlatAppearance.BorderSize = 0;
+            this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangePass.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangePass.ForeColor = System.Drawing.Color.White;
+            this.btnChangePass.Image = ((System.Drawing.Image)(resources.GetObject("btnChangePass.Image")));
+            this.btnChangePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChangePass.Location = new System.Drawing.Point(0, 364);
+            this.btnChangePass.Name = "btnChangePass";
+            this.btnChangePass.Size = new System.Drawing.Size(255, 54);
+            this.btnChangePass.TabIndex = 4;
+            this.btnChangePass.Text = "       Đổi mật khẩu";
+            this.btnChangePass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChangePass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnChangePass.UseVisualStyleBackColor = true;
             // 
             // btnCreateMission
             // 
@@ -462,41 +412,91 @@
             this.btnCreateMission.UseVisualStyleBackColor = true;
             this.btnCreateMission.Click += new System.EventHandler(this.btnCreateMission_Click);
             // 
-            // btnChangePass
+            // btnMissionCompleted
             // 
-            this.btnChangePass.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnChangePass.FlatAppearance.BorderSize = 0;
-            this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChangePass.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangePass.ForeColor = System.Drawing.Color.White;
-            this.btnChangePass.Image = ((System.Drawing.Image)(resources.GetObject("btnChangePass.Image")));
-            this.btnChangePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChangePass.Location = new System.Drawing.Point(0, 364);
-            this.btnChangePass.Name = "btnChangePass";
-            this.btnChangePass.Size = new System.Drawing.Size(255, 54);
-            this.btnChangePass.TabIndex = 4;
-            this.btnChangePass.Text = "       Đổi mật khẩu";
-            this.btnChangePass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChangePass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnChangePass.UseVisualStyleBackColor = true;
+            this.btnMissionCompleted.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMissionCompleted.FlatAppearance.BorderSize = 0;
+            this.btnMissionCompleted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMissionCompleted.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMissionCompleted.ForeColor = System.Drawing.Color.White;
+            this.btnMissionCompleted.Image = ((System.Drawing.Image)(resources.GetObject("btnMissionCompleted.Image")));
+            this.btnMissionCompleted.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMissionCompleted.Location = new System.Drawing.Point(0, 256);
+            this.btnMissionCompleted.Name = "btnMissionCompleted";
+            this.btnMissionCompleted.Size = new System.Drawing.Size(255, 54);
+            this.btnMissionCompleted.TabIndex = 4;
+            this.btnMissionCompleted.Text = "       Nhiệm vụ hoàn thành";
+            this.btnMissionCompleted.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMissionCompleted.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMissionCompleted.UseVisualStyleBackColor = true;
+            this.btnMissionCompleted.Click += new System.EventHandler(this.btnMissionCompleted_Click);
             // 
-            // btnLogout
+            // btnMissionDoing
             // 
-            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLogout.FlatAppearance.BorderSize = 0;
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
-            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(0, 418);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(255, 54);
-            this.btnLogout.TabIndex = 4;
-            this.btnLogout.Text = "       Đăng xuất";
-            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnMissionDoing.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMissionDoing.FlatAppearance.BorderSize = 0;
+            this.btnMissionDoing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMissionDoing.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMissionDoing.ForeColor = System.Drawing.Color.White;
+            this.btnMissionDoing.Image = ((System.Drawing.Image)(resources.GetObject("btnMissionDoing.Image")));
+            this.btnMissionDoing.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMissionDoing.Location = new System.Drawing.Point(0, 202);
+            this.btnMissionDoing.Name = "btnMissionDoing";
+            this.btnMissionDoing.Size = new System.Drawing.Size(255, 54);
+            this.btnMissionDoing.TabIndex = 4;
+            this.btnMissionDoing.Text = "       Nhiệm vụ đang làm";
+            this.btnMissionDoing.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMissionDoing.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMissionDoing.UseVisualStyleBackColor = true;
+            this.btnMissionDoing.Click += new System.EventHandler(this.btnMissionDoing_Click);
+            // 
+            // button14
+            // 
+            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button14.FlatAppearance.BorderSize = 0;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.ForeColor = System.Drawing.Color.White;
+            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button14.Location = new System.Drawing.Point(0, 712);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(36, 34);
+            this.button14.TabIndex = 4;
+            this.button14.Text = "?";
+            this.button14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button14.UseVisualStyleBackColor = true;
+            // 
+            // btnMissionAreThere
+            // 
+            this.btnMissionAreThere.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMissionAreThere.FlatAppearance.BorderSize = 0;
+            this.btnMissionAreThere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMissionAreThere.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMissionAreThere.ForeColor = System.Drawing.Color.White;
+            this.btnMissionAreThere.Image = ((System.Drawing.Image)(resources.GetObject("btnMissionAreThere.Image")));
+            this.btnMissionAreThere.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMissionAreThere.Location = new System.Drawing.Point(0, 148);
+            this.btnMissionAreThere.Name = "btnMissionAreThere";
+            this.btnMissionAreThere.Size = new System.Drawing.Size(255, 54);
+            this.btnMissionAreThere.TabIndex = 4;
+            this.btnMissionAreThere.Text = "       Nhiệm vụ đang có";
+            this.btnMissionAreThere.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMissionAreThere.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMissionAreThere.UseVisualStyleBackColor = true;
+            this.btnMissionAreThere.Click += new System.EventHandler(this.btnMissionAreThere_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.pictureBox1);
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(255, 148);
+            this.panel4.TabIndex = 5;
             // 
             // label3
             // 
@@ -508,6 +508,16 @@
             this.label3.Size = new System.Drawing.Size(45, 25);
             this.label3.TabIndex = 42;
             this.label3.Text = "100";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(90, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(75, 59);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -531,28 +541,18 @@
             this.label1.TabIndex = 44;
             this.label1.Text = "Võ Nguyễn Kim B";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(90, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 59);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 41;
-            this.pictureBox1.TabStop = false;
-            // 
             // panel6
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(255, 134);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(10, 659);
+            this.panel6.Size = new System.Drawing.Size(10, 654);
             this.panel6.TabIndex = 41;
             // 
             // panel7
             // 
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(265, 788);
+            this.panel7.Location = new System.Drawing.Point(265, 783);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1055, 5);
             this.panel7.TabIndex = 42;
@@ -561,7 +561,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1330, 793);
+            this.ClientSize = new System.Drawing.Size(1330, 788);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
