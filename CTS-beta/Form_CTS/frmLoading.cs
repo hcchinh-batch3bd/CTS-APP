@@ -23,7 +23,7 @@ namespace CTS_beta.Form_CTS
             if(panel2.Width >= 700)
             {
                 timer1.Stop();
-                frmUser fu = new frmUser();
+                frmLogin fu = new frmLogin();
                 fu.Show();
                 this.Hide();
             }

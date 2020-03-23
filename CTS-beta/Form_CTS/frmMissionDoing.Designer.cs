@@ -38,15 +38,17 @@
             this.label11 = new System.Windows.Forms.Label();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.radGridView1 = new Telerik.WinControls.UI.RadGridView();
+            this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.SuspendLayout();
             // 
             // radPanel1
             // 
-            this.radPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(134)))), ((int)(((byte)(219)))));
+            this.radPanel1.BackColor = System.Drawing.Color.RoyalBlue;
             this.radPanel1.Controls.Add(this.label11);
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.radPanel1.Location = new System.Drawing.Point(0, 0);
@@ -103,9 +105,18 @@
             this.radGridView1.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.radGridView1.Name = "radGridView1";
             this.radGridView1.ReadOnly = true;
-            this.radGridView1.Size = new System.Drawing.Size(1716, 895);
+            this.radGridView1.Size = new System.Drawing.Size(1716, 844);
             this.radGridView1.TabIndex = 4;
             this.radGridView1.ThemeName = "MaterialTeal";
+            // 
+            // radPanel2
+            // 
+            this.radPanel2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.radPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.radPanel2.Location = new System.Drawing.Point(0, 895);
+            this.radPanel2.Name = "radPanel2";
+            this.radPanel2.Size = new System.Drawing.Size(1716, 51);
+            this.radPanel2.TabIndex = 5;
             // 
             // frmMissionDoing
             // 
@@ -113,6 +124,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1716, 946);
             this.Controls.Add(this.radGridView1);
+            this.Controls.Add(this.radPanel2);
             this.Controls.Add(this.radPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMissionDoing";
@@ -122,6 +134,7 @@
             this.radPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -131,5 +144,6 @@
         private System.Windows.Forms.Label label11;
         private Telerik.WinControls.Themes.MaterialTealTheme materialTealTheme1;
         private Telerik.WinControls.UI.RadGridView radGridView1;
+        private Telerik.WinControls.UI.RadPanel radPanel2;
     }
 }

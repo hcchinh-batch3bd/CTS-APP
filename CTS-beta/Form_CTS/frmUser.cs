@@ -17,12 +17,6 @@ namespace CTS_beta.Form_CTS
             InitializeComponent();
             ChildForm.OpenChildForm(new frmMissionAreThere(), panelDesktop);
             //this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
-            btnMissionAreThere.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnMissionAreThere.Width, btnMissionAreThere.Height, 5, 5));
-            btnMissionDoing.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnMissionDoing.Width, btnMissionDoing.Height, 5, 5));
-            btnMissionCompleted.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnMissionCompleted.Width, btnMissionCompleted.Height, 5, 5));
-            btnCreateMission.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnCreateMission.Width, btnCreateMission.Height, 5, 5));
-            btnChangePass.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnChangePass.Width, btnChangePass.Height, 5, 5));
-            btnLogout.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnLogout.Width, btnLogout.Height, 5, 5));
             radTextBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, radTextBox1.Width, radTextBox1.Height, 5, 5));
             pictureBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, pictureBox1.Width, pictureBox1.Height, 5, 5));
 
@@ -82,6 +76,11 @@ namespace CTS_beta.Form_CTS
         {
             MoveControl.ReleaseCapture();
             MoveControl.SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

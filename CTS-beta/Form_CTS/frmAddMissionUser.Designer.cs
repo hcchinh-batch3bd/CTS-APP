@@ -44,6 +44,7 @@
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
@@ -88,7 +89,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(134)))), ((int)(((byte)(219)))));
+            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel3.Controls.Add(this.label3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
@@ -117,7 +118,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button1.Image = global::CTS_beta.Properties.Resources.add_new_32px;
-            this.button1.Location = new System.Drawing.Point(789, 556);
+            this.button1.Location = new System.Drawing.Point(789, 543);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 47);
             this.button1.TabIndex = 36;
@@ -258,12 +259,22 @@
             this.radLabel2.TabIndex = 42;
             this.radLabel2.Text = "Nội dung:";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 895);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1726, 51);
+            this.panel1.TabIndex = 44;
+            // 
             // frmAddMissionUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1726, 946);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.jTextBox2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.radDropDownList1);
@@ -313,5 +324,6 @@
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.Themes.MaterialTealTheme materialTealTheme1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

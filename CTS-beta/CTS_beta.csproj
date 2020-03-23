@@ -197,11 +197,11 @@
     <Compile Include="Form_CTS\frmCreateAccount.Designer.cs">
       <DependentUpon>frmCreateAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_CTS\frmDetalMission.cs">
+    <Compile Include="Form_CTS\frmDetailMission.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_CTS\frmDetalMission.Designer.cs">
-      <DependentUpon>frmDetalMission.cs</DependentUpon>
+    <Compile Include="Form_CTS\frmDetailMission.Designer.cs">
+      <DependentUpon>frmDetailMission.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_CTS\frmForgotPassword.cs">
       <SubType>Form</SubType>
@@ -286,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_CTS\frmCreateAccount.resx">
       <DependentUpon>frmCreateAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CTS\frmDetailMission.resx">
+      <DependentUpon>frmDetailMission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_CTS\frmForgotPassword.resx">
       <DependentUpon>frmForgotPassword.cs</DependentUpon>
