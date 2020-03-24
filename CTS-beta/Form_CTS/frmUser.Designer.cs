@@ -52,6 +52,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panelSlide = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnChangePass = new System.Windows.Forms.Button();
             this.btnCreateMission = new System.Windows.Forms.Button();
@@ -343,6 +344,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.panel5.Controls.Add(this.panelSlide);
             this.panel5.Controls.Add(this.btnLogout);
             this.panel5.Controls.Add(this.btnChangePass);
             this.panel5.Controls.Add(this.btnCreateMission);
@@ -357,6 +359,14 @@
             this.panel5.Size = new System.Drawing.Size(255, 749);
             this.panel5.TabIndex = 40;
             // 
+            // panelSlide
+            // 
+            this.panelSlide.BackColor = System.Drawing.Color.DarkGray;
+            this.panelSlide.Location = new System.Drawing.Point(0, 147);
+            this.panelSlide.Name = "panelSlide";
+            this.panelSlide.Size = new System.Drawing.Size(10, 54);
+            this.panelSlide.TabIndex = 6;
+            // 
             // btnLogout
             // 
             this.btnLogout.Dock = System.Windows.Forms.DockStyle.Top;
@@ -368,12 +378,14 @@
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogout.Location = new System.Drawing.Point(0, 418);
             this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnLogout.Size = new System.Drawing.Size(255, 54);
             this.btnLogout.TabIndex = 4;
             this.btnLogout.Text = "       Đăng xuất";
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnChangePass
             // 
@@ -386,12 +398,14 @@
             this.btnChangePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnChangePass.Location = new System.Drawing.Point(0, 364);
             this.btnChangePass.Name = "btnChangePass";
+            this.btnChangePass.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnChangePass.Size = new System.Drawing.Size(255, 54);
             this.btnChangePass.TabIndex = 4;
             this.btnChangePass.Text = "       Đổi mật khẩu";
             this.btnChangePass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnChangePass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnChangePass.UseVisualStyleBackColor = true;
+            this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
             // 
             // btnCreateMission
             // 
@@ -404,6 +418,7 @@
             this.btnCreateMission.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCreateMission.Location = new System.Drawing.Point(0, 310);
             this.btnCreateMission.Name = "btnCreateMission";
+            this.btnCreateMission.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnCreateMission.Size = new System.Drawing.Size(255, 54);
             this.btnCreateMission.TabIndex = 4;
             this.btnCreateMission.Text = "       Tạo mới nhiệm vụ";
@@ -423,6 +438,7 @@
             this.btnMissionCompleted.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMissionCompleted.Location = new System.Drawing.Point(0, 256);
             this.btnMissionCompleted.Name = "btnMissionCompleted";
+            this.btnMissionCompleted.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnMissionCompleted.Size = new System.Drawing.Size(255, 54);
             this.btnMissionCompleted.TabIndex = 4;
             this.btnMissionCompleted.Text = "       Nhiệm vụ hoàn thành";
@@ -442,6 +458,7 @@
             this.btnMissionDoing.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMissionDoing.Location = new System.Drawing.Point(0, 202);
             this.btnMissionDoing.Name = "btnMissionDoing";
+            this.btnMissionDoing.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnMissionDoing.Size = new System.Drawing.Size(255, 54);
             this.btnMissionDoing.TabIndex = 4;
             this.btnMissionDoing.Text = "       Nhiệm vụ đang làm";
@@ -477,6 +494,7 @@
             this.btnMissionAreThere.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMissionAreThere.Location = new System.Drawing.Point(0, 148);
             this.btnMissionAreThere.Name = "btnMissionAreThere";
+            this.btnMissionAreThere.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnMissionAreThere.Size = new System.Drawing.Size(255, 54);
             this.btnMissionAreThere.TabIndex = 4;
             this.btnMissionAreThere.Text = "       Nhiệm vụ đang có";
@@ -630,5 +648,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panelSlide;
     }
 }

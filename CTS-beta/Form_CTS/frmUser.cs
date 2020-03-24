@@ -54,21 +54,29 @@ namespace CTS_beta.Form_CTS
 
         private void btnMissionAreThere_Click(object sender, EventArgs e)
         {
+            panelSlide.Height = btnMissionAreThere.Height;
+            panelSlide.Top = btnMissionAreThere.Top;
             ChildForm.OpenChildForm(new frmMissionAreThere(), panelDesktop);
         }
 
         private void btnMissionDoing_Click(object sender, EventArgs e)
         {
+            panelSlide.Height = btnMissionDoing.Height;
+            panelSlide.Top = btnMissionDoing.Top;
             ChildForm.OpenChildForm(new frmMissionDoing(), panelDesktop);
         }
 
         private void btnMissionCompleted_Click(object sender, EventArgs e)
         {
+            panelSlide.Height = btnMissionCompleted.Height;
+            panelSlide.Top = btnMissionCompleted.Top;
             ChildForm.OpenChildForm(new frmMissionCompleted(), panelDesktop);
         }
 
         private void btnCreateMission_Click(object sender, EventArgs e)
         {
+            panelSlide.Height = btnCreateMission.Height;
+            panelSlide.Top = btnCreateMission.Top;
             ChildForm.OpenChildForm(new frmAddMissionUser(), panelDesktop);
         }
 
@@ -81,6 +89,20 @@ namespace CTS_beta.Form_CTS
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnChangePass_Click(object sender, EventArgs e)
+        {
+            panelSlide.Height = btnChangePass.Height;
+            panelSlide.Top = btnChangePass.Top;
+            frmChangePassword fC = new frmChangePassword();
+            fC.Show();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            panelSlide.Height = btnLogout.Height;
+            panelSlide.Top = btnLogout.Top;
         }
     }
 }

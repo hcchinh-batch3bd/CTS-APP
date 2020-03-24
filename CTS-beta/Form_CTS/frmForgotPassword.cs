@@ -14,6 +14,7 @@ namespace CTS_beta
         public frmForgotPassword()
         {
             InitializeComponent();
+            radButton1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, radButton1.Width, radButton1.Height, 5, 5));
         }
     }
 }
