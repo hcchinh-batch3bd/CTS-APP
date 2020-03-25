@@ -249,6 +249,7 @@
     <Compile Include="Form_CTS\MissionApproval.Designer.cs">
       <DependentUpon>MissionApproval.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Mission.cs" />
     <Compile Include="Models\MissionComplete.cs" />
     <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\Session.cs" />

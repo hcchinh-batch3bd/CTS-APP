@@ -121,7 +121,15 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnLoad.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAHNJREFUWEft
+        zsEJwDAMA0AP0f0n6k7tq3qEGCmgQlp04I+RhStiT8d5vTKy2bFjZMsHRB747wPuHLiL1Ry4i9UcuIvV
+        HHQHz57NqNu3WBGbUbdvqQfuHLiL1Ry4i9UcuIvVHCwfEHnguw+4RzY7dkzEfqpuHcpuzMwpUrwAAAAA
+        SUVORK5CYII=
+</value>
+  </data>
+  <data name="btnAddMission.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAHNJREFUWEft
         zsEJwDAMA0AP0f0n6k7tq3qEGCmgQlp04I+RhStiT8d5vTKy2bFjZMsHRB747wPuHLiL1Ry4i9UcuIvV

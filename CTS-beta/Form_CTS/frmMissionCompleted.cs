@@ -1,4 +1,4 @@
-﻿using RestSharp;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +29,6 @@ namespace CTS_beta.Form_CTS
         {
             Thread thread = new Thread(new ThreadStart(LoadData));
             thread.Start();
-
         }
         void LoadData()
         {
