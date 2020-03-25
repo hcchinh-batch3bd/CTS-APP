@@ -25,6 +25,23 @@ namespace CTS_beta.Form_CTS
             pictureBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, pictureBox1.Width, pictureBox1.Height, 5, 5));
             apiKey = Properties.Settings.Default.apiKey;
         }
+        static frmUser _obj;
+        public static frmUser Instance
+        {
+            get
+            {
+                if (_obj == null)
+                {
+                    _obj = new frmUser();
+                }
+                return _obj;
+            }
+        }
+        public string ApiKey
+        {
+            get { return apiKey; }
+            set { apiKey = value; }
+        }
         public frmUser(frmLogin frm,string apiKey)
         {
             InitializeComponent();
@@ -105,6 +122,7 @@ namespace CTS_beta.Form_CTS
             lblNameEmployee.Text = obj.name_employee.ToString();
             lblCountComplete.Text = obj.totalComplete.ToString();
             lblCountProcess.Text = obj.totalProcess.ToString();
+            _obj = this;
         }
         class User
         {
