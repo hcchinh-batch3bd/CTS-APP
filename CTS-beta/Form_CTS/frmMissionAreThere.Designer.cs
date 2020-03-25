@@ -57,7 +57,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(741, 13);
+            this.label11.Location = new System.Drawing.Point(571, 13);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(329, 25);
             this.label11.TabIndex = 1;
@@ -70,7 +70,7 @@
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.radPanel1.Location = new System.Drawing.Point(0, 0);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(1726, 51);
+            this.radPanel1.Size = new System.Drawing.Size(1386, 51);
             this.radPanel1.TabIndex = 5;
             // 
             // radGridView1
@@ -84,31 +84,31 @@
             this.radGridView1.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             gridViewTextBoxColumn1.HeaderText = "ID Nhiệm vụ";
             gridViewTextBoxColumn1.Name = "column6";
-            gridViewTextBoxColumn1.Width = 124;
+            gridViewTextBoxColumn1.Width = 100;
             gridViewTextBoxColumn2.HeaderText = "Tên nhiệm vụ";
             gridViewTextBoxColumn2.Name = "column1";
-            gridViewTextBoxColumn2.Width = 298;
+            gridViewTextBoxColumn2.Width = 239;
             gridViewTextBoxColumn3.HeaderText = "Mô tả";
             gridViewTextBoxColumn3.Name = "column7";
-            gridViewTextBoxColumn3.Width = 426;
+            gridViewTextBoxColumn3.Width = 342;
             gridViewTextBoxColumn4.HeaderText = "Ngày bắt đầu";
             gridViewTextBoxColumn4.Name = "column2";
-            gridViewTextBoxColumn4.Width = 168;
+            gridViewTextBoxColumn4.Width = 135;
             gridViewTextBoxColumn5.HeaderText = "Ngày kết thúc";
             gridViewTextBoxColumn5.Name = "column8";
-            gridViewTextBoxColumn5.Width = 153;
+            gridViewTextBoxColumn5.Width = 123;
             gridViewTextBoxColumn6.HeaderText = "Số lượng còn";
             gridViewTextBoxColumn6.Name = "column9";
-            gridViewTextBoxColumn6.Width = 119;
+            gridViewTextBoxColumn6.Width = 96;
             gridViewTextBoxColumn7.HeaderText = "Loại nhiệm vụ";
             gridViewTextBoxColumn7.Name = "column3";
-            gridViewTextBoxColumn7.Width = 136;
+            gridViewTextBoxColumn7.Width = 109;
             gridViewTextBoxColumn8.HeaderText = "Điểm";
             gridViewTextBoxColumn8.Name = "column4";
-            gridViewTextBoxColumn8.Width = 136;
+            gridViewTextBoxColumn8.Width = 109;
             gridViewTextBoxColumn9.HeaderText = "Tác vụ";
             gridViewTextBoxColumn9.Name = "column5";
-            gridViewTextBoxColumn9.Width = 166;
+            gridViewTextBoxColumn9.Width = 133;
             this.radGridView1.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -123,24 +123,25 @@
             this.radGridView1.MasterTemplate.ShowRowHeaderColumn = false;
             this.radGridView1.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.radGridView1.Name = "radGridView1";
-            this.radGridView1.Size = new System.Drawing.Size(1726, 844);
+            this.radGridView1.Size = new System.Drawing.Size(1386, 686);
             this.radGridView1.TabIndex = 8;
             this.radGridView1.ThemeName = "MaterialTeal";
+            this.radGridView1.Click += new System.EventHandler(this.radGridView1_Click);
             // 
             // radPanel2
             // 
             this.radPanel2.BackColor = System.Drawing.Color.RoyalBlue;
             this.radPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.radPanel2.Location = new System.Drawing.Point(0, 895);
+            this.radPanel2.Location = new System.Drawing.Point(0, 737);
             this.radPanel2.Name = "radPanel2";
-            this.radPanel2.Size = new System.Drawing.Size(1726, 51);
+            this.radPanel2.Size = new System.Drawing.Size(1386, 51);
             this.radPanel2.TabIndex = 9;
             // 
             // frmMissionAreThere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1726, 946);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.radGridView1);
             this.Controls.Add(this.radPanel2);
             this.Controls.Add(this.radPanel1);

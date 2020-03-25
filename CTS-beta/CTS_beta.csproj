@@ -37,7 +37,7 @@
       <HintPath>..\..\..\..\Downloads\JControls\JControls\FlatButton.dll</HintPath>
     </Reference>
     <Reference Include="JDragControl">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JDragControl.dll</HintPath>
+      <HintPath>C:\Users\84169\Downloads\Microsoft.SkypeApp_kzf8qxf38zg5c!App\All\JControls\JControls\JDragControl.dll</HintPath>
     </Reference>
     <Reference Include="JGradient Panel">
       <HintPath>..\..\..\..\Downloads\JControls\JControls\JGradient Panel.dll</HintPath>
@@ -55,7 +55,7 @@
       <HintPath>..\..\..\..\Downloads\JControls\JControls\JTextBox.dll</HintPath>
     </Reference>
     <Reference Include="JTextBox2">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JTextBox2.dll</HintPath>
+      <HintPath>C:\Users\84169\Downloads\Microsoft.SkypeApp_kzf8qxf38zg5c!App\All\JControls\JControls\JTextBox2.dll</HintPath>
     </Reference>
     <Reference Include="JThinButton">
       <HintPath>..\..\..\..\Downloads\JControls\JControls\JThinButton.dll</HintPath>
@@ -279,6 +279,7 @@
     <Compile Include="Form_CTS\MissionApproval.Designer.cs">
       <DependentUpon>MissionApproval.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Mission.cs" />
     <Compile Include="Models\MissionComplete.cs" />
     <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\Session.cs" />

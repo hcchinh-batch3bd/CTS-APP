@@ -33,7 +33,7 @@ namespace CTS_beta.Form_CTS
         }
         void LoadData()
         {
-            var client = new RestClient("https://api.hotrogame.online/Mission/ListMissionComplete?apiKey=MTg5MjAwNjMx%3D%3D");
+            var client = new RestClient("https://api.hotrogame.online/Mission/ListMissionComplete?apiKey=hello");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             RootObject obj= JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
