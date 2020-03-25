@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CTS_beta.Form_CTS
 {
-    public partial class frmTypeMission : Form
+    public partial class frmTypeMission : UserControl
     {
         public frmTypeMission()
         {

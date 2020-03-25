@@ -76,15 +76,7 @@ namespace CTS_beta
 
         private void button11_Click(object sender, EventArgs e)
         {
-            ShowMenu.showSubMenu(panel5);
-            //ChildForm.OpenChildForm(new MissionApproval(), panel5);
-            MissionApproval childForm = new MissionApproval();
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            panel5.Controls.Add(childForm);
-            panel5.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();
+            ChildForm.OpenChildForm(new MissionApproval(), panel5);
         }
     }
 }

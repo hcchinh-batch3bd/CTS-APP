@@ -40,9 +40,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).BeginInit();
@@ -131,15 +131,6 @@
             this.panel1.Size = new System.Drawing.Size(921, 68);
             this.panel1.TabIndex = 34;
             // 
-            // radTextBox1
-            // 
-            this.radTextBox1.Location = new System.Drawing.Point(12, 15);
-            this.radTextBox1.Name = "radTextBox1";
-            this.radTextBox1.NullText = "Tìm kiếm";
-            this.radTextBox1.Size = new System.Drawing.Size(247, 36);
-            this.radTextBox1.TabIndex = 36;
-            this.radTextBox1.ThemeName = "MaterialTeal";
-            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.White;
@@ -174,6 +165,15 @@
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button2.UseVisualStyleBackColor = false;
             // 
+            // radTextBox1
+            // 
+            this.radTextBox1.Location = new System.Drawing.Point(12, 15);
+            this.radTextBox1.Name = "radTextBox1";
+            this.radTextBox1.NullText = "Tìm kiếm";
+            this.radTextBox1.Size = new System.Drawing.Size(247, 36);
+            this.radTextBox1.TabIndex = 36;
+            this.radTextBox1.ThemeName = "MaterialTeal";
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
@@ -196,7 +196,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.radGridView1);
             this.Controls.Add(this.panel3);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAccount";
             this.Text = "DANH SÁCH TÀI KHOẢN";
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).EndInit();
