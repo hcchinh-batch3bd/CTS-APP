@@ -126,7 +126,6 @@
             this.Controls.Add(this.data);
             this.Controls.Add(this.radPanel2);
             this.Controls.Add(this.radPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMissionCompleted";
             this.Text = "frmMissionCompleted";
             this.Load += new System.EventHandler(this.frmMissionCompleted_Load);

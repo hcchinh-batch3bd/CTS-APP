@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CTS_beta.Form_CTS
 {
-    public partial class MissionApproval : Form
+    public partial class MissionApproval : UserControl
     {
         public MissionApproval()
         {

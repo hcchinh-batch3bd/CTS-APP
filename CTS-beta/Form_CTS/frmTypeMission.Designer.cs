@@ -211,7 +211,6 @@
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.radGridView1);
             this.Controls.Add(this.panel3);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmTypeMission";
             this.Text = "DANH SÁCH LOẠI NHIỆM VỤ";
             this.Load += new System.EventHandler(this.frmTypeMission_Load);

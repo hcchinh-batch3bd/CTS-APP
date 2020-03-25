@@ -69,7 +69,7 @@ namespace CTS_beta.Form_CTS
 
         private void btnCreateMission_Click(object sender, EventArgs e)
         {
-            ChildForm.OpenChildForm(new frmAddMissionUser(), panelDesktop);
+            //ChildForm.OpenChildForm(new frmAddMissionUser(), panelDesktop);
         }
 
         private void panelTitle_MouseDown(object sender, MouseEventArgs e)

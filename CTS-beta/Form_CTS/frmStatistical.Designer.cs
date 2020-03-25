@@ -180,7 +180,6 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmStatistical";
             this.Text = "THỐNG KÊ";
             this.Load += new System.EventHandler(this.frmStatistical_Load_1);

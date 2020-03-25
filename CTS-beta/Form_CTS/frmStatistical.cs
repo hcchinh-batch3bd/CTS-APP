@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CTS_beta
 {
-    public partial class frmStatistical : Form
+    public partial class frmStatistical : UserControl
     {
         public frmStatistical()
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CTS_beta.Form_CTS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,20 +11,15 @@ namespace CTS_beta
     class ChildForm
     {
         private static Form currentChildForm;
-        public static void OpenChildForm(Form childForm, Panel panel)
+        public static void OpenChildForm(UserControl childForm, Panel panel)
         {
-            if (currentChildForm != null)
+            if (!panel.Controls.ContainsKey(childForm.Name.ToString()))
             {
-                currentChildForm.Close();
+                
+                childForm.Dock = DockStyle.Fill;
+                panel.Controls.Add(childForm);
             }
-            currentChildForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            panel.Controls.Add(childForm);
-            panel.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();
+            panel.Controls[childForm.Name.ToString()].BringToFront();
         }
     }
 }

@@ -14,7 +14,7 @@ using System.Threading;
 
 namespace CTS_beta.Form_CTS
 {
-    public partial class frmMissionCompleted : Form
+    public partial class frmMissionCompleted : UserControl
     {
         public frmMissionCompleted()
         {
