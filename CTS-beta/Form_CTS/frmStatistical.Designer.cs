@@ -42,13 +42,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.radGridView1 = new Telerik.WinControls.UI.RadGridView();
+            this.data = new Telerik.WinControls.UI.RadGridView();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -124,23 +124,23 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.radGridView1);
+            this.panel2.Controls.Add(this.data);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 42);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(921, 507);
             this.panel2.TabIndex = 11;
             // 
-            // radGridView1
+            // data
             // 
-            this.radGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.radGridView1.Location = new System.Drawing.Point(0, 0);
+            this.data.Dock = System.Windows.Forms.DockStyle.Top;
+            this.data.Location = new System.Drawing.Point(0, 0);
             // 
             // 
             // 
-            this.radGridView1.MasterTemplate.AllowAddNewRow = false;
-            this.radGridView1.MasterTemplate.AllowColumnReorder = false;
-            this.radGridView1.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
+            this.data.MasterTemplate.AllowAddNewRow = false;
+            this.data.MasterTemplate.AllowColumnReorder = false;
+            this.data.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             gridViewTextBoxColumn1.HeaderText = "Vị trí";
             gridViewTextBoxColumn1.Name = "column3";
             gridViewTextBoxColumn1.RowSpan = 10;
@@ -154,22 +154,22 @@
             gridViewTextBoxColumn4.HeaderText = "Điểm số";
             gridViewTextBoxColumn4.Name = "column2";
             gridViewTextBoxColumn4.Width = 210;
-            this.radGridView1.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
+            this.data.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
             gridViewTextBoxColumn3,
             gridViewTextBoxColumn4});
-            this.radGridView1.MasterTemplate.ShowRowHeaderColumn = false;
-            this.radGridView1.MasterTemplate.ViewDefinition = tableViewDefinition1;
-            this.radGridView1.Name = "radGridView1";
-            this.radGridView1.ReadOnly = true;
+            this.data.MasterTemplate.ShowRowHeaderColumn = false;
+            this.data.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.data.Name = "data";
+            this.data.ReadOnly = true;
             // 
             // 
             // 
-            this.radGridView1.RootElement.AutoSize = false;
-            this.radGridView1.Size = new System.Drawing.Size(921, 508);
-            this.radGridView1.TabIndex = 9;
-            this.radGridView1.ThemeName = "MaterialTeal";
+            this.data.RootElement.AutoSize = false;
+            this.data.Size = new System.Drawing.Size(921, 508);
+            this.data.TabIndex = 9;
+            this.data.ThemeName = "MaterialTeal";
             // 
             // frmStatistical
             // 
@@ -181,7 +181,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Name = "frmStatistical";
-            this.Text = "THỐNG KÊ";
+            this.Text = "7";
             this.Load += new System.EventHandler(this.frmStatistical_Load_1);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -189,8 +189,8 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -204,6 +204,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
-        private Telerik.WinControls.UI.RadGridView radGridView1;
+        private Telerik.WinControls.UI.RadGridView data;
     }
 }

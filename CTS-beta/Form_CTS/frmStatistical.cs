@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RestSharp;
+using Newtonsoft.Json;
+using CTS_beta.Models;
+using System.Threading;
 
 namespace CTS_beta
 {
@@ -15,19 +19,9 @@ namespace CTS_beta
         public frmStatistical()
         {
             InitializeComponent();
-            this.radGridView1.MasterTemplate.EnableGrouping = false;
-            this.radGridView1.MasterTemplate.AllowDragToGroup = false;
-            this.radGridView1.MasterTemplate.AutoExpandGroups = false;
-
-        }
-
-        private void jTextBox1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radGridView1_Click(object sender, EventArgs e)
-        {
+            this.data.MasterTemplate.EnableGrouping = false;
+            this.data.MasterTemplate.AllowDragToGroup = false;
+            this.data.MasterTemplate.AutoExpandGroups = false;
 
         }
 
@@ -37,6 +31,37 @@ namespace CTS_beta
             button1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 5, 5));
             button2.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button2.Width, button2.Height, 5, 5)); 
             radTextBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, radTextBox1.Width, radTextBox1.Height, 5, 5));
+
+            Thread thread = new Thread(new ThreadStart(LoadData));
+            thread.Start();
         }
+
+        void LoadData()
+        {
+            var client = new RestClient("https://api.hotrogame.online/Account/RankEmployee?apiKey=hello");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+            List<Rank> ranks = obj.results;
+            int i = 1;
+            foreach (var item in ranks)
+            {
+                {
+                    if(!data.InvokeRequired)
+                        data.Rows.Add(i++, item.id_employee, item.name_employee, item.point);
+                    else
+                        data.Invoke(new Action(() => data.Rows.Add(i++, item.id_employee, item.name_employee, item.point)));               }
+                }
+
+            }
+        }
+
+        class RootObject
+        {
+            public List<Rank> results { get; set; }
+            public bool status { get; set; }
+            public string message { get; set; }
+        }
+
+
     }
-}
