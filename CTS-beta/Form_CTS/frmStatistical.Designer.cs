@@ -147,13 +147,13 @@
             gridViewTextBoxColumn1.Width = 95;
             gridViewTextBoxColumn2.HeaderText = "ID";
             gridViewTextBoxColumn2.Name = "ID";
-            gridViewTextBoxColumn2.Width = 224;
+            gridViewTextBoxColumn2.Width = 116;
             gridViewTextBoxColumn3.HeaderText = "Tên nhân viên";
             gridViewTextBoxColumn3.Name = "column1";
-            gridViewTextBoxColumn3.Width = 392;
+            gridViewTextBoxColumn3.Width = 448;
             gridViewTextBoxColumn4.HeaderText = "Điểm số";
             gridViewTextBoxColumn4.Name = "column2";
-            gridViewTextBoxColumn4.Width = 210;
+            gridViewTextBoxColumn4.Width = 262;
             this.data.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -176,13 +176,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ClientSize = new System.Drawing.Size(921, 620);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Name = "frmStatistical";
-            this.Text = "7";
-            this.Load += new System.EventHandler(this.frmStatistical_Load_1);
+            this.Size = new System.Drawing.Size(921, 620);
+            this.Load += new System.EventHandler(this.frmStatistical_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);

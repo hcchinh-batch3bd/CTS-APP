@@ -40,11 +40,11 @@
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.data = new Telerik.WinControls.UI.RadGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnAddMission = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnLoad = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).BeginInit();
             this.data.SuspendLayout();
@@ -117,6 +117,23 @@
             this.panel1.Size = new System.Drawing.Size(921, 68);
             this.panel1.TabIndex = 10;
             // 
+            // btnLoad
+            // 
+            this.btnLoad.BackColor = System.Drawing.Color.White;
+            this.btnLoad.FlatAppearance.BorderSize = 0;
+            this.btnLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.btnLoad.Image = global::CTS_beta.Properties.Resources.sphere_10px;
+            this.btnLoad.Location = new System.Drawing.Point(267, 14);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(158, 40);
+            this.btnLoad.TabIndex = 37;
+            this.btnLoad.Text = "Tải lại dữ liệu";
+            this.btnLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLoad.UseVisualStyleBackColor = false;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
@@ -174,32 +191,15 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "DANH SÁCH NHIỆM VỤ";
             // 
-            // btnLoad
-            // 
-            this.btnLoad.BackColor = System.Drawing.Color.White;
-            this.btnLoad.FlatAppearance.BorderSize = 0;
-            this.btnLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.btnLoad.Image = ((System.Drawing.Image)(resources.GetObject("btnLoad.Image")));
-            this.btnLoad.Location = new System.Drawing.Point(267, 14);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(158, 40);
-            this.btnLoad.TabIndex = 37;
-            this.btnLoad.Text = "Load dữ liệu";
-            this.btnLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLoad.UseVisualStyleBackColor = false;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
-            // 
             // frmListMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ClientSize = new System.Drawing.Size(921, 620);
             this.Controls.Add(this.data);
             this.Controls.Add(this.panel3);
             this.Name = "frmListMission";
+            this.Size = new System.Drawing.Size(921, 620);
             this.Load += new System.EventHandler(this.frmListMission_Load);
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.data)).EndInit();
