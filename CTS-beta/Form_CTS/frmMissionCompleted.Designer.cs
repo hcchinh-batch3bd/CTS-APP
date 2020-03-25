@@ -33,6 +33,7 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.label11 = new System.Windows.Forms.Label();
@@ -72,6 +73,7 @@
             // data
             // 
             this.data.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.data.Font = new System.Drawing.Font("Candara", 9F);
             this.data.Location = new System.Drawing.Point(0, 51);
             // 
             // 
@@ -81,25 +83,30 @@
             this.data.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             gridViewTextBoxColumn1.HeaderText = "Tên nhiệm vụ";
             gridViewTextBoxColumn1.Name = "NameMission";
-            gridViewTextBoxColumn1.Width = 476;
+            gridViewTextBoxColumn1.Width = 493;
             gridViewTextBoxColumn2.HeaderText = "Thời gian hoàn thành";
             gridViewTextBoxColumn2.Name = "Date";
-            gridViewTextBoxColumn2.Width = 278;
+            gridViewTextBoxColumn2.Width = 356;
             gridViewTextBoxColumn3.HeaderText = "Loại nhiệm vụ";
             gridViewTextBoxColumn3.Name = "TypeName";
-            gridViewTextBoxColumn3.Width = 278;
+            gridViewTextBoxColumn3.Width = 356;
             gridViewTextBoxColumn4.HeaderText = "Điểm";
             gridViewTextBoxColumn4.Name = "Point";
-            gridViewTextBoxColumn4.Width = 99;
+            gridViewTextBoxColumn4.Width = 127;
             gridViewTextBoxColumn5.HeaderText = "Trạng thái";
-            gridViewTextBoxColumn5.Name = "Status";
-            gridViewTextBoxColumn5.Width = 255;
+            gridViewTextBoxColumn5.Name = "column1";
+            gridViewTextBoxColumn5.Width = 54;
+            gridViewTextBoxColumn6.HeaderText = "id";
+            gridViewTextBoxColumn6.IsVisible = false;
+            gridViewTextBoxColumn6.Name = "column2";
+            gridViewTextBoxColumn6.Width = 47;
             this.data.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
             gridViewTextBoxColumn3,
             gridViewTextBoxColumn4,
-            gridViewTextBoxColumn5});
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6});
             this.data.MasterTemplate.HorizontalScrollState = Telerik.WinControls.UI.ScrollState.AlwaysShow;
             this.data.MasterTemplate.ShowRowHeaderColumn = false;
             this.data.MasterTemplate.ViewDefinition = tableViewDefinition1;
@@ -122,12 +129,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.data);
             this.Controls.Add(this.radPanel2);
             this.Controls.Add(this.radPanel1);
             this.Name = "frmMissionCompleted";
-            this.Text = "frmMissionCompleted";
+            this.Size = new System.Drawing.Size(1386, 788);
             this.Load += new System.EventHandler(this.frmMissionCompleted_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);

@@ -10,7 +10,7 @@ namespace CTS_beta.Models
     {
         public int id_mission { get; set; }
         public string name_mission { get; set; }
-        public string Stardate { get; set; }
+        public DateTime Stardate { get; set; }
         public int point { get; set; }
         public int exprie { get; set; }
         public string describe { get; set; }
@@ -18,7 +18,6 @@ namespace CTS_beta.Models
         public int Count { get; set; }
         public int id_type { get; set; }
         public int id_employee { get; set; }
-
         public Mission(int id_mission, string name_mission, string Stardate, int point, int exprie, string describe, int status, int Count, int id_type, int id_employee)
         {
             this.id_mission = id_mission;
