@@ -58,7 +58,7 @@ namespace CTS_beta
                     }
                     if (sessions.FirstOrDefault().level_employee)
                     {
-                        frmAdmin frmAdmin = new frmAdmin();
+                        frmAdmin frmAdmin = new frmAdmin(this, sessions.FirstOrDefault().apiKey);
                         frmAdmin.Show();
                         this.Hide();
                     }
@@ -86,6 +86,11 @@ namespace CTS_beta
         private void ckbRemember_CheckStateChanging(object sender, CheckStateChangingEventArgs args)
         {
             MessageBox.Show("Nếu bạn bật chức năng này hệ thống sẽ không yêu cầu đăng nhập cho lần tới !!", "Cảnh báo",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

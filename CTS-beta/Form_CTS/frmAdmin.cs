@@ -13,8 +13,9 @@ namespace CTS_beta
 {
     public partial class frmAdmin : Telerik.WinControls.UI.RadForm
     {
-        
 
+        string apiKey;
+        frmLogin frmLogin;
         public frmAdmin()
         {
             InitializeComponent();
@@ -22,10 +23,45 @@ namespace CTS_beta
             ShowMenu.customizeDesing(panel5);
             
         }
-        
+        public static frmAdmin Instance
+        {
+            get
+            {
+                if (_obj == null)
+                {
+                    _obj = new frmAdmin();
+                }
+                return _obj;
+            }
+        }
+        static frmAdmin _obj;
+        public string ApiKey
+        {
+            get { return apiKey; }
+            set { apiKey = value; }
+        }
+        public frmAdmin(frmLogin frm, string apiKey)
+        {
+            InitializeComponent();
+            ChildForm.OpenChildForm(new frmStatistical(), panel4);
+            ShowMenu.customizeDesing(panel5);
+
+        }
         private void button13_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Properties.Settings.Default.apiKey = "";
+            Properties.Settings.Default.Save();
+            if (frmLogin != null)
+            {
+                frmLogin.Show();
+                this.Close();
+            }
+            else
+            {
+                frmLogin frm = new frmLogin();
+                frm.Show();
+                this.Hide();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -59,6 +95,7 @@ namespace CTS_beta
 
         private void frmAdmin_Load(object sender, EventArgs e)
         {
+            _obj = this;
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
         }
 
