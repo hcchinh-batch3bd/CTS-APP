@@ -33,11 +33,35 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FlatButton">
+      <HintPath>..\..\..\..\Downloads\JControls\JControls\FlatButton.dll</HintPath>
+    </Reference>
+    <Reference Include="JDragControl">
+      <HintPath>..\..\..\..\Downloads\JControls\JControls\JDragControl.dll</HintPath>
+    </Reference>
+    <Reference Include="JGradient Panel">
+      <HintPath>..\..\..\..\Downloads\JControls\JControls\JGradient Panel.dll</HintPath>
+    </Reference>
+    <Reference Include="JImageButton">
+      <HintPath>..\..\..\..\Downloads\JControls\JControls\JImageButton.dll</HintPath>
+    </Reference>
+    <Reference Include="JMaterialTextbox">
+      <HintPath>..\..\..\..\Downloads\JControls\JControls\JMaterialTextbox.dll</HintPath>
+    </Reference>
+    <Reference Include="JMetroTextBox">
+      <HintPath>..\..\..\..\Downloads\JControls\JControls\JMetroTextBox.dll</HintPath>
+    </Reference>
     <Reference Include="JTextBox">
-      <HintPath>..\..\..\Downloads\JControls\JTextBox.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\JControls\JControls\JTextBox.dll</HintPath>
     </Reference>
     <Reference Include="JTextBox2">
-      <HintPath>..\..\..\Downloads\JControls\JTextBox2.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\JControls\JControls\JTextBox2.dll</HintPath>
+    </Reference>
+    <Reference Include="JThinButton">
+      <HintPath>..\..\..\..\Downloads\JControls\JControls\JThinButton.dll</HintPath>
+    </Reference>
+    <Reference Include="LollipoUi">
+      <HintPath>..\..\..\..\Downloads\LollipoUi\LollipoUi\LollipoUi.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>

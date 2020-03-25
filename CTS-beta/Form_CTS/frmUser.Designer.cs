@@ -39,8 +39,8 @@
             this.button7 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblCountComplete = new System.Windows.Forms.TextBox();
-            this.lblCountProcess = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -60,10 +60,10 @@
             this.button14 = new System.Windows.Forms.Button();
             this.btnMissionAreThere = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lblPoint = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblNameEmployee = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
@@ -200,8 +200,8 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.lblCountComplete);
-            this.panel2.Controls.Add(this.lblCountProcess);
+            this.panel2.Controls.Add(this.textBox4);
+            this.panel2.Controls.Add(this.textBox3);
             this.panel2.Controls.Add(this.textBox2);
             this.panel2.Controls.Add(this.radTextBox1);
             this.panel2.Controls.Add(this.button7);
@@ -217,31 +217,31 @@
             this.panel2.Size = new System.Drawing.Size(1075, 90);
             this.panel2.TabIndex = 21;
             // 
-            // lblCountComplete
+            // textBox4
             // 
-            this.lblCountComplete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblCountComplete.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lblCountComplete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblCountComplete.Location = new System.Drawing.Point(462, 39);
-            this.lblCountComplete.Name = "lblCountComplete";
-            this.lblCountComplete.ReadOnly = true;
-            this.lblCountComplete.Size = new System.Drawing.Size(27, 16);
-            this.lblCountComplete.TabIndex = 32;
-            this.lblCountComplete.Text = "10";
-            this.lblCountComplete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBox4.Location = new System.Drawing.Point(462, 39);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(27, 16);
+            this.textBox4.TabIndex = 32;
+            this.textBox4.Text = "10";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // lblCountProcess
+            // textBox3
             // 
-            this.lblCountProcess.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblCountProcess.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lblCountProcess.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblCountProcess.Location = new System.Drawing.Point(256, 36);
-            this.lblCountProcess.Name = "lblCountProcess";
-            this.lblCountProcess.ReadOnly = true;
-            this.lblCountProcess.Size = new System.Drawing.Size(27, 16);
-            this.lblCountProcess.TabIndex = 32;
-            this.lblCountProcess.Text = "10";
-            this.lblCountProcess.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBox3.Location = new System.Drawing.Point(256, 36);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(27, 16);
+            this.textBox3.TabIndex = 32;
+            this.textBox3.Text = "10";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox2
             // 
@@ -374,7 +374,6 @@
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnChangePass
             // 
@@ -489,26 +488,26 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel4.Controls.Add(this.lblPoint);
+            this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.lblNameEmployee);
+            this.panel4.Controls.Add(this.label1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(255, 148);
             this.panel4.TabIndex = 5;
             // 
-            // lblPoint
+            // label3
             // 
-            this.lblPoint.AutoSize = true;
-            this.lblPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblPoint.ForeColor = System.Drawing.Color.White;
-            this.lblPoint.Location = new System.Drawing.Point(135, 112);
-            this.lblPoint.Name = "lblPoint";
-            this.lblPoint.Size = new System.Drawing.Size(45, 25);
-            this.lblPoint.TabIndex = 42;
-            this.lblPoint.Text = "100";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(135, 112);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 25);
+            this.label3.TabIndex = 42;
+            this.label3.Text = "100";
             // 
             // pictureBox1
             // 
@@ -531,16 +530,16 @@
             this.label2.TabIndex = 43;
             this.label2.Text = "Điểm:";
             // 
-            // lblNameEmployee
+            // label1
             // 
-            this.lblNameEmployee.AutoSize = true;
-            this.lblNameEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameEmployee.ForeColor = System.Drawing.Color.White;
-            this.lblNameEmployee.Location = new System.Drawing.Point(44, 75);
-            this.lblNameEmployee.Name = "lblNameEmployee";
-            this.lblNameEmployee.Size = new System.Drawing.Size(132, 20);
-            this.lblNameEmployee.TabIndex = 44;
-            this.lblNameEmployee.Text = "Võ Nguyễn Kim B";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(44, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(167, 25);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "Võ Nguyễn Kim B";
             // 
             // panel6
             // 
@@ -576,7 +575,6 @@
             this.Name = "frmUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmUser";
-            this.Load += new System.EventHandler(this.frmUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
@@ -614,8 +612,8 @@
         private System.Windows.Forms.Panel panelDesktop;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox lblCountComplete;
-        private System.Windows.Forms.TextBox lblCountProcess;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button button14;
@@ -626,10 +624,10 @@
         private System.Windows.Forms.Button btnMissionDoing;
         private System.Windows.Forms.Button btnMissionAreThere;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label lblPoint;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblNameEmployee;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
     }

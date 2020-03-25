@@ -10,6 +10,7 @@ namespace CTS_beta
 {
     class ChildForm
     {
+        private static Form currentChildForm;
         public static void OpenChildForm(UserControl childForm, Panel panel)
         {
             if (!panel.Controls.ContainsKey(childForm.Name.ToString()))
