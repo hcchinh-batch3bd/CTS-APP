@@ -53,7 +53,7 @@
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.radPanel1.Location = new System.Drawing.Point(0, 0);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(1386, 51);
+            this.radPanel1.Size = new System.Drawing.Size(1378, 51);
             this.radPanel1.TabIndex = 1;
             // 
             // label11
@@ -63,7 +63,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(493, 13);
+            this.label11.Location = new System.Drawing.Point(489, 13);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(401, 25);
             this.label11.TabIndex = 1;
@@ -81,16 +81,16 @@
             this.data.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             gridViewTextBoxColumn1.HeaderText = "Tên nhiệm vụ";
             gridViewTextBoxColumn1.Name = "NameMission";
-            gridViewTextBoxColumn1.Width = 476;
+            gridViewTextBoxColumn1.Width = 473;
             gridViewTextBoxColumn2.HeaderText = "Thời gian hoàn thành";
             gridViewTextBoxColumn2.Name = "Date";
-            gridViewTextBoxColumn2.Width = 278;
+            gridViewTextBoxColumn2.Width = 276;
             gridViewTextBoxColumn3.HeaderText = "Loại nhiệm vụ";
             gridViewTextBoxColumn3.Name = "TypeName";
-            gridViewTextBoxColumn3.Width = 278;
+            gridViewTextBoxColumn3.Width = 276;
             gridViewTextBoxColumn4.HeaderText = "Điểm";
             gridViewTextBoxColumn4.Name = "Point";
-            gridViewTextBoxColumn4.Width = 99;
+            gridViewTextBoxColumn4.Width = 98;
             gridViewTextBoxColumn5.HeaderText = "Trạng thái";
             gridViewTextBoxColumn5.Name = "Status";
             gridViewTextBoxColumn5.Width = 255;
@@ -105,24 +105,25 @@
             this.data.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.data.Name = "data";
             this.data.ReadOnly = true;
-            this.data.Size = new System.Drawing.Size(1386, 686);
+            this.data.Size = new System.Drawing.Size(1378, 678);
             this.data.TabIndex = 2;
             this.data.ThemeName = "MaterialTeal";
+            this.data.Click += new System.EventHandler(this.data_Click);
             // 
             // radPanel2
             // 
             this.radPanel2.BackColor = System.Drawing.Color.RoyalBlue;
             this.radPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.radPanel2.Location = new System.Drawing.Point(0, 737);
+            this.radPanel2.Location = new System.Drawing.Point(0, 729);
             this.radPanel2.Name = "radPanel2";
-            this.radPanel2.Size = new System.Drawing.Size(1386, 51);
+            this.radPanel2.Size = new System.Drawing.Size(1378, 51);
             this.radPanel2.TabIndex = 3;
             // 
             // frmMissionCompleted
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1378, 780);
             this.Controls.Add(this.data);
             this.Controls.Add(this.radPanel2);
             this.Controls.Add(this.radPanel1);

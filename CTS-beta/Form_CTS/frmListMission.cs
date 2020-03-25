@@ -1,10 +1,14 @@
-﻿using System;
+﻿using CTS_beta.Models;
+using Newtonsoft.Json;
+using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,22 +19,64 @@ namespace CTS_beta.Form_CTS
         public frmListMission()
         {
             InitializeComponent();
-            this.radGridView1.MasterTemplate.EnableGrouping = false;
-            this.radGridView1.MasterTemplate.AllowDragToGroup = false;
-            this.radGridView1.MasterTemplate.AutoExpandGroups = false;
+            this.data.MasterTemplate.EnableGrouping = false;
+            this.data.MasterTemplate.AllowDragToGroup = false;
+            this.data.MasterTemplate.AutoExpandGroups = false;
         }
 
         private void frmListMission_Load(object sender, EventArgs e)
         {
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
-            button1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 5, 5));
-            button2.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button2.Width, button2.Height, 5, 5));
+            btnDelete.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnDelete.Width, btnDelete.Height, 5, 5));
+            btnAdd.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnAdd.Width, btnAdd.Height, 5, 5));
+            Thread thread = new Thread(new ThreadStart(LoadData));
+            thread.Start();
+
+        }
+        void LoadData()
+        {
+            var client = new RestClient("https://api.hotrogame.online/Mission/ListMission");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+            List<Mission> mission = obj.results;
+            foreach (var item in mission)
+            {
+                int status = item.status;
+                switch (status)
+                {
+                    case -1:
+                        if (!data.InvokeRequired)
+                            data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, item.Count, "Hủy", item.point);
+                        else
+                            data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, item.Count, "Hủy", item.point)));
+                        break;
+                    case 0:
+                        if (!data.InvokeRequired)
+                            data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, item.Count, "Đang duyệt", item.point);
+                        else
+                            data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, item.Count, "Đang duyệt", item.point)));
+                        break;
+                    default:
+                        if (!data.InvokeRequired)
+                            data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, item.Count, "Đang chạy", item.point);
+                        else
+                            data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, item.Count, "Đang chạy", item.point)));
+                        break;
+                }
+            }
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
             frmAddMission fAdd = new frmAddMission();
             fAdd.Show();
+        }
+        class RootObject
+        {
+            public List<Mission> results { get; set; }
+            public bool status { get; set; }
+            public string message { get; set; }
         }
     }
 }

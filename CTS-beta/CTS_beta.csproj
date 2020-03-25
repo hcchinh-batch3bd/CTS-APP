@@ -34,34 +34,34 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FlatButton">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\FlatButton.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\JControls\JControls\FlatButton.dll</HintPath>
     </Reference>
     <Reference Include="JDragControl">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JDragControl.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\JControls\JControls\JDragControl.dll</HintPath>
     </Reference>
     <Reference Include="JGradient Panel">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JGradient Panel.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\JControls\JControls\JGradient Panel.dll</HintPath>
     </Reference>
     <Reference Include="JImageButton">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JImageButton.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\JControls\JControls\JImageButton.dll</HintPath>
     </Reference>
     <Reference Include="JMaterialTextbox">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JMaterialTextbox.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\JControls\JControls\JMaterialTextbox.dll</HintPath>
     </Reference>
     <Reference Include="JMetroTextBox">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JMetroTextBox.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\JControls\JControls\JMetroTextBox.dll</HintPath>
     </Reference>
     <Reference Include="JTextBox">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JTextBox.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\JControls\JControls\JTextBox.dll</HintPath>
     </Reference>
     <Reference Include="JTextBox2">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JTextBox2.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\JControls\JControls\JTextBox2.dll</HintPath>
     </Reference>
     <Reference Include="JThinButton">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JThinButton.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\JControls\JControls\JThinButton.dll</HintPath>
     </Reference>
     <Reference Include="LollipoUi">
-      <HintPath>..\..\..\..\Downloads\LollipoUi\LollipoUi\LollipoUi.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\LollipoUi\LollipoUi\LollipoUi.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -279,6 +279,7 @@
     <Compile Include="Form_CTS\MissionApproval.Designer.cs">
       <DependentUpon>MissionApproval.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Mission.cs" />
     <Compile Include="Models\MissionComplete.cs" />
     <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\Session.cs" />
@@ -433,6 +434,18 @@
     <Content Include="Resources\profile.ico" />
     <Content Include="Resources\profile.png" />
     <None Include="Resources\profile1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\..\..\Desktop\JControls\JControls\FlatButton.dll" />
+    <Analyzer Include="..\..\..\..\Desktop\JControls\JControls\JDragControl.dll" />
+    <Analyzer Include="..\..\..\..\Desktop\JControls\JControls\JGradient Panel.dll" />
+    <Analyzer Include="..\..\..\..\Desktop\JControls\JControls\JImageButton.dll" />
+    <Analyzer Include="..\..\..\..\Desktop\JControls\JControls\JMaterialTextbox.dll" />
+    <Analyzer Include="..\..\..\..\Desktop\JControls\JControls\JMetroTextBox.dll" />
+    <Analyzer Include="..\..\..\..\Desktop\JControls\JControls\JTextBox.dll" />
+    <Analyzer Include="..\..\..\..\Desktop\JControls\JControls\JTextBox2.dll" />
+    <Analyzer Include="..\..\..\..\Desktop\JControls\JControls\JThinButton.dll" />
+    <Analyzer Include="..\..\..\..\Desktop\LollipoUi\LollipoUi\LollipoUi.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
