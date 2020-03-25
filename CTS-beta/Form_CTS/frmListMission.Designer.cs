@@ -200,6 +200,7 @@
             this.Controls.Add(this.data);
             this.Controls.Add(this.panel3);
             this.Name = "frmListMission";
+            this.Size = new System.Drawing.Size(921, 620);
             this.Load += new System.EventHandler(this.frmListMission_Load);
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.data)).EndInit();

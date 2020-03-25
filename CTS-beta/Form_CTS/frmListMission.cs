@@ -12,7 +12,6 @@ using System.Threading;
 using CTS_beta.Models;
 using RestSharp;
 
-
 namespace CTS_beta.Form_CTS
 {
     public partial class frmListMission : UserControl
@@ -97,6 +96,7 @@ namespace CTS_beta.Form_CTS
             
             LoadData();
         }
+      
     }
 
     class RootObject
