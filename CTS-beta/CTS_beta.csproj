@@ -190,7 +190,7 @@
       <DependentUpon>frmAddMission.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_CTS\frmAddMissionUser.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Form_CTS\frmAddMissionUser.Designer.cs">
       <DependentUpon>frmAddMissionUser.cs</DependentUpon>
@@ -220,7 +220,7 @@
       <DependentUpon>frmForgotPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_CTS\frmListMission.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Form_CTS\frmListMission.Designer.cs">
       <DependentUpon>frmListMission.cs</DependentUpon>
@@ -238,25 +238,25 @@
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_CTS\frmMissionAreThere.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Form_CTS\frmMissionAreThere.Designer.cs">
       <DependentUpon>frmMissionAreThere.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_CTS\frmMissionCompleted.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Form_CTS\frmMissionCompleted.Designer.cs">
       <DependentUpon>frmMissionCompleted.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_CTS\frmMissionDoing.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Form_CTS\frmMissionDoing.Designer.cs">
       <DependentUpon>frmMissionDoing.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_CTS\frmTypeMission.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Form_CTS\frmTypeMission.Designer.cs">
       <DependentUpon>frmTypeMission.cs</DependentUpon>
@@ -273,6 +273,7 @@
     <Compile Include="Form_CTS\MissionApproval.Designer.cs">
       <DependentUpon>MissionApproval.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Mission.cs" />
     <Compile Include="Models\MissionComplete.cs" />
     <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\Session.cs" />

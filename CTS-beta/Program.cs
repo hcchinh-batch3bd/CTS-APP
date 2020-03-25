@@ -13,7 +13,7 @@ namespace CTS_beta.Form_CTS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmUser());
+            Application.Run(new frmLogin());
         }
     }
 }
