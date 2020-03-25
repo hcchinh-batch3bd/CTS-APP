@@ -52,5 +52,10 @@ namespace CTS_beta.Form_CTS
             public bool status { get; set; }
             public string message { get; set; }
         }
+
+        private void data_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

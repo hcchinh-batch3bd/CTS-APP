@@ -35,10 +35,10 @@ namespace CTS_beta.Form_CTS
             {
                 if (radGridView1.InvokeRequired)
                 {
-                    radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.id_type, mission.point, "Xem")));
+                    radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.id_type, mission.point, "Hoàn thành")));
                 }
                 else
-                    radGridView1.Rows.Add(mission.name_mission, mission.exprie, mission.id_type, mission.point, "Đang làm");
+                    radGridView1.Rows.Add(mission.name_mission, mission.exprie, mission.id_type, mission.point, "Hoàn thành");
 
 
             }
@@ -62,9 +62,29 @@ namespace CTS_beta.Form_CTS
         {
             if (e.ColumnIndex == 4)
             {
-                frmDetailMission f = new frmDetailMission();
-                f.Show();
+                
+                loadDataComplete();
+                
             }
+        }
+        void loadDataComplete()
+        {
+            var client = new RestClient("/Mission/Missionavailableemp?apiKey=");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+            List<Mission> missionCompletes = obj.results;
+            //foreach (var mission in missionCompletes)
+            //{
+            //    if (radGridView1.InvokeRequired)
+            //    {
+            //        radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.id_type, mission.point, "Hoàn thành")));
+            //    }
+            //    else
+            //        radGridView1.Rows.Add(mission.name_mission, mission.exprie, mission.id_type, mission.point, "Hoàn thành");
+
+
+            //}
         }
     }
     }

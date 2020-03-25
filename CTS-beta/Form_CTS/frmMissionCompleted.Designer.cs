@@ -108,6 +108,7 @@
             this.data.Size = new System.Drawing.Size(1386, 686);
             this.data.TabIndex = 2;
             this.data.ThemeName = "MaterialTeal";
+            this.data.Click += new System.EventHandler(this.data_Click);
             // 
             // radPanel2
             // 

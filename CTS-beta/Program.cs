@@ -13,6 +13,9 @@ namespace CTS_beta.Form_CTS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+//<<<<<<< HEAD
+            Application.Run(new frmLogin());
+//=======
             if (Properties.Settings.Default.apiKey != "")
                 Application.Run(new frmUser());
             else
