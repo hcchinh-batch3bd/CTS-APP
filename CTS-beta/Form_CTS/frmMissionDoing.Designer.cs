@@ -33,6 +33,7 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.label11 = new System.Windows.Forms.Label();
@@ -81,7 +82,7 @@
             // radGridView1
             // 
             this.radGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radGridView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radGridView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radGridView1.Location = new System.Drawing.Point(0, 51);
             // 
             // 
@@ -104,12 +105,17 @@
             gridViewCommandColumn1.HeaderText = "Tác vụ";
             gridViewCommandColumn1.Name = "column1";
             gridViewCommandColumn1.Width = 291;
+            gridViewTextBoxColumn5.HeaderText = "id";
+            gridViewTextBoxColumn5.IsVisible = false;
+            gridViewTextBoxColumn5.Name = "column2";
+            gridViewTextBoxColumn5.Width = 49;
             this.radGridView1.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
             gridViewTextBoxColumn3,
             gridViewTextBoxColumn4,
-            gridViewCommandColumn1});
+            gridViewCommandColumn1,
+            gridViewTextBoxColumn5});
             this.radGridView1.MasterTemplate.HorizontalScrollState = Telerik.WinControls.UI.ScrollState.AlwaysShow;
             this.radGridView1.MasterTemplate.ShowRowHeaderColumn = false;
             this.radGridView1.MasterTemplate.ViewDefinition = tableViewDefinition1;

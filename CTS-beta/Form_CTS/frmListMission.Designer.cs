@@ -40,10 +40,10 @@
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.radGridView1 = new Telerik.WinControls.UI.RadGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnThemNhiemVu = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).BeginInit();
             this.radGridView1.SuspendLayout();
@@ -63,10 +63,12 @@
             this.radGridView1.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             gridViewTextBoxColumn1.HeaderText = "ID";
             gridViewTextBoxColumn1.Name = "column3";
+            gridViewTextBoxColumn1.ReadOnly = true;
             gridViewTextBoxColumn1.RowSpan = 100;
             gridViewTextBoxColumn1.Width = 81;
             gridViewTextBoxColumn2.HeaderText = "Tên nhiệm vụ";
             gridViewTextBoxColumn2.Name = "ID";
+            gridViewTextBoxColumn2.ReadOnly = true;
             gridViewTextBoxColumn2.Width = 193;
             gridViewTextBoxColumn3.HeaderText = "Loại nhiệm vụ";
             gridViewTextBoxColumn3.Name = "column1";
@@ -107,13 +109,48 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnXoa);
+            this.panel1.Controls.Add(this.btnThemNhiemVu);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 510);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(921, 68);
             this.panel1.TabIndex = 10;
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.BackColor = System.Drawing.Color.White;
+            this.btnXoa.FlatAppearance.BorderSize = 0;
+            this.btnXoa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.btnXoa.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnXoa.Image = global::CTS_beta.Properties.Resources.close_window_20px;
+            this.btnXoa.Location = new System.Drawing.Point(177, 14);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(84, 40);
+            this.btnXoa.TabIndex = 36;
+            this.btnXoa.Text = " Xóa";
+            this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnThemNhiemVu
+            // 
+            this.btnThemNhiemVu.BackColor = System.Drawing.Color.White;
+            this.btnThemNhiemVu.FlatAppearance.BorderSize = 0;
+            this.btnThemNhiemVu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnThemNhiemVu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThemNhiemVu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.btnThemNhiemVu.Image = ((System.Drawing.Image)(resources.GetObject("btnThemNhiemVu.Image")));
+            this.btnThemNhiemVu.Location = new System.Drawing.Point(12, 14);
+            this.btnThemNhiemVu.Name = "btnThemNhiemVu";
+            this.btnThemNhiemVu.Size = new System.Drawing.Size(158, 40);
+            this.btnThemNhiemVu.TabIndex = 35;
+            this.btnThemNhiemVu.Text = "Thêm nhiệm vụ";
+            this.btnThemNhiemVu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnThemNhiemVu.UseVisualStyleBackColor = false;
+            this.btnThemNhiemVu.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // panel3
             // 
@@ -137,49 +174,15 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "DANH SÁCH NHIỆM VỤ";
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Image = global::CTS_beta.Properties.Resources.close_window_20px;
-            this.button1.Location = new System.Drawing.Point(177, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 40);
-            this.button1.TabIndex = 36;
-            this.button1.Text = " Xóa";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(12, 14);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(158, 40);
-            this.button2.TabIndex = 35;
-            this.button2.Text = "Thêm nhiệm vụ";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
             // frmListMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ClientSize = new System.Drawing.Size(921, 620);
             this.Controls.Add(this.radGridView1);
             this.Controls.Add(this.panel3);
             this.Name = "frmListMission";
+            this.Size = new System.Drawing.Size(921, 620);
             this.Load += new System.EventHandler(this.frmListMission_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).EndInit();
@@ -198,7 +201,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button btnThemNhiemVu;
     }
 }

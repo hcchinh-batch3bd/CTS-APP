@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CTS_beta.Models;
+using Newtonsoft.Json;
+using System.Threading;
+using RestSharp;
 
 namespace CTS_beta.Form_CTS
 {
@@ -23,8 +27,9 @@ namespace CTS_beta.Form_CTS
         private void frmListMission_Load(object sender, EventArgs e)
         {
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
-            button1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 5, 5));
-            button2.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button2.Width, button2.Height, 5, 5));
+            btnXoa.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnXoa.Width, btnXoa.Height, 5, 5));
+            btnThemNhiemVu.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnThemNhiemVu.Width, btnThemNhiemVu.Height, 5, 5));
+
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -32,5 +37,6 @@ namespace CTS_beta.Form_CTS
             frmAddMission fAdd = new frmAddMission();
             fAdd.Show();
         }
+      
     }
 }

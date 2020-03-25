@@ -33,6 +33,7 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.label11 = new System.Windows.Forms.Label();
@@ -72,6 +73,7 @@
             // data
             // 
             this.data.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.data.Font = new System.Drawing.Font("Candara", 9F);
             this.data.Location = new System.Drawing.Point(0, 51);
             // 
             // 
@@ -94,12 +96,17 @@
             gridViewTextBoxColumn5.HeaderText = "Trạng thái";
             gridViewTextBoxColumn5.Name = "column1";
             gridViewTextBoxColumn5.Width = 54;
+            gridViewTextBoxColumn6.HeaderText = "id";
+            gridViewTextBoxColumn6.IsVisible = false;
+            gridViewTextBoxColumn6.Name = "column2";
+            gridViewTextBoxColumn6.Width = 47;
             this.data.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
             gridViewTextBoxColumn3,
             gridViewTextBoxColumn4,
-            gridViewTextBoxColumn5});
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6});
             this.data.MasterTemplate.HorizontalScrollState = Telerik.WinControls.UI.ScrollState.AlwaysShow;
             this.data.MasterTemplate.ShowRowHeaderColumn = false;
             this.data.MasterTemplate.ViewDefinition = tableViewDefinition1;

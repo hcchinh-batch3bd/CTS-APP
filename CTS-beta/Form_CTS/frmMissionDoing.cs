@@ -26,7 +26,8 @@ namespace CTS_beta.Form_CTS
         }
         void loadData()
         {
-            var client = new RestClient("https://api.hotrogame.online/Mission/Missionavailableemp?apiKey=MTg5MjAwNjMx%3D%3D");
+            DateTime date = DateTime.Now;
+            var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"] + "/Mission/Missionavailableemp?apiKey=" + frmUser.Instance.ApiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
@@ -35,10 +36,10 @@ namespace CTS_beta.Form_CTS
             {
                 if (radGridView1.InvokeRequired)
                 {
-                    radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.id_type, mission.point, "Xem")));
+                    radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.id_type, mission.point, "Hoàn thành",mission.id_mission)));
                 }
                 else
-                    radGridView1.Rows.Add(mission.name_mission, mission.exprie, mission.id_type, mission.point, "Đang làm");
+                    radGridView1.Rows.Add(mission.name_mission, mission.exprie, mission.id_type, mission.point, "Hoàn thành",mission.id_mission);
 
 
             }
@@ -62,9 +63,28 @@ namespace CTS_beta.Form_CTS
         {
             if (e.ColumnIndex == 4)
             {
-                frmDetailMission f = new frmDetailMission();
-                f.Show();
+                //int row = e.RowIndex;
+                //   radGridView1.Rows.RemoveAt(row);
+                //   MessageBox.Show(e.Row.Cells[5].Value.ToString());
+            
+                    
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn hoàn thành không", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)                {                    int id = int.Parse(e.Row.Cells[5].Value.ToString());
+                    var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"] + "/Mission/" + id + "/CompleteMission?apiKey=" + frmUser.Instance.ApiKey);
+                    var request = new RestRequest(Method.PUT);
+                    IRestResponse response = client.Execute(request);                    try                    {                        MessageBox.Show("Nhiệm vụ đã hoàn thành!!");
+                        radGridView1.Rows.Clear();
+                        loadData();                    }                    catch { MessageBox.Show("Server bị mất kết nối"); }                }
+                else                {                    this.radGridView1.Rows.Clear();
+                    loadData();                }
+
+                
+                    
+                
+
+
             }
         }
+        
     }
     }
