@@ -45,6 +45,7 @@ namespace CTS_beta
             InitializeComponent();
             ChildForm.OpenChildForm(new frmStatistical(), panel4);
             ShowMenu.customizeDesing(panel5);
+            //this.apiKey = apiKey;
 
         }
         private void button13_Click(object sender, EventArgs e)

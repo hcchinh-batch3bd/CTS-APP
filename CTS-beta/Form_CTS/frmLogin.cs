@@ -40,7 +40,7 @@ namespace CTS_beta
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (txtID.Text == "" || txtPassword.Text == "")
-                MessageBox.Show("Vui lòng không được bỏ trống !!!");
+                MessageBox.Show("Vui lòng không được bỏ trống !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             else
             {
                 var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Account/CheckLogin?id=" + txtID.Text + "&pw=" + txtPassword.Text);
@@ -48,7 +48,7 @@ namespace CTS_beta
                 IRestResponse response = client.Execute(request);
                 RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
                 List<Session> sessions = obj.results;
-                MessageBox.Show(obj.message);
+                MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (sessions.Count > 0)
                 {
                     if (ckbRemember.Checked)
