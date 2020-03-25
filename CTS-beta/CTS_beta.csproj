@@ -33,35 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FlatButton">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\FlatButton.dll</HintPath>
-    </Reference>
-    <Reference Include="JDragControl">
-      <HintPath>C:\Users\84169\Downloads\Microsoft.SkypeApp_kzf8qxf38zg5c!App\All\JControls\JControls\JDragControl.dll</HintPath>
-    </Reference>
-    <Reference Include="JGradient Panel">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JGradient Panel.dll</HintPath>
-    </Reference>
-    <Reference Include="JImageButton">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JImageButton.dll</HintPath>
-    </Reference>
-    <Reference Include="JMaterialTextbox">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JMaterialTextbox.dll</HintPath>
-    </Reference>
-    <Reference Include="JMetroTextBox">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JMetroTextBox.dll</HintPath>
-    </Reference>
     <Reference Include="JTextBox">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JTextBox.dll</HintPath>
+      <HintPath>..\..\..\Downloads\JControls\JTextBox.dll</HintPath>
     </Reference>
     <Reference Include="JTextBox2">
-      <HintPath>C:\Users\84169\Downloads\Microsoft.SkypeApp_kzf8qxf38zg5c!App\All\JControls\JControls\JTextBox2.dll</HintPath>
-    </Reference>
-    <Reference Include="JThinButton">
-      <HintPath>..\..\..\..\Downloads\JControls\JControls\JThinButton.dll</HintPath>
-    </Reference>
-    <Reference Include="LollipoUi">
-      <HintPath>..\..\..\..\Downloads\LollipoUi\LollipoUi\LollipoUi.dll</HintPath>
+      <HintPath>..\..\..\Downloads\JControls\JTextBox2.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -178,7 +154,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Form_CTS\frmAccount.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Form_CTS\frmAccount.Designer.cs">
       <DependentUpon>frmAccount.cs</DependentUpon>
@@ -267,14 +243,8 @@
     <Compile Include="Form_CTS\frmUser.Designer.cs">
       <DependentUpon>frmUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_CTS\frmUserAccount.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_CTS\frmUserAccount.Designer.cs">
-      <DependentUpon>frmUserAccount.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form_CTS\MissionApproval.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Form_CTS\MissionApproval.Designer.cs">
       <DependentUpon>MissionApproval.cs</DependentUpon>
@@ -336,9 +306,6 @@
       <DependentUpon>frmUser.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_CTS\frmUserAccount.resx">
-      <DependentUpon>frmUserAccount.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form_CTS\MissionApproval.resx">
       <DependentUpon>MissionApproval.cs</DependentUpon>
     </EmbeddedResource>
@@ -347,7 +314,7 @@
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Form_CTS\frmStatistical.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Form_CTS\frmStatistical.Designer.cs">
       <DependentUpon>frmStatistical.cs</DependentUpon>

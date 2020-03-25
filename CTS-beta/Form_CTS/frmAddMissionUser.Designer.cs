@@ -289,7 +289,6 @@
             this.Controls.Add(this.radLabel3);
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.radLabel2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAddMissionUser";
             this.Text = "frmAddMissionUser";
             this.panel3.ResumeLayout(false);

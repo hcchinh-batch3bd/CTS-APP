@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CTS_beta.Form_CTS
 {
-    public partial class frmAccount : Form
+    public partial class frmAccount : UserControl
     {
         public frmAccount()
         {

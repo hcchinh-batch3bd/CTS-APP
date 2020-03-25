@@ -1,4 +1,4 @@
-﻿using RestSharp;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +14,7 @@ using System.Threading;
 
 namespace CTS_beta.Form_CTS
 {
-    public partial class frmMissionCompleted : Form
+    public partial class frmMissionCompleted : UserControl
     {
         public frmMissionCompleted()
         {
@@ -29,11 +29,10 @@ namespace CTS_beta.Form_CTS
         {
             Thread thread = new Thread(new ThreadStart(LoadData));
             thread.Start();
-
         }
         void LoadData()
         {
-            var client = new RestClient("https://api.hotrogame.online/Mission/ListMissionComplete?apiKey=hello");
+            var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"]+"/Mission/ListMissionComplete?apiKey="+frmUser.Instance.ApiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             RootObject obj= JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());

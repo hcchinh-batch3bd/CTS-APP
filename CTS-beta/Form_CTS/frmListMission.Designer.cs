@@ -199,7 +199,6 @@
             this.ClientSize = new System.Drawing.Size(921, 620);
             this.Controls.Add(this.data);
             this.Controls.Add(this.panel3);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmListMission";
             this.Load += new System.EventHandler(this.frmListMission_Load);
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).EndInit();

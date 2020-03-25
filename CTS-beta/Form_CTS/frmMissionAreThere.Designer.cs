@@ -145,7 +145,6 @@
             this.Controls.Add(this.radGridView1);
             this.Controls.Add(this.radPanel2);
             this.Controls.Add(this.radPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMissionAreThere";
             this.Text = "frmMissionAreThere";
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();

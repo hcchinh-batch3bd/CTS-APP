@@ -15,7 +15,7 @@ using RestSharp;
 
 namespace CTS_beta.Form_CTS
 {
-    public partial class frmListMission : Form
+    public partial class frmListMission : UserControl
     {
         public frmListMission()
         {

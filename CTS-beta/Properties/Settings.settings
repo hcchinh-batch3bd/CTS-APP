@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="apiKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)">hello</Value>
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>
