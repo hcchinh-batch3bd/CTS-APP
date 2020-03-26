@@ -16,11 +16,10 @@ namespace CTS_beta
 
         string apiKey;
         frmLogin frmLogin;
+        static frmAdmin _obj;
         public frmAdmin()
         {
             InitializeComponent();
-            ChildForm.OpenChildForm(new frmStatistical(), panel4);
-            ShowMenu.customizeDesing(panel5);
             
         }
         public static frmAdmin Instance
@@ -34,7 +33,7 @@ namespace CTS_beta
                 return _obj;
             }
         }
-        static frmAdmin _obj;
+        
         public string ApiKey
         {
             get { return apiKey; }
@@ -43,10 +42,7 @@ namespace CTS_beta
         public frmAdmin(frmLogin frm, string apiKey)
         {
             InitializeComponent();
-            ChildForm.OpenChildForm(new frmStatistical(), panel4);
-            ShowMenu.customizeDesing(panel5);
-            //this.apiKey = apiKey;
-
+            this.apiKey = apiKey;
         }
         private void button13_Click(object sender, EventArgs e)
         {
@@ -96,8 +92,11 @@ namespace CTS_beta
 
         private void frmAdmin_Load(object sender, EventArgs e)
         {
-            _obj = this;
+            
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
+            ChildForm.OpenChildForm(new frmStatistical(), panel4);
+            ShowMenu.customizeDesing(panel5);
+            _obj = this;
         }
 
         private void frmAdmin_MouseDown(object sender, MouseEventArgs e)
