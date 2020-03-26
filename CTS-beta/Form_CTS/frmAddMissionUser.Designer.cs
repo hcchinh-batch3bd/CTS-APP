@@ -62,7 +62,7 @@
             this.jTextBox2.Font_Size = new System.Drawing.Font("Century Gothic", 11.25F);
             this.jTextBox2.HintText = null;
             this.jTextBox2.IsPassword = false;
-            this.jTextBox2.Location = new System.Drawing.Point(915, 176);
+            this.jTextBox2.Location = new System.Drawing.Point(745, 176);
             this.jTextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.jTextBox2.MaxLength = 32767;
             this.jTextBox2.Name = "jTextBox2";
@@ -81,7 +81,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(795, 16);
+            this.label3.Location = new System.Drawing.Point(625, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(137, 20);
             this.label3.TabIndex = 0;
@@ -94,7 +94,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1726, 51);
+            this.panel3.Size = new System.Drawing.Size(1386, 51);
             this.panel3.TabIndex = 43;
             // 
             // radDropDownList1
@@ -102,7 +102,7 @@
             this.radDropDownList1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radDropDownList1.BackColor = System.Drawing.Color.White;
             this.radDropDownList1.ItemHeight = 48;
-            this.radDropDownList1.Location = new System.Drawing.Point(685, 176);
+            this.radDropDownList1.Location = new System.Drawing.Point(515, 176);
             this.radDropDownList1.Name = "radDropDownList1";
             this.radDropDownList1.Size = new System.Drawing.Size(209, 36);
             this.radDropDownList1.TabIndex = 31;
@@ -118,7 +118,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button1.Image = global::CTS_beta.Properties.Resources.add_new_32px;
-            this.button1.Location = new System.Drawing.Point(789, 543);
+            this.button1.Location = new System.Drawing.Point(619, 543);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 47);
             this.button1.TabIndex = 36;
@@ -133,7 +133,7 @@
             this.jTextBox4.Font_Size = new System.Drawing.Font("Century Gothic", 11.25F);
             this.jTextBox4.HintText = null;
             this.jTextBox4.IsPassword = false;
-            this.jTextBox4.Location = new System.Drawing.Point(915, 252);
+            this.jTextBox4.Location = new System.Drawing.Point(745, 252);
             this.jTextBox4.Margin = new System.Windows.Forms.Padding(4);
             this.jTextBox4.MaxLength = 32767;
             this.jTextBox4.Name = "jTextBox4";
@@ -153,7 +153,7 @@
             this.jTextBox3.Font_Size = new System.Drawing.Font("Century Gothic", 11.25F);
             this.jTextBox3.HintText = null;
             this.jTextBox3.IsPassword = false;
-            this.jTextBox3.Location = new System.Drawing.Point(685, 252);
+            this.jTextBox3.Location = new System.Drawing.Point(515, 252);
             this.jTextBox3.Margin = new System.Windows.Forms.Padding(4);
             this.jTextBox3.MaxLength = 32767;
             this.jTextBox3.Name = "jTextBox3";
@@ -173,7 +173,7 @@
             this.jTextBox1.Font_Size = new System.Drawing.Font("Century Gothic", 11.25F);
             this.jTextBox1.HintText = null;
             this.jTextBox1.IsPassword = false;
-            this.jTextBox1.Location = new System.Drawing.Point(685, 100);
+            this.jTextBox1.Location = new System.Drawing.Point(515, 100);
             this.jTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.jTextBox1.MaxLength = 32767;
             this.jTextBox1.Name = "jTextBox1";
@@ -193,7 +193,7 @@
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.richTextBox1.Location = new System.Drawing.Point(686, 331);
+            this.richTextBox1.Location = new System.Drawing.Point(516, 331);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(356, 189);
             this.richTextBox1.TabIndex = 35;
@@ -203,7 +203,7 @@
             // 
             this.radLabel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.radLabel5.Location = new System.Drawing.Point(911, 227);
+            this.radLabel5.Location = new System.Drawing.Point(741, 227);
             this.radLabel5.Name = "radLabel5";
             this.radLabel5.Size = new System.Drawing.Size(73, 22);
             this.radLabel5.TabIndex = 37;
@@ -213,7 +213,7 @@
             // 
             this.radLabel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.radLabel4.Location = new System.Drawing.Point(682, 227);
+            this.radLabel4.Location = new System.Drawing.Point(512, 227);
             this.radLabel4.Name = "radLabel4";
             this.radLabel4.Size = new System.Drawing.Size(110, 22);
             this.radLabel4.TabIndex = 38;
@@ -223,7 +223,7 @@
             // 
             this.radLabel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.radLabel6.Location = new System.Drawing.Point(911, 150);
+            this.radLabel6.Location = new System.Drawing.Point(741, 150);
             this.radLabel6.Name = "radLabel6";
             this.radLabel6.Size = new System.Drawing.Size(77, 22);
             this.radLabel6.TabIndex = 39;
@@ -233,7 +233,7 @@
             // 
             this.radLabel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.radLabel3.Location = new System.Drawing.Point(682, 151);
+            this.radLabel3.Location = new System.Drawing.Point(512, 151);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(115, 22);
             this.radLabel3.TabIndex = 40;
@@ -243,7 +243,7 @@
             // 
             this.radLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.radLabel1.Location = new System.Drawing.Point(682, 72);
+            this.radLabel1.Location = new System.Drawing.Point(512, 72);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(112, 22);
             this.radLabel1.TabIndex = 41;
@@ -253,7 +253,7 @@
             // 
             this.radLabel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.radLabel2.Location = new System.Drawing.Point(682, 304);
+            this.radLabel2.Location = new System.Drawing.Point(512, 304);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(78, 22);
             this.radLabel2.TabIndex = 42;
@@ -263,9 +263,9 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 895);
+            this.panel1.Location = new System.Drawing.Point(0, 737);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1726, 51);
+            this.panel1.Size = new System.Drawing.Size(1386, 51);
             this.panel1.TabIndex = 44;
             // 
             // frmAddMissionUser
@@ -273,7 +273,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1726, 946);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.jTextBox2);
             this.Controls.Add(this.panel3);

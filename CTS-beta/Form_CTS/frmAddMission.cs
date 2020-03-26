@@ -8,6 +8,10 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RestSharp;
+using Newtonsoft.Json;
+using CTS_beta.Models;
+using System.Threading;
 
 namespace CTS_beta.Form_CTS
 {
@@ -18,25 +22,20 @@ namespace CTS_beta.Form_CTS
         {
             InitializeComponent();
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
-            jTextBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, jTextBox1.Width, jTextBox1.Height, 10, 10));
-            radDropDownList1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, radDropDownList1.Width, radDropDownList1.Height, 10, 10));
-            jTextBox2.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, jTextBox2.Width, jTextBox2.Height, 10, 10));
-            jTextBox3.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, jTextBox3.Width, jTextBox3.Height, 10, 10));
-            jTextBox4.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, jTextBox4.Width, jTextBox4.Height, 10, 10));
-            button1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
-            richTextBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, richTextBox1.Width, richTextBox1.Height, 10, 10));
+            txtNameMission.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtNameMission.Width, txtNameMission.Height, 10, 10));
+            ddlTypeMission.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, ddlTypeMission.Width, ddlTypeMission.Height, 10, 10));
+            txtCount.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtCount.Width, txtCount.Height, 10, 10));
+            txtExprie.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtExprie.Width, txtExprie.Height, 10, 10));
+            txtPoint.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtPoint.Width, txtPoint.Height, 10, 10));
+            btnAddNew.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnAddNew.Width, btnAddNew.Height, 10, 10));
+            txtDescribe.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtDescribe.Width, txtDescribe.Height, 10, 10));
         }
-        
-        
+
+
 
         private void button13_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void frmAddMission_Load_1(object sender, EventArgs e)
-        {
-
         }
 
         private void panel3_MouseDown(object sender, MouseEventArgs e)
@@ -50,5 +49,64 @@ namespace CTS_beta.Form_CTS
             MoveControl.ReleaseCapture();
             MoveControl.SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void LoadTypeMission()
+        {
+            var client = new RestClient("https://api.hotrogame.online/Type_Mission/GetAll");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            List<TypeMission> listTypes = JsonConvert.DeserializeObject<List<TypeMission>>(response.Content.ToString());
+            ddlTypeMission.Invoke(new Action(() =>
+            {
+                ddlTypeMission.DataSource = listTypes;
+                ddlTypeMission.ValueMember = "id_type";
+                ddlTypeMission.DisplayMember = "name_type_mission";
+            }
+            ));
+        }
+
+        //Add a Mission
+        private void AddMission()
+        {
+            if (!txtNameMission.TextName.Equals("") && !txtCount.TextName.Equals("") && !txtPoint.TextName.Equals("") && !txtExprie.TextName.Equals("") && !txtDescribe.Text.Equals(""))
+            {
+            
+                string nameMission = txtNameMission.TextName;
+                int idTypeMission = int.Parse(ddlTypeMission.SelectedItem.Value.ToString());
+                int count = int.Parse(txtCount.TextName);
+                int point = int.Parse(txtPoint.TextName);
+                string Stardate = DateTime.Today.ToShortDateString();
+                int exprie = int.Parse(txtExprie.TextName);
+                string describe = txtDescribe.Text;
+                int status = 0;
+                int idEmployee = 189209;
+                //Mission mission = GetDataFromForm();
+                var client = new RestClient("https://api.hotrogame.online/Mission/Create?apiKey=hello");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("content-type", "application/json");
+                request.AddParameter("undefined", "{\"name_mission\":\'" + nameMission + "',\"Stardate\":\'" + Stardate + "',\"point\":" +point + " ,\"exprie\":" + exprie + ",\"describe\":\'" + describe + "',\"status\":\'" + status + "',\"count\":" + count + ",\"id_type\":" + idTypeMission + ",\"id_employee\":" + idEmployee + "}", ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+
+                MessageBox.Show(response.Content.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else MessageBox.Show("Chưa nhập đủ thông tin");
+        }
+
+        private void frmAddMission_Load(object sender, EventArgs e)
+        {
+
+            Thread thread = new Thread(new ThreadStart(LoadTypeMission));
+            thread.Start();
+        }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            AddMission();
+            this.Hide();
+        
+           
+        }
+
     }
 }
+

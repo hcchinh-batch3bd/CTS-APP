@@ -274,6 +274,7 @@
       <DependentUpon>MissionApproval.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Mission.cs" />
     <Compile Include="Models\MissionComplete.cs" />
     <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\Session.cs" />
@@ -304,6 +305,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_CTS\frmListMission.resx">
       <DependentUpon>frmListMission.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_CTS\frmLoading.resx">
       <DependentUpon>frmLoading.cs</DependentUpon>
@@ -422,6 +424,7 @@
     <None Include="Resources\minus_26px.png" />
     <None Include="Resources\close_window_26px.png" />
     <None Include="Resources\close_window_20px.png" />
+    <None Include="Resources\imgpsh_fullsize_anim.png" />
     <Content Include="Resources\profile.ico" />
     <Content Include="Resources\profile.png" />
     <None Include="Resources\profile1.png" />
