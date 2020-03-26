@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetailMission));
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnNhanNhiemVu = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,20 +38,20 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblEndDate = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblStartDate = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblNguoiTao = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblSLCon = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblTypeMission = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblNameMission = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lblPoint = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
@@ -65,20 +65,21 @@
             this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnNhanNhiemVu
             // 
-            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(640, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 47);
-            this.button1.TabIndex = 47;
-            this.button1.Text = "Nhận nhiệm vụ";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnNhanNhiemVu.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnNhanNhiemVu.FlatAppearance.BorderSize = 0;
+            this.btnNhanNhiemVu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNhanNhiemVu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnNhanNhiemVu.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnNhanNhiemVu.Location = new System.Drawing.Point(640, 26);
+            this.btnNhanNhiemVu.Name = "btnNhanNhiemVu";
+            this.btnNhanNhiemVu.Size = new System.Drawing.Size(154, 47);
+            this.btnNhanNhiemVu.TabIndex = 47;
+            this.btnNhanNhiemVu.Text = "Nhận nhiệm vụ";
+            this.btnNhanNhiemVu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNhanNhiemVu.UseVisualStyleBackColor = false;
+            this.btnNhanNhiemVu.Click += new System.EventHandler(this.btnNhanNhiemVu_Click);
             // 
             // button13
             // 
@@ -143,17 +144,17 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.lblEndDate);
             this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.lblStartDate);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.lblNguoiTao);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.lblSLCon);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.lblTypeMission);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.lblNameMission);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 39);
@@ -171,15 +172,14 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label13
+            // lblEndDate
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.label13.Location = new System.Drawing.Point(146, 426);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(80, 17);
-            this.label13.TabIndex = 54;
-            this.label13.Text = "21/01/2020";
+            this.lblEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.lblEndDate.Location = new System.Drawing.Point(140, 426);
+            this.lblEndDate.Name = "lblEndDate";
+            this.lblEndDate.Size = new System.Drawing.Size(117, 51);
+            this.lblEndDate.TabIndex = 54;
+            this.lblEndDate.Text = "21/01/2020";
             // 
             // label12
             // 
@@ -191,15 +191,14 @@
             this.label12.TabIndex = 54;
             this.label12.Text = "Thời gian kết thúc:";
             // 
-            // label11
+            // lblStartDate
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.label11.Location = new System.Drawing.Point(146, 388);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(80, 17);
-            this.label11.TabIndex = 54;
-            this.label11.Text = "20/01/2020";
+            this.lblStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.lblStartDate.Location = new System.Drawing.Point(138, 388);
+            this.lblStartDate.Name = "lblStartDate";
+            this.lblStartDate.Size = new System.Drawing.Size(119, 38);
+            this.lblStartDate.TabIndex = 54;
+            this.lblStartDate.Text = "20/01/2020";
             // 
             // label10
             // 
@@ -211,15 +210,14 @@
             this.label10.TabIndex = 54;
             this.label10.Text = "Thời gian bắt đầu:";
             // 
-            // label9
+            // lblNguoiTao
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.label9.Location = new System.Drawing.Point(146, 350);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 17);
-            this.label9.TabIndex = 54;
-            this.label9.Text = "18200";
+            this.lblNguoiTao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.lblNguoiTao.Location = new System.Drawing.Point(118, 350);
+            this.lblNguoiTao.Name = "lblNguoiTao";
+            this.lblNguoiTao.Size = new System.Drawing.Size(139, 38);
+            this.lblNguoiTao.TabIndex = 54;
+            this.lblNguoiTao.Text = "18200";
             // 
             // label8
             // 
@@ -231,15 +229,14 @@
             this.label8.TabIndex = 54;
             this.label8.Text = "Người tạo:";
             // 
-            // label7
+            // lblSLCon
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.label7.Location = new System.Drawing.Point(146, 312);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(16, 17);
-            this.label7.TabIndex = 54;
-            this.label7.Text = "2";
+            this.lblSLCon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.lblSLCon.Location = new System.Drawing.Point(118, 312);
+            this.lblSLCon.Name = "lblSLCon";
+            this.lblSLCon.Size = new System.Drawing.Size(139, 38);
+            this.lblSLCon.TabIndex = 54;
+            this.lblSLCon.Text = "2";
             // 
             // label6
             // 
@@ -251,15 +248,14 @@
             this.label6.TabIndex = 54;
             this.label6.Text = "Số lượng còn:";
             // 
-            // label5
+            // lblTypeMission
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.label5.Location = new System.Drawing.Point(146, 274);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 17);
-            this.label5.TabIndex = 54;
-            this.label5.Text = "Phiêu lưu";
+            this.lblTypeMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.lblTypeMission.Location = new System.Drawing.Point(115, 274);
+            this.lblTypeMission.Name = "lblTypeMission";
+            this.lblTypeMission.Size = new System.Drawing.Size(142, 38);
+            this.lblTypeMission.TabIndex = 54;
+            this.lblTypeMission.Text = "Phiêu lưu";
             // 
             // label4
             // 
@@ -271,22 +267,21 @@
             this.label4.TabIndex = 54;
             this.label4.Text = "Loại nhiệm vụ:";
             // 
-            // label2
+            // lblNameMission
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.label2.Location = new System.Drawing.Point(146, 232);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 17);
-            this.label2.TabIndex = 54;
-            this.label2.Text = "Tìm nhẫn";
+            this.lblNameMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.lblNameMission.Location = new System.Drawing.Point(115, 236);
+            this.lblNameMission.Name = "lblNameMission";
+            this.lblNameMission.Size = new System.Drawing.Size(150, 38);
+            this.lblNameMission.TabIndex = 54;
+            this.lblNameMission.Text = "Tìm nhẫn";
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel4.Controls.Add(this.label17);
-            this.panel4.Controls.Add(this.label15);
-            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.lblPoint);
+            this.panel4.Controls.Add(this.btnNhanNhiemVu);
             this.panel4.Controls.Add(this.label14);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 551);
@@ -296,25 +291,23 @@
             // 
             // label17
             // 
-            this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label17.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label17.Location = new System.Drawing.Point(196, 42);
+            this.label17.Location = new System.Drawing.Point(214, 41);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(43, 20);
             this.label17.TabIndex = 54;
             this.label17.Text = "điểm";
             // 
-            // label15
+            // lblPoint
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label15.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label15.Location = new System.Drawing.Point(163, 41);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(36, 20);
-            this.label15.TabIndex = 54;
-            this.label15.Text = "100";
+            this.lblPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblPoint.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblPoint.Location = new System.Drawing.Point(163, 41);
+            this.lblPoint.Name = "lblPoint";
+            this.lblPoint.Size = new System.Drawing.Size(54, 20);
+            this.lblPoint.TabIndex = 54;
+            this.lblPoint.Text = "100";
             // 
             // label14
             // 
@@ -384,6 +377,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDetailMission";
             this.Text = "frmDetalMission";
+            this.Load += new System.EventHandler(this.frmDetailMission_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -400,7 +394,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNhanNhiemVu;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
@@ -409,19 +403,19 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblNameMission;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblStartDate;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblNguoiTao;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblSLCon;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblTypeMission;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblPoint;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label16;

@@ -54,7 +54,7 @@
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.radPanel1.Location = new System.Drawing.Point(0, 0);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(1386, 51);
+            this.radPanel1.Size = new System.Drawing.Size(1716, 51);
             this.radPanel1.TabIndex = 3;
             // 
             // label11
@@ -64,7 +64,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(523, 13);
+            this.label11.Location = new System.Drawing.Point(688, 13);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(340, 25);
             this.label11.TabIndex = 1;
@@ -103,7 +103,7 @@
             gridViewTextBoxColumn4.Name = "Point";
             gridViewTextBoxColumn4.Width = 144;
             gridViewCommandColumn1.HeaderText = "Tác vụ";
-            gridViewCommandColumn1.Name = "column1";
+            gridViewCommandColumn1.Name = "Tacvu";
             gridViewCommandColumn1.Width = 291;
             gridViewTextBoxColumn5.HeaderText = "id";
             gridViewTextBoxColumn5.IsVisible = false;
@@ -124,13 +124,13 @@
             this.radGridView1.Size = new System.Drawing.Size(1716, 844);
             this.radGridView1.TabIndex = 6;
             this.radGridView1.ThemeName = "MaterialTeal";
+            this.radGridView1.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.radGridView1_CellFormatting);
             this.radGridView1.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.radGridView1_CellClick_1);
             // 
             // frmMissionDoing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.radGridView1);
             this.Controls.Add(this.radPanel2);
             this.Controls.Add(this.radPanel1);
