@@ -13,6 +13,5 @@ namespace CTS_beta.Models
         public int id_employee { get; set; }
         public Boolean status { get; set; }
         public DateTime date { get; set; }
-        public string message { get; set; }
     }
 }

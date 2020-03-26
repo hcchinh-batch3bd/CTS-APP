@@ -20,5 +20,10 @@ namespace CTS_beta.Form_CTS
             this.radGridView1.MasterTemplate.AllowDragToGroup = false;
             this.radGridView1.MasterTemplate.AutoExpandGroups = false;
         }
+
+        private void radGridView1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
