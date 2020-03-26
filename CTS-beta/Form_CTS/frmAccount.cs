@@ -34,8 +34,6 @@ namespace CTS_beta.Form_CTS
         {
             try
             {
-                
-                    //var client1 = new RestClient("https://api.hotrogame.online/Account/ListEmployee?apiKey="+ "admin");
                 var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Account/ListEmployee?apiKey=" + frmAdmin.Instance.ApiKey);
                 var request = new RestRequest(Method.GET);
                 IRestResponse response = client.Execute(request);
@@ -44,8 +42,12 @@ namespace CTS_beta.Form_CTS
                 foreach (var account in listAccount)
                 {
                     int old = (DateTime.Now).Year - account.date.Year;
-                    GridViewAccount.Rows.Add(account.id_employee, account.name_employee, old, account.email, account.point, account.level, account.status);
-                    //data.Invoke(new Action(() => data.Rows.Add(mission.name_mission, mission.date, mission.id_type, mission.point, "Đã hoàn thành")));               
+                    if(GridViewAccount.InvokeRequired)
+                    {
+                        GridViewAccount.Invoke(new Action(() => GridViewAccount.Rows.Add(account.id_employee, account.name_employee, old, account.email, account.point, account.level, account.status)));
+                    }
+                    else
+                        GridViewAccount.Rows.Add(account.id_employee, account.name_employee, old, account.email, account.point, account.level, account.status);
                 }
             }
             catch  { };

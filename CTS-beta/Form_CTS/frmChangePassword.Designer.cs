@@ -30,64 +30,65 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChangePassword));
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
-            this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
-            this.radTextBox2 = new Telerik.WinControls.UI.RadTextBox();
-            this.radTextBox3 = new Telerik.WinControls.UI.RadTextBox();
-            this.radButton1 = new Telerik.WinControls.UI.RadButton();
+            this.txtPasswordOld = new Telerik.WinControls.UI.RadTextBox();
+            this.txtPasswordNew = new Telerik.WinControls.UI.RadTextBox();
+            this.txtPasswordNewComfirm = new Telerik.WinControls.UI.RadTextBox();
+            this.btnChangePassword = new Telerik.WinControls.UI.RadButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordOld)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordNew)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordNewComfirm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnChangePassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
-            // radTextBox1
+            // txtPasswordOld
             // 
-            this.radTextBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radTextBox1.Location = new System.Drawing.Point(67, 113);
-            this.radTextBox1.Name = "radTextBox1";
-            this.radTextBox1.NullText = "Mật khẩu cũ:";
-            this.radTextBox1.Size = new System.Drawing.Size(240, 36);
-            this.radTextBox1.TabIndex = 0;
-            this.radTextBox1.ThemeName = "Material";
+            this.txtPasswordOld.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPasswordOld.Location = new System.Drawing.Point(67, 113);
+            this.txtPasswordOld.Name = "txtPasswordOld";
+            this.txtPasswordOld.NullText = "Mật khẩu cũ";
+            this.txtPasswordOld.Size = new System.Drawing.Size(240, 36);
+            this.txtPasswordOld.TabIndex = 0;
+            this.txtPasswordOld.ThemeName = "Material";
             // 
-            // radTextBox2
+            // txtPasswordNew
             // 
-            this.radTextBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radTextBox2.Location = new System.Drawing.Point(67, 170);
-            this.radTextBox2.Name = "radTextBox2";
-            this.radTextBox2.NullText = "Mật khẩu mới:";
-            this.radTextBox2.PasswordChar = '●';
-            this.radTextBox2.Size = new System.Drawing.Size(240, 36);
-            this.radTextBox2.TabIndex = 1;
-            this.radTextBox2.ThemeName = "Material";
-            this.radTextBox2.UseSystemPasswordChar = true;
+            this.txtPasswordNew.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPasswordNew.Location = new System.Drawing.Point(67, 170);
+            this.txtPasswordNew.Name = "txtPasswordNew";
+            this.txtPasswordNew.NullText = "Mật khẩu mới";
+            this.txtPasswordNew.PasswordChar = '●';
+            this.txtPasswordNew.Size = new System.Drawing.Size(240, 36);
+            this.txtPasswordNew.TabIndex = 1;
+            this.txtPasswordNew.ThemeName = "Material";
+            this.txtPasswordNew.UseSystemPasswordChar = true;
             // 
-            // radTextBox3
+            // txtPasswordNewComfirm
             // 
-            this.radTextBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radTextBox3.BackColor = System.Drawing.Color.White;
-            this.radTextBox3.Location = new System.Drawing.Point(67, 223);
-            this.radTextBox3.Name = "radTextBox3";
-            this.radTextBox3.NullText = "Nhập lại mật khẩu:";
-            this.radTextBox3.PasswordChar = '●';
-            this.radTextBox3.Size = new System.Drawing.Size(240, 36);
-            this.radTextBox3.TabIndex = 2;
-            this.radTextBox3.ThemeName = "Material";
-            this.radTextBox3.UseSystemPasswordChar = true;
+            this.txtPasswordNewComfirm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPasswordNewComfirm.BackColor = System.Drawing.Color.White;
+            this.txtPasswordNewComfirm.Location = new System.Drawing.Point(67, 223);
+            this.txtPasswordNewComfirm.Name = "txtPasswordNewComfirm";
+            this.txtPasswordNewComfirm.NullText = "Nhập lại mật khẩu";
+            this.txtPasswordNewComfirm.PasswordChar = '●';
+            this.txtPasswordNewComfirm.Size = new System.Drawing.Size(240, 36);
+            this.txtPasswordNewComfirm.TabIndex = 2;
+            this.txtPasswordNewComfirm.ThemeName = "Material";
+            this.txtPasswordNewComfirm.UseSystemPasswordChar = true;
             // 
-            // radButton1
+            // btnChangePassword
             // 
-            this.radButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radButton1.BackColor = System.Drawing.Color.PowderBlue;
-            this.radButton1.Location = new System.Drawing.Point(67, 307);
-            this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(240, 36);
-            this.radButton1.TabIndex = 3;
-            this.radButton1.Text = "Thay đổi";
-            this.radButton1.ThemeName = "Material";
+            this.btnChangePassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnChangePassword.BackColor = System.Drawing.Color.PowderBlue;
+            this.btnChangePassword.Location = new System.Drawing.Point(67, 307);
+            this.btnChangePassword.Name = "btnChangePassword";
+            this.btnChangePassword.Size = new System.Drawing.Size(240, 36);
+            this.btnChangePassword.TabIndex = 3;
+            this.btnChangePassword.Text = "Thay đổi";
+            this.btnChangePassword.ThemeName = "Material";
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
             // pictureBox1
             // 
@@ -108,10 +109,10 @@
             this.BackgroundImage = global::CTS_beta.Properties.Resources.abc;
             this.ClientSize = new System.Drawing.Size(374, 423);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.radButton1);
-            this.Controls.Add(this.radTextBox3);
-            this.Controls.Add(this.radTextBox2);
-            this.Controls.Add(this.radTextBox1);
+            this.Controls.Add(this.btnChangePassword);
+            this.Controls.Add(this.txtPasswordNewComfirm);
+            this.Controls.Add(this.txtPasswordNew);
+            this.Controls.Add(this.txtPasswordOld);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmChangePassword";
@@ -122,10 +123,10 @@
             this.Text = "ĐỔI MẬT KHẨU";
             this.ThemeName = "Material";
             this.Load += new System.EventHandler(this.frmChangePassword_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordOld)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordNew)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordNewComfirm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnChangePassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
@@ -136,10 +137,10 @@
         #endregion
 
         private Telerik.WinControls.Themes.MaterialTheme materialTheme1;
-        private Telerik.WinControls.UI.RadTextBox radTextBox1;
-        private Telerik.WinControls.UI.RadTextBox radTextBox2;
-        private Telerik.WinControls.UI.RadTextBox radTextBox3;
-        private Telerik.WinControls.UI.RadButton radButton1;
+        private Telerik.WinControls.UI.RadTextBox txtPasswordOld;
+        private Telerik.WinControls.UI.RadTextBox txtPasswordNew;
+        private Telerik.WinControls.UI.RadTextBox txtPasswordNewComfirm;
+        private Telerik.WinControls.UI.RadButton btnChangePassword;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

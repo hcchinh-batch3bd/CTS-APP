@@ -29,9 +29,7 @@ namespace CTS_beta
         private void frmStatistical_Load(object sender, EventArgs e)
         {
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 5, 5));
-            button1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 5, 5));
-            button2.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button2.Width, button2.Height, 5, 5));
-            radTextBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, radTextBox1.Width, radTextBox1.Height, 5, 5));
+            btnExcel.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnExcel.Width, btnExcel.Height, 5, 5));
             Thread thread = new Thread(new ThreadStart(LoadData));
             thread.Start();
 
@@ -73,6 +71,27 @@ namespace CTS_beta
             public string message { get; set; }
         }
 
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            if (data.Rows.Count > 0)
+            {
+                Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+                app.Application.Workbooks.Add(Type.Missing);
+                for (int i = 1; i < data.Columns.Count + 1; i++)
+                {
+                    app.Cells[1, i] = data.Columns[i - 1].HeaderText;
 
+                }
+                for (int i = 0; i < data.Rows.Count; i++)
+                {
+                    for (int j = 0; j < data.Columns.Count; j++)
+                    {
+                        app.Cells[i + 2, j + 1] = data.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+                app.Columns.AutoFit();
+                app.Visible = true;
+            }
+        }
     }
 }

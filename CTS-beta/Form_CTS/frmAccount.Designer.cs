@@ -55,10 +55,8 @@
             // 
             // GridViewAccount
             // 
-            this.GridViewAccount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridViewAccount.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GridViewAccount.Location = new System.Drawing.Point(0, 52);
-            this.GridViewAccount.Margin = new System.Windows.Forms.Padding(4);
+            this.GridViewAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.GridViewAccount.Location = new System.Drawing.Point(0, 42);
             // 
             // 
             // 
@@ -67,28 +65,28 @@
             gridViewTextBoxColumn1.HeaderText = "ID";
             gridViewTextBoxColumn1.Name = "ID";
             gridViewTextBoxColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn1.Width = 101;
+            gridViewTextBoxColumn1.Width = 78;
             gridViewTextBoxColumn2.HeaderText = "Họ và tên";
             gridViewTextBoxColumn2.Name = "name";
-            gridViewTextBoxColumn2.Width = 326;
+            gridViewTextBoxColumn2.Width = 250;
             gridViewTextBoxColumn3.HeaderText = "Tuổi";
             gridViewTextBoxColumn3.Name = "column1";
             gridViewTextBoxColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn3.Width = 97;
+            gridViewTextBoxColumn3.Width = 75;
             gridViewTextBoxColumn4.HeaderText = "Email";
             gridViewTextBoxColumn4.Name = "column5";
-            gridViewTextBoxColumn4.Width = 282;
+            gridViewTextBoxColumn4.Width = 217;
             gridViewTextBoxColumn5.HeaderText = "Điểm";
             gridViewTextBoxColumn5.Name = "column2";
             gridViewTextBoxColumn5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn5.Width = 107;
+            gridViewTextBoxColumn5.Width = 82;
             gridViewTextBoxColumn6.HeaderText = "Quyền hạn";
             gridViewTextBoxColumn6.Name = "column4";
             gridViewTextBoxColumn6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn6.Width = 154;
+            gridViewTextBoxColumn6.Width = 119;
             gridViewTextBoxColumn7.HeaderText = "Trạng Thái";
             gridViewTextBoxColumn7.Name = "column3";
-            gridViewTextBoxColumn7.Width = 144;
+            gridViewTextBoxColumn7.Width = 108;
             this.GridViewAccount.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -108,7 +106,7 @@
             // 
             this.GridViewAccount.RootElement.AutoSize = false;
             this.GridViewAccount.ShowHeaderCellButtons = true;
-            this.GridViewAccount.Size = new System.Drawing.Size(1228, 711);
+            this.GridViewAccount.Size = new System.Drawing.Size(942, 531);
             this.GridViewAccount.TabIndex = 8;
             this.GridViewAccount.ThemeName = "MaterialTeal";
             // 
@@ -119,9 +117,8 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.ForeColor = System.Drawing.Color.White;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1228, 52);
+            this.panel3.Size = new System.Drawing.Size(942, 42);
             this.panel3.TabIndex = 9;
             // 
             // label3
@@ -129,10 +126,9 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(485, 15);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(375, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(244, 25);
+            this.label3.Size = new System.Drawing.Size(193, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "DANH SÁCH TÀI KHOẢN";
             // 
@@ -143,10 +139,9 @@
             this.panel1.Controls.Add(this.radTextBox1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 679);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(0, 566);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1228, 84);
+            this.panel1.Size = new System.Drawing.Size(942, 54);
             this.panel1.TabIndex = 34;
             // 
             // button3
@@ -157,10 +152,9 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(977, 16);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Location = new System.Drawing.Point(734, 8);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(211, 49);
+            this.button3.Size = new System.Drawing.Size(158, 38);
             this.button3.TabIndex = 37;
             this.button3.Text = "Tạo tài khoản";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -170,17 +164,16 @@
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.White;
-            this.btnDelete.Cursor = System.Windows.Forms.Cursors.No;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnDelete.Image = global::CTS_beta.Properties.Resources.close_window_20px;
-            this.btnDelete.Location = new System.Drawing.Point(457, 18);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Location = new System.Drawing.Point(340, 13);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(112, 44);
+            this.btnDelete.Size = new System.Drawing.Size(72, 29);
             this.btnDelete.TabIndex = 34;
             this.btnDelete.Text = " Xóa";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -189,11 +182,10 @@
             // 
             // radTextBox1
             // 
-            this.radTextBox1.Location = new System.Drawing.Point(16, 18);
-            this.radTextBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.radTextBox1.Location = new System.Drawing.Point(17, 13);
             this.radTextBox1.Name = "radTextBox1";
             this.radTextBox1.NullText = "Tìm kiếm";
-            this.radTextBox1.Size = new System.Drawing.Size(329, 41);
+            this.radTextBox1.Size = new System.Drawing.Size(247, 29);
             this.radTextBox1.TabIndex = 36;
             this.radTextBox1.ThemeName = "MaterialTeal";
             // 
@@ -204,24 +196,22 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(348, 18);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(270, 13);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 44);
+            this.button1.Size = new System.Drawing.Size(64, 29);
             this.button1.TabIndex = 35;
             this.button1.UseVisualStyleBackColor = false;
             // 
             // frmAccount
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.GridViewAccount);
             this.Controls.Add(this.panel3);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAccount";
-            this.Size = new System.Drawing.Size(1228, 763);
+            this.Size = new System.Drawing.Size(942, 620);
             this.Load += new System.EventHandler(this.frmAccount_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GridViewAccount.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewAccount)).EndInit();

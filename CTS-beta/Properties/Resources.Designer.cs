@@ -423,6 +423,26 @@ namespace CTS_beta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap synchronize_32px {
+            get {
+                object obj = ResourceManager.GetObject("synchronize_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap synchronize_64px {
+            get {
+                object obj = ResourceManager.GetObject("synchronize_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap task_completed_30px {
             get {
                 object obj = ResourceManager.GetObject("task_completed_30px", resourceCulture);

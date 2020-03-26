@@ -59,7 +59,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(209, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(952, 10);
+            this.panel2.Size = new System.Drawing.Size(960, 10);
             this.panel2.TabIndex = 1;
             // 
             // label4
@@ -77,7 +77,7 @@
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel4.Location = new System.Drawing.Point(215, 60);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(921, 620);
+            this.panel4.Size = new System.Drawing.Size(942, 620);
             this.panel4.TabIndex = 5;
             // 
             // panel5
@@ -228,7 +228,7 @@
             this.button14.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button14.ForeColor = System.Drawing.Color.White;
             this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(0, 713);
+            this.button14.Location = new System.Drawing.Point(0, 653);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(36, 34);
             this.button14.TabIndex = 4;
@@ -293,7 +293,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(209, 750);
+            this.panel1.Size = new System.Drawing.Size(209, 690);
             this.panel1.TabIndex = 0;
             // 
             // frmAdmin
@@ -301,7 +301,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1161, 750);
+            this.ClientSize = new System.Drawing.Size(1169, 690);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label4);

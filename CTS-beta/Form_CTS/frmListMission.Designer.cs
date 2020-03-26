@@ -66,25 +66,25 @@
             gridViewTextBoxColumn1.HeaderText = "ID";
             gridViewTextBoxColumn1.Name = "id";
             gridViewTextBoxColumn1.RowSpan = 10;
-            gridViewTextBoxColumn1.Width = 68;
+            gridViewTextBoxColumn1.Width = 70;
             gridViewTextBoxColumn2.HeaderText = "Tên nhiệm vụ";
             gridViewTextBoxColumn2.Name = "column1";
-            gridViewTextBoxColumn2.Width = 142;
+            gridViewTextBoxColumn2.Width = 145;
             gridViewTextBoxColumn3.HeaderText = "Loại nhiệm vụ";
             gridViewTextBoxColumn3.Name = "column2";
-            gridViewTextBoxColumn3.Width = 141;
+            gridViewTextBoxColumn3.Width = 144;
             gridViewTextBoxColumn4.HeaderText = "Mô tả";
             gridViewTextBoxColumn4.Name = "column3";
-            gridViewTextBoxColumn4.Width = 263;
+            gridViewTextBoxColumn4.Width = 269;
             gridViewTextBoxColumn5.HeaderText = "Số lượng";
             gridViewTextBoxColumn5.Name = "column4";
-            gridViewTextBoxColumn5.Width = 99;
+            gridViewTextBoxColumn5.Width = 101;
             gridViewTextBoxColumn6.HeaderText = "Trạng thái";
-            gridViewTextBoxColumn6.Name = "column5";
-            gridViewTextBoxColumn6.Width = 99;
+            gridViewTextBoxColumn6.Name = "status";
+            gridViewTextBoxColumn6.Width = 101;
             gridViewTextBoxColumn7.HeaderText = "Điểm";
             gridViewTextBoxColumn7.Name = "column6";
-            gridViewTextBoxColumn7.Width = 109;
+            gridViewTextBoxColumn7.Width = 112;
             this.data.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -97,12 +97,13 @@
             this.data.MasterTemplate.ShowRowHeaderColumn = false;
             this.data.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.data.Name = "data";
+            this.data.ReadOnly = true;
             // 
             // 
             // 
             this.data.RootElement.AutoSize = false;
             this.data.ShowHeaderCellButtons = true;
-            this.data.Size = new System.Drawing.Size(921, 578);
+            this.data.Size = new System.Drawing.Size(942, 578);
             this.data.TabIndex = 8;
             this.data.ThemeName = "MaterialTeal";
             // 
@@ -112,22 +113,22 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnAddMission);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 510);
+            this.panel1.Location = new System.Drawing.Point(0, 531);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(921, 68);
+            this.panel1.Size = new System.Drawing.Size(942, 47);
             this.panel1.TabIndex = 10;
             // 
             // btnLoad
             // 
-            this.btnLoad.BackColor = System.Drawing.Color.White;
+            this.btnLoad.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnLoad.FlatAppearance.BorderSize = 0;
             this.btnLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.btnLoad.Image = global::CTS_beta.Properties.Resources.sphere_10px;
-            this.btnLoad.Location = new System.Drawing.Point(267, 14);
+            this.btnLoad.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
+            this.btnLoad.Location = new System.Drawing.Point(798, 4);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(158, 40);
+            this.btnLoad.Size = new System.Drawing.Size(141, 40);
             this.btnLoad.TabIndex = 37;
             this.btnLoad.Text = "Tải lại dữ liệu";
             this.btnLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -143,9 +144,9 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button1.Image = global::CTS_beta.Properties.Resources.close_window_20px;
-            this.button1.Location = new System.Drawing.Point(177, 14);
+            this.button1.Location = new System.Drawing.Point(178, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 40);
+            this.button1.Size = new System.Drawing.Size(66, 40);
             this.button1.TabIndex = 36;
             this.button1.Text = " Xóa";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -160,7 +161,7 @@
             this.btnAddMission.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.btnAddMission.Image = ((System.Drawing.Image)(resources.GetObject("btnAddMission.Image")));
-            this.btnAddMission.Location = new System.Drawing.Point(12, 14);
+            this.btnAddMission.Location = new System.Drawing.Point(14, 3);
             this.btnAddMission.Name = "btnAddMission";
             this.btnAddMission.Size = new System.Drawing.Size(158, 40);
             this.btnAddMission.TabIndex = 35;
@@ -177,7 +178,7 @@
             this.panel3.ForeColor = System.Drawing.Color.White;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(921, 42);
+            this.panel3.Size = new System.Drawing.Size(942, 42);
             this.panel3.TabIndex = 9;
             // 
             // label3
@@ -185,7 +186,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(392, 12);
+            this.label3.Location = new System.Drawing.Point(403, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(187, 20);
             this.label3.TabIndex = 0;
@@ -199,7 +200,7 @@
             this.Controls.Add(this.data);
             this.Controls.Add(this.panel3);
             this.Name = "frmListMission";
-            this.Size = new System.Drawing.Size(921, 620);
+            this.Size = new System.Drawing.Size(942, 620);
             this.Load += new System.EventHandler(this.frmListMission_Load);
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.data)).EndInit();

@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Threading;
 using CTS_beta.Models;
 using RestSharp;
+using System.Configuration;
 
 namespace CTS_beta.Form_CTS
 {
@@ -29,43 +30,56 @@ namespace CTS_beta.Form_CTS
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
             button1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 5, 5));
             btnAddMission.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnAddMission.Width, btnAddMission.Height, 5, 5));
+            btnLoad.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnLoad.Width, btnLoad.Height, 5, 5));
             Thread thread = new Thread(new ThreadStart(LoadData));
             thread.Start();
         }
 
         private void LoadData()
         {
-            var client = new RestClient("https://api.hotrogame.online/Mission/ListMission");
+            var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Mission/ListMission");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
-            RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-            List<Mission> mission = obj.results;
-            foreach (var item in mission)
+            try
             {
-                int status = item.status;
-                switch(status)
+                RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                List<Mission> mission = obj.results;
+                foreach (var item in mission)
                 {
-                    case -1:
-                        if (!data.InvokeRequired)
-                            data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, item.Count, "Hủy", item.point);
-                        else
-                            data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, item.Count, "Hủy", item.point)));
-                        break;
-                    case 0:
-                        if (!data.InvokeRequired)
-                            data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, item.Count, "Đang duyệt", item.point);
-                        else
-                            data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, item.Count, "Đang duyệt", item.point)));
-                        break;
-                    default:
-                        if (!data.InvokeRequired)
-                            data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, item.Count, "Đang chạy", item.point);
-                        else
-                            data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, item.Count, "Đang chạy", item.point)));
-                        break;
+                    string Count = "";
+                    if (item.Count == 0)
+                        Count = "Không giới hạn";
+                    else
+                        Count = item.Count.ToString();
+                    int status = item.status;
+                    switch (status)
+                    {
+                        case -1:
+                            if (!data.InvokeRequired)
+                                data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Hủy", item.point);
+                            else
+                                data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Hủy", item.point)));
+                            break;
+                        case 0:
+                            if (!data.InvokeRequired)
+                                data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Đang duyệt", item.point);
+                            else
+                                data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Đang duyệt", item.point)));
+                            break;
+                        default:
+                            if (!data.InvokeRequired)
+                                data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Đang chạy", item.point);
+                            else
+                                data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Đang chạy", item.point)));
+                            break;
+                    }
+
+
                 }
-                
-                
+            }
+            catch
+            {
+                MessageBox.Show("Máy chủ " + ConfigurationSettings.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -87,8 +101,18 @@ namespace CTS_beta.Form_CTS
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DeleteMission();
-            LoadData();
+            string statuss = (data.Rows[data.CurrentCell.RowIndex].Cells["status"].Value.ToString());
+            if (!statuss.Equals("Hủy"))
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xoá không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    DeleteMission();
+                    LoadData();
+                }
+            }
+            else
+                MessageBox.Show("Nhiệm vụ đã dừng hoạt động !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
