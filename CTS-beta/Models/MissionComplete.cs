@@ -10,6 +10,7 @@ namespace CTS_beta.Models
     {
         public int id_mission { get; set; }
         public string name_mission { get; set; }
+        public string name_type_mission { get; set; }
         public int point { get; set; }
         public int id_type { get; set; }
         public DateTime date { get; set; }

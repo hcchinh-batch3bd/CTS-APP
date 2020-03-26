@@ -73,7 +73,7 @@
             // data
             // 
             this.data.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.data.Font = new System.Drawing.Font("Candara", 9F);
+            this.data.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.data.Location = new System.Drawing.Point(0, 51);
             // 
             // 
@@ -86,16 +86,16 @@
             gridViewTextBoxColumn1.Width = 493;
             gridViewTextBoxColumn2.HeaderText = "Thời gian hoàn thành";
             gridViewTextBoxColumn2.Name = "Date";
-            gridViewTextBoxColumn2.Width = 356;
+            gridViewTextBoxColumn2.Width = 266;
             gridViewTextBoxColumn3.HeaderText = "Loại nhiệm vụ";
             gridViewTextBoxColumn3.Name = "TypeName";
-            gridViewTextBoxColumn3.Width = 356;
+            gridViewTextBoxColumn3.Width = 225;
             gridViewTextBoxColumn4.HeaderText = "Điểm";
             gridViewTextBoxColumn4.Name = "Point";
             gridViewTextBoxColumn4.Width = 127;
             gridViewTextBoxColumn5.HeaderText = "Trạng thái";
             gridViewTextBoxColumn5.Name = "column1";
-            gridViewTextBoxColumn5.Width = 54;
+            gridViewTextBoxColumn5.Width = 275;
             gridViewTextBoxColumn6.HeaderText = "id";
             gridViewTextBoxColumn6.IsVisible = false;
             gridViewTextBoxColumn6.Name = "column2";
