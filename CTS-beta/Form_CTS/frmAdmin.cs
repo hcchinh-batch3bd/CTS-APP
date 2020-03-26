@@ -1,7 +1,11 @@
 ﻿using CTS_beta.Form_CTS;
+using CTS_beta.Models;
+using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -16,11 +20,10 @@ namespace CTS_beta
 
         string apiKey;
         frmLogin frmLogin;
+        static frmAdmin _obj;
         public frmAdmin()
         {
             InitializeComponent();
-            ChildForm.OpenChildForm(new frmStatistical(), panel4);
-            ShowMenu.customizeDesing(panel5);
             
         }
         public static frmAdmin Instance
@@ -34,7 +37,7 @@ namespace CTS_beta
                 return _obj;
             }
         }
-        static frmAdmin _obj;
+        
         public string ApiKey
         {
             get { return apiKey; }
@@ -43,9 +46,8 @@ namespace CTS_beta
         public frmAdmin(frmLogin frm, string apiKey)
         {
             InitializeComponent();
-            ChildForm.OpenChildForm(new frmStatistical(), panel4);
-            ShowMenu.customizeDesing(panel5);
-
+            this.apiKey = apiKey;
+            panel5.AutoScroll = true;
         }
         private void button13_Click(object sender, EventArgs e)
         {
@@ -95,8 +97,11 @@ namespace CTS_beta
 
         private void frmAdmin_Load(object sender, EventArgs e)
         {
-            _obj = this;
+            
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
+            ChildForm.OpenChildForm(new frmStatistical(), panel4);
+            ShowMenu.customizeDesing(panel5);
+            _obj = this;
         }
 
         private void frmAdmin_MouseDown(object sender, MouseEventArgs e)
@@ -113,7 +118,36 @@ namespace CTS_beta
 
         private void button11_Click(object sender, EventArgs e)
         {
-            ChildForm.OpenChildForm(new MissionApproval(), panel5);
+
+            var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Mission/ListMission");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            try
+            {
+                RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                List<Mission> mission = obj.results;
+                foreach (var item in mission)
+                {
+                    if(item.status==0)
+                    {
+                        string content = item.name_mission;
+                        ShowMenu.showSubMenu(panel5);
+                        MissionApproval childForm = new MissionApproval(item.id_mission, content);
+                        panel5.Controls.Add(childForm);
+                        childForm.BringToFront();
+                        childForm.Show();
+                    }
+                   
+                }
+                
+            }
+            catch
+            {
+                MessageBox.Show("Máy chủ " + ConfigurationSettings.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+           
+
         }
+
     }
 }

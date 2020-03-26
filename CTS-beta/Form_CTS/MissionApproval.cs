@@ -12,12 +12,21 @@ namespace CTS_beta.Form_CTS
 {
     public partial class MissionApproval : UserControl
     {
-        public MissionApproval()
+        int id;
+        public MissionApproval(int id, string content)
         {
             InitializeComponent();
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 5, 5));
-            button1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 5, 5));
-            button2.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button2.Width, button2.Height, 5, 5));
+            btnAccept.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnAccept.Width, btnAccept.Height, 5, 5));
+            btnClose.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnClose.Width, btnClose.Height, 5, 5));
+            this.id = id;
+            lblContent.Text = content;
+        }
+
+        private void lblContent_Click(object sender, EventArgs e)
+        {
+            frmDetailMission frmDetailMission = new frmDetailMission();
+            frmDetailMission.ShowDialog();
         }
     }
 }

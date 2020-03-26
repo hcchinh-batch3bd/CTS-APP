@@ -150,5 +150,11 @@ namespace CTS_beta.Form_CTS
                 this.Hide();
             }
         }
+
+        private void btnChangePass_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword();
+            frm.ShowDialog();
+        }
     }
 }

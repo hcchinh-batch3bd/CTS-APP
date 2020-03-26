@@ -97,9 +97,9 @@
             this.radLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.radLabel4.Location = new System.Drawing.Point(45, 225);
             this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(110, 22);
+            this.radLabel4.Size = new System.Drawing.Size(132, 22);
             this.radLabel4.TabIndex = 23;
-            this.radLabel4.Text = "Ngày hết hạn:";
+            this.radLabel4.Text = "Số ngày hết hạn:";
             // 
             // radLabel5
             // 

@@ -29,34 +29,35 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MissionApproval));
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnAccept = new System.Windows.Forms.Button();
+            this.lblContent = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnAccept
             // 
-            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(141, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Chấp nhận";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAccept.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnAccept.FlatAppearance.BorderSize = 0;
+            this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccept.ForeColor = System.Drawing.Color.White;
+            this.btnAccept.Location = new System.Drawing.Point(97, 63);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(75, 23);
+            this.btnAccept.TabIndex = 0;
+            this.btnAccept.Text = "Chấp nhận";
+            this.btnAccept.UseVisualStyleBackColor = false;
             // 
-            // label1
+            // lblContent
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(222, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nguyễn Văn B yêu cầu thực hiện \"Nhiệm vụ\"";
+            this.lblContent.Location = new System.Drawing.Point(58, 7);
+            this.lblContent.Name = "lblContent";
+            this.lblContent.Size = new System.Drawing.Size(222, 53);
+            this.lblContent.TabIndex = 1;
+            this.lblContent.Text = "Nguyễn Văn B yêu cầu thực hiện \"Nhiệm vụ\"";
+            this.lblContent.Click += new System.EventHandler(this.lblContent_Click);
             // 
             // pictureBox1
             // 
@@ -69,42 +70,50 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // button2
+            // btnClose
             // 
-            this.button2.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(219, 28);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Từ chối";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnClose.BackColor = System.Drawing.Color.Salmon;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(178, 63);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.Text = "Từ chối";
+            this.btnClose.UseVisualStyleBackColor = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.panel1.Location = new System.Drawing.Point(22, 90);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(284, 2);
+            this.panel1.TabIndex = 3;
             // 
             // MissionApproval
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(306, 57);
+            this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lblContent);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnAccept);
             this.Name = "MissionApproval";
-            this.Text = "MissionApproval";
+            this.Size = new System.Drawing.Size(306, 94);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnAccept;
+        private System.Windows.Forms.Label lblContent;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Panel panel1;
     }
 }

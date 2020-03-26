@@ -233,6 +233,16 @@ namespace CTS_beta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imgpsh_fullsize_anim {
+            get {
+                object obj = ResourceManager.GetObject("imgpsh_fullsize_anim", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap increase_32px {
             get {
                 object obj = ResourceManager.GetObject("increase_32px", resourceCulture);
@@ -406,6 +416,26 @@ namespace CTS_beta.Properties {
         internal static System.Drawing.Bitmap sphere_10px {
             get {
                 object obj = ResourceManager.GetObject("sphere_10px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap synchronize_32px {
+            get {
+                object obj = ResourceManager.GetObject("synchronize_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap synchronize_64px {
+            get {
+                object obj = ResourceManager.GetObject("synchronize_64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
