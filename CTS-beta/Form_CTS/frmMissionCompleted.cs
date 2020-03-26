@@ -35,16 +35,19 @@ namespace CTS_beta.Form_CTS
             var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"]+"/Mission/ListMissionComplete?apiKey="+frmUser.Instance.ApiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
-            RootObject obj= JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-            List<MissionComplete> missionCompletes = obj.results;
-            foreach(var mission in missionCompletes)
+            try
             {
-                if (data.InvokeRequired)
+                RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                List<MissionComplete> missionCompletes = obj.results;
+                foreach (var mission in missionCompletes)
                 {
-                    data.Rows.Add(mission.name_mission, mission.date, mission.name_type_mission, mission.point, "Đã hoàn thành", mission.id_mission);
+                    data.Rows.Add(mission.name_mission, mission.date, mission.id_type, mission.point, "Đã hoàn thành");
+                    //data.Invoke(new Action(() => data.Rows.Add(mission.name_mission, mission.date, mission.id_type, mission.point, "Đã hoàn thành")));               
                 }
-                else
-                data.Invoke(new Action(() => data.Rows.Add(mission.name_mission, mission.date, mission.id_type, mission.point, "Đã hoàn thành",mission.id_mission)));               
+            }
+           catch
+            {
+                MessageBox.Show("Máy chủ " + System.Configuration.ConfigurationSettings.AppSettings["server"] +  "bị mất kết nối");
             }
             
             

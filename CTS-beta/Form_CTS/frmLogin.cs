@@ -40,7 +40,7 @@ namespace CTS_beta
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (txtID.Text == "" || txtPassword.Text == "")
-                MessageBox.Show("Vui lòng không được bỏ trống !!!");
+                MessageBox.Show("Vui lòng không được bỏ trống !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             else
             {
                 var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Account/CheckLogin?id=" + txtID.Text + "&pw=" + txtPassword.Text);
