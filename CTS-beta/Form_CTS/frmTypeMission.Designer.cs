@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.data = new Telerik.WinControls.UI.RadGridView();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -60,26 +60,26 @@
             this.data.MasterTemplate.AllowAddNewRow = false;
             this.data.MasterTemplate.AllowColumnReorder = false;
             this.data.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn10.HeaderText = "ID";
-            gridViewTextBoxColumn10.Name = "ID";
-            gridViewTextBoxColumn10.ReadOnly = true;
-            gridViewTextBoxColumn10.RowSpan = 50;
-            gridViewTextBoxColumn10.Width = 116;
-            gridViewTextBoxColumn11.HeaderText = "Loại nhiệm vụ";
-            gridViewTextBoxColumn11.Name = "nameType";
-            gridViewTextBoxColumn11.Width = 584;
-            gridViewTextBoxColumn12.HeaderText = "Trạng thái";
-            gridViewTextBoxColumn12.Name = "Status";
-            gridViewTextBoxColumn12.ReadOnly = true;
-            gridViewTextBoxColumn12.Width = 204;
+            gridViewTextBoxColumn1.HeaderText = "ID";
+            gridViewTextBoxColumn1.Name = "ID";
+            gridViewTextBoxColumn1.ReadOnly = true;
+            gridViewTextBoxColumn1.RowSpan = 50;
+            gridViewTextBoxColumn1.Width = 116;
+            gridViewTextBoxColumn2.HeaderText = "Loại nhiệm vụ";
+            gridViewTextBoxColumn2.Name = "nameType";
+            gridViewTextBoxColumn2.Width = 584;
+            gridViewTextBoxColumn3.HeaderText = "Trạng thái";
+            gridViewTextBoxColumn3.Name = "Status";
+            gridViewTextBoxColumn3.ReadOnly = true;
+            gridViewTextBoxColumn3.Width = 204;
             this.data.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn10,
-            gridViewTextBoxColumn11,
-            gridViewTextBoxColumn12});
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3});
             this.data.MasterTemplate.ShowHeaderCellButtons = true;
             this.data.MasterTemplate.ShowRowHeaderColumn = false;
             this.data.MasterTemplate.VerticalScrollState = Telerik.WinControls.UI.ScrollState.AlwaysShow;
-            this.data.MasterTemplate.ViewDefinition = tableViewDefinition4;
+            this.data.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.data.Name = "data";
             // 
             // 
@@ -90,6 +90,7 @@
             this.data.TabIndex = 8;
             this.data.ThemeName = "MaterialTeal";
             this.data.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.data_CellValueChanged);
+            this.data.Click += new System.EventHandler(this.data_Click);
             // 
             // panel3
             // 

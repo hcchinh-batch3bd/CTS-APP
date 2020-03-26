@@ -33,15 +33,16 @@ namespace CTS_beta.Form_CTS
             Thread thread = new Thread(new ThreadStart(LoadData));
             thread.Start();
         }
-        private bool check(string name) {
+        private bool check(string name)
+        {
             foreach (var type in typeMissions)
             {
-                if(type.name_type_mission.Equals(name))
+                if (type.name_type_mission.Equals(name))
                 {
                     return true;
                 }
             }
-                return false;
+            return false;
         }
         private void radLabel1_Click(object sender, EventArgs e)
         {
@@ -145,6 +146,7 @@ namespace CTS_beta.Form_CTS
             request.AddHeader("content-type", "application/json");
             TypeMission typeMission = new TypeMission();
             typeMission.id_type = int.Parse(id.ToString());
+
             if (data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value != null)
             {
                 typeMission.name_type_mission = data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value.ToString();
@@ -158,8 +160,7 @@ namespace CTS_beta.Form_CTS
                 //MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MessageBox.Show(response.Content.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 data.Rows.Clear();
-                Thread thread = new Thread(new ThreadStart(LoadData));
-                thread.Start();
+                LoadData();
                 btnEdit.Enabled = false;
             }
             else MessageBox.Show("Bạn chưa nhập tên loại nhiệm vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -169,32 +170,43 @@ namespace CTS_beta.Form_CTS
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-                string statuss = (data.Rows[data.CurrentCell.RowIndex].Cells["Status"].Value.ToString());
-                if (statuss.Equals("Đang hoạt động"))
+            string statuss = (data.Rows[data.CurrentCell.RowIndex].Cells["Status"].Value.ToString());
+
+            if (statuss.Equals("Đang hoạt động"))
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xoá không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xoá không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        int id = int.Parse(data.Rows[data.CurrentCell.RowIndex].Cells["ID"].Value.ToString());
+                    int id = int.Parse(data.Rows[data.CurrentCell.RowIndex].Cells["ID"].Value.ToString());
 
 
-                        var client = new RestClient("https://api.hotrogame.online/Type_Mission/" + id + "/Remove?apiKey=admin");
-                        var request = new RestRequest(Method.PUT);
-                        data.Rows.Clear();
-                        IRestResponse response = client.Execute(request);
+                    var client = new RestClient("https://api.hotrogame.online/Type_Mission/" + id + "/Remove?apiKey=admin");
+                    var request = new RestRequest(Method.PUT);
+                    data.Rows.Clear();
+                    IRestResponse response = client.Execute(request);
                     RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
                     MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Thread thread = new Thread(new ThreadStart(LoadData));
                     thread.Start();
                 }
-                   
-                }
-                else MessageBox.Show("Tài khoản này đã dừng hoạt động", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            else MessageBox.Show("Tài khoản này đã dừng hoạt động", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         private void data_CellValueChanged(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
         {
             btnEdit.Enabled = true;
+        }
+
+        private void data_Click(object sender, EventArgs e)
+        {
+            if (data.Rows[data.CurrentCell.RowIndex].Cells["Status"].Value.ToString().Equals("Dừng hoạt động"))
+            {
+                data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].ReadOnly = true;
+
+            }
         }
     }
 }
