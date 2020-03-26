@@ -158,8 +158,7 @@ namespace CTS_beta.Form_CTS
                 //MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MessageBox.Show(response.Content.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 data.Rows.Clear();
-                Thread thread = new Thread(new ThreadStart(LoadData));
-                thread.Start();
+                LoadData();
                 btnEdit.Enabled = false;
             }
             else MessageBox.Show("Bạn chưa nhập tên loại nhiệm vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
