@@ -29,39 +29,47 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateAccount));
-            this.button1 = new System.Windows.Forms.Button();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
+            this.btnCreateAccount = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
-            this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
-            this.radTextBox2 = new Telerik.WinControls.UI.RadTextBox();
-            this.radDateTimePicker1 = new Telerik.WinControls.UI.RadDateTimePicker();
+            this.txtname_employee = new Telerik.WinControls.UI.RadTextBox();
+            this.txtpassword = new Telerik.WinControls.UI.RadTextBox();
+            this.txtdate = new Telerik.WinControls.UI.RadDateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.txtlevel = new Telerik.WinControls.UI.RadDropDownList();
+            this.txtemail = new Telerik.WinControls.UI.RadTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radDateTimePicker1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtname_employee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtpassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtdate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtlevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtemail)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnCreateAccount
             // 
-            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Image = global::CTS_beta.Properties.Resources.add_new_32px;
-            this.button1.Location = new System.Drawing.Point(154, 260);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 47);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "Tạo tài khoản";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnCreateAccount.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnCreateAccount.FlatAppearance.BorderSize = 0;
+            this.btnCreateAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreateAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnCreateAccount.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnCreateAccount.Image = global::CTS_beta.Properties.Resources.add_new_32px;
+            this.btnCreateAccount.Location = new System.Drawing.Point(210, 382);
+            this.btnCreateAccount.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCreateAccount.Name = "btnCreateAccount";
+            this.btnCreateAccount.Size = new System.Drawing.Size(205, 58);
+            this.btnCreateAccount.TabIndex = 36;
+            this.btnCreateAccount.Text = "Tạo tài khoản";
+            this.btnCreateAccount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCreateAccount.UseVisualStyleBackColor = false;
+            this.btnCreateAccount.Click += new System.EventHandler(this.btnCreateAccount_Click);
             // 
             // button13
             // 
@@ -72,9 +80,10 @@
             this.button13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.ForeColor = System.Drawing.Color.White;
             this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.Location = new System.Drawing.Point(418, 3);
+            this.button13.Location = new System.Drawing.Point(554, 4);
+            this.button13.Margin = new System.Windows.Forms.Padding(4);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(32, 35);
+            this.button13.Size = new System.Drawing.Size(43, 43);
             this.button13.TabIndex = 30;
             this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button13.UseVisualStyleBackColor = true;
@@ -87,8 +96,9 @@
             this.panel3.Controls.Add(this.label3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(454, 39);
+            this.panel3.Size = new System.Drawing.Size(602, 48);
             this.panel3.TabIndex = 43;
             this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
             // 
@@ -98,99 +108,129 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(159, 10);
+            this.label3.Location = new System.Drawing.Point(211, 12);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 20);
+            this.label3.Size = new System.Drawing.Size(169, 25);
             this.label3.TabIndex = 0;
             this.label3.Text = "TẠO TÀI KHOẢN";
             // 
             // radLabel2
             // 
             this.radLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.radLabel2.Location = new System.Drawing.Point(48, 290);
+            this.radLabel2.Location = new System.Drawing.Point(71, 357);
+            this.radLabel2.Margin = new System.Windows.Forms.Padding(4);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(2, 2);
             this.radLabel2.TabIndex = 41;
             // 
-            // radTextBox1
+            // txtname_employee
             // 
-            this.radTextBox1.Location = new System.Drawing.Point(61, 76);
-            this.radTextBox1.Name = "radTextBox1";
-            this.radTextBox1.NullText = "Tên nhân viên";
-            this.radTextBox1.Size = new System.Drawing.Size(333, 36);
-            this.radTextBox1.TabIndex = 44;
-            this.radTextBox1.ThemeName = "MaterialTeal";
+            this.txtname_employee.Location = new System.Drawing.Point(88, 94);
+            this.txtname_employee.Margin = new System.Windows.Forms.Padding(4);
+            this.txtname_employee.Name = "txtname_employee";
+            this.txtname_employee.NullText = "Tên nhân viên";
+            this.txtname_employee.Size = new System.Drawing.Size(444, 41);
+            this.txtname_employee.TabIndex = 44;
+            this.txtname_employee.ThemeName = "MaterialTeal";
             // 
-            // radTextBox2
+            // txtpassword
             // 
-            this.radTextBox2.Location = new System.Drawing.Point(61, 126);
-            this.radTextBox2.Name = "radTextBox2";
-            this.radTextBox2.NullText = "Mật khẩu";
-            this.radTextBox2.Size = new System.Drawing.Size(174, 36);
-            this.radTextBox2.TabIndex = 44;
-            this.radTextBox2.ThemeName = "MaterialTeal";
+            this.txtpassword.Location = new System.Drawing.Point(88, 157);
+            this.txtpassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtpassword.Name = "txtpassword";
+            this.txtpassword.NullText = "Mật khẩu";
+            this.txtpassword.Size = new System.Drawing.Size(169, 41);
+            this.txtpassword.TabIndex = 44;
+            this.txtpassword.ThemeName = "MaterialTeal";
             // 
-            // radDateTimePicker1
+            // txtdate
             // 
-            this.radDateTimePicker1.CalendarSize = new System.Drawing.Size(290, 320);
-            this.radDateTimePicker1.Location = new System.Drawing.Point(139, 180);
-            this.radDateTimePicker1.Name = "radDateTimePicker1";
-            this.radDateTimePicker1.Size = new System.Drawing.Size(255, 36);
-            this.radDateTimePicker1.TabIndex = 45;
-            this.radDateTimePicker1.TabStop = false;
-            this.radDateTimePicker1.Text = "Monday, March 23, 2020";
-            this.radDateTimePicker1.ThemeName = "MaterialTeal";
-            this.radDateTimePicker1.Value = new System.DateTime(2020, 3, 23, 8, 3, 44, 649);
+            this.txtdate.CalendarSize = new System.Drawing.Size(290, 320);
+            this.txtdate.Location = new System.Drawing.Point(192, 216);
+            this.txtdate.Margin = new System.Windows.Forms.Padding(4);
+            this.txtdate.Name = "txtdate";
+            this.txtdate.Size = new System.Drawing.Size(340, 41);
+            this.txtdate.TabIndex = 45;
+            this.txtdate.TabStop = false;
+            this.txtdate.Text = "Monday, March 23, 2020";
+            this.txtdate.ThemeName = "MaterialTeal";
+            this.txtdate.Value = new System.DateTime(2020, 3, 23, 0, 0, 0, 0);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.label1.Location = new System.Drawing.Point(58, 187);
+            this.label1.Location = new System.Drawing.Point(88, 225);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 17);
+            this.label1.Size = new System.Drawing.Size(95, 22);
             this.label1.TabIndex = 46;
             this.label1.Text = "Ngày sinh:";
             // 
-            // button2
+            // txtlevel
             // 
-            this.button2.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(241, 126);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(153, 36);
-            this.button2.TabIndex = 36;
-            this.button2.Text = "Mật khẩu mặc định";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = false;
+            radListDataItem1.Text = "Quản lý";
+            radListDataItem2.Text = "Nhân viên";
+            this.txtlevel.Items.Add(radListDataItem1);
+            this.txtlevel.Items.Add(radListDataItem2);
+            this.txtlevel.Location = new System.Drawing.Point(363, 159);
+            this.txtlevel.Name = "txtlevel";
+            this.txtlevel.Size = new System.Drawing.Size(169, 41);
+            this.txtlevel.TabIndex = 47;
+            this.txtlevel.ThemeName = "MaterialTeal";
+            // 
+            // txtemail
+            // 
+            this.txtemail.Location = new System.Drawing.Point(88, 281);
+            this.txtemail.Margin = new System.Windows.Forms.Padding(4);
+            this.txtemail.Name = "txtemail";
+            this.txtemail.NullText = "Email";
+            this.txtemail.Size = new System.Drawing.Size(444, 41);
+            this.txtemail.TabIndex = 48;
+            this.txtemail.ThemeName = "MaterialTeal";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.label2.Location = new System.Drawing.Point(275, 162);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 22);
+            this.label2.TabIndex = 49;
+            this.label2.Text = "Chức vụ:";
             // 
             // frmCreateAccount
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 356);
+            this.ClientSize = new System.Drawing.Size(602, 508);
+            this.Controls.Add(this.txtlevel);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtemail);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.radDateTimePicker1);
-            this.Controls.Add(this.radTextBox2);
-            this.Controls.Add(this.radTextBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtdate);
+            this.Controls.Add(this.txtpassword);
+            this.Controls.Add(this.txtname_employee);
+            this.Controls.Add(this.btnCreateAccount);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.radLabel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCreateAccount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCreateAccount";
+            this.Load += new System.EventHandler(this.frmCreateAccount_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmCreateAccount_MouseDown);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radDateTimePicker1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtname_employee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtpassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtdate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtlevel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtemail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,16 +238,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCreateAccount;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.Themes.MaterialTealTheme materialTealTheme1;
-        private Telerik.WinControls.UI.RadTextBox radTextBox1;
-        private Telerik.WinControls.UI.RadTextBox radTextBox2;
-        private Telerik.WinControls.UI.RadDateTimePicker radDateTimePicker1;
+        private Telerik.WinControls.UI.RadTextBox txtname_employee;
+        private Telerik.WinControls.UI.RadTextBox txtpassword;
+        private Telerik.WinControls.UI.RadDateTimePicker txtdate;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
+        private Telerik.WinControls.UI.RadDropDownList txtlevel;
+        private Telerik.WinControls.UI.RadTextBox txtemail;
+        private System.Windows.Forms.Label label2;
     }
 }
