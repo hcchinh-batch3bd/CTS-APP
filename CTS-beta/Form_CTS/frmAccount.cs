@@ -24,7 +24,7 @@ namespace CTS_beta.Form_CTS
             this.GridViewAccount.MasterTemplate.AllowDragToGroup = false;
             this.GridViewAccount.MasterTemplate.AutoExpandGroups = false;
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
-            button1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 5, 5));
+            btnSearch.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnSearch.Width, btnSearch.Height, 5, 5));
             btnDelete.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnDelete.Width, btnDelete.Height, 5, 5));
             radTextBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, radTextBox1.Width, radTextBox1.Height, 5, 5));
             button3.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button3.Width, button3.Height, 5, 5));

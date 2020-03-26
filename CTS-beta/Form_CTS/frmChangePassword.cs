@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Telerik.WinControls;
 using CTS_beta.Form_CTS;
+using Newtonsoft.Json;
 
 namespace CTS_beta
 {
@@ -38,15 +39,24 @@ namespace CTS_beta
                 IRestResponse response = client.Execute(request);
                 try
                 {
-
+                    Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
+                    MessageBox.Show(obj.message);
+                    Properties.Settings.Default.apiKey = "";
+                    Properties.Settings.Default.Save();
+                    Application.Exit();
                 }
                 catch
                 {
-
+                    MessageBox.Show("Server bị mất kết nối");
                 }
             }
             else
                 MessageBox.Show("Mật khẩu mới và mật khẩu mới nhập lại không giống nhau !!");
         }
+        public class Message
+        {
+            public string message { get; set; }
+        }
     }
+
 }

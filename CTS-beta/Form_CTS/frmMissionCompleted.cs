@@ -41,8 +41,10 @@ namespace CTS_beta.Form_CTS
                 List<MissionComplete> missionCompletes = obj.results;
                 foreach (var mission in missionCompletes)
                 {
-                    data.Rows.Add(mission.name_mission, mission.date, mission.id_type, mission.point, "Đã hoàn thành");
-                    //data.Invoke(new Action(() => data.Rows.Add(mission.name_mission, mission.date, mission.id_type, mission.point, "Đã hoàn thành")));               
+                    if(!data.InvokeRequired)
+                        data.Rows.Add(mission.name_mission, mission.date, mission.name_type_mission, mission.point, "Đã hoàn thành");
+                    else
+                        data.Invoke(new Action(() => data.Rows.Add(mission.name_mission, mission.date, mission.name_type_mission, mission.point, "Đã hoàn thành")));               
                 }
             }
            catch

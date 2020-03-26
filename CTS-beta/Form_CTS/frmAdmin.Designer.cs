@@ -32,7 +32,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnExit = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
@@ -59,7 +59,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(209, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(960, 10);
+            this.panel2.Size = new System.Drawing.Size(968, 10);
             this.panel2.TabIndex = 1;
             // 
             // label4
@@ -82,10 +82,10 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.SystemColors.Control;
-            this.panel5.Location = new System.Drawing.Point(737, 57);
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Location = new System.Drawing.Point(703, 57);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(306, 138);
+            this.panel5.Size = new System.Drawing.Size(340, 138);
             this.panel5.TabIndex = 0;
             // 
             // btnExit
@@ -228,7 +228,7 @@
             this.button14.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button14.ForeColor = System.Drawing.Color.White;
             this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(0, 653);
+            this.button14.Location = new System.Drawing.Point(0, 683);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(36, 34);
             this.button14.TabIndex = 4;
@@ -293,7 +293,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(209, 690);
+            this.panel1.Size = new System.Drawing.Size(209, 720);
             this.panel1.TabIndex = 0;
             // 
             // frmAdmin
@@ -301,7 +301,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1169, 690);
+            this.ClientSize = new System.Drawing.Size(1177, 720);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label4);
@@ -338,7 +338,7 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.FlowLayoutPanel panel5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;

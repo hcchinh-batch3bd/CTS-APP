@@ -1,7 +1,11 @@
 ﻿using CTS_beta.Form_CTS;
+using CTS_beta.Models;
+using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -43,6 +47,7 @@ namespace CTS_beta
         {
             InitializeComponent();
             this.apiKey = apiKey;
+            panel5.AutoScroll = true;
         }
         private void button13_Click(object sender, EventArgs e)
         {
@@ -113,7 +118,36 @@ namespace CTS_beta
 
         private void button11_Click(object sender, EventArgs e)
         {
-            ChildForm.OpenChildForm(new MissionApproval(), panel5);
+
+            var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Mission/ListMission");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            try
+            {
+                RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                List<Mission> mission = obj.results;
+                foreach (var item in mission)
+                {
+                    if(item.status==0)
+                    {
+                        string content = item.name_mission;
+                        ShowMenu.showSubMenu(panel5);
+                        MissionApproval childForm = new MissionApproval(item.id_mission, content);
+                        panel5.Controls.Add(childForm);
+                        childForm.BringToFront();
+                        childForm.Show();
+                    }
+                   
+                }
+                
+            }
+            catch
+            {
+                MessageBox.Show("Máy chủ " + ConfigurationSettings.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+           
+
         }
+
     }
 }

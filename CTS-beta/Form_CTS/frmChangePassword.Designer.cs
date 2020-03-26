@@ -49,6 +49,7 @@
             this.txtPasswordOld.Location = new System.Drawing.Point(67, 113);
             this.txtPasswordOld.Name = "txtPasswordOld";
             this.txtPasswordOld.NullText = "Mật khẩu cũ";
+            this.txtPasswordOld.PasswordChar = '●';
             this.txtPasswordOld.Size = new System.Drawing.Size(240, 36);
             this.txtPasswordOld.TabIndex = 0;
             this.txtPasswordOld.ThemeName = "Material";

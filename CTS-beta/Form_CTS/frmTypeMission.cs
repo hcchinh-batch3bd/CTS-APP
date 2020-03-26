@@ -12,6 +12,7 @@ using CTS_beta.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Threading;
+using System.Configuration;
 
 namespace CTS_beta.Form_CTS
 {
@@ -50,7 +51,7 @@ namespace CTS_beta.Form_CTS
         }
         void LoadData()
         {
-            var typeMission = new RestClient("https://api.hotrogame.online/Type_Mission/GetAll");
+            var typeMission = new RestClient(ConfigurationSettings.AppSettings["server"] +"/Type_Mission/GetAll");
             var request = new RestRequest(Method.GET);
             IRestResponse response = typeMission.Execute(request);
             typeMissions = JsonConvert.DeserializeObject<List<TypeMission>>(response.Content.ToString());
@@ -110,7 +111,7 @@ namespace CTS_beta.Form_CTS
                 if (!check(txtaddnametypemisson.TextName))
                 {
 
-                    var client = new RestClient("https://api.hotrogame.online/Type_Mission/Create?apiKey=admin");
+                    var client = new RestClient(ConfigurationSettings.AppSettings["server"]+ "/Type_Mission/Create?apiKey="+frmAdmin.Instance.ApiKey);
                     var request = new RestRequest(Method.POST);
                     request.AddHeader("content-type", "application/json");
                     TypeMission typeMission = new TypeMission();
@@ -139,9 +140,8 @@ namespace CTS_beta.Form_CTS
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            //System.Configuration.ConfigurationSettings.AppSettings["server"] + "Type_Mission/Edit?apiKey=" + frmAdmin.Instance.ApiKey
             string id = data.Rows[data.CurrentCell.RowIndex].Cells["ID"].Value.ToString();
-            var client = new RestClient("https://api.hotrogame.online/Type_Mission/Edit?apiKey=admin");
+            var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Type_Mission/Edit?apiKey="+frmAdmin.Instance.ApiKey);
             var request = new RestRequest(Method.PUT);
             request.AddHeader("content-type", "application/json");
             TypeMission typeMission = new TypeMission();
@@ -156,8 +156,6 @@ namespace CTS_beta.Form_CTS
                 string output = JsonConvert.SerializeObject(typeMission);
                 request.AddParameter("application/json", output, ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
-                //RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-                //MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MessageBox.Show(response.Content.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 data.Rows.Clear();
                 LoadData();
@@ -178,9 +176,7 @@ namespace CTS_beta.Form_CTS
                 if (dialogResult == DialogResult.Yes)
                 {
                     int id = int.Parse(data.Rows[data.CurrentCell.RowIndex].Cells["ID"].Value.ToString());
-
-
-                    var client = new RestClient("https://api.hotrogame.online/Type_Mission/" + id + "/Remove?apiKey=admin");
+                    var client = new RestClient(ConfigurationSettings.AppSettings["server"] +"/Type_Mission/" + id + "/Remove?apiKey="+frmAdmin.Instance.ApiKey);
                     var request = new RestRequest(Method.PUT);
                     data.Rows.Clear();
                     IRestResponse response = client.Execute(request);

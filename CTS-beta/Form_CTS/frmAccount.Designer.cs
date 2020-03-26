@@ -45,7 +45,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewAccount.MasterTemplate)).BeginInit();
             this.panel3.SuspendLayout();
@@ -68,14 +68,14 @@
             gridViewTextBoxColumn1.Width = 78;
             gridViewTextBoxColumn2.HeaderText = "Họ và tên";
             gridViewTextBoxColumn2.Name = "name";
-            gridViewTextBoxColumn2.Width = 250;
+            gridViewTextBoxColumn2.Width = 249;
             gridViewTextBoxColumn3.HeaderText = "Tuổi";
             gridViewTextBoxColumn3.Name = "column1";
             gridViewTextBoxColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewTextBoxColumn3.Width = 75;
             gridViewTextBoxColumn4.HeaderText = "Email";
             gridViewTextBoxColumn4.Name = "column5";
-            gridViewTextBoxColumn4.Width = 217;
+            gridViewTextBoxColumn4.Width = 216;
             gridViewTextBoxColumn5.HeaderText = "Điểm";
             gridViewTextBoxColumn5.Name = "column2";
             gridViewTextBoxColumn5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,10 +83,10 @@
             gridViewTextBoxColumn6.HeaderText = "Quyền hạn";
             gridViewTextBoxColumn6.Name = "column4";
             gridViewTextBoxColumn6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn6.Width = 119;
+            gridViewTextBoxColumn6.Width = 118;
             gridViewTextBoxColumn7.HeaderText = "Trạng Thái";
             gridViewTextBoxColumn7.Name = "column3";
-            gridViewTextBoxColumn7.Width = 108;
+            gridViewTextBoxColumn7.Width = 107;
             this.GridViewAccount.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -137,7 +137,7 @@
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.radTextBox1);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 566);
             this.panel1.Name = "panel1";
@@ -182,25 +182,25 @@
             // 
             // radTextBox1
             // 
-            this.radTextBox1.Location = new System.Drawing.Point(17, 13);
+            this.radTextBox1.Location = new System.Drawing.Point(17, 10);
             this.radTextBox1.Name = "radTextBox1";
             this.radTextBox1.NullText = "Tìm kiếm";
-            this.radTextBox1.Size = new System.Drawing.Size(247, 29);
+            this.radTextBox1.Size = new System.Drawing.Size(247, 36);
             this.radTextBox1.TabIndex = 36;
             this.radTextBox1.ThemeName = "MaterialTeal";
             // 
-            // button1
+            // btnSearch
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(270, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 29);
-            this.button1.TabIndex = 35;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnSearch.BackColor = System.Drawing.Color.White;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.Location = new System.Drawing.Point(270, 13);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(64, 29);
+            this.btnSearch.TabIndex = 35;
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
             // frmAccount
             // 
@@ -232,7 +232,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnDelete;
         private Telerik.WinControls.UI.RadTextBox radTextBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button button3;
     }
 }

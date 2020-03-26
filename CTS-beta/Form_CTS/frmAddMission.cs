@@ -12,6 +12,7 @@ using RestSharp;
 using Newtonsoft.Json;
 using CTS_beta.Models;
 using System.Threading;
+using System.Configuration;
 
 namespace CTS_beta.Form_CTS
 {
@@ -52,13 +53,21 @@ namespace CTS_beta.Form_CTS
 
         private void LoadTypeMission()
         {
-            var client = new RestClient("https://api.hotrogame.online/Type_Mission/GetAll");
+            var client = new RestClient(ConfigurationSettings.AppSettings["server"]+"/Type_Mission/GetAll");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             List<TypeMission> listTypes = JsonConvert.DeserializeObject<List<TypeMission>>(response.Content.ToString());
+            DataTable dt = new DataTable();
+            dt.Columns.Add("id_type", typeof(String));
+            dt.Columns.Add("name_type_mission", typeof(String));
+            foreach (var list in listTypes)
+            {
+                if(list.status)
+                    dt.Rows.Add(list.id_type, list.name_type_mission);
+            }
             ddlTypeMission.Invoke(new Action(() =>
             {
-                ddlTypeMission.DataSource = listTypes;
+                ddlTypeMission.DataSource = dt;
                 ddlTypeMission.ValueMember = "id_type";
                 ddlTypeMission.DisplayMember = "name_type_mission";
             }
