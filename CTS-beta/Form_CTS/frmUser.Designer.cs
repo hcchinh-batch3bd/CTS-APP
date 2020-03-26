@@ -41,7 +41,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblCountComplete = new System.Windows.Forms.TextBox();
             this.lblCountProcess = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblCountAreThere = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -202,7 +202,7 @@
             // 
             this.panel2.Controls.Add(this.lblCountComplete);
             this.panel2.Controls.Add(this.lblCountProcess);
-            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.lblCountAreThere);
             this.panel2.Controls.Add(this.radTextBox1);
             this.panel2.Controls.Add(this.button7);
             this.panel2.Controls.Add(this.label9);
@@ -243,18 +243,18 @@
             this.lblCountProcess.Text = "10";
             this.lblCountProcess.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox2
+            // lblCountAreThere
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox2.Location = new System.Drawing.Point(53, 37);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(27, 16);
-            this.textBox2.TabIndex = 32;
-            this.textBox2.Text = "10";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lblCountAreThere.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblCountAreThere.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lblCountAreThere.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblCountAreThere.Location = new System.Drawing.Point(53, 37);
+            this.lblCountAreThere.Name = "lblCountAreThere";
+            this.lblCountAreThere.ReadOnly = true;
+            this.lblCountAreThere.Size = new System.Drawing.Size(27, 16);
+            this.lblCountAreThere.TabIndex = 32;
+            this.lblCountAreThere.Text = "10";
+            this.lblCountAreThere.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
             // 
@@ -616,7 +616,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox lblCountComplete;
         private System.Windows.Forms.TextBox lblCountProcess;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox lblCountAreThere;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button btnLogout;

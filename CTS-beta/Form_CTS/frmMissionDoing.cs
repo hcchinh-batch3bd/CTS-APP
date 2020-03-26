@@ -26,7 +26,6 @@ namespace CTS_beta.Form_CTS
         }
         void loadData()
         {
-            DateTime date = DateTime.Now;
             var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"] + "/Mission/Missionavailableemp?apiKey=" + frmUser.Instance.ApiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
@@ -36,10 +35,11 @@ namespace CTS_beta.Form_CTS
             {
                 if (radGridView1.InvokeRequired)
                 {
-                    radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.id_type, mission.point, "Hoàn thành",mission.id_mission)));
+                  
+                    radGridView1.Rows.Add(mission.name_mission, mission.exprie, mission.id_type, mission.point, "Hoàn thành", mission.id_mission);
                 }
                 else
-                    radGridView1.Rows.Add(mission.name_mission, mission.exprie, mission.id_type, mission.point, "Hoàn thành",mission.id_mission);
+                    radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.id_type, mission.point, "Hoàn thành", mission.id_mission)));
 
 
             }
@@ -57,18 +57,11 @@ namespace CTS_beta.Form_CTS
             thread.Start();
         }
 
-
-
         private void radGridView1_CellClick_1(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 4)
             {
-                //int row = e.RowIndex;
-                //   radGridView1.Rows.RemoveAt(row);
-                //   MessageBox.Show(e.Row.Cells[5].Value.ToString());
-            
-                    
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn hoàn thành không", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn hoàn thành không?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)                {                    int id = int.Parse(e.Row.Cells[5].Value.ToString());
                     var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"] + "/Mission/" + id + "/CompleteMission?apiKey=" + frmUser.Instance.ApiKey);
                     var request = new RestRequest(Method.PUT);
@@ -77,14 +70,19 @@ namespace CTS_beta.Form_CTS
                         loadData();                    }                    catch { MessageBox.Show("Server bị mất kết nối"); }                }
                 else                {                    this.radGridView1.Rows.Clear();
                     loadData();                }
-
-                
-                    
-                
-
-
             }
         }
-        
+
+        private void radGridView1_CellFormatting(object sender, Telerik.WinControls.UI.CellFormattingEventArgs e)
+        {
+            if (e.CellElement.ColumnInfo.Name == "Tacvu")
+            {
+                e.CellElement.ForeColor = Color.Blue;
+                e.CellElement.GradientStyle = Telerik.WinControls.GradientStyles.Solid;
+                e.CellElement.BackColor = Color.Red;
+                e.CellElement.Font = new Font(e.CellElement.Font, FontStyle.Underline);
+                e.CellElement.DrawFill = true;
+            }
+        }
     }
     }
