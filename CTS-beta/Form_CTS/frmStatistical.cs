@@ -38,7 +38,7 @@ namespace CTS_beta
         void LoadData()
         {
 
-            var client = new RestClient(ConfigurationSettings.AppSettings["server"]+"/Account/RankEmployee?apiKey="+frmAdmin.Instance.ApiKey);
+            var client = new RestClient(ConfigurationSettings.AppSettings["server"]+"/Account/RankEmployee?apiKey="+Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             try
@@ -92,6 +92,13 @@ namespace CTS_beta
                 app.Columns.AutoFit();
                 app.Visible = true;
             }
+        }
+
+        private void PicSyn_Click(object sender, EventArgs e)
+        {
+            data.Rows.Clear();
+            Thread thread = new Thread(new ThreadStart(LoadData));
+            thread.Start();
         }
     }
 }

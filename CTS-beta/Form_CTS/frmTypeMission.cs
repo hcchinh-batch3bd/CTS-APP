@@ -111,7 +111,7 @@ namespace CTS_beta.Form_CTS
                 if (!check(txtaddnametypemisson.TextName))
                 {
 
-                    var client = new RestClient(ConfigurationSettings.AppSettings["server"]+ "/Type_Mission/Create?apiKey="+frmAdmin.Instance.ApiKey);
+                    var client = new RestClient(ConfigurationSettings.AppSettings["server"]+ "/Type_Mission/Create?apiKey="+Properties.Settings.Default.apiKey);
                     var request = new RestRequest(Method.POST);
                     request.AddHeader("content-type", "application/json");
                     TypeMission typeMission = new TypeMission();
@@ -141,7 +141,7 @@ namespace CTS_beta.Form_CTS
         private void btnEdit_Click(object sender, EventArgs e)
         {
             string id = data.Rows[data.CurrentCell.RowIndex].Cells["ID"].Value.ToString();
-            var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Type_Mission/Edit?apiKey="+frmAdmin.Instance.ApiKey);
+            var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Type_Mission/Edit?apiKey="+Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.PUT);
             request.AddHeader("content-type", "application/json");
             TypeMission typeMission = new TypeMission();
@@ -176,7 +176,7 @@ namespace CTS_beta.Form_CTS
                 if (dialogResult == DialogResult.Yes)
                 {
                     int id = int.Parse(data.Rows[data.CurrentCell.RowIndex].Cells["ID"].Value.ToString());
-                    var client = new RestClient(ConfigurationSettings.AppSettings["server"] +"/Type_Mission/" + id + "/Remove?apiKey="+frmAdmin.Instance.ApiKey);
+                    var client = new RestClient(ConfigurationSettings.AppSettings["server"] +"/Type_Mission/" + id + "/Remove?apiKey="+Properties.Settings.Default.apiKey);
                     var request = new RestRequest(Method.PUT);
                     data.Rows.Clear();
                     IRestResponse response = client.Execute(request);
@@ -203,6 +203,13 @@ namespace CTS_beta.Form_CTS
                 data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].ReadOnly = true;
 
             }
+        }
+
+        private void PicSyn_Click(object sender, EventArgs e)
+        {
+            data.Rows.Clear();
+            Thread thread = new Thread(new ThreadStart(LoadData));
+            thread.Start();
         }
     }
 }

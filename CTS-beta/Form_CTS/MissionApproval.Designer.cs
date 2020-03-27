@@ -49,6 +49,7 @@
             this.btnAccept.TabIndex = 0;
             this.btnAccept.Text = "Chấp nhận";
             this.btnAccept.UseVisualStyleBackColor = false;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // lblContent
             // 
@@ -82,6 +83,7 @@
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Từ chối";
             this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // panel1
             // 

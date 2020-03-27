@@ -40,16 +40,19 @@
             this.data = new Telerik.WinControls.UI.RadGridView();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
+            this.PicSyn = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).BeginInit();
             this.SuspendLayout();
             // 
             // radPanel1
             // 
             this.radPanel1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.radPanel1.Controls.Add(this.PicSyn);
             this.radPanel1.Controls.Add(this.label11);
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.radPanel1.Location = new System.Drawing.Point(0, 0);
@@ -125,6 +128,17 @@
             this.radPanel2.Size = new System.Drawing.Size(1386, 51);
             this.radPanel2.TabIndex = 3;
             // 
+            // PicSyn
+            // 
+            this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
+            this.PicSyn.Location = new System.Drawing.Point(10, 10);
+            this.PicSyn.Name = "PicSyn";
+            this.PicSyn.Size = new System.Drawing.Size(32, 32);
+            this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PicSyn.TabIndex = 44;
+            this.PicSyn.TabStop = false;
+            this.PicSyn.Click += new System.EventHandler(this.PicSyn_Click);
+            // 
             // frmMissionCompleted
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,6 +155,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.data)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -152,5 +167,6 @@
         private Telerik.WinControls.UI.RadGridView data;
         private Telerik.WinControls.Themes.MaterialTealTheme materialTealTheme1;
         private Telerik.WinControls.UI.RadPanel radPanel2;
+        private System.Windows.Forms.PictureBox PicSyn;
     }
 }

@@ -88,15 +88,16 @@ namespace CTS_beta.Form_CTS
                 int exprie = int.Parse(txtExprie.TextName);
                 string describe = txtDescribe.Text;
                 int status = 0;
-                int idEmployee = 189209;
+                int idEmployee = Properties.Settings.Default.id_employee;
                 //Mission mission = GetDataFromForm();
-                var client = new RestClient("https://api.hotrogame.online/Mission/Create?apiKey=hello");
+                var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"] +"/Mission/Create?apiKey="+frmUser.Instance.ApiKey);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("content-type", "application/json");
                 request.AddParameter("undefined", "{\"name_mission\":\'" + nameMission + "',\"Stardate\":\'" + Stardate + "',\"point\":" +point + " ,\"exprie\":" + exprie + ",\"describe\":\'" + describe + "',\"status\":\'" + status + "',\"count\":" + count + ",\"id_type\":" + idTypeMission + ",\"id_employee\":" + idEmployee + "}", ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
+                Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
 
-                MessageBox.Show(response.Content.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else MessageBox.Show("Chưa nhập đủ thông tin");
         }
@@ -115,7 +116,10 @@ namespace CTS_beta.Form_CTS
         
            
         }
-
+        public class Message
+        {
+            public string message { get; set; }
+        }
     }
 }
 

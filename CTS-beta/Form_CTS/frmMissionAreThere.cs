@@ -36,10 +36,10 @@ namespace CTS_beta.Form_CTS
             {
                 if (radGridView1.InvokeRequired)
                 {
-                    radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.id_mission,mission.name_mission,mission.describe,mission.Stardate, mission.Stardate.AddDays(mission.exprie), mission.id_type, mission.point, "Xem")));
+                    radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.id_mission,mission.name_mission,mission.describe,mission.Stardate, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Xem")));
                 }
                 else
-                    radGridView1.Rows.Add(mission.id_mission,mission.name_mission,mission.describe,mission.Stardate, mission.Stardate.AddDays(mission.exprie), mission.id_type, mission.point, "Xem");
+                    radGridView1.Rows.Add(mission.id_mission,mission.name_mission,mission.describe,mission.Stardate, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Xem");
             }
         }
         class RootObject
@@ -87,6 +87,12 @@ namespace CTS_beta.Form_CTS
         private void radGridView1_RowFormatting(object sender, Telerik.WinControls.UI.RowFormattingEventArgs e)
         {
            
+        }
+        private void PicSyn_Click(object sender, EventArgs e)
+        {
+            radGridView1.Rows.Clear();
+            Thread thread = new Thread(new ThreadStart(loadData));
+            thread.Start();
         }
     }
     }

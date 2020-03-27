@@ -25,6 +25,18 @@ namespace CTS_beta.Form_CTS
             btnNhanNhiemVu.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnNhanNhiemVu.Width, btnNhanNhiemVu.Height, 5, 5));
             pictureBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, pictureBox1.Width, pictureBox1.Height, 5, 5));
             idMission = id;
+            MoveControl.ReleaseCapture();
+        }
+        public frmDetailMission(int id, bool comfirm)
+        {
+            InitializeComponent();
+            this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 5, 5));
+            richTextBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, richTextBox1.Width, richTextBox1.Height, 5, 5));
+            btnNhanNhiemVu.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnNhanNhiemVu.Width, btnNhanNhiemVu.Height, 5, 5));
+            pictureBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, pictureBox1.Width, pictureBox1.Height, 5, 5));
+            idMission = id;
+            btnNhanNhiemVu.Enabled = false;
+            MoveControl.ReleaseCapture();
         }
         private void button13_Click(object sender, EventArgs e)
         {
@@ -42,9 +54,12 @@ namespace CTS_beta.Form_CTS
             RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
             List<Mission> misssion = obj.results;
             lblNameMission.Text = misssion.SingleOrDefault().name_mission;
-            lblTypeMission.Text = misssion.SingleOrDefault().id_type.ToString();
-            lblNguoiTao.Text = misssion.SingleOrDefault().id_employee.ToString();
-            lblSLCon.Text = misssion.SingleOrDefault().Count.ToString();
+            lblTypeMission.Text = misssion.SingleOrDefault().name_type_mission.ToString();
+            lblNguoiTao.Text = misssion.SingleOrDefault().name_employee.ToString();
+            if (misssion.SingleOrDefault().Count == 0)
+                lblSLCon.Text = "Không có giới hạn";
+            else
+                lblSLCon.Text = misssion.SingleOrDefault().countProcess.ToString();
             lblStartDate.Text = misssion.SingleOrDefault().Stardate.Date.ToString();
             lblEndDate.Text = misssion.SingleOrDefault().Stardate.AddDays(misssion.SingleOrDefault().exprie).ToString();
             lblPoint.Text = misssion.SingleOrDefault().point.ToString();
@@ -78,6 +93,12 @@ namespace CTS_beta.Form_CTS
             {
                 loadData();
             }
+        }
+
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        {
+            MoveControl.ReleaseCapture();
+            MoveControl.SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

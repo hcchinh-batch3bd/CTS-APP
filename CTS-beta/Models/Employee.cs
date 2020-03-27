@@ -15,6 +15,7 @@ namespace CTS_beta.Models
         public DateTime date { get; set; }
         public int point { get; set; }
         public string level { get; set; }
+        public string level_employee { get; set; }
         public string status { get; set; }
     }
 }

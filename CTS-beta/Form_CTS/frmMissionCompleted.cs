@@ -60,5 +60,12 @@ namespace CTS_beta.Form_CTS
             public bool status { get; set; }
             public string message { get; set; }
         }
+
+        private void PicSyn_Click(object sender, EventArgs e)
+        {
+            data.Rows.Clear();
+            Thread thread = new Thread(new ThreadStart(LoadData));
+            thread.Start();
+        }
     }
 }

@@ -98,7 +98,8 @@ namespace CTS_beta.Form_CTS
 
         private void btnCreateMission_Click(object sender, EventArgs e)
         {
-            ChildForm.OpenChildForm(new frmAddMissionUser(), panelDesktop);
+            frmAddMission fAdd = new frmAddMission();
+            fAdd.Show();
         }
 
         private void panelTitle_MouseDown(object sender, MouseEventArgs e)
@@ -122,6 +123,8 @@ namespace CTS_beta.Form_CTS
             lblNameEmployee.Text = obj.name_employee.ToString();
             lblCountComplete.Text = obj.totalComplete.ToString();
             lblCountProcess.Text = obj.totalProcess.ToString();
+            Properties.Settings.Default.id_employee = obj.id_employee;
+            Properties.Settings.Default.Save();
             _obj = this;
         }
         class User
@@ -137,6 +140,7 @@ namespace CTS_beta.Form_CTS
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.apiKey = "";
+            Properties.Settings.Default.id_employee = 0;
             Properties.Settings.Default.Save();
             if(frmLogin!=null)
             {

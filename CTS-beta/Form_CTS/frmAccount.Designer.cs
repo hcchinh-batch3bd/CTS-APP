@@ -46,11 +46,13 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.PicSyn = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewAccount.MasterTemplate)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).BeginInit();
             this.SuspendLayout();
             // 
             // GridViewAccount
@@ -85,7 +87,7 @@
             gridViewTextBoxColumn6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewTextBoxColumn6.Width = 118;
             gridViewTextBoxColumn7.HeaderText = "Trạng Thái";
-            gridViewTextBoxColumn7.Name = "column3";
+            gridViewTextBoxColumn7.Name = "status";
             gridViewTextBoxColumn7.Width = 107;
             this.GridViewAccount.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
@@ -113,6 +115,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.Controls.Add(this.PicSyn);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.ForeColor = System.Drawing.Color.White;
@@ -202,6 +205,17 @@
             this.btnSearch.TabIndex = 35;
             this.btnSearch.UseVisualStyleBackColor = false;
             // 
+            // PicSyn
+            // 
+            this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
+            this.PicSyn.Location = new System.Drawing.Point(17, 4);
+            this.PicSyn.Name = "PicSyn";
+            this.PicSyn.Size = new System.Drawing.Size(32, 32);
+            this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PicSyn.TabIndex = 46;
+            this.PicSyn.TabStop = false;
+            this.PicSyn.Click += new System.EventHandler(this.PicSyn_Click);
+            // 
             // frmAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,6 +234,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -234,5 +249,6 @@
         private Telerik.WinControls.UI.RadTextBox radTextBox1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.PictureBox PicSyn;
     }
 }

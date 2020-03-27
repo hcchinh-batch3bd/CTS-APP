@@ -44,11 +44,13 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.PicSyn = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).BeginInit();
             this.SuspendLayout();
             // 
             // data
@@ -64,14 +66,14 @@
             gridViewTextBoxColumn1.Name = "ID";
             gridViewTextBoxColumn1.ReadOnly = true;
             gridViewTextBoxColumn1.RowSpan = 50;
-            gridViewTextBoxColumn1.Width = 116;
+            gridViewTextBoxColumn1.Width = 119;
             gridViewTextBoxColumn2.HeaderText = "Loại nhiệm vụ";
             gridViewTextBoxColumn2.Name = "nameType";
-            gridViewTextBoxColumn2.Width = 584;
+            gridViewTextBoxColumn2.Width = 598;
             gridViewTextBoxColumn3.HeaderText = "Trạng thái";
             gridViewTextBoxColumn3.Name = "Status";
             gridViewTextBoxColumn3.ReadOnly = true;
-            gridViewTextBoxColumn3.Width = 204;
+            gridViewTextBoxColumn3.Width = 208;
             this.data.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -86,7 +88,7 @@
             // 
             this.data.RootElement.AutoSize = false;
             this.data.ShowHeaderCellButtons = true;
-            this.data.Size = new System.Drawing.Size(921, 398);
+            this.data.Size = new System.Drawing.Size(942, 398);
             this.data.TabIndex = 8;
             this.data.ThemeName = "MaterialTeal";
             this.data.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.data_CellValueChanged);
@@ -101,18 +103,19 @@
             this.panel3.ForeColor = System.Drawing.Color.White;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(931, 42);
+            this.panel3.Size = new System.Drawing.Size(942, 42);
             this.panel3.TabIndex = 9;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel1.Controls.Add(this.PicSyn);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.Color.White;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(931, 42);
+            this.panel1.Size = new System.Drawing.Size(942, 42);
             this.panel1.TabIndex = 10;
             // 
             // label1
@@ -120,7 +123,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(397, 12);
+            this.label1.Location = new System.Drawing.Point(403, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 20);
             this.label1.TabIndex = 0;
@@ -131,7 +134,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(397, 12);
+            this.label3.Location = new System.Drawing.Point(403, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(187, 20);
             this.label3.TabIndex = 0;
@@ -208,7 +211,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 552);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(931, 68);
+            this.panel2.Size = new System.Drawing.Size(942, 68);
             this.panel2.TabIndex = 1;
             // 
             // btnEdit
@@ -230,6 +233,17 @@
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // PicSyn
+            // 
+            this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
+            this.PicSyn.Location = new System.Drawing.Point(18, 5);
+            this.PicSyn.Name = "PicSyn";
+            this.PicSyn.Size = new System.Drawing.Size(32, 32);
+            this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PicSyn.TabIndex = 45;
+            this.PicSyn.TabStop = false;
+            this.PicSyn.Click += new System.EventHandler(this.PicSyn_Click);
+            // 
             // frmTypeMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,7 +258,7 @@
             this.Controls.Add(this.data);
             this.Controls.Add(this.panel3);
             this.Name = "frmTypeMission";
-            this.Size = new System.Drawing.Size(931, 620);
+            this.Size = new System.Drawing.Size(942, 620);
             this.Load += new System.EventHandler(this.frmTypeMission_Load);
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.data)).EndInit();
@@ -253,6 +267,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +286,6 @@
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.PictureBox PicSyn;
     }
 }

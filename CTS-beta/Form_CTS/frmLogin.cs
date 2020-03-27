@@ -53,6 +53,7 @@ namespace CTS_beta
                     MessageBox.Show(obj.message);
                     if (sessions.Count > 0)
                     {
+                        Properties.Settings.Default.id_employee = sessions.FirstOrDefault().id_employee;
                         if (ckbRemember.Checked)
                         {
                             Properties.Settings.Default.apiKey = sessions.FirstOrDefault().apiKey;

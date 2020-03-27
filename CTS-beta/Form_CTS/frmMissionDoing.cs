@@ -33,13 +33,13 @@ namespace CTS_beta.Form_CTS
             List<Mission> missionCompletes = obj.results;
             foreach (var mission in missionCompletes)
             {
-                if (radGridView1.InvokeRequired)
+                if (!radGridView1.InvokeRequired)
                 {
                   
-                    radGridView1.Rows.Add(mission.name_mission, mission.exprie, mission.id_type, mission.point, "Hoàn thành", mission.id_mission);
+                    radGridView1.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Hoàn thành", mission.id_mission);
                 }
                 else
-                    radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.id_type, mission.point, "Hoàn thành", mission.id_mission)));
+                    radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Hoàn thành", mission.id_mission)));
 
 
             }
@@ -83,6 +83,13 @@ namespace CTS_beta.Form_CTS
                 e.CellElement.Font = new Font(e.CellElement.Font, FontStyle.Underline);
                 e.CellElement.DrawFill = true;
             }
+        }
+
+        private void PicSyn_Click(object sender, EventArgs e)
+        {
+            radGridView1.Rows.Clear();
+            Thread thread = new Thread(new ThreadStart(loadData));
+            thread.Start();
         }
     }
     }

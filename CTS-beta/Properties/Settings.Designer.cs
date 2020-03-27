@@ -34,5 +34,17 @@ namespace CTS_beta.Properties {
                 this["apiKey"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int id_employee {
+            get {
+                return ((int)(this["id_employee"]));
+            }
+            set {
+                this["id_employee"] = value;
+            }
+        }
     }
 }

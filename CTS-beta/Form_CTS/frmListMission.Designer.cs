@@ -40,16 +40,17 @@
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.data = new Telerik.WinControls.UI.RadGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnLoad = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnAddMission = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.PicSyn = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).BeginInit();
             this.data.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).BeginInit();
             this.SuspendLayout();
             // 
             // data
@@ -109,7 +110,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnLoad);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnAddMission);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -117,23 +117,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(942, 47);
             this.panel1.TabIndex = 10;
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLoad.FlatAppearance.BorderSize = 0;
-            this.btnLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.btnLoad.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
-            this.btnLoad.Location = new System.Drawing.Point(798, 4);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(141, 40);
-            this.btnLoad.TabIndex = 37;
-            this.btnLoad.Text = "Tải lại dữ liệu";
-            this.btnLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLoad.UseVisualStyleBackColor = false;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // button1
             // 
@@ -173,6 +156,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.Controls.Add(this.PicSyn);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.ForeColor = System.Drawing.Color.White;
@@ -180,6 +164,17 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(942, 42);
             this.panel3.TabIndex = 9;
+            // 
+            // PicSyn
+            // 
+            this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
+            this.PicSyn.Location = new System.Drawing.Point(14, 5);
+            this.PicSyn.Name = "PicSyn";
+            this.PicSyn.Size = new System.Drawing.Size(32, 32);
+            this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PicSyn.TabIndex = 43;
+            this.PicSyn.TabStop = false;
+            this.PicSyn.Click += new System.EventHandler(this.PicSyn_Click);
             // 
             // label3
             // 
@@ -209,6 +204,7 @@
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -221,6 +217,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnAddMission;
-        private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.PictureBox PicSyn;
     }
 }

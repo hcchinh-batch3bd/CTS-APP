@@ -30,7 +30,6 @@ namespace CTS_beta.Form_CTS
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
             button1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 5, 5));
             btnAddMission.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnAddMission.Width, btnAddMission.Height, 5, 5));
-            btnLoad.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnLoad.Width, btnLoad.Height, 5, 5));
             Thread thread = new Thread(new ThreadStart(LoadData));
             thread.Start();
         }
@@ -58,19 +57,19 @@ namespace CTS_beta.Form_CTS
                             if (!data.InvokeRequired)
                                 data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Hủy", item.point);
                             else
-                                data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Hủy", item.point)));
+                                data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.name_type_mission, item.describe, Count, "Hủy", item.point)));
                             break;
                         case 0:
                             if (!data.InvokeRequired)
-                                data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Đang duyệt", item.point);
+                                data.Rows.Add(item.id_mission, item.name_mission, item.name_type_mission, item.describe, Count, "Đang duyệt", item.point);
                             else
-                                data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Đang duyệt", item.point)));
+                                data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.name_type_mission, item.describe, Count, "Đang duyệt", item.point)));
                             break;
                         default:
                             if (!data.InvokeRequired)
                                 data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Đang chạy", item.point);
                             else
-                                data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Đang chạy", item.point)));
+                                data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.name_type_mission, item.describe, Count, "Đang chạy", item.point)));
                             break;
                     }
 
@@ -93,7 +92,7 @@ namespace CTS_beta.Form_CTS
         private void DeleteMission()
         {
             int idMission = int.Parse(data.Rows[data.CurrentCell.RowIndex].Cells["id"].Value.ToString());
-            var client = new RestClient("https://api.hotrogame.online/Mission/"+idMission+"/ClearMission?apiKey=admin");
+            var client = new RestClient(ConfigurationSettings.AppSettings["server"]+"/Mission/" +idMission+"/ClearMission?apiKey="+Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.PUT);
             IRestResponse response = client.Execute(request);
             data.Rows.Clear();
@@ -115,12 +114,12 @@ namespace CTS_beta.Form_CTS
                 MessageBox.Show("Nhiệm vụ đã dừng hoạt động !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void btnLoad_Click(object sender, EventArgs e)
+        private void PicSyn_Click(object sender, EventArgs e)
         {
-            
-            LoadData();
+            data.Rows.Clear();
+            Thread thread = new Thread(new ThreadStart(LoadData));
+            thread.Start();
         }
-      
     }
 
     class RootObject

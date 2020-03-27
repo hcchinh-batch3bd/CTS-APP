@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStatistical));
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,16 +41,19 @@
             this.btnExcel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.data = new Telerik.WinControls.UI.RadGridView();
+            this.PicSyn = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.Controls.Add(this.PicSyn);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.ForeColor = System.Drawing.Color.White;
@@ -115,27 +118,27 @@
             this.data.MasterTemplate.AllowAddNewRow = false;
             this.data.MasterTemplate.AllowColumnReorder = false;
             this.data.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn5.HeaderText = "Vị trí";
-            gridViewTextBoxColumn5.Name = "column3";
-            gridViewTextBoxColumn5.RowSpan = 10;
-            gridViewTextBoxColumn5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn5.Width = 97;
-            gridViewTextBoxColumn6.HeaderText = "ID";
-            gridViewTextBoxColumn6.Name = "ID";
-            gridViewTextBoxColumn6.Width = 119;
-            gridViewTextBoxColumn7.HeaderText = "Tên nhân viên";
-            gridViewTextBoxColumn7.Name = "column1";
-            gridViewTextBoxColumn7.Width = 521;
-            gridViewTextBoxColumn8.HeaderText = "Điểm số";
-            gridViewTextBoxColumn8.Name = "column2";
-            gridViewTextBoxColumn8.Width = 205;
+            gridViewTextBoxColumn1.HeaderText = "Vị trí";
+            gridViewTextBoxColumn1.Name = "column3";
+            gridViewTextBoxColumn1.RowSpan = 10;
+            gridViewTextBoxColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn1.Width = 97;
+            gridViewTextBoxColumn2.HeaderText = "ID";
+            gridViewTextBoxColumn2.Name = "ID";
+            gridViewTextBoxColumn2.Width = 119;
+            gridViewTextBoxColumn3.HeaderText = "Tên nhân viên";
+            gridViewTextBoxColumn3.Name = "column1";
+            gridViewTextBoxColumn3.Width = 521;
+            gridViewTextBoxColumn4.HeaderText = "Điểm số";
+            gridViewTextBoxColumn4.Name = "column2";
+            gridViewTextBoxColumn4.Width = 205;
             this.data.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn5,
-            gridViewTextBoxColumn6,
-            gridViewTextBoxColumn7,
-            gridViewTextBoxColumn8});
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3,
+            gridViewTextBoxColumn4});
             this.data.MasterTemplate.ShowRowHeaderColumn = false;
-            this.data.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.data.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.data.Name = "data";
             this.data.ReadOnly = true;
             // 
@@ -145,6 +148,17 @@
             this.data.Size = new System.Drawing.Size(942, 538);
             this.data.TabIndex = 9;
             this.data.ThemeName = "MaterialTeal";
+            // 
+            // PicSyn
+            // 
+            this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
+            this.PicSyn.Location = new System.Drawing.Point(15, 5);
+            this.PicSyn.Name = "PicSyn";
+            this.PicSyn.Size = new System.Drawing.Size(32, 32);
+            this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PicSyn.TabIndex = 44;
+            this.PicSyn.TabStop = false;
+            this.PicSyn.Click += new System.EventHandler(this.PicSyn_Click);
             // 
             // frmStatistical
             // 
@@ -163,6 +177,7 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.data)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -175,5 +190,6 @@
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.Panel panel2;
         private Telerik.WinControls.UI.RadGridView data;
+        private System.Windows.Forms.PictureBox PicSyn;
     }
 }

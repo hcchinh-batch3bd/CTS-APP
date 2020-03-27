@@ -10,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using Telerik.WinControls;
 
@@ -17,41 +18,23 @@ namespace CTS_beta
 {
     public partial class frmAdmin : Telerik.WinControls.UI.RadForm
     {
-
-        string apiKey;
         frmLogin frmLogin;
-        static frmAdmin _obj;
         public frmAdmin()
         {
             InitializeComponent();
             
         }
-        public static frmAdmin Instance
-        {
-            get
-            {
-                if (_obj == null)
-                {
-                    _obj = new frmAdmin();
-                }
-                return _obj;
-            }
-        }
-        
-        public string ApiKey
-        {
-            get { return apiKey; }
-            set { apiKey = value; }
-        }
         public frmAdmin(frmLogin frm, string apiKey)
         {
             InitializeComponent();
-            this.apiKey = apiKey;
+            Properties.Settings.Default.apiKey = apiKey;
+            Properties.Settings.Default.Save();
             panel5.AutoScroll = true;
         }
         private void button13_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.apiKey = "";
+            Properties.Settings.Default.id_employee = 0;
             Properties.Settings.Default.Save();
             if (frmLogin != null)
             {
@@ -101,7 +84,6 @@ namespace CTS_beta
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
             ChildForm.OpenChildForm(new frmStatistical(), panel4);
             ShowMenu.customizeDesing(panel5);
-            _obj = this;
         }
 
         private void frmAdmin_MouseDown(object sender, MouseEventArgs e)
@@ -118,7 +100,17 @@ namespace CTS_beta
 
         private void button11_Click(object sender, EventArgs e)
         {
-
+            if (panel5.Visible)
+                panel5.Visible = false;
+            else
+                panel5.Visible = true;
+            panel5.Controls.Clear();
+            Thread thread = new Thread(new ThreadStart(loadNotify));
+            thread.Start();
+        }
+        void loadNotify()
+        {
+            
             var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Mission/ListMission");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
@@ -128,26 +120,39 @@ namespace CTS_beta
                 List<Mission> mission = obj.results;
                 foreach (var item in mission)
                 {
-                    if(item.status==0)
+                    if (item.status == 0)
                     {
-                        string content = item.name_mission;
-                        ShowMenu.showSubMenu(panel5);
-                        MissionApproval childForm = new MissionApproval(item.id_mission, content);
-                        panel5.Controls.Add(childForm);
-                        childForm.BringToFront();
-                        childForm.Show();
+                       
+                        string content = item.name_employee+" đã yêu cầu tạo nhiệm vụ: \""+item.name_mission+"\"";
+                        MissionApproval childForm = new MissionApproval(item.id_mission, content,panel5);
+                        if (!panel5.InvokeRequired)
+                            panel5.Controls.Add(childForm);
+                        else
+                            panel5.Invoke(new Action(() => panel5.Controls.Add(childForm)));
+                       
+                       
+                        if (childForm.InvokeRequired)
+                        {
+                            childForm.Invoke(new Action(() => childForm.BringToFront()));
+                            childForm.Invoke(new Action(() => childForm.Show()));
+                        }
+                        else
+                        {
+                            childForm.BringToFront();
+
+                            childForm.Show();
+                        }
                     }
-                   
+                            
+
                 }
-                
+
+
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Máy chủ " + ConfigurationSettings.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Máy chủ "+ex.Message + ConfigurationSettings.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-           
-
         }
-
     }
 }

@@ -46,41 +46,53 @@ namespace CTS_beta.Form_CTS
 
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
-
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tạo không", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
-            {                
-                var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Employee/Create?apiKey=" + frmAdmin.Instance.ApiKey);
-                var request = new RestRequest(Method.POST);
-                request.AddHeader("content-type", "application/json");
-                Employee employee = new Employee();
-                employee.name_employee = txtname_employee.Text;
-                employee.email = txtemail.Text;
-                employee.password = txtpassword.Text;
-                employee.date = txtdate.Value.Date;
-                bool levels;
-                if (txtlevel.SelectedText=="Quản lý")
+            if (!this.txtemail.Text.Contains('@') || !this.txtemail.Text.Contains('.'))
+            {
+                MessageBox.Show("Vui lòng nhập đúng định dạng Email", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (txtname_employee.Text != "" && txtpassword.Text != "" && txtlevel.SelectedValue.ToString() != "")
                 {
-                    levels = true;
+                    DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tạo không", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Employee/Create?apiKey=" + Properties.Settings.Default.apiKey);
+                        var request = new RestRequest(Method.POST);
+                        request.AddHeader("content-type", "application/json");
+                        Employee employee = new Employee();
+                        employee.name_employee = txtname_employee.Text;
+                        employee.email = txtemail.Text;
+                        employee.password = txtpassword.Text;
+                        employee.date = txtdate.Value.Date;
+                        employee.level_employee = txtlevel.SelectedValue.ToString();
+                        string output = JsonConvert.SerializeObject(employee);
+                        request.AddParameter("application/json", output, ParameterType.RequestBody);
+                        IRestResponse response = client.Execute(request);
+                        // request.AddParameter("undefined", "{\"name_employee\":\'" + txtname_employee.Text + "',\"date\":\'" + txtdate.Text + "',\"email\":" + txtemail.Text + " ,\"password\":" + txtpassword.Text + ",\"level_employee\":\'" + txtlevel.ValueMember + "' }", ParameterType.RequestBody);
+                        RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                        MessageBox.Show(obj.message);
+                        this.Close();
+                    }
+                    
+                
                 }
-                else { levels = false; }
-                  employee.level = levels.ToString();
-                string output = JsonConvert.SerializeObject(employee);
-                request.AddParameter("application/json", output, ParameterType.RequestBody);
-                IRestResponse response = client.Execute(request);
-                // request.AddParameter("undefined", "{\"name_employee\":\'" + txtname_employee.Text + "',\"date\":\'" + txtdate.Text + "',\"email\":" + txtemail.Text + " ,\"password\":" + txtpassword.Text + ",\"level_employee\":\'" + txtlevel.ValueMember + "' }", ParameterType.RequestBody);
-                RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-                MessageBox.Show(obj.message);
-                //Thread thread = new Thread(new ThreadStart(LoadData));
-                //thread.Start();                
-                // MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
             }
         }
 
         private void frmCreateAccount_Load(object sender, EventArgs e)
         {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("level");
+            dt.Columns.Add("name_level");
+            dt.Rows.Add(true, "Quản lý");
+            dt.Rows.Add(false, "Nhân viên");
+            txtlevel.DataSource = dt;
+            txtlevel.DisplayMember = "name_level";
+            txtlevel.ValueMember = "level";
 
-           
         }
         public class RootObject
         {
@@ -89,6 +101,9 @@ namespace CTS_beta.Form_CTS
             public string message { get; set; }
         }
 
+        private void txtlevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
