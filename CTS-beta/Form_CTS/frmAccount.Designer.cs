@@ -40,19 +40,16 @@
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.GridViewAccount = new Telerik.WinControls.UI.RadGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.PicSyn = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.PicSyn = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewAccount.MasterTemplate)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GridViewAccount
@@ -124,6 +121,17 @@
             this.panel3.Size = new System.Drawing.Size(942, 42);
             this.panel3.TabIndex = 9;
             // 
+            // PicSyn
+            // 
+            this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
+            this.PicSyn.Location = new System.Drawing.Point(17, 4);
+            this.PicSyn.Name = "PicSyn";
+            this.PicSyn.Size = new System.Drawing.Size(32, 32);
+            this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PicSyn.TabIndex = 46;
+            this.PicSyn.TabStop = false;
+            this.PicSyn.Click += new System.EventHandler(this.PicSyn_Click);
+            // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -139,8 +147,6 @@
             // 
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.btnDelete);
-            this.panel1.Controls.Add(this.radTextBox1);
-            this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 566);
             this.panel1.Name = "panel1";
@@ -174,7 +180,7 @@
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnDelete.Image = global::CTS_beta.Properties.Resources.close_window_20px;
-            this.btnDelete.Location = new System.Drawing.Point(340, 13);
+            this.btnDelete.Location = new System.Drawing.Point(17, 13);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(72, 29);
             this.btnDelete.TabIndex = 34;
@@ -182,39 +188,6 @@
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // radTextBox1
-            // 
-            this.radTextBox1.Location = new System.Drawing.Point(17, 10);
-            this.radTextBox1.Name = "radTextBox1";
-            this.radTextBox1.NullText = "Tìm kiếm";
-            this.radTextBox1.Size = new System.Drawing.Size(247, 36);
-            this.radTextBox1.TabIndex = 36;
-            this.radTextBox1.ThemeName = "MaterialTeal";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.White;
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(270, 13);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(64, 29);
-            this.btnSearch.TabIndex = 35;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // PicSyn
-            // 
-            this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
-            this.PicSyn.Location = new System.Drawing.Point(17, 4);
-            this.PicSyn.Name = "PicSyn";
-            this.PicSyn.Size = new System.Drawing.Size(32, 32);
-            this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.PicSyn.TabIndex = 46;
-            this.PicSyn.TabStop = false;
-            this.PicSyn.Click += new System.EventHandler(this.PicSyn_Click);
             // 
             // frmAccount
             // 
@@ -231,10 +204,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridViewAccount)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -246,8 +217,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnDelete;
-        private Telerik.WinControls.UI.RadTextBox radTextBox1;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox PicSyn;
     }
