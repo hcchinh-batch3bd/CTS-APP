@@ -59,7 +59,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(209, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(968, 10);
+            this.panel2.Size = new System.Drawing.Size(955, 10);
             this.panel2.TabIndex = 1;
             // 
             // label4
@@ -83,7 +83,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(703, 57);
+            this.panel5.Location = new System.Drawing.Point(728, 57);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(340, 138);
             this.panel5.TabIndex = 0;
@@ -97,9 +97,9 @@
             this.btnExit.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.Location = new System.Drawing.Point(1084, 16);
+            this.btnExit.Location = new System.Drawing.Point(1117, 10);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(32, 35);
+            this.btnExit.Size = new System.Drawing.Size(47, 50);
             this.btnExit.TabIndex = 4;
             this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExit.UseVisualStyleBackColor = true;
@@ -113,9 +113,9 @@
             this.button12.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.White;
             this.button12.Image = global::CTS_beta.Properties.Resources.settings_32px1;
-            this.button12.Location = new System.Drawing.Point(1041, 16);
+            this.button12.Location = new System.Drawing.Point(1070, 10);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(32, 35);
+            this.button12.Size = new System.Drawing.Size(47, 50);
             this.button12.TabIndex = 4;
             this.button12.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button12.UseVisualStyleBackColor = true;
@@ -128,9 +128,9 @@
             this.button11.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.White;
             this.button11.Image = global::CTS_beta.Properties.Resources.notification_32px1;
-            this.button11.Location = new System.Drawing.Point(998, 16);
+            this.button11.Location = new System.Drawing.Point(1023, 10);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(32, 35);
+            this.button11.Size = new System.Drawing.Size(47, 50);
             this.button11.TabIndex = 4;
             this.button11.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button11.UseVisualStyleBackColor = true;
@@ -228,7 +228,7 @@
             this.button14.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button14.ForeColor = System.Drawing.Color.White;
             this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(0, 683);
+            this.button14.Location = new System.Drawing.Point(0, 652);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(36, 34);
             this.button14.TabIndex = 4;
@@ -293,7 +293,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(209, 720);
+            this.panel1.Size = new System.Drawing.Size(209, 689);
             this.panel1.TabIndex = 0;
             // 
             // frmAdmin
@@ -301,7 +301,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1177, 720);
+            this.ClientSize = new System.Drawing.Size(1164, 689);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label4);

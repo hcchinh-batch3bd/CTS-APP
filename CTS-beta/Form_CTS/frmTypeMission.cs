@@ -26,6 +26,7 @@ namespace CTS_beta.Form_CTS
             this.data.MasterTemplate.EnableGrouping = false;
             this.data.MasterTemplate.AllowDragToGroup = false;
             this.data.MasterTemplate.AutoExpandGroups = false;
+            txtaddnametypemisson.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtaddnametypemisson.Width, txtaddnametypemisson.Height, 5, 5));
         }
 
         private void frmTypeMission_Load(object sender, EventArgs e)
@@ -105,17 +106,17 @@ namespace CTS_beta.Form_CTS
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var nameType = txtaddnametypemisson.TextName;
+            var nameType = txtaddnametypemisson.Text;
             if (nameType != "")
             {
-                if (!check(txtaddnametypemisson.TextName))
+                if (!check(txtaddnametypemisson.Text))
                 {
 
                     var client = new RestClient(ConfigurationSettings.AppSettings["server"]+ "/Type_Mission/Create?apiKey="+Properties.Settings.Default.apiKey);
                     var request = new RestRequest(Method.POST);
                     request.AddHeader("content-type", "application/json");
                     TypeMission typeMission = new TypeMission();
-                    typeMission.name_type_mission = txtaddnametypemisson.TextName;
+                    typeMission.name_type_mission = txtaddnametypemisson.Text;
                     typeMission.id_employee = 189212;
                     typeMission.status = true;
                     typeMission.date = DateTime.Now;
@@ -126,13 +127,13 @@ namespace CTS_beta.Form_CTS
                     MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Thread thread = new Thread(new ThreadStart(LoadData));
                     thread.Start();
-                    txtaddnametypemisson.TextName = "";
+                    txtaddnametypemisson.Text = "";
                 }
 
                 else
                 {
                     MessageBox.Show("Tên loại nhiệm vụ đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                    txtaddnametypemisson.TextName = "";
+                    txtaddnametypemisson.Text = "";
                 }
             }
             else MessageBox.Show("Bạn chưa nhập tên loại nhiệm vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Hand);
