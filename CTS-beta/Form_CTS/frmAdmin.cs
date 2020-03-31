@@ -19,7 +19,6 @@ namespace CTS_beta
 {
     public partial class frmAdmin : Telerik.WinControls.UI.RadForm
     {
-        frmLogin frmLogin;
         int num = 0;
         public frmAdmin()
         {
@@ -33,32 +32,24 @@ namespace CTS_beta
             Properties.Settings.Default.Save();
             panel5.AutoScroll = true;
         }
-        private void button13_Click(object sender, EventArgs e)
+        private void Button13_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.apiKey = "";
             Properties.Settings.Default.id_employee = 0;
             Properties.Settings.Default.Save();
-            if (frmLogin != null)
-            {
-                frmLogin.Show();
-                this.Close();
-            }
-            else
-            {
-                frmLogin frm = new frmLogin();
-                frm.Show();
-                this.Hide();
-            }
+            frmLogin frm = new frmLogin();
+            frm.Show();
+            this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             SidePanel.Height = button1.Height;
             SidePanel.Top = button1.Top;
             ChildForm.OpenChildForm(new frmStatistical(), panel4);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             SidePanel.Height = button2.Height;
             SidePanel.Top = button2.Top;
@@ -66,21 +57,21 @@ namespace CTS_beta
         }
 
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             SidePanel.Height = button3.Height;
             SidePanel.Top = button3.Top;
             ChildForm.OpenChildForm(new frmTypeMission(), panel4);
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
             SidePanel.Height = button4.Height;
             SidePanel.Top = button4.Top;
             ChildForm.OpenChildForm(new frmAccount(), panel4);
         }
 
-        private void frmAdmin_Load(object sender, EventArgs e)
+        private void FrmAdmin_Load(object sender, EventArgs e)
         {
             
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
@@ -114,7 +105,7 @@ namespace CTS_beta
         void loadNotify()
         {
             num = 0;
-            var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Mission/ListMission");
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/ListMission");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             try
@@ -156,7 +147,7 @@ namespace CTS_beta
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Máy chủ "+ex.Message + ConfigurationSettings.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Máy chủ "+ex.Message + ConfigurationManager.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs pevent)

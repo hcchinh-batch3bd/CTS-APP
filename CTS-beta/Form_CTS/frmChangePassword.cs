@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Telerik.WinControls;
 using CTS_beta.Form_CTS;
 using Newtonsoft.Json;
+using System.Configuration;
 
 namespace CTS_beta
 {
@@ -34,7 +35,7 @@ namespace CTS_beta
                 MessageBox.Show("Vui lòng nhập lại mật khẩu mới !!");
             if (txtPasswordNew.Text.Equals(txtPasswordNewComfirm.Text))
             {
-                var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"]+"/Account/Changepassword?passold="+txtPasswordOld.Text+"&passnew="+txtPasswordNew.Text+"&apiKey="+frmUser.Instance.ApiKey);
+                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/Changepassword?passold="+txtPasswordOld.Text+"&passnew="+txtPasswordNew.Text+"&apiKey="+frmUser.Instance.ApiKey);
                 var request = new RestRequest(Method.PUT);
                 IRestResponse response = client.Execute(request);
                 try

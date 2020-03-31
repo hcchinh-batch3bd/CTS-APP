@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace CTS_beta.Form_CTS
 {
@@ -35,7 +36,7 @@ namespace CTS_beta.Form_CTS
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"]+"/Mission/" +id+ "/Confirm?apiKey=" + Properties.Settings.Default.apiKey);
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" +id+ "/Confirm?apiKey=" + Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.PUT);
             IRestResponse response = client.Execute(request);
             Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
@@ -49,7 +50,7 @@ namespace CTS_beta.Form_CTS
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"] + "/Mission/" +id+"/ClearMission?apiKey="+Properties.Settings.Default.apiKey);
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" +id+"/ClearMission?apiKey="+Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.PUT);
             IRestResponse response = client.Execute(request);
             MessageBox.Show("Xóa nhiệm vụ thành công.");

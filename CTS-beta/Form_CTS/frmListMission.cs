@@ -36,7 +36,7 @@ namespace CTS_beta.Form_CTS
 
         private void LoadData()
         {
-            var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Mission/ListMission");
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/ListMission");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             try
@@ -78,7 +78,7 @@ namespace CTS_beta.Form_CTS
             }
             catch
             {
-                MessageBox.Show("Máy chủ " + ConfigurationSettings.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Máy chủ " + ConfigurationManager.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -92,7 +92,7 @@ namespace CTS_beta.Form_CTS
         private void DeleteMission()
         {
             int idMission = int.Parse(data.Rows[data.CurrentCell.RowIndex].Cells["id"].Value.ToString());
-            var client = new RestClient(ConfigurationSettings.AppSettings["server"]+"/Mission/" +idMission+"/ClearMission?apiKey="+Properties.Settings.Default.apiKey);
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" +idMission+"/ClearMission?apiKey="+Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.PUT);
             IRestResponse response = client.Execute(request);
             data.Rows.Clear();

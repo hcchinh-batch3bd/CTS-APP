@@ -34,18 +34,18 @@ namespace CTS_beta.Form_CTS
 
 
 
-        private void button13_Click(object sender, EventArgs e)
+        private void Button13_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        private void Panel3_MouseDown(object sender, MouseEventArgs e)
         {
             MoveControl.ReleaseCapture();
             MoveControl.SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void frmAddMission_MouseDown(object sender, MouseEventArgs e)
+        private void FrmAddMission_MouseDown(object sender, MouseEventArgs e)
         {
             MoveControl.ReleaseCapture();
             MoveControl.SendMessage(this.Handle, 0x112, 0xf012, 0);
@@ -53,7 +53,7 @@ namespace CTS_beta.Form_CTS
 
         private void LoadTypeMission()
         {
-            var client = new RestClient(ConfigurationSettings.AppSettings["server"]+"/Type_Mission/GetAll");
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/GetAll");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             List<TypeMission> listTypes = JsonConvert.DeserializeObject<List<TypeMission>>(response.Content.ToString());
@@ -90,7 +90,7 @@ namespace CTS_beta.Form_CTS
                 int status = 0;
                 int idEmployee = Properties.Settings.Default.id_employee;
                 //Mission mission = GetDataFromForm();
-                var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"] +"/Mission/Create?apiKey="+frmUser.Instance.ApiKey);
+                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/Create?apiKey="+frmUser.Instance.ApiKey);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("content-type", "application/json");
                 request.AddParameter("undefined", "{\"name_mission\":\'" + nameMission + "',\"Stardate\":\'" + Stardate + "',\"point\":" +point + " ,\"exprie\":" + exprie + ",\"describe\":\'" + describe + "',\"status\":\'" + status + "',\"count\":" + count + ",\"id_type\":" + idTypeMission + ",\"id_employee\":" + idEmployee + "}", ParameterType.RequestBody);
@@ -102,14 +102,14 @@ namespace CTS_beta.Form_CTS
             else MessageBox.Show("Chưa nhập đủ thông tin");
         }
 
-        private void frmAddMission_Load(object sender, EventArgs e)
+        private void FrmAddMission_Load(object sender, EventArgs e)
         {
 
             Thread thread = new Thread(new ThreadStart(LoadTypeMission));
             thread.Start();
         }
 
-        private void btnAddNew_Click(object sender, EventArgs e)
+        private void BtnAddNew_Click(object sender, EventArgs e)
         {
             AddMission();
             this.Hide();

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using CTS_beta.Models;
 using Newtonsoft.Json;
 using System.Threading;
+using System.Configuration;
 
 namespace CTS_beta.Form_CTS
 {
@@ -32,7 +33,7 @@ namespace CTS_beta.Form_CTS
         }
         void LoadData()
         {
-            var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"]+"/Mission/ListMissionComplete?apiKey="+frmUser.Instance.ApiKey);
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/ListMissionComplete?apiKey="+frmUser.Instance.ApiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             try
@@ -49,7 +50,7 @@ namespace CTS_beta.Form_CTS
             }
            catch
             {
-                MessageBox.Show("Máy chủ " + System.Configuration.ConfigurationSettings.AppSettings["server"] +  "bị mất kết nối");
+                MessageBox.Show("Máy chủ " + ConfigurationManager.AppSettings["server"] +  "bị mất kết nối");
             }
             
             
@@ -66,6 +67,7 @@ namespace CTS_beta.Form_CTS
             data.Rows.Clear();
             Thread thread = new Thread(new ThreadStart(LoadData));
             thread.Start();
+            frmUser.Instance.worker.RunWorkerAsync();
         }
     }
 }

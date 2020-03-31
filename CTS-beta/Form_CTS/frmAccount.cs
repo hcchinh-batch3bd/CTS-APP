@@ -32,11 +32,11 @@ namespace CTS_beta.Form_CTS
         {
             try
             {
-                var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Account/ListEmployee?apiKey=" + Properties.Settings.Default.apiKey);
+                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/ListEmployee?apiKey=" + Properties.Settings.Default.apiKey);
                 var request = new RestRequest(Method.GET);
                 IRestResponse response = client.Execute(request);
                 RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-                List<Employee> listAccount = obj.results;
+                List<Employee> listAccount = obj.Results;
                 foreach (var account in listAccount)
                 {
                     int old = (DateTime.Now).Year - account.date.Year;
@@ -52,12 +52,12 @@ namespace CTS_beta.Form_CTS
         }
         public class RootObject
         {
-            public List<Employee> results { get; set; }
-            public bool status { get; set; }
-            public string message { get; set; }
+            public List<Employee> Results { get; set; }
+            public bool Status { get; set; }
+            public string Message { get; set; }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
             if ((!GridViewAccount.Rows[GridViewAccount.CurrentCell.RowIndex].Cells["status"].Value.ToString().Equals("Nghỉ việc")))
             {
@@ -67,13 +67,13 @@ namespace CTS_beta.Form_CTS
                     if (dialogResult == DialogResult.Yes)
                     {
                         int idEmployee = int.Parse(GridViewAccount.Rows[GridViewAccount.CurrentCell.RowIndex].Cells["ID"].Value.ToString());
-                        var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Account/" + idEmployee + "/DeleteEmployee?apiKey=" + Properties.Settings.Default.apiKey);
+                        var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/" + idEmployee + "/DeleteEmployee?apiKey=" + Properties.Settings.Default.apiKey);
                         var request = new RestRequest(Method.PUT);
                         IRestResponse response = client.Execute(request);
                         try
                         {
                             RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-                            MessageBox.Show(obj.message);
+                            MessageBox.Show(obj.Message);
                             this.GridViewAccount.Rows.Clear();
                             LoadData();
                         }
@@ -92,13 +92,13 @@ namespace CTS_beta.Form_CTS
                 MessageBox.Show("Tài khoản đã bị xóa, không thể xóa lần nữa !!");
         }        
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             frmCreateAccount frm = new frmCreateAccount();
             frm.Show();
         }
 
-        private void frmAccount_Load(object sender, EventArgs e)
+        private void FrmAccount_Load(object sender, EventArgs e)
         {
             Thread thread = new Thread(new ThreadStart(LoadData));
             thread.Start();

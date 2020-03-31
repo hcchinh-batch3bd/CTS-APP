@@ -38,7 +38,7 @@ namespace CTS_beta
         void LoadData()
         {
 
-            var client = new RestClient(ConfigurationSettings.AppSettings["server"]+"/Account/RankEmployee?apiKey="+Properties.Settings.Default.apiKey);
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/RankEmployee?apiKey="+Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             try
@@ -59,7 +59,7 @@ namespace CTS_beta
             }
             catch
             {
-                MessageBox.Show("Máy chủ " + ConfigurationSettings.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Máy chủ " + ConfigurationManager.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }

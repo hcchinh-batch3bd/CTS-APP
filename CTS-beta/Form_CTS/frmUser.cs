@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using Newtonsoft.Json;
+using CTS_beta.Models;
+using System.Threading;
 
 namespace CTS_beta.Form_CTS
 {
@@ -24,6 +26,7 @@ namespace CTS_beta.Form_CTS
             radTextBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, radTextBox1.Width, radTextBox1.Height, 5, 5));
             pictureBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, pictureBox1.Width, pictureBox1.Height, 5, 5));
             apiKey = Properties.Settings.Default.apiKey;
+           
         }
         static frmUser _obj;
         public static frmUser Instance
@@ -41,6 +44,11 @@ namespace CTS_beta.Form_CTS
         {
             get { return apiKey; }
             set { apiKey = value; }
+        }
+        public BackgroundWorker worker
+        {
+            get { return backgroundWorker1; }
+            set { backgroundWorker1 = value; }
         }
         public frmUser(frmLogin frm,string apiKey)
         {
@@ -112,20 +120,24 @@ namespace CTS_beta.Form_CTS
         {
 
         }
-
+        private void dosomething()
+        {
+            Thread thread = new Thread(new ThreadStart(LoadAPP));
+            thread.Start();
+        }
         private void frmUser_Load(object sender, EventArgs e)
         {
-            var client = new RestClient(ConfigurationSettings.AppSettings["server"]+"/Account?apiKey=" +apiKey);
-            var request = new RestRequest(Method.GET);
-            IRestResponse response = client.Execute(request);
-            User obj = JsonConvert.DeserializeObject<User>(response.Content.ToString());
-            lblPoint.Text = obj.point.ToString();
-            lblNameEmployee.Text = obj.name_employee.ToString();
-            lblCountComplete.Text = obj.totalComplete.ToString();
-            lblCountProcess.Text = obj.totalProcess.ToString();
-            Properties.Settings.Default.id_employee = obj.id_employee;
-            Properties.Settings.Default.Save();
-            _obj = this;
+            this.Visible = false;
+            frmLoading frm = new frmLoading();
+            frm.Show();
+            Thread thread = new Thread(new ThreadStart(LoadAPP)) { IsBackground = true };
+            thread.Start();
+            while(thread.IsAlive)
+            {
+                Application.DoEvents();
+            }
+            frm.Close();
+            this.Visible = true;
         }
         class User
         {
@@ -154,11 +166,36 @@ namespace CTS_beta.Form_CTS
                 this.Hide();
             }
         }
+        void LoadAPP()
+        {
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account?apiKey=" + apiKey);
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            User obj = JsonConvert.DeserializeObject<User>(response.Content.ToString());
+            lblPoint.Invoke(new Action(()=>lblPoint.Text = obj.point.ToString()));
+            lblNameEmployee.Invoke(new Action(()=>lblNameEmployee.Text = obj.name_employee.ToString()));
+            lblCountComplete.Invoke(new Action(()=>lblCountComplete.Text = obj.totalComplete.ToString()));
+            lblCountProcess.Invoke(new Action(()=>lblCountProcess.Text = obj.totalProcess.ToString()));
+            Properties.Settings.Default.id_employee = obj.id_employee;
+            Properties.Settings.Default.Save();
+            _obj = this;
+            client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Missison/Missionavailable?apiKey=" + frmUser.Instance.ApiKey);
+            request = new RestRequest(Method.GET);
+            response = client.Execute(request);
+            RootObject ob = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+            List<Mission> mission = ob.results;
+            lblCountAreThere.Invoke(new Action(()=>lblCountAreThere.Text = mission.Count().ToString()));
+        }
 
         private void btnChangePass_Click(object sender, EventArgs e)
         {
             frmChangePassword frm = new frmChangePassword();
             frm.ShowDialog();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            dosomething();
         }
     }
 }

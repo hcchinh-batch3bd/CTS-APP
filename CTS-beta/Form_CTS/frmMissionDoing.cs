@@ -11,6 +11,7 @@ using CTS_beta.Models;
 using Newtonsoft.Json;
 using System.Threading;
 using RestSharp;
+using System.Configuration;
 
 namespace CTS_beta.Form_CTS
 {
@@ -26,7 +27,7 @@ namespace CTS_beta.Form_CTS
         }
         void loadData()
         {
-            var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"] + "/Mission/Missionavailableemp?apiKey=" + frmUser.Instance.ApiKey);
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/Missionavailableemp?apiKey=" + frmUser.Instance.ApiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
@@ -63,11 +64,11 @@ namespace CTS_beta.Form_CTS
             {
                 DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn hoàn thành không?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)                {                    int id = int.Parse(e.Row.Cells[5].Value.ToString());
-                    var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"] + "/Mission/" + id + "/CompleteMission?apiKey=" + frmUser.Instance.ApiKey);
+                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" + id + "/CompleteMission?apiKey=" + frmUser.Instance.ApiKey);
                     var request = new RestRequest(Method.PUT);
                     IRestResponse response = client.Execute(request);                    try                    {                        MessageBox.Show("Nhiệm vụ đã hoàn thành!!");
                         radGridView1.Rows.Clear();
-                        loadData();                    }                    catch { MessageBox.Show("Server bị mất kết nối"); }                }
+                        loadData();                        frmUser.Instance.worker.RunWorkerAsync();                    }                    catch { MessageBox.Show("Server bị mất kết nối"); }                }
                 else                {                    this.radGridView1.Rows.Clear();
                     loadData();                }
             }
@@ -90,6 +91,7 @@ namespace CTS_beta.Form_CTS
             radGridView1.Rows.Clear();
             Thread thread = new Thread(new ThreadStart(loadData));
             thread.Start();
+            frmUser.Instance.worker.RunWorkerAsync();
         }
     }
     }

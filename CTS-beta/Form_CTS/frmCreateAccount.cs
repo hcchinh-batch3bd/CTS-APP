@@ -57,7 +57,7 @@ namespace CTS_beta.Form_CTS
                     DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tạo không", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Employee/Create?apiKey=" + Properties.Settings.Default.apiKey);
+                        var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Employee/Create?apiKey=" + Properties.Settings.Default.apiKey);
                         var request = new RestRequest(Method.POST);
                         request.AddHeader("content-type", "application/json");
                         Employee employee = new Employee();

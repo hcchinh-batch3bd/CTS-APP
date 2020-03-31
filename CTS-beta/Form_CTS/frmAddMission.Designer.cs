@@ -134,7 +134,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(453, 42);
             this.panel3.TabIndex = 29;
-            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel3_MouseDown);
             // 
             // button13
             // 
@@ -151,7 +151,7 @@
             this.button13.TabIndex = 30;
             this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.button13.Click += new System.EventHandler(this.Button13_Click);
             // 
             // label3
             // 
@@ -179,7 +179,7 @@
             this.btnAddNew.Text = "Thêm mới";
             this.btnAddNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddNew.UseVisualStyleBackColor = false;
-            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
+            this.btnAddNew.Click += new System.EventHandler(this.BtnAddNew_Click);
             // 
             // txtDescribe
             // 
@@ -252,8 +252,8 @@
             this.Name = "frmAddMission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "a";
-            this.Load += new System.EventHandler(this.frmAddMission_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmAddMission_MouseDown);
+            this.Load += new System.EventHandler(this.FrmAddMission_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmAddMission_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();

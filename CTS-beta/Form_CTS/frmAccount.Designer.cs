@@ -169,7 +169,7 @@
             this.button3.Text = "Tạo tài khoản";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // btnDelete
             // 
@@ -188,7 +188,7 @@
             this.btnDelete.Text = " Xóa";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // frmAccount
             // 
@@ -200,7 +200,7 @@
             this.Controls.Add(this.panel3);
             this.Name = "frmAccount";
             this.Size = new System.Drawing.Size(942, 620);
-            this.Load += new System.EventHandler(this.frmAccount_Load);
+            this.Load += new System.EventHandler(this.FrmAccount_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GridViewAccount.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewAccount)).EndInit();
             this.panel3.ResumeLayout(false);

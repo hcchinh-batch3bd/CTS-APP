@@ -44,7 +44,7 @@ namespace CTS_beta
                 MessageBox.Show("Vui lòng không được bỏ trống !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             else
             {
-                var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Account/CheckLogin?id=" + txtID.Text + "&pw=" + txtPassword.Text);
+                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/CheckLogin?id=" + txtID.Text + "&pw=" + txtPassword.Text);
                 var request = new RestRequest(Method.GET);
                 IRestResponse response = client.Execute(request);
                 try
@@ -76,7 +76,7 @@ namespace CTS_beta
                 }
                 catch
                 {
-                    MessageBox.Show("Máy chủ " + ConfigurationSettings.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Máy chủ " + ConfigurationManager.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }

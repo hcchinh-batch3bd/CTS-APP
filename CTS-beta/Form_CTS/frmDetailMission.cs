@@ -11,6 +11,7 @@ using CTS_beta.Models;
 using Newtonsoft.Json;
 using System.Threading;
 using RestSharp;
+using System.Configuration;
 
 namespace CTS_beta.Form_CTS
 {
@@ -48,7 +49,7 @@ namespace CTS_beta.Form_CTS
         }
         void loadData()
         {
-            var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"] + "/Mission/" + idMission + "/Describe");
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" + idMission + "/Describe");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
@@ -78,14 +79,16 @@ namespace CTS_beta.Form_CTS
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn nhận nhiệm vụ không?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
             {
-                var client = new RestClient(System.Configuration.ConfigurationSettings.AppSettings["server"] + "/Mission/" + idMission + "/Order?apiKey=" + frmUser.Instance.ApiKey);
+                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" + idMission + "/Order?apiKey=" + frmUser.Instance.ApiKey);
                 var request = new RestRequest(Method.POST);
                 IRestResponse response = client.Execute(request);
                 try
                 {
-                    MessageBox.Show("Nhận nhiệm vụ thành công!!");
+                    Message msg = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
+                    MessageBox.Show(msg.message);
                     this.Close();
                     loadData();
+                    frmUser.Instance.worker.RunWorkerAsync();
                 }
                 catch { MessageBox.Show("Server bị mất kết nối"); }
             }
@@ -93,6 +96,10 @@ namespace CTS_beta.Form_CTS
             {
                 loadData();
             }
+        }
+        class Message
+        {
+            public string message { get; set; }
         }
 
         private void panel3_MouseDown(object sender, MouseEventArgs e)

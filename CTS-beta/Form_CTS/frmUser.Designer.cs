@@ -66,6 +66,7 @@
             this.lblNameEmployee = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
             this.panelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -227,7 +228,7 @@
             this.lblCountComplete.ReadOnly = true;
             this.lblCountComplete.Size = new System.Drawing.Size(27, 16);
             this.lblCountComplete.TabIndex = 32;
-            this.lblCountComplete.Text = "10";
+            this.lblCountComplete.Text = "0";
             this.lblCountComplete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblCountProcess
@@ -240,7 +241,7 @@
             this.lblCountProcess.ReadOnly = true;
             this.lblCountProcess.Size = new System.Drawing.Size(27, 16);
             this.lblCountProcess.TabIndex = 32;
-            this.lblCountProcess.Text = "10";
+            this.lblCountProcess.Text = "0";
             this.lblCountProcess.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblCountAreThere
@@ -253,7 +254,7 @@
             this.lblCountAreThere.ReadOnly = true;
             this.lblCountAreThere.Size = new System.Drawing.Size(27, 16);
             this.lblCountAreThere.TabIndex = 32;
-            this.lblCountAreThere.Text = "10";
+            this.lblCountAreThere.Text = "0";
             this.lblCountAreThere.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
@@ -539,9 +540,9 @@
             this.lblNameEmployee.ForeColor = System.Drawing.Color.White;
             this.lblNameEmployee.Location = new System.Drawing.Point(44, 75);
             this.lblNameEmployee.Name = "lblNameEmployee";
-            this.lblNameEmployee.Size = new System.Drawing.Size(132, 20);
+            this.lblNameEmployee.Size = new System.Drawing.Size(82, 20);
             this.lblNameEmployee.TabIndex = 44;
-            this.lblNameEmployee.Text = "Võ Nguyễn Kim B";
+            this.lblNameEmployee.Text = "Loading....";
             // 
             // panel6
             // 
@@ -558,6 +559,11 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1055, 5);
             this.panel7.TabIndex = 42;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
             // frmUser
             // 
@@ -633,5 +639,6 @@
         private System.Windows.Forms.Label lblNameEmployee;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
