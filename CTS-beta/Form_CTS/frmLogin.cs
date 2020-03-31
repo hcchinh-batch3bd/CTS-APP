@@ -27,7 +27,7 @@ namespace CTS_beta
 
         private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmForgotPassword fForgotPass = new frmForgotPassword();
+            frmForgotPassword fForgotPass = new frmForgotPassword(this);
             fForgotPass.Show();
             this.Hide();
         }

@@ -107,7 +107,7 @@
             gridViewTextBoxColumn1.HeaderText = "Tên nhiệm vụ";
             gridViewTextBoxColumn1.Name = "NameMission";
             gridViewTextBoxColumn1.Width = 698;
-            gridViewTextBoxColumn2.HeaderText = "Thời gian hoàn thành";
+            gridViewTextBoxColumn2.HeaderText = "Hạn cuối hoàn thành";
             gridViewTextBoxColumn2.Name = "Date";
             gridViewTextBoxColumn2.Width = 407;
             gridViewTextBoxColumn3.HeaderText = "Loại nhiệm vụ";

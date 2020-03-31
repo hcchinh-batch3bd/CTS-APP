@@ -36,12 +36,29 @@ namespace CTS_beta.Form_CTS
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
+            Load:
             var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" +id+ "/Confirm?apiKey=" + Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.PUT);
             IRestResponse response = client.Execute(request);
-            Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
-            MessageBox.Show(obj.message);
-            main.Visible = false;
+            if (!response.IsSuccessful)
+            {
+                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.Retry)
+                    goto Load;
+                else
+                {
+                    Properties.Settings.Default.apiKey = "";
+                    Properties.Settings.Default.id_employee = 0;
+                    Properties.Settings.Default.Save();
+                    Application.Exit();
+                }
+            }
+            else
+            {
+                Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
+                MessageBox.Show(obj.message);
+                main.Visible = false;
+            }
         }
         class Message
         {
@@ -50,11 +67,28 @@ namespace CTS_beta.Form_CTS
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            Load:
             var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" +id+"/ClearMission?apiKey="+Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.PUT);
             IRestResponse response = client.Execute(request);
-            MessageBox.Show("Xóa nhiệm vụ thành công.");
-            main.Visible = false;
+            if (!response.IsSuccessful)
+            {
+                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.Retry)
+                    goto Load;
+                else
+                {
+                    Properties.Settings.Default.apiKey = "";
+                    Properties.Settings.Default.id_employee = 0;
+                    Properties.Settings.Default.Save();
+                    Application.Exit();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Xóa nhiệm vụ thành công.");
+                main.Visible = false;
+            }
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmForgotPassword));
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.txtEmail = new Telerik.WinControls.UI.RadTextBox();
@@ -36,11 +37,15 @@
             this.txtPassword = new Telerik.WinControls.UI.RadTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSendCode = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.txtPasswordComfirm = new Telerik.WinControls.UI.RadTextBox();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOTP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnChangePass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordComfirm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +83,7 @@
             this.btnChangePass.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnChangePass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnChangePass.ForeColor = System.Drawing.Color.White;
-            this.btnChangePass.Location = new System.Drawing.Point(102, 388);
+            this.btnChangePass.Location = new System.Drawing.Point(102, 420);
             this.btnChangePass.Name = "btnChangePass";
             this.btnChangePass.Size = new System.Drawing.Size(135, 36);
             this.btnChangePass.TabIndex = 3;
@@ -94,6 +99,7 @@
             this.txtPassword.Location = new System.Drawing.Point(36, 317);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.NullText = "Mật khẩu mới";
+            this.txtPassword.PasswordChar = '●';
             this.txtPassword.ShowClearButton = true;
             this.txtPassword.ShowNullText = true;
             this.txtPassword.Size = new System.Drawing.Size(259, 36);
@@ -116,13 +122,38 @@
             // 
             this.btnSendCode.FlatAppearance.BorderSize = 0;
             this.btnSendCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendCode.Image = ((System.Drawing.Image)(resources.GetObject("btnSendCode.Image")));
+            this.btnSendCode.Image = global::CTS_beta.Properties.Resources.mail;
             this.btnSendCode.Location = new System.Drawing.Point(253, 193);
             this.btnSendCode.Name = "btnSendCode";
             this.btnSendCode.Size = new System.Drawing.Size(42, 36);
             this.btnSendCode.TabIndex = 5;
             this.btnSendCode.UseVisualStyleBackColor = true;
             this.btnSendCode.Click += new System.EventHandler(this.btnSendCode_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // txtPasswordComfirm
+            // 
+            this.txtPasswordComfirm.AcceptsReturn = true;
+            this.txtPasswordComfirm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPasswordComfirm.ForeColor = System.Drawing.Color.Black;
+            this.txtPasswordComfirm.Location = new System.Drawing.Point(36, 378);
+            this.txtPasswordComfirm.Name = "txtPasswordComfirm";
+            this.txtPasswordComfirm.NullText = "Xác nhận mật khẩu";
+            this.txtPasswordComfirm.PasswordChar = '●';
+            this.txtPasswordComfirm.ShowClearButton = true;
+            this.txtPasswordComfirm.ShowNullText = true;
+            this.txtPasswordComfirm.Size = new System.Drawing.Size(259, 36);
+            this.txtPasswordComfirm.TabIndex = 6;
+            this.txtPasswordComfirm.ThemeName = "Material";
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 60000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // frmForgotPassword
             // 
@@ -131,6 +162,7 @@
             this.BackgroundImage = global::CTS_beta.Properties.Resources.abc;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(339, 527);
+            this.Controls.Add(this.txtPasswordComfirm);
             this.Controls.Add(this.btnSendCode);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnChangePass);
@@ -155,6 +187,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnChangePass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordComfirm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -170,6 +203,9 @@
         private Telerik.WinControls.UI.RadTextBox txtPassword;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSendCode;
+        private System.Windows.Forms.Timer timer1;
+        private Telerik.WinControls.UI.RadTextBox txtPasswordComfirm;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

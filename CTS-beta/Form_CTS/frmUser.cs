@@ -22,7 +22,6 @@ namespace CTS_beta.Form_CTS
         public frmUser()
         {
             InitializeComponent();
-            radTextBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, radTextBox1.Width, radTextBox1.Height, 5, 5));
             pictureBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, pictureBox1.Width, pictureBox1.Height, 5, 5));
             apiKey = Properties.Settings.Default.apiKey;
            
@@ -52,7 +51,6 @@ namespace CTS_beta.Form_CTS
         public frmUser(frmLogin frm,string apiKey)
         {
             InitializeComponent();
-            radTextBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, radTextBox1.Width, radTextBox1.Height, 5, 5));
             pictureBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, pictureBox1.Width, pictureBox1.Height, 5, 5));
             this.apiKey = apiKey;
             frmLogin = frm;

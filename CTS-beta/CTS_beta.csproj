@@ -424,6 +424,7 @@
     <None Include="Resources\close_window_26px.png" />
     <None Include="Resources\close_window_20px.png" />
     <None Include="Resources\imgpsh_fullsize_anim.png" />
+    <None Include="Resources\mail.png" />
     <Content Include="Resources\profile.ico" />
     <Content Include="Resources\profile.png" />
     <None Include="Resources\profile1.png" />

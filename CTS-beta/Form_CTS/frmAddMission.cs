@@ -53,25 +53,42 @@ namespace CTS_beta.Form_CTS
 
         private void LoadTypeMission()
         {
+            Load:
             var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/GetAll");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
-            List<TypeMission> listTypes = JsonConvert.DeserializeObject<List<TypeMission>>(response.Content.ToString());
-            DataTable dt = new DataTable();
-            dt.Columns.Add("id_type", typeof(String));
-            dt.Columns.Add("name_type_mission", typeof(String));
-            foreach (var list in listTypes)
+            if (!response.IsSuccessful)
             {
-                if(list.status)
-                    dt.Rows.Add(list.id_type, list.name_type_mission);
+                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.Retry)
+                    goto Load;
+                else
+                {
+                    Properties.Settings.Default.apiKey = "";
+                    Properties.Settings.Default.id_employee = 0;
+                    Properties.Settings.Default.Save();
+                    Application.Exit();
+                }
             }
-            ddlTypeMission.Invoke(new Action(() =>
+            else
             {
-                ddlTypeMission.DataSource = dt;
-                ddlTypeMission.ValueMember = "id_type";
-                ddlTypeMission.DisplayMember = "name_type_mission";
+                List<TypeMission> listTypes = JsonConvert.DeserializeObject<List<TypeMission>>(response.Content.ToString());
+                DataTable dt = new DataTable();
+                dt.Columns.Add("id_type", typeof(String));
+                dt.Columns.Add("name_type_mission", typeof(String));
+                foreach (var list in listTypes)
+                {
+                    if (list.status)
+                        dt.Rows.Add(list.id_type, list.name_type_mission);
+                }
+                ddlTypeMission.Invoke(new Action(() =>
+                {
+                    ddlTypeMission.DataSource = dt;
+                    ddlTypeMission.ValueMember = "id_type";
+                    ddlTypeMission.DisplayMember = "name_type_mission";
+                }
+                ));
             }
-            ));
         }
 
         //Add a Mission
@@ -79,25 +96,46 @@ namespace CTS_beta.Form_CTS
         {
             if (!txtNameMission.Text.Equals("") && !txtCount.Text.Equals("") && !txtPoint.Text.Equals("") && !txtExprie.Text.Equals("") && !txtDescribe.Text.Equals(""))
             {
-            
-                string nameMission = txtNameMission.Text;
-                int idTypeMission = int.Parse(ddlTypeMission.SelectedItem.Value.ToString());
-                int count = int.Parse(txtCount.Text);
-                int point = int.Parse(txtPoint.Text);
-                string Stardate = DateTime.Today.ToShortDateString();
-                int exprie = int.Parse(txtExprie.Text);
-                string describe = txtDescribe.Text;
-                int status = 0;
-                int idEmployee = Properties.Settings.Default.id_employee;
-                //Mission mission = GetDataFromForm();
-                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/Create?apiKey="+frmUser.Instance.ApiKey);
-                var request = new RestRequest(Method.POST);
-                request.AddHeader("content-type", "application/json");
-                request.AddParameter("undefined", "{\"name_mission\":\'" + nameMission + "',\"Stardate\":\'" + Stardate + "',\"point\":" +point + " ,\"exprie\":" + exprie + ",\"describe\":\'" + describe + "',\"status\":\'" + status + "',\"count\":" + count + ",\"id_type\":" + idTypeMission + ",\"id_employee\":" + idEmployee + "}", ParameterType.RequestBody);
-                IRestResponse response = client.Execute(request);
-                Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
+                if (txtCount.Text.All(char.IsDigit) && txtExprie.Text.All(char.IsDigit) && txtPoint.Text.All(char.IsDigit))
+                {
 
-                MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string nameMission = txtNameMission.Text;
+                    int idTypeMission = int.Parse(ddlTypeMission.SelectedItem.Value.ToString());
+                    int count = int.Parse(txtCount.Text);
+                    int point = int.Parse(txtPoint.Text);
+                    string Stardate = DateTime.Today.ToShortDateString();
+                    int exprie = int.Parse(txtExprie.Text);
+                    string describe = txtDescribe.Text;
+                    int status = 0;
+                    int idEmployee = Properties.Settings.Default.id_employee;
+                Load:
+                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/Create?apiKey=" + frmUser.Instance.ApiKey);
+                    var request = new RestRequest(Method.POST);
+                    request.AddHeader("content-type", "application/json");
+                    request.AddParameter("undefined", "{\"name_mission\":\'" + nameMission + "',\"Stardate\":\'" + Stardate + "',\"point\":" + point + " ,\"exprie\":" + exprie + ",\"describe\":\'" + describe + "',\"status\":\'" + status + "',\"count\":" + count + ",\"id_type\":" + idTypeMission + ",\"id_employee\":" + idEmployee + "}", ParameterType.RequestBody);
+                    IRestResponse response = client.Execute(request);
+                    if (!response.IsSuccessful)
+                    {
+                        DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                        if (dialog == DialogResult.Retry)
+                            goto Load;
+                        else
+                        {
+                            Properties.Settings.Default.apiKey = "";
+                            Properties.Settings.Default.id_employee = 0;
+                            Properties.Settings.Default.Save();
+                            Application.Exit();
+                        }
+                    }
+                    else
+                    {
+                        Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
+                        MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                }
+                else
+                    MessageBox.Show("Vui lòng nhập dữ liệu là số nguyên !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else MessageBox.Show("Chưa nhập đủ thông tin");
         }
@@ -112,9 +150,6 @@ namespace CTS_beta.Form_CTS
         private void BtnAddNew_Click(object sender, EventArgs e)
         {
             AddMission();
-            this.Hide();
-        
-           
         }
         public class Message
         {

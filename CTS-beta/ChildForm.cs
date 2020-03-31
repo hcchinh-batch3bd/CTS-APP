@@ -21,7 +21,10 @@ namespace CTS_beta
                 else
                     panel.Invoke(new Action(() => panel.Controls.Add(childForm)));
             }
-            panel.Controls[childForm.Name.ToString()].BringToFront();
+            if (!panel.InvokeRequired)
+                panel.Controls[childForm.Name.ToString()].BringToFront();
+            else
+                panel.Invoke(new Action(() => panel.Controls[childForm.Name.ToString()].BringToFront()));
         }
     }
 }
