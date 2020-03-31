@@ -49,22 +49,36 @@ namespace CTS_beta.Form_CTS
         }
         void loadData()
         {
+            Load:
             var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" + idMission + "/Describe");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
-            RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-            List<Mission> misssion = obj.results;
-            lblNameMission.Text = misssion.SingleOrDefault().name_mission;
-            lblTypeMission.Text = misssion.SingleOrDefault().name_type_mission.ToString();
-            lblNguoiTao.Text = misssion.SingleOrDefault().name_employee.ToString();
-            if (misssion.SingleOrDefault().Count == 0)
-                lblSLCon.Text = "Không có giới hạn";
+            if (!response.IsSuccessful)
+            {
+                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.Retry)
+                    goto Load;
+                else
+                {
+                    Application.Exit();
+                }
+            }
             else
-                lblSLCon.Text = misssion.SingleOrDefault().countProcess.ToString();
-            lblStartDate.Text = misssion.SingleOrDefault().Stardate.Date.ToString();
-            lblEndDate.Text = misssion.SingleOrDefault().Stardate.AddDays(misssion.SingleOrDefault().exprie).ToString();
-            lblPoint.Text = misssion.SingleOrDefault().point.ToString();
-            richTextBox1.Text = misssion.SingleOrDefault().describe.ToString();
+            {
+                RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                List<Mission> misssion = obj.results;
+                lblNameMission.Text = misssion.SingleOrDefault().name_mission;
+                lblTypeMission.Text = misssion.SingleOrDefault().name_type_mission.ToString();
+                lblNguoiTao.Text = misssion.SingleOrDefault().name_employee.ToString();
+                if (misssion.SingleOrDefault().Count == 0)
+                    lblSLCon.Text = "Không có giới hạn";
+                else
+                    lblSLCon.Text = misssion.SingleOrDefault().countProcess.ToString();
+                lblStartDate.Text = misssion.SingleOrDefault().Stardate.Date.ToString();
+                lblEndDate.Text = misssion.SingleOrDefault().Stardate.AddDays(misssion.SingleOrDefault().exprie).ToString();
+                lblPoint.Text = misssion.SingleOrDefault().point.ToString();
+                richTextBox1.Text = misssion.SingleOrDefault().describe.ToString();
+            }
         }
 
         class RootObject
@@ -79,10 +93,21 @@ namespace CTS_beta.Form_CTS
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn nhận nhiệm vụ không?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
             {
+                Load:
                 var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" + idMission + "/Order?apiKey=" + frmUser.Instance.ApiKey);
                 var request = new RestRequest(Method.POST);
                 IRestResponse response = client.Execute(request);
-                try
+                if (!response.IsSuccessful)
+                {
+                    DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    if (dialog == DialogResult.Retry)
+                        goto Load;
+                    else
+                    {
+                        Application.Exit();
+                    }
+                }
+                else
                 {
                     Message msg = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
                     MessageBox.Show(msg.message);
@@ -90,7 +115,6 @@ namespace CTS_beta.Form_CTS
                     loadData();
                     frmUser.Instance.worker.RunWorkerAsync();
                 }
-                catch { MessageBox.Show("Server bị mất kết nối"); }
             }
             else
             {

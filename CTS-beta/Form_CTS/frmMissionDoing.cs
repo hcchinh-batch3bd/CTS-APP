@@ -27,22 +27,40 @@ namespace CTS_beta.Form_CTS
         }
         void loadData()
         {
+            Load:
             var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/Missionavailableemp?apiKey=" + frmUser.Instance.ApiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
-            RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-            List<Mission> missionCompletes = obj.results;
-            foreach (var mission in missionCompletes)
+            if (!response.IsSuccessful)
+            {
+                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.Retry)
+                    goto Load;
+                else
+                {
+                    Application.Exit();
+                }
+            }
+            else
             {
                 if (!radGridView1.InvokeRequired)
-                {
-                  
-                    radGridView1.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Hoàn thành", mission.id_mission);
-                }
+                    radGridView1.Rows.Clear();
                 else
-                    radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Hoàn thành", mission.id_mission)));
+                    radGridView1.Invoke(new Action(() => radGridView1.Rows.Clear()));
+                RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                List<Mission> missionCompletes = obj.results;
+                foreach (var mission in missionCompletes)
+                {
+                    if (!radGridView1.InvokeRequired)
+                    {
+
+                        radGridView1.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Hoàn thành", mission.id_mission);
+                    }
+                    else
+                        radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Hoàn thành", mission.id_mission)));
 
 
+                }
             }
         }
         class RootObject
@@ -62,13 +80,24 @@ namespace CTS_beta.Form_CTS
         {
             if (e.ColumnIndex == 4)
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn hoàn thành không?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == DialogResult.Yes)                {                    int id = int.Parse(e.Row.Cells[5].Value.ToString());
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn hoàn thành không?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)                {                    Load:                    int id = int.Parse(e.Row.Cells[5].Value.ToString());
                     var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" + id + "/CompleteMission?apiKey=" + frmUser.Instance.ApiKey);
                     var request = new RestRequest(Method.PUT);
-                    IRestResponse response = client.Execute(request);                    try                    {                        MessageBox.Show("Nhiệm vụ đã hoàn thành!!");
+                    IRestResponse response = client.Execute(request);                    if (!response.IsSuccessful)
+                    {
+                        DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                        if (dialog == DialogResult.Retry)
+                            goto Load;
+                        else
+                        {
+                            Application.Exit();
+                        }
+                    }
+                    else
+                    {                        MessageBox.Show("Xác nhận hoàn thành nhiệm vụ thành công !!","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         radGridView1.Rows.Clear();
-                        loadData();                        frmUser.Instance.worker.RunWorkerAsync();                    }                    catch { MessageBox.Show("Server bị mất kết nối"); }                }
+                        loadData();                        frmUser.Instance.worker.RunWorkerAsync();                    }                }
                 else                {                    this.radGridView1.Rows.Clear();
                     loadData();                }
             }
@@ -88,9 +117,14 @@ namespace CTS_beta.Form_CTS
 
         private void PicSyn_Click(object sender, EventArgs e)
         {
-            radGridView1.Rows.Clear();
-            Thread thread = new Thread(new ThreadStart(loadData));
+            Thread thread = new Thread(new ThreadStart(loadData)) { IsBackground = true };
             thread.Start();
+            while (thread.IsAlive)
+            {
+                Application.DoEvents();
+                PicSyn.Visible = false;
+            }
+            PicSyn.Visible = true;
             frmUser.Instance.worker.RunWorkerAsync();
         }
     }

@@ -28,19 +28,37 @@ namespace CTS_beta.Form_CTS
         }
         void loadData()
         {
+        Load:
             var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Missison/Missionavailable?apiKey=" + frmUser.Instance.ApiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
-            RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-            List<Mission> missionCompletes = obj.results;
-            foreach (var mission in missionCompletes)
+            if (!response.IsSuccessful)
             {
-                if (radGridView1.InvokeRequired)
-                {
-                    radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.id_mission,mission.name_mission,mission.describe,mission.Stardate, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Xem")));
-                }
+                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.Retry)
+                    goto Load;
                 else
-                    radGridView1.Rows.Add(mission.id_mission,mission.name_mission,mission.describe,mission.Stardate, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Xem");
+                {
+                    Application.Exit();
+                }
+            }
+            else
+            {
+                if (!radGridView1.InvokeRequired)
+                    radGridView1.Rows.Clear();
+                else
+                    radGridView1.Invoke(new Action(() => radGridView1.Rows.Clear()));
+                RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                List<Mission> missionCompletes = obj.results;
+                foreach (var mission in missionCompletes)
+                {
+                    if (radGridView1.InvokeRequired)
+                    {
+                        radGridView1.Invoke(new Action(() => radGridView1.Rows.Add(mission.id_mission, mission.name_mission, mission.describe, mission.Stardate, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Xem")));
+                    }
+                    else
+                        radGridView1.Rows.Add(mission.id_mission, mission.name_mission, mission.describe, mission.Stardate, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Xem");
+                }
             }
         }
         class RootObject
@@ -50,18 +68,17 @@ namespace CTS_beta.Form_CTS
             public string message { get; set; }
         }
         private void frmMissionAreThere_load(object sender, EventArgs e)
-        {     
-            Thread thread = new Thread(new ThreadStart(loadData));
-            thread.Start();
+        {
+            loadData();
 
         }
 
         private void radGridView1_CellClick(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 7)
+            if (e.ColumnIndex == 7)
             {
                 int idMission = int.Parse(e.Row.Cells[0].Value.ToString());
-                
+
                 frmDetailMission f = new frmDetailMission(idMission);
                 f.ShowDialog();
             }
@@ -69,14 +86,15 @@ namespace CTS_beta.Form_CTS
 
         private void radGridView1_CellFormatting(object sender, Telerik.WinControls.UI.CellFormattingEventArgs e)
         {
-         //   e.Row.Cells[8].Style.BackColor = System.Drawing.Color.Red;
-            if(e.CellElement.ColumnInfo.Name =="TacVu")
+            //   e.Row.Cells[8].Style.BackColor = System.Drawing.Color.Red;
+            if (e.CellElement.ColumnInfo.Name == "TacVu")
             {
                 e.CellElement.ForeColor = Color.Blue;
                 e.CellElement.GradientStyle = Telerik.WinControls.GradientStyles.Solid;
                 e.CellElement.BackColor = Color.Red;
                 e.CellElement.Font = new Font(e.CellElement.Font, FontStyle.Underline);
-                e.CellElement.DrawFill = true;
+                e.CellElement.DrawFill = true;
+
             }
 
         }
@@ -87,15 +105,20 @@ namespace CTS_beta.Form_CTS
 
         private void radGridView1_RowFormatting(object sender, Telerik.WinControls.UI.RowFormattingEventArgs e)
         {
-           
+
         }
         private void PicSyn_Click(object sender, EventArgs e)
         {
-            radGridView1.Rows.Clear();
-            Thread thread = new Thread(new ThreadStart(loadData));
+            Thread thread = new Thread(new ThreadStart(loadData)) { IsBackground = true };
             thread.Start();
+            while (thread.IsAlive)
+            {
+                Application.DoEvents();
+                PicSyn.Visible = false;
+            }
+            PicSyn.Visible = true;
             frmUser.Instance.worker.RunWorkerAsync();
         }
     }
-    }
+}
 

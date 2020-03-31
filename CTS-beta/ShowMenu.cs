@@ -11,7 +11,10 @@ namespace CTS_beta
     {
         public static void customizeDesing(Panel panel)
         {
-            panel.Visible = false;
+            if (!panel.InvokeRequired)
+                panel.Visible = false;
+            else
+                panel.Invoke(new Action(() => panel.Visible = false));
         }
 
         public static void hideSubMenu(Panel panel)

@@ -22,7 +22,6 @@ namespace CTS_beta.Form_CTS
         public frmUser()
         {
             InitializeComponent();
-            ChildForm.OpenChildForm(new frmMissionAreThere(), panelDesktop);
             radTextBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, radTextBox1.Width, radTextBox1.Height, 5, 5));
             pictureBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, pictureBox1.Width, pictureBox1.Height, 5, 5));
             apiKey = Properties.Settings.Default.apiKey;
@@ -53,7 +52,6 @@ namespace CTS_beta.Form_CTS
         public frmUser(frmLogin frm,string apiKey)
         {
             InitializeComponent();
-            ChildForm.OpenChildForm(new frmMissionAreThere(), panelDesktop);
             radTextBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, radTextBox1.Width, radTextBox1.Height, 5, 5));
             pictureBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, pictureBox1.Width, pictureBox1.Height, 5, 5));
             this.apiKey = apiKey;
@@ -127,7 +125,6 @@ namespace CTS_beta.Form_CTS
         }
         private void frmUser_Load(object sender, EventArgs e)
         {
-            this.Visible = false;
             frmLoading frm = new frmLoading();
             frm.Show();
             Thread thread = new Thread(new ThreadStart(LoadAPP)) { IsBackground = true };
@@ -137,7 +134,6 @@ namespace CTS_beta.Form_CTS
                 Application.DoEvents();
             }
             frm.Close();
-            this.Visible = true;
         }
         class User
         {
@@ -168,34 +164,50 @@ namespace CTS_beta.Form_CTS
         }
         void LoadAPP()
         {
-            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account?apiKey=" + apiKey);
-            var request = new RestRequest(Method.GET);
-            IRestResponse response = client.Execute(request);
-            User obj = JsonConvert.DeserializeObject<User>(response.Content.ToString());
-            lblPoint.Invoke(new Action(()=>lblPoint.Text = obj.point.ToString()));
-            lblNameEmployee.Invoke(new Action(()=>lblNameEmployee.Text = obj.name_employee.ToString()));
-            lblCountComplete.Invoke(new Action(()=>lblCountComplete.Text = obj.totalComplete.ToString()));
-            lblCountProcess.Invoke(new Action(()=>lblCountProcess.Text = obj.totalProcess.ToString()));
-            Properties.Settings.Default.id_employee = obj.id_employee;
-            Properties.Settings.Default.Save();
-            _obj = this;
-            client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Missison/Missionavailable?apiKey=" + frmUser.Instance.ApiKey);
-            request = new RestRequest(Method.GET);
-            response = client.Execute(request);
-            RootObject ob = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-            List<Mission> mission = ob.results;
-            lblCountAreThere.Invoke(new Action(()=>lblCountAreThere.Text = mission.Count().ToString()));
-        }
+            Load:
 
-        private void btnChangePass_Click(object sender, EventArgs e)
-        {
-            frmChangePassword frm = new frmChangePassword();
-            frm.ShowDialog();
-        }
+                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account?apiKey=" + apiKey);
+                var request = new RestRequest(Method.GET);
+                IRestResponse response = client.Execute(request);
+            if (!response.IsSuccessful)
+            {
+                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.Retry)
+                    goto Load;
+                else
+                {
+                    Application.Exit();
+                }
+            }
+            else
+            {
 
+                User obj = JsonConvert.DeserializeObject<User>(response.Content.ToString());
+                lblPoint.Invoke(new Action(() => lblPoint.Text = obj.point.ToString()));
+                lblNameEmployee.Invoke(new Action(() => lblNameEmployee.Text = obj.name_employee.ToString()));
+                lblCountComplete.Invoke(new Action(() => lblCountComplete.Text = obj.totalComplete.ToString()));
+                lblCountProcess.Invoke(new Action(() => lblCountProcess.Text = obj.totalProcess.ToString()));
+                Properties.Settings.Default.id_employee = obj.id_employee;
+                Properties.Settings.Default.Save();
+                _obj = this;
+                client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Missison/Missionavailable?apiKey=" + frmUser.Instance.ApiKey);
+                request = new RestRequest(Method.GET);
+                response = client.Execute(request);
+                RootObject ob = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                List<Mission> mission = ob.results;
+                lblCountAreThere.Invoke(new Action(() => lblCountAreThere.Text = mission.Count().ToString()));
+                ChildForm.OpenChildForm(new frmMissionAreThere(), panelDesktop);
+            }
+        }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             dosomething();
+        }
+
+        private void btnChangePass_Click_1(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword();
+            frm.ShowDialog();
         }
     }
 }

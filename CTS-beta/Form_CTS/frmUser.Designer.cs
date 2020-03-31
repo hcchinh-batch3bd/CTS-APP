@@ -394,7 +394,7 @@
             this.btnChangePass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnChangePass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnChangePass.UseVisualStyleBackColor = true;
-            this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
+            this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click_1);
             // 
             // btnCreateMission
             // 

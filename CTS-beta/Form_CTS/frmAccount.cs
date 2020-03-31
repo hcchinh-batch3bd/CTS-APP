@@ -27,28 +27,39 @@ namespace CTS_beta.Form_CTS
             btnDelete.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnDelete.Width, btnDelete.Height, 5, 5));
             button3.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, button3.Width, button3.Height, 5, 5));
         }
-    
+
         void LoadData()
         {
-            try
+        Load:
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/ListEmployee?apiKey=" + Properties.Settings.Default.apiKey);
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            if (!response.IsSuccessful)
             {
-                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/ListEmployee?apiKey=" + Properties.Settings.Default.apiKey);
-                var request = new RestRequest(Method.GET);
-                IRestResponse response = client.Execute(request);
+                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.Retry)
+                    goto Load;
+                else
+                {
+                    Application.Exit();
+                }
+            }
+            else
+            {
                 RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
                 List<Employee> listAccount = obj.Results;
                 foreach (var account in listAccount)
                 {
                     int old = (DateTime.Now).Year - account.date.Year;
-                    if(GridViewAccount.InvokeRequired)
+                    if (GridViewAccount.InvokeRequired)
                     {
                         GridViewAccount.Invoke(new Action(() => GridViewAccount.Rows.Add(account.id_employee, account.name_employee, old, account.email, account.point, account.level, account.status)));
                     }
                     else
                         GridViewAccount.Rows.Add(account.id_employee, account.name_employee, old, account.email, account.point, account.level, account.status);
                 }
+
             }
-            catch  { };
         }
         public class RootObject
         {
@@ -90,7 +101,7 @@ namespace CTS_beta.Form_CTS
             }
             else
                 MessageBox.Show("Tài khoản đã bị xóa, không thể xóa lần nữa !!");
-        }        
+        }
 
         private void Button3_Click(object sender, EventArgs e)
         {
@@ -107,8 +118,14 @@ namespace CTS_beta.Form_CTS
         private void PicSyn_Click(object sender, EventArgs e)
         {
             GridViewAccount.Rows.Clear();
-            Thread thread = new Thread(new ThreadStart(LoadData));
+            Thread thread = new Thread(new ThreadStart(LoadData)) { IsBackground = true };
             thread.Start();
+            while (thread.IsAlive)
+            {
+                Application.DoEvents();
+                PicSyn.Visible = false;
+            }
+            PicSyn.Visible = true;
         }
     }
 }

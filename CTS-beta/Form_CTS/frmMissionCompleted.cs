@@ -38,6 +38,10 @@ namespace CTS_beta.Form_CTS
             IRestResponse response = client.Execute(request);
             try
             {
+                if (!data.InvokeRequired)
+                    data.Rows.Clear();
+                else
+                    data.Invoke(new Action(() => data.Rows.Clear()));
                 RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
                 List<MissionComplete> missionCompletes = obj.results;
                 foreach (var mission in missionCompletes)
@@ -64,9 +68,14 @@ namespace CTS_beta.Form_CTS
 
         private void PicSyn_Click(object sender, EventArgs e)
         {
-            data.Rows.Clear();
-            Thread thread = new Thread(new ThreadStart(LoadData));
+            Thread thread = new Thread(new ThreadStart(LoadData)) { IsBackground = true };
             thread.Start();
+            while (thread.IsAlive)
+            {
+                Application.DoEvents();
+                PicSyn.Visible = false;
+            }
+            PicSyn.Visible = true;
             frmUser.Instance.worker.RunWorkerAsync();
         }
     }

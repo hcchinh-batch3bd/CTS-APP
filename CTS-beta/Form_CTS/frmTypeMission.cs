@@ -31,7 +31,6 @@ namespace CTS_beta.Form_CTS
 
         private void frmTypeMission_Load(object sender, EventArgs e)
         {
-            data.Rows.Clear();
             Thread thread = new Thread(new ThreadStart(LoadData));
             thread.Start();
         }
@@ -52,30 +51,50 @@ namespace CTS_beta.Form_CTS
         }
         void LoadData()
         {
+            Load:
             var typeMission = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/GetAll");
             var request = new RestRequest(Method.GET);
             IRestResponse response = typeMission.Execute(request);
-            typeMissions = JsonConvert.DeserializeObject<List<TypeMission>>(response.Content.ToString());
-
-            foreach (var type in typeMissions)
+            if (!response.IsSuccessful)
             {
-                if (type.status.Equals(true))
+                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.Retry)
+                    goto Load;
+                else
+                {
+                    Properties.Settings.Default.apiKey = "";
+                    Properties.Settings.Default.id_employee = 0;
+                    Properties.Settings.Default.Save();
+                    Application.Exit();
+                }
+            }
+            else
+            {
+                typeMissions = JsonConvert.DeserializeObject<List<TypeMission>>(response.Content.ToString());
+                if (!data.InvokeRequired)
+                    data.Rows.Clear();
+                else
+                    data.Invoke(new Action(() => data.Rows.Clear()));
+                foreach (var type in typeMissions)
+                {
+                    if (type.status.Equals(true))
 
-                    if (!data.InvokeRequired)
+                        if (!data.InvokeRequired)
+                        {
+
+                            data.Rows.Add(type.id_type, type.name_type_mission, "Đang hoạt động");
+                        }
+                        else
+                            data.Invoke(new Action(() => data.Rows.Add(type.id_type, type.name_type_mission, "Đang hoạt động")));
+                    else
+                         if (!data.InvokeRequired)
                     {
 
-                        data.Rows.Add(type.id_type, type.name_type_mission, "Đang hoạt động");
+                        data.Rows.Add(type.id_type, type.name_type_mission, "Dừng hoạt động");
                     }
                     else
-                        data.Invoke(new Action(() => data.Rows.Add(type.id_type, type.name_type_mission, "Đang hoạt động")));
-                else
-                     if (!data.InvokeRequired)
-                {
-
-                    data.Rows.Add(type.id_type, type.name_type_mission, "Dừng hoạt động");
+                        data.Invoke(new Action(() => data.Rows.Add(type.id_type, type.name_type_mission, "Dừng hoạt động")));
                 }
-                else
-                    data.Invoke(new Action(() => data.Rows.Add(type.id_type, type.name_type_mission, "Dừng hoạt động")));
             }
         }
 
@@ -111,7 +130,7 @@ namespace CTS_beta.Form_CTS
             {
                 if (!check(txtaddnametypemisson.Text))
                 {
-
+                    Load:
                     var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/Create?apiKey="+Properties.Settings.Default.apiKey);
                     var request = new RestRequest(Method.POST);
                     request.AddHeader("content-type", "application/json");
@@ -123,11 +142,27 @@ namespace CTS_beta.Form_CTS
                     string output = JsonConvert.SerializeObject(typeMission);
                     request.AddParameter("application/json", output, ParameterType.RequestBody);
                     IRestResponse response = client.Execute(request);
-                    RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-                    MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Thread thread = new Thread(new ThreadStart(LoadData));
-                    thread.Start();
-                    txtaddnametypemisson.Text = "";
+                    if (!response.IsSuccessful)
+                    {
+                        DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                        if (dialog == DialogResult.Retry)
+                            goto Load;
+                        else
+                        {
+                            Properties.Settings.Default.apiKey = "";
+                            Properties.Settings.Default.id_employee = 0;
+                            Properties.Settings.Default.Save();
+                            Application.Exit();
+                        }
+                    }
+                    else
+                    {
+                        RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                        MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Thread thread = new Thread(new ThreadStart(LoadData));
+                        thread.Start();
+                        txtaddnametypemisson.Text = "";
+                    }
                 }
 
                 else
@@ -141,6 +176,7 @@ namespace CTS_beta.Form_CTS
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            Load:
             string id = data.Rows[data.CurrentCell.RowIndex].Cells["ID"].Value.ToString();
             var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/Edit?apiKey="+Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.PUT);
@@ -151,17 +187,33 @@ namespace CTS_beta.Form_CTS
             if (data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value != null)
             {
                 typeMission.name_type_mission = data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value.ToString();
-                typeMission.id_employee = 189212;
+                typeMission.id_employee = Properties.Settings.Default.id_employee;
                 typeMission.status = true;
                 typeMission.date = DateTime.Now;
                 string output = JsonConvert.SerializeObject(typeMission);
                 request.AddParameter("application/json", output, ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
-                Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
-                MessageBox.Show("Sửa thành công !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                data.Rows.Clear();
-                LoadData();
-                btnEdit.Enabled = false;
+                if (!response.IsSuccessful)
+                {
+                    DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    if (dialog == DialogResult.Retry)
+                        goto Load;
+                    else
+                    {
+                        Properties.Settings.Default.apiKey = "";
+                        Properties.Settings.Default.id_employee = 0;
+                        Properties.Settings.Default.Save();
+                        Application.Exit();
+                    }
+                }
+                else
+                {
+                    Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
+                    MessageBox.Show("Sửa thành công !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    data.Rows.Clear();
+                    LoadData();
+                    btnEdit.Enabled = false;
+                }
             }
             else MessageBox.Show("Bạn chưa nhập tên loại nhiệm vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             data.Rows.Clear();
@@ -174,22 +226,39 @@ namespace CTS_beta.Form_CTS
 
             if (statuss.Equals("Đang hoạt động"))
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xoá không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xoá không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    Load:
                     int id = int.Parse(data.Rows[data.CurrentCell.RowIndex].Cells["ID"].Value.ToString());
                     var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/" + id + "/Remove?apiKey="+Properties.Settings.Default.apiKey);
                     var request = new RestRequest(Method.PUT);
                     data.Rows.Clear();
                     IRestResponse response = client.Execute(request);
-                    RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-                    MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Thread thread = new Thread(new ThreadStart(LoadData));
-                    thread.Start();
+                    if (!response.IsSuccessful)
+                    {
+                        DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                        if (dialog == DialogResult.Retry)
+                            goto Load;
+                        else
+                        {
+                            Properties.Settings.Default.apiKey = "";
+                            Properties.Settings.Default.id_employee = 0;
+                            Properties.Settings.Default.Save();
+                            Application.Exit();
+                        }
+                    }
+                    else
+                    {
+                        RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                        MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Thread thread = new Thread(new ThreadStart(LoadData));
+                        thread.Start();
+                    }
                 }
 
             }
-            else MessageBox.Show("Tài khoản này đã dừng hoạt động", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show("Loại nhiệm vụ này đã bị xpas trước đó !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
@@ -209,9 +278,14 @@ namespace CTS_beta.Form_CTS
 
         private void PicSyn_Click(object sender, EventArgs e)
         {
-            data.Rows.Clear();
-            Thread thread = new Thread(new ThreadStart(LoadData));
+            Thread thread = new Thread(new ThreadStart(LoadData)) { IsBackground = true };
             thread.Start();
+            while (thread.IsAlive)
+            {
+                Application.DoEvents();
+                PicSyn.Visible = false;
+            }
+            PicSyn.Visible = true;
         }
         class Message
         {

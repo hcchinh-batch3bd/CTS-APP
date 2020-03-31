@@ -36,49 +36,63 @@ namespace CTS_beta.Form_CTS
 
         private void LoadData()
         {
+        Load:
             var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/ListMission");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
-            try
+            if (!response.IsSuccessful)
             {
-                RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-                List<Mission> mission = obj.results;
-                foreach (var item in mission)
+                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.Retry)
+                    goto Load;
+                else
                 {
-                    string Count = "";
-                    if (item.Count == 0)
-                        Count = "Không giới hạn";
-                    else
-                        Count = item.Count.ToString();
-                    int status = item.status;
-                    switch (status)
-                    {
-                        case -1:
-                            if (!data.InvokeRequired)
-                                data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Hủy", item.point);
-                            else
-                                data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.name_type_mission, item.describe, Count, "Hủy", item.point)));
-                            break;
-                        case 0:
-                            if (!data.InvokeRequired)
-                                data.Rows.Add(item.id_mission, item.name_mission, item.name_type_mission, item.describe, Count, "Đang duyệt", item.point);
-                            else
-                                data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.name_type_mission, item.describe, Count, "Đang duyệt", item.point)));
-                            break;
-                        default:
-                            if (!data.InvokeRequired)
-                                data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Đang chạy", item.point);
-                            else
-                                data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.name_type_mission, item.describe, Count, "Đang chạy", item.point)));
-                            break;
-                    }
-
-
+                    Properties.Settings.Default.apiKey = "";
+                    Properties.Settings.Default.id_employee = 0;
+                    Properties.Settings.Default.Save();
+                    Application.Exit();
                 }
             }
-            catch
+            else
             {
-                MessageBox.Show("Máy chủ " + ConfigurationManager.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                {
+                    RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                    List<Mission> mission = obj.results;
+                    if (!data.InvokeRequired)
+                        data.Rows.Clear();
+                    else
+                        data.Invoke(new Action(() => data.Rows.Clear()));
+                    foreach (var item in mission)
+                    {
+                        string Count = "";
+                        if (item.Count == 0)
+                            Count = "Không giới hạn";
+                        else
+                            Count = item.Count.ToString();
+                        int status = item.status;
+                        switch (status)
+                        {
+                            case -1:
+                                if (!data.InvokeRequired)
+                                    data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Hủy", item.point);
+                                else
+                                    data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.name_type_mission, item.describe, Count, "Hủy", item.point)));
+                                break;
+                            case 0:
+                                if (!data.InvokeRequired)
+                                    data.Rows.Add(item.id_mission, item.name_mission, item.name_type_mission, item.describe, Count, "Đang duyệt", item.point);
+                                else
+                                    data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.name_type_mission, item.describe, Count, "Đang duyệt", item.point)));
+                                break;
+                            default:
+                                if (!data.InvokeRequired)
+                                    data.Rows.Add(item.id_mission, item.name_mission, item.id_type, item.describe, Count, "Đang chạy", item.point);
+                                else
+                                    data.Invoke(new Action(() => data.Rows.Add(item.id_mission, item.name_mission, item.name_type_mission, item.describe, Count, "Đang chạy", item.point)));
+                                break;
+                        }
+                    }
+                }
             }
         }
 
@@ -92,7 +106,7 @@ namespace CTS_beta.Form_CTS
         private void DeleteMission()
         {
             int idMission = int.Parse(data.Rows[data.CurrentCell.RowIndex].Cells["id"].Value.ToString());
-            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" +idMission+"/ClearMission?apiKey="+Properties.Settings.Default.apiKey);
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" + idMission + "/ClearMission?apiKey=" + Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.PUT);
             IRestResponse response = client.Execute(request);
             data.Rows.Clear();
@@ -113,20 +127,24 @@ namespace CTS_beta.Form_CTS
             else
                 MessageBox.Show("Nhiệm vụ đã dừng hoạt động !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void PicSyn_Click(object sender, EventArgs e)
         {
-            data.Rows.Clear();
-            Thread thread = new Thread(new ThreadStart(LoadData));
+            Thread thread = new Thread(new ThreadStart(LoadData)) { IsBackground = true };
             thread.Start();
+            while(thread.IsAlive)
+            {
+                Application.DoEvents();
+                PicSyn.Visible = false;
+            }
+            PicSyn.Visible = true;
         }
     }
 
     class RootObject
-        {
-            public List<Mission> results { get; set; }
-            public bool status { get; set; }
-            public string message { get; set; }
-        }
-
+    {
+        public List<Mission> results { get; set; }
+        public bool status { get; set; }
+        public string message { get; set; }
     }
+
+}

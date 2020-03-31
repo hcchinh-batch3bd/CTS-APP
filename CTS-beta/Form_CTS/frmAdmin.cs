@@ -19,7 +19,7 @@ namespace CTS_beta
 {
     public partial class frmAdmin : Telerik.WinControls.UI.RadForm
     {
-        int num = 0;
+        int numNotify=0;
         public frmAdmin()
         {
             InitializeComponent();
@@ -75,11 +75,24 @@ namespace CTS_beta
         {
             
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
+            frmLoading frm = new frmLoading();
+            frm.Show();
+            Thread thread = new Thread(new ThreadStart(LoadAPP)) { IsBackground = true };
+            thread.Start();
+            while (thread.IsAlive)
+            {
+                Application.DoEvents();
+            }
+            frm.Close();
+            
+        }
+        void LoadAPP()
+        {
+            loadNotify();
             ChildForm.OpenChildForm(new frmStatistical(), panel4);
             ShowMenu.customizeDesing(panel5);
-            button11.Number = num;
+            button11.Number = numNotify;
         }
-
         private void frmAdmin_MouseDown(object sender, MouseEventArgs e)
         {
             MoveControl.ReleaseCapture();
@@ -95,29 +108,49 @@ namespace CTS_beta
         private void button11_Click(object sender, EventArgs e)
         {
             if (panel5.Visible)
+            {
                 panel5.Visible = false;
+            }
+                
             else
                 panel5.Visible = true;
-            panel5.Controls.Clear();
+            
             Thread thread = new Thread(new ThreadStart(loadNotify));
             thread.Start();
         }
         void loadNotify()
         {
-            num = 0;
+            Load:
             var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/ListMission");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
-            try
+            if (!response.IsSuccessful)
             {
+                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.Retry)
+                    goto Load;
+                else
+                {
+                    Properties.Settings.Default.apiKey = "";
+                    Properties.Settings.Default.id_employee = 0;
+                    Properties.Settings.Default.Save();
+                    Application.Exit();
+                }
+            }
+            else
+            {
+                if (!panel5.InvokeRequired)
+                    panel5.Controls.Clear();
+                else
+                    panel5.Invoke(new Action(() => panel5.Controls.Clear()));
                 RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
                 List<Mission> mission = obj.results;
-                
+                numNotify = 0;
                 foreach (var item in mission)
                 {
                     if (item.status == 0)
                     {
-                        num++;
+                        numNotify++;
 
                         string content = item.name_employee+" đã yêu cầu tạo nhiệm vụ: \""+item.name_mission+"\"";
                         MissionApproval childForm = new MissionApproval(item.id_mission, content,panel5);
@@ -125,7 +158,6 @@ namespace CTS_beta
                             panel5.Controls.Add(childForm);
                         else
                             panel5.Invoke(new Action(() => panel5.Controls.Add(childForm)));
-                       
                        
                         if (childForm.InvokeRequired)
                         {
@@ -142,33 +174,9 @@ namespace CTS_beta
                             
 
                 }
-                button11.Number = num;
+                button11.Number = numNotify;
 
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Máy chủ "+ex.Message + ConfigurationManager.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        protected override void OnPaint(System.Windows.Forms.PaintEventArgs pevent)
-        {
-            
-        }
-
-        private void button11_Paint(object sender, PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            Graphics graphics = e.Graphics;
-            graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            //base.DrawImageAndText(graphics, controlState, imageTextRect);
-            if (num == 0) return;
-            int height = 25;
-            var rect = new Rectangle(this.Width - (height), (this.Height - height) / 2, height, height);
-            graphics.FillEllipse(Brushes.OrangeRed, rect);
-            graphics.DrawEllipse(new Pen(Color.Orange, 2), rect);
-            string text = num.ToString();
-            SizeF textsize = graphics.MeasureString(text, Font);
-            graphics.DrawString(text, Font, Brushes.White, rect.X + ((height - textsize.Width) / 2), rect.Y + ((height - textsize.Height) / 2));
         }
     }
 }

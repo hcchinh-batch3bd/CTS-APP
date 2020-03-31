@@ -40,6 +40,7 @@ namespace CTS_beta
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+        Load:
             if (txtID.Text == "" || txtPassword.Text == "")
                 MessageBox.Show("Vui lòng không được bỏ trống !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             else
@@ -47,11 +48,19 @@ namespace CTS_beta
                 var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/CheckLogin?id=" + txtID.Text + "&pw=" + txtPassword.Text);
                 var request = new RestRequest(Method.GET);
                 IRestResponse response = client.Execute(request);
-                try
+                if (!response.IsSuccessful)
                 {
+                    DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    if (dialog == DialogResult.Retry)
+                        goto Load;
+                    Application.Exit();
+                }
+                else
+                {
+
                     RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
                     List<Session> sessions = obj.results;
-                    MessageBox.Show(obj.message);
+                    MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (sessions.Count > 0)
                     {
                         Properties.Settings.Default.id_employee = sessions.FirstOrDefault().id_employee;
@@ -63,20 +72,17 @@ namespace CTS_beta
                         if (sessions.FirstOrDefault().level_employee)
                         {
                             frmAdmin frmAdmin = new frmAdmin(this, sessions.FirstOrDefault().apiKey);
-                            frmAdmin.Show();
                             this.Hide();
+                            frmAdmin.Show();
                         }
                         else
                         {
                             frmUser frmUser = new frmUser(this, sessions.FirstOrDefault().apiKey);
-                            frmUser.Show();
                             this.Hide();
+                            frmUser.Show();
+                            
                         }
                     }
-                }
-                catch
-                {
-                    MessageBox.Show("Máy chủ " + ConfigurationManager.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -94,7 +100,7 @@ namespace CTS_beta
 
         private void ckbRemember_CheckStateChanging(object sender, CheckStateChangingEventArgs args)
         {
-            MessageBox.Show("Nếu bạn bật chức năng này hệ thống sẽ không yêu cầu đăng nhập cho lần tới !!", "Cảnh báo",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Nếu bạn bật chức năng này hệ thống sẽ không yêu cầu đăng nhập cho lần tới !!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {

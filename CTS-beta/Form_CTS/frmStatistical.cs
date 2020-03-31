@@ -30,19 +30,35 @@ namespace CTS_beta
         {
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 5, 5));
             btnExcel.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnExcel.Width, btnExcel.Height, 5, 5));
-            Thread thread = new Thread(new ThreadStart(LoadData));
-            thread.Start();
+            LoadData();
 
         }
 
         void LoadData()
         {
-
+            Load:
             var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/RankEmployee?apiKey="+Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
-            try
+            if (!response.IsSuccessful)
             {
+                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.Retry)
+                    goto Load;
+                else
+                {
+                    Properties.Settings.Default.apiKey = "";
+                    Properties.Settings.Default.id_employee = 0;
+                    Properties.Settings.Default.Save();
+                    Application.Exit();
+                }
+            }
+            else
+            {
+                if (!data.InvokeRequired)
+                    data.Rows.Clear();
+                else
+                    data.Invoke(new Action(() => data.Rows.Clear()));
                 RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
                 List<Rank> ranks = obj.results;
                 int i = 1;
@@ -56,10 +72,6 @@ namespace CTS_beta
                     }
                 }
 
-            }
-            catch
-            {
-                MessageBox.Show("Máy chủ " + ConfigurationManager.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -96,9 +108,14 @@ namespace CTS_beta
 
         private void PicSyn_Click(object sender, EventArgs e)
         {
-            data.Rows.Clear();
-            Thread thread = new Thread(new ThreadStart(LoadData));
+            Thread thread = new Thread(new ThreadStart(LoadData)) { IsBackground = true };
             thread.Start();
+            while (thread.IsAlive)
+            {
+                Application.DoEvents();
+                PicSyn.Visible = false;
+            }
+            PicSyn.Visible = true;
         }
     }
 }

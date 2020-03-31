@@ -16,7 +16,10 @@ namespace CTS_beta
             {
                 
                 childForm.Dock = DockStyle.Fill;
-                panel.Controls.Add(childForm);
+                if (!panel.InvokeRequired)
+                    panel.Controls.Add(childForm);
+                else
+                    panel.Invoke(new Action(() => panel.Controls.Add(childForm)));
             }
             panel.Controls[childForm.Name.ToString()].BringToFront();
         }
