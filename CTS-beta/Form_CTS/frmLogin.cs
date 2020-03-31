@@ -29,6 +29,7 @@ namespace CTS_beta
         {
             frmForgotPassword fForgotPass = new frmForgotPassword();
             fForgotPass.Show();
+            this.Hide();
         }
 
         private void frmLogin_MouseDown(object sender, MouseEventArgs e)

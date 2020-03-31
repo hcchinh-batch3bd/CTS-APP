@@ -36,26 +36,28 @@
             this.data = new Telerik.WinControls.UI.RadGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.PicSyn = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtaddnametypemisson = new JTextBox2.JTextBox();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.PicSyn = new System.Windows.Forms.PictureBox();
+            this.txtaddnametypemisson = new Telerik.WinControls.UI.RadTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtaddnametypemisson)).BeginInit();
             this.SuspendLayout();
             // 
             // data
             // 
-            this.data.Location = new System.Drawing.Point(0, 151);
+            this.data.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.data.Location = new System.Drawing.Point(0, 141);
             // 
             // 
             // 
@@ -88,7 +90,7 @@
             // 
             this.data.RootElement.AutoSize = false;
             this.data.ShowHeaderCellButtons = true;
-            this.data.Size = new System.Drawing.Size(942, 398);
+            this.data.Size = new System.Drawing.Size(942, 425);
             this.data.TabIndex = 8;
             this.data.ThemeName = "MaterialTeal";
             this.data.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.data_CellValueChanged);
@@ -118,6 +120,17 @@
             this.panel1.Size = new System.Drawing.Size(942, 42);
             this.panel1.TabIndex = 10;
             // 
+            // PicSyn
+            // 
+            this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
+            this.PicSyn.Location = new System.Drawing.Point(7, 5);
+            this.PicSyn.Name = "PicSyn";
+            this.PicSyn.Size = new System.Drawing.Size(32, 32);
+            this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PicSyn.TabIndex = 45;
+            this.PicSyn.TabStop = false;
+            this.PicSyn.Click += new System.EventHandler(this.PicSyn_Click);
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -140,26 +153,6 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "DANH SÁCH NHIỆM VỤ";
             // 
-            // txtaddnametypemisson
-            // 
-            this.txtaddnametypemisson.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txtaddnametypemisson.Font_Size = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.txtaddnametypemisson.HintText = null;
-            this.txtaddnametypemisson.IsPassword = false;
-            this.txtaddnametypemisson.Location = new System.Drawing.Point(217, 74);
-            this.txtaddnametypemisson.Margin = new System.Windows.Forms.Padding(4);
-            this.txtaddnametypemisson.MaxLength = 32767;
-            this.txtaddnametypemisson.Name = "txtaddnametypemisson";
-            this.txtaddnametypemisson.OnFocusedColor = System.Drawing.Color.White;
-            this.txtaddnametypemisson.OnFocusedTextColor = System.Drawing.Color.Black;
-            this.txtaddnametypemisson.ReadOnly = false;
-            this.txtaddnametypemisson.Right_To_Left = System.Windows.Forms.RightToLeft.No;
-            this.txtaddnametypemisson.Size = new System.Drawing.Size(356, 44);
-            this.txtaddnametypemisson.TabIndex = 27;
-            this.txtaddnametypemisson.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtaddnametypemisson.TextName = "";
-            this.txtaddnametypemisson.Load += new System.EventHandler(this.jTextBox1_Load);
-            // 
             // radLabel1
             // 
             this.radLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -178,7 +171,7 @@
             this.btnDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnDel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnDel.Image = global::CTS_beta.Properties.Resources.close_window_30px;
-            this.btnDel.Location = new System.Drawing.Point(732, 73);
+            this.btnDel.Location = new System.Drawing.Point(738, 70);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(90, 45);
             this.btnDel.TabIndex = 28;
@@ -196,7 +189,7 @@
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnAdd.Image = global::CTS_beta.Properties.Resources.add_new_32px;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(592, 74);
+            this.btnAdd.Location = new System.Drawing.Point(600, 71);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(132, 44);
             this.btnAdd.TabIndex = 28;
@@ -209,9 +202,9 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 552);
+            this.panel2.Location = new System.Drawing.Point(0, 566);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(942, 68);
+            this.panel2.Size = new System.Drawing.Size(942, 54);
             this.panel2.TabIndex = 1;
             // 
             // btnEdit
@@ -224,7 +217,7 @@
             this.btnEdit.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnEdit.Image = global::CTS_beta.Properties.Resources.imgpsh_fullsize_anim;
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(829, 74);
+            this.btnEdit.Location = new System.Drawing.Point(834, 71);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(92, 44);
             this.btnEdit.TabIndex = 29;
@@ -233,29 +226,26 @@
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // PicSyn
+            // txtaddnametypemisson
             // 
-            this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
-            this.PicSyn.Location = new System.Drawing.Point(18, 5);
-            this.PicSyn.Name = "PicSyn";
-            this.PicSyn.Size = new System.Drawing.Size(32, 32);
-            this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.PicSyn.TabIndex = 45;
-            this.PicSyn.TabStop = false;
-            this.PicSyn.Click += new System.EventHandler(this.PicSyn_Click);
+            this.txtaddnametypemisson.Location = new System.Drawing.Point(218, 75);
+            this.txtaddnametypemisson.Name = "txtaddnametypemisson";
+            this.txtaddnametypemisson.Size = new System.Drawing.Size(294, 36);
+            this.txtaddnametypemisson.TabIndex = 30;
+            this.txtaddnametypemisson.ThemeName = "MaterialTeal";
             // 
             // frmTypeMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.data);
+            this.Controls.Add(this.txtaddnametypemisson);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.txtaddnametypemisson);
             this.Controls.Add(this.radLabel1);
-            this.Controls.Add(this.data);
             this.Controls.Add(this.panel3);
             this.Name = "frmTypeMission";
             this.Size = new System.Drawing.Size(942, 620);
@@ -266,8 +256,9 @@
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtaddnametypemisson)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,12 +271,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private JTextBox2.JTextBox txtaddnametypemisson;
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.PictureBox PicSyn;
+        private Telerik.WinControls.UI.RadTextBox txtaddnametypemisson;
     }
 }

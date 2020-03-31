@@ -124,7 +124,7 @@
             // PicSyn
             // 
             this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
-            this.PicSyn.Location = new System.Drawing.Point(17, 4);
+            this.PicSyn.Location = new System.Drawing.Point(8, 6);
             this.PicSyn.Name = "PicSyn";
             this.PicSyn.Size = new System.Drawing.Size(32, 32);
             this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -155,15 +155,16 @@
             // 
             // button3
             // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.BackColor = System.Drawing.Color.White;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(734, 8);
+            this.button3.Location = new System.Drawing.Point(765, 7);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(158, 38);
+            this.button3.Size = new System.Drawing.Size(158, 40);
             this.button3.TabIndex = 37;
             this.button3.Text = "Tạo tài khoản";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -180,9 +181,9 @@
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnDelete.Image = global::CTS_beta.Properties.Resources.close_window_20px;
-            this.btnDelete.Location = new System.Drawing.Point(17, 13);
+            this.btnDelete.Location = new System.Drawing.Point(10, 7);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(72, 29);
+            this.btnDelete.Size = new System.Drawing.Size(82, 40);
             this.btnDelete.TabIndex = 34;
             this.btnDelete.Text = " Xóa";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

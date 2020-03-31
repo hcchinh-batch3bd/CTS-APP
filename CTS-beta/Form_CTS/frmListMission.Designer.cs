@@ -113,9 +113,9 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnAddMission);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 531);
+            this.panel1.Location = new System.Drawing.Point(0, 524);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(942, 47);
+            this.panel1.Size = new System.Drawing.Size(942, 54);
             this.panel1.TabIndex = 10;
             // 
             // button1
@@ -127,7 +127,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button1.Image = global::CTS_beta.Properties.Resources.close_window_20px;
-            this.button1.Location = new System.Drawing.Point(178, 3);
+            this.button1.Location = new System.Drawing.Point(173, 7);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(66, 40);
             this.button1.TabIndex = 36;
@@ -144,7 +144,7 @@
             this.btnAddMission.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.btnAddMission.Image = ((System.Drawing.Image)(resources.GetObject("btnAddMission.Image")));
-            this.btnAddMission.Location = new System.Drawing.Point(14, 3);
+            this.btnAddMission.Location = new System.Drawing.Point(9, 7);
             this.btnAddMission.Name = "btnAddMission";
             this.btnAddMission.Size = new System.Drawing.Size(158, 40);
             this.btnAddMission.TabIndex = 35;
@@ -168,7 +168,7 @@
             // PicSyn
             // 
             this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
-            this.PicSyn.Location = new System.Drawing.Point(14, 5);
+            this.PicSyn.Location = new System.Drawing.Point(8, 5);
             this.PicSyn.Name = "PicSyn";
             this.PicSyn.Size = new System.Drawing.Size(32, 32);
             this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;

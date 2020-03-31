@@ -77,15 +77,15 @@ namespace CTS_beta.Form_CTS
         //Add a Mission
         private void AddMission()
         {
-            if (!txtNameMission.TextName.Equals("") && !txtCount.TextName.Equals("") && !txtPoint.TextName.Equals("") && !txtExprie.TextName.Equals("") && !txtDescribe.Text.Equals(""))
+            if (!txtNameMission.Text.Equals("") && !txtCount.Text.Equals("") && !txtPoint.Text.Equals("") && !txtExprie.Text.Equals("") && !txtDescribe.Text.Equals(""))
             {
             
-                string nameMission = txtNameMission.TextName;
+                string nameMission = txtNameMission.Text;
                 int idTypeMission = int.Parse(ddlTypeMission.SelectedItem.Value.ToString());
-                int count = int.Parse(txtCount.TextName);
-                int point = int.Parse(txtPoint.TextName);
+                int count = int.Parse(txtCount.Text);
+                int point = int.Parse(txtPoint.Text);
                 string Stardate = DateTime.Today.ToShortDateString();
-                int exprie = int.Parse(txtExprie.TextName);
+                int exprie = int.Parse(txtExprie.Text);
                 string describe = txtDescribe.Text;
                 int status = 0;
                 int idEmployee = Properties.Settings.Default.id_employee;

@@ -19,6 +19,7 @@ namespace CTS_beta
         public frmForgotPassword()
         {
             InitializeComponent();
+            btnSendCode.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnSendCode.Width, btnSendCode.Height, 5, 5));
         }
         int otp;
         private void btnSendCode_Click(object sender, EventArgs e)
@@ -75,6 +76,24 @@ namespace CTS_beta
             }
             else
                 MessageBox.Show("Mã OTP không chính xác !!");
+        }
+
+        private void frmForgotPassword_MouseDown(object sender, MouseEventArgs e)
+        {
+            MoveControl.ReleaseCapture();
+            MoveControl.SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void frmForgotPassword_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void frmForgotPassword_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmLogin fL = new frmLogin();
+            fL.Show();
+            this.Hide();
         }
     }
 }

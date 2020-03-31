@@ -46,22 +46,22 @@
             // txtPasswordOld
             // 
             this.txtPasswordOld.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPasswordOld.Location = new System.Drawing.Point(67, 113);
+            this.txtPasswordOld.Location = new System.Drawing.Point(40, 196);
             this.txtPasswordOld.Name = "txtPasswordOld";
             this.txtPasswordOld.NullText = "Mật khẩu cũ";
             this.txtPasswordOld.PasswordChar = '●';
-            this.txtPasswordOld.Size = new System.Drawing.Size(240, 36);
+            this.txtPasswordOld.Size = new System.Drawing.Size(259, 36);
             this.txtPasswordOld.TabIndex = 0;
             this.txtPasswordOld.ThemeName = "Material";
             // 
             // txtPasswordNew
             // 
             this.txtPasswordNew.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPasswordNew.Location = new System.Drawing.Point(67, 170);
+            this.txtPasswordNew.Location = new System.Drawing.Point(40, 253);
             this.txtPasswordNew.Name = "txtPasswordNew";
             this.txtPasswordNew.NullText = "Mật khẩu mới";
             this.txtPasswordNew.PasswordChar = '●';
-            this.txtPasswordNew.Size = new System.Drawing.Size(240, 36);
+            this.txtPasswordNew.Size = new System.Drawing.Size(259, 36);
             this.txtPasswordNew.TabIndex = 1;
             this.txtPasswordNew.ThemeName = "Material";
             this.txtPasswordNew.UseSystemPasswordChar = true;
@@ -70,11 +70,11 @@
             // 
             this.txtPasswordNewComfirm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPasswordNewComfirm.BackColor = System.Drawing.Color.White;
-            this.txtPasswordNewComfirm.Location = new System.Drawing.Point(67, 223);
+            this.txtPasswordNewComfirm.Location = new System.Drawing.Point(40, 306);
             this.txtPasswordNewComfirm.Name = "txtPasswordNewComfirm";
             this.txtPasswordNewComfirm.NullText = "Nhập lại mật khẩu";
             this.txtPasswordNewComfirm.PasswordChar = '●';
-            this.txtPasswordNewComfirm.Size = new System.Drawing.Size(240, 36);
+            this.txtPasswordNewComfirm.Size = new System.Drawing.Size(259, 36);
             this.txtPasswordNewComfirm.TabIndex = 2;
             this.txtPasswordNewComfirm.ThemeName = "Material";
             this.txtPasswordNewComfirm.UseSystemPasswordChar = true;
@@ -82,10 +82,11 @@
             // btnChangePassword
             // 
             this.btnChangePassword.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnChangePassword.BackColor = System.Drawing.Color.PowderBlue;
-            this.btnChangePassword.Location = new System.Drawing.Point(67, 307);
+            this.btnChangePassword.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnChangePassword.ForeColor = System.Drawing.Color.White;
+            this.btnChangePassword.Location = new System.Drawing.Point(102, 383);
             this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(240, 36);
+            this.btnChangePassword.Size = new System.Drawing.Size(135, 36);
             this.btnChangePassword.TabIndex = 3;
             this.btnChangePassword.Text = "Thay đổi";
             this.btnChangePassword.ThemeName = "Material";
@@ -96,7 +97,7 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::CTS_beta.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(81, 7);
+            this.pictureBox1.Location = new System.Drawing.Point(70, 74);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(213, 100);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -108,7 +109,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::CTS_beta.Properties.Resources.abc;
-            this.ClientSize = new System.Drawing.Size(374, 423);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(339, 527);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnChangePassword);
             this.Controls.Add(this.txtPasswordNewComfirm);
@@ -121,9 +123,11 @@
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ĐỔI MẬT KHẨU";
             this.ThemeName = "Material";
             this.Load += new System.EventHandler(this.frmChangePassword_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmChangePassword_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordNew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordNewComfirm)).EndInit();
