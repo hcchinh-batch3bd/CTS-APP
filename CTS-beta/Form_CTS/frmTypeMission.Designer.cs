@@ -36,6 +36,7 @@
             this.data = new Telerik.WinControls.UI.RadGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.PicSyn = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtaddnametypemisson = new JTextBox2.JTextBox();
@@ -44,13 +45,12 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.PicSyn = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             this.SuspendLayout();
             // 
             // data
@@ -117,6 +117,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(942, 42);
             this.panel1.TabIndex = 10;
+            // 
+            // PicSyn
+            // 
+            this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
+            this.PicSyn.Location = new System.Drawing.Point(18, 5);
+            this.PicSyn.Name = "PicSyn";
+            this.PicSyn.Size = new System.Drawing.Size(32, 32);
+            this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PicSyn.TabIndex = 45;
+            this.PicSyn.TabStop = false;
+            this.PicSyn.Click += new System.EventHandler(this.PicSyn_Click);
             // 
             // label1
             // 
@@ -233,17 +244,6 @@
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // PicSyn
-            // 
-            this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
-            this.PicSyn.Location = new System.Drawing.Point(18, 5);
-            this.PicSyn.Name = "PicSyn";
-            this.PicSyn.Size = new System.Drawing.Size(32, 32);
-            this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.PicSyn.TabIndex = 45;
-            this.PicSyn.TabStop = false;
-            this.PicSyn.Click += new System.EventHandler(this.PicSyn_Click);
-            // 
             // frmTypeMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,8 +266,8 @@
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

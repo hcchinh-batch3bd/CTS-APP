@@ -156,7 +156,8 @@ namespace CTS_beta.Form_CTS
                 string output = JsonConvert.SerializeObject(typeMission);
                 request.AddParameter("application/json", output, ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
-                MessageBox.Show(response.Content.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
+                MessageBox.Show("Sửa thành công !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 data.Rows.Clear();
                 LoadData();
                 btnEdit.Enabled = false;
@@ -210,6 +211,10 @@ namespace CTS_beta.Form_CTS
             data.Rows.Clear();
             Thread thread = new Thread(new ThreadStart(LoadData));
             thread.Start();
+        }
+        class Message
+        {
+            public string message { get; set; }
         }
     }
 }

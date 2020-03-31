@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -19,6 +20,7 @@ namespace CTS_beta
     public partial class frmAdmin : Telerik.WinControls.UI.RadForm
     {
         frmLogin frmLogin;
+        int num = 0;
         public frmAdmin()
         {
             InitializeComponent();
@@ -84,6 +86,7 @@ namespace CTS_beta
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
             ChildForm.OpenChildForm(new frmStatistical(), panel4);
             ShowMenu.customizeDesing(panel5);
+            button11.Number = num;
         }
 
         private void frmAdmin_MouseDown(object sender, MouseEventArgs e)
@@ -110,7 +113,7 @@ namespace CTS_beta
         }
         void loadNotify()
         {
-            
+            num = 0;
             var client = new RestClient(ConfigurationSettings.AppSettings["server"] + "/Mission/ListMission");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
@@ -118,11 +121,13 @@ namespace CTS_beta
             {
                 RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
                 List<Mission> mission = obj.results;
+                
                 foreach (var item in mission)
                 {
                     if (item.status == 0)
                     {
-                       
+                        num++;
+
                         string content = item.name_employee+" đã yêu cầu tạo nhiệm vụ: \""+item.name_mission+"\"";
                         MissionApproval childForm = new MissionApproval(item.id_mission, content,panel5);
                         if (!panel5.InvokeRequired)
@@ -146,13 +151,33 @@ namespace CTS_beta
                             
 
                 }
-
+                button11.Number = num;
 
             }
             catch(Exception ex)
             {
                 MessageBox.Show("Máy chủ "+ex.Message + ConfigurationSettings.AppSettings["server"] + " không thể kết nối", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        protected override void OnPaint(System.Windows.Forms.PaintEventArgs pevent)
+        {
+            
+        }
+
+        private void button11_Paint(object sender, PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Graphics graphics = e.Graphics;
+            graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            //base.DrawImageAndText(graphics, controlState, imageTextRect);
+            if (num == 0) return;
+            int height = 25;
+            var rect = new Rectangle(this.Width - (height), (this.Height - height) / 2, height, height);
+            graphics.FillEllipse(Brushes.OrangeRed, rect);
+            graphics.DrawEllipse(new Pen(Color.Orange, 2), rect);
+            string text = num.ToString();
+            SizeF textsize = graphics.MeasureString(text, Font);
+            graphics.DrawString(text, Font, Brushes.White, rect.X + ((height - textsize.Width) / 2), rect.Y + ((height - textsize.Height) / 2));
         }
     }
 }
