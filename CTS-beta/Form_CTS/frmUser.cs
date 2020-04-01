@@ -23,6 +23,8 @@ namespace CTS_beta.Form_CTS
         {
             InitializeComponent();
             pictureBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, pictureBox1.Width, pictureBox1.Height, 5, 5));
+            txtSearch.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtSearch.Width, txtSearch.Height, 5, 5));
+            btnSeach.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnSeach.Width, btnSeach.Height, 5, 5));
             apiKey = Properties.Settings.Default.apiKey;
            
         }
@@ -52,6 +54,8 @@ namespace CTS_beta.Form_CTS
         {
             InitializeComponent();
             pictureBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, pictureBox1.Width, pictureBox1.Height, 5, 5));
+            txtSearch.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtSearch.Width, txtSearch.Height, 5, 5));
+            btnSeach.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnSeach.Width, btnSeach.Height, 5, 5));
             this.apiKey = apiKey;
             frmLogin = frm;
         }

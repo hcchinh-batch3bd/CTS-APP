@@ -33,7 +33,7 @@ namespace CTS_beta.Form_CTS
         }
         void LoadData()
         {
-            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/ListMissionComplete?apiKey="+frmUser.Instance.ApiKey);
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/ListMissionComplete?apiKey="+Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             try

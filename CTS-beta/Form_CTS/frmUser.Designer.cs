@@ -251,7 +251,7 @@
             this.btnSeach.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.btnSeach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSeach.Image = ((System.Drawing.Image)(resources.GetObject("btnSeach.Image")));
-            this.btnSeach.Location = new System.Drawing.Point(995, 29);
+            this.btnSeach.Location = new System.Drawing.Point(1004, 29);
             this.btnSeach.Name = "btnSeach";
             this.btnSeach.Size = new System.Drawing.Size(64, 36);
             this.btnSeach.TabIndex = 30;

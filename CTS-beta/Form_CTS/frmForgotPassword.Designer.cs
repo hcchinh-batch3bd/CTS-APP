@@ -75,7 +75,7 @@
             this.txtOTP.ShowClearButton = true;
             this.txtOTP.ShowNullText = true;
             this.txtOTP.Size = new System.Drawing.Size(259, 36);
-            this.txtOTP.TabIndex = 2;
+            this.txtOTP.TabIndex = 1;
             this.txtOTP.ThemeName = "Material";
             // 
             // btnChangePass
@@ -87,7 +87,7 @@
             this.btnChangePass.Location = new System.Drawing.Point(102, 420);
             this.btnChangePass.Name = "btnChangePass";
             this.btnChangePass.Size = new System.Drawing.Size(135, 36);
-            this.btnChangePass.TabIndex = 3;
+            this.btnChangePass.TabIndex = 4;
             this.btnChangePass.Text = "Gửi yêu cầu";
             this.btnChangePass.ThemeName = "Material";
             this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
@@ -148,7 +148,7 @@
             this.txtPasswordComfirm.ShowClearButton = true;
             this.txtPasswordComfirm.ShowNullText = true;
             this.txtPasswordComfirm.Size = new System.Drawing.Size(259, 36);
-            this.txtPasswordComfirm.TabIndex = 6;
+            this.txtPasswordComfirm.TabIndex = 3;
             this.txtPasswordComfirm.ThemeName = "Material";
             // 
             // timer2

@@ -82,7 +82,7 @@ namespace CTS_beta.Form_CTS
             {
                 DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn hoàn thành không?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)                {                    Load:                    int id = int.Parse(e.Row.Cells[5].Value.ToString());
-                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" + id + "/CompleteMission?apiKey=" + frmUser.Instance.ApiKey);
+                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" + id + "/CompleteMission?apiKey=" + Properties.Settings.Default.apiKey);
                     var request = new RestRequest(Method.PUT);
                     IRestResponse response = client.Execute(request);                    if (!response.IsSuccessful)
                     {

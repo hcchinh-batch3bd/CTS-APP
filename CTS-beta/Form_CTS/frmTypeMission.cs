@@ -136,7 +136,7 @@ namespace CTS_beta.Form_CTS
                     request.AddHeader("content-type", "application/json");
                     TypeMission typeMission = new TypeMission();
                     typeMission.name_type_mission = txtaddnametypemisson.Text;
-                    typeMission.id_employee = 189212;
+                    typeMission.id_employee = Properties.Settings.Default.id_employee;
                     typeMission.status = true;
                     typeMission.date = DateTime.Now;
                     string output = JsonConvert.SerializeObject(typeMission);
@@ -258,7 +258,7 @@ namespace CTS_beta.Form_CTS
                 }
 
             }
-            else MessageBox.Show("Loại nhiệm vụ này đã bị xpas trước đó !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show("Loại nhiệm vụ này đã bị xóa trước đó !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
