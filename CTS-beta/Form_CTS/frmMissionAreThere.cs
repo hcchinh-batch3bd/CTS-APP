@@ -119,10 +119,10 @@ namespace CTS_beta.Form_CTS
             PicSyn.Visible = true;
             frmUser.Instance.worker.RunWorkerAsync();
         }
-        public DataTable GridView
+        public Telerik.WinControls.UI.RadGridView GridView
         {
-            get { return radGridView1.DataSource as DataTable; }
-            set { radGridView1.DataSource = value; }
+            get { return radGridView1; }
+            set { radGridView1 = value; }
         }
     }
 }

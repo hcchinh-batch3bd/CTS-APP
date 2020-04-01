@@ -93,6 +93,8 @@
             // 
             // 
             // 
+            this.radGridView1.MasterTemplate.AllowAddNewRow = false;
+            this.radGridView1.MasterTemplate.AllowColumnReorder = false;
             this.radGridView1.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             gridViewTextBoxColumn1.HeaderText = "ID Nhiệm vụ";
             gridViewTextBoxColumn1.Name = "column6";

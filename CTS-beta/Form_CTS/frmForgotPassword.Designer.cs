@@ -62,6 +62,7 @@
             this.txtEmail.Size = new System.Drawing.Size(211, 36);
             this.txtEmail.TabIndex = 0;
             this.txtEmail.ThemeName = "Material";
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // txtOTP
             // 

@@ -76,7 +76,11 @@ namespace CTS_beta.Form_CTS
                 PicSyn.Visible = false;
             }
             PicSyn.Visible = true;
-            frmUser.Instance.worker.RunWorkerAsync();
+        }
+        public Telerik.WinControls.UI.RadGridView GridView
+        {
+            get { return data; }
+            set { data = value; }
         }
     }
 }

@@ -86,7 +86,7 @@ namespace CTS_beta.Form_CTS
             }
             else
             {
-                MessageBox.Show("Xóa nhiệm vụ thành công.");
+                MessageBox.Show("Xóa nhiệm vụ thành công.","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 main.Visible = false;
             }
         }

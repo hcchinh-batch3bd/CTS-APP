@@ -212,20 +212,154 @@ namespace CTS_beta.Form_CTS
         {
             if (txtSearch.Text != "")
             {
-
                 foreach (Control c in panelDesktop.Controls)
                 {
                     if(c.ToString().Equals("CTS_beta.Form_CTS.frmMissionAreThere"))
                     {
-                        frmMissionAreThere frm = c as frmMissionAreThere;
-                        DataTable source = frm.GridView;
-                        //foreach(DataRow row in source)
+                        Application.DoEvents();
+                        Load:
+                        var client = new RestClient(ConfigurationManager.AppSettings["server"]+"/Mission/Search?key=" +txtSearch.Text);
+                        var request = new RestRequest(Method.GET);
+                        IRestResponse response = client.Execute(request);
+                        if (!response.IsSuccessful)
+                        {
+                            DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            if (dialog == DialogResult.Retry)
+                                goto Load;
+                            else
+                            {
+                                Application.Exit();
+                            }
+                        }
+                        else
+                        {
+                            frmMissionAreThere frm = c as frmMissionAreThere;
+                            if (!frm.GridView.InvokeRequired)
+                                frm.GridView.Rows.Clear();
+                            else
+                                frm.GridView.Invoke(new Action(() => frm.GridView.Rows.Clear()));
+                            MissionResult obj = JsonConvert.DeserializeObject<MissionResult>(response.Content.ToString());
+                            List<Mission> missionCompletes = obj.results;
+                            if(missionCompletes!=null)
+                            {
+                                foreach (var mission in missionCompletes)
+                                {
+                                    if (frm.GridView.InvokeRequired)
+                                    {
+                                        frm.GridView.Invoke(new Action(() => frm.GridView.Rows.Add(mission.id_mission, mission.name_mission, mission.describe, mission.Stardate, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Xem")));
+                                    }
+                                    else
+                                        frm.GridView.Rows.Add(mission.id_mission, mission.name_mission, mission.describe, mission.Stardate, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Xem");
+                                }
+                            }
+                                
+                        }
+
+                            break;
+                    }
+                    if(c.ToString().Equals("CTS_beta.Form_CTS.frmMissionDoing"))
+                    {
+                        Application.DoEvents();
+                    Load:
+                        var client = new RestClient(ConfigurationManager.AppSettings["server"]+ "/Mission/Missionavailableemp/Search?key=" + txtSearch.Text+"&apiKey="+Properties.Settings.Default.apiKey);
+                        var request = new RestRequest(Method.GET);
+                        IRestResponse response = client.Execute(request);
+                        if (!response.IsSuccessful)
+                        {
+                            DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            if (dialog == DialogResult.Retry)
+                                goto Load;
+                            else
+                            {
+                                Application.Exit();
+                            }
+                        }
+                        else
+                        {
+                            frmMissionDoing frm = c as frmMissionDoing;
+                            if (!frm.GridView.InvokeRequired)
+                                frm.GridView.Rows.Clear();
+                            else
+                                frm.GridView.Invoke(new Action(() => frm.GridView.Rows.Clear()));
+                            MissionResult obj = JsonConvert.DeserializeObject<MissionResult>(response.Content.ToString());
+                            List<Mission> missionCompletes = obj.results;
+                            if (missionCompletes != null)
+                            {
+                                foreach (var mission in missionCompletes)
+                                {
+                                    if (!frm.GridView.InvokeRequired)
+                                    {
+
+                                        frm.GridView.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Hoàn thành", mission.id_mission);
+                                    }
+                                    else
+                                        frm.GridView.Invoke(new Action(() => frm.GridView.Rows.Add(mission.name_mission, mission.Stardate.AddDays(mission.exprie), mission.name_type_mission, mission.point, "Hoàn thành", mission.id_mission)));
+
+
+                                }
+                            }
+
+                        }
+
+                        break;
+                    }
+                    if(c.ToString().Equals("CTS_beta.Form_CTS.frmMissionCompleted"))
+                    {
+                        Application.DoEvents();
+                    Load:
+                        var client = new RestClient(ConfigurationManager.AppSettings["server"]+ "/Mission/ListMissionComplete/Search?key=" + txtSearch.Text+"&apiKey="+Properties.Settings.Default.apiKey);
+                        var request = new RestRequest(Method.GET);
+                        IRestResponse response = client.Execute(request);
+                        if (!response.IsSuccessful)
+                        {
+                            DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            if (dialog == DialogResult.Retry)
+                                goto Load;
+                            else
+                            {
+                                Application.Exit();
+                            }
+                        }
+                        else
+                        {
+                            frmMissionCompleted frm = c as frmMissionCompleted;
+                            if (!frm.GridView.InvokeRequired)
+                                frm.GridView.Rows.Clear();
+                            else
+                                frm.GridView.Invoke(new Action(() => frm.GridView.Rows.Clear()));
+                            MissionCompltetResult obj = JsonConvert.DeserializeObject<MissionCompltetResult>(response.Content.ToString());
+                            List<MissionComplete> missionCompletes = obj.results;
+                            if (missionCompletes != null)
+                            {
+                                foreach (var mission in missionCompletes)
+                                {
+                                    if (!frm.GridView.InvokeRequired)
+                                        frm.GridView.Rows.Add(mission.name_mission, mission.date, mission.name_type_mission, mission.point, "Đã hoàn thành");
+                                    else
+                                        frm.GridView.Invoke(new Action(() => frm.GridView.Rows.Add(mission.name_mission, mission.date, mission.name_type_mission, mission.point, "Đã hoàn thành")));
+                                }
+                            }
+
+                        }
+
                         break;
                     }
                 }
             }
             else
                 MessageBox.Show("Bạn cần nhập tên hoặc mô tả vào !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        class MissionResult
+        {
+            public List<Mission> results { get; set; }
+            public bool status { get; set; }
+            public string message { get; set; }
+        }
+        class MissionCompltetResult
+        {
+            public List<MissionComplete> results { get; set; }
+            public bool status { get; set; }
+            public string message { get; set; }
         }
     }
 }

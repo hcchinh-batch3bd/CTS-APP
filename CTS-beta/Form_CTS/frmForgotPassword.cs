@@ -67,7 +67,7 @@ namespace CTS_beta
                 }
             }
             else
-                MessageBox.Show("Vui lòng vào nhập email !!");
+                MessageBox.Show("Xin vui lòng nhập email !!");
         }
         public class Message
         {
@@ -106,7 +106,7 @@ namespace CTS_beta
                                     MessageBox.Show("Mã code đã hết hạn !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                             else
-                                MessageBox.Show("Mật khẩu phải dài từ 8 đến 30 ký tự.\nMật phải chứa ít nhất một số.\nMật khẩu phải chứa ít nhất một chữ cái viết hoa.\nMật khẩu phải chứa ít nhất một chữ cái viết thường", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Mật khẩu phải dài từ 8 đến 30 ký tự.\nMật phải chứa ít nhất một số.\nMật khẩu phải chứa ít nhất một chữ cái viết hoa.\nMật khẩu phải chứa ít nhất một chữ cái viết thường\nMật khẩu phải chứa ít nhất một kí tự đặc biệt.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else
                             MessageBox.Show("Mật khẩu mới và mật khẩu nhập lại không giống nhau !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
@@ -118,7 +118,7 @@ namespace CTS_beta
                     MessageBox.Show("Vui lòng nhập mật khẩu mới !!");
             }
             else
-                MessageBox.Show("Mã OTP không chính xác !!");
+                MessageBox.Show("Mã OTP không xác định !!");
         }
 
         private void frmForgotPassword_MouseDown(object sender, MouseEventArgs e)
@@ -163,8 +163,7 @@ namespace CTS_beta
         }
         public bool CheckPassword(string password)
         {
-            //string MatchEmailPattern = "(?=.{6,})[a-zA-Z0-9]+[^a-zA-Z]+|[^a-zA-Z]+[a-zA-Z]+";
-            string MatchEmailPattern = "(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,30})$";
+            string MatchEmailPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,30}$";
 
             if (password != null) return Regex.IsMatch(password, MatchEmailPattern);
             else return false;
@@ -235,6 +234,11 @@ namespace CTS_beta
             MyTripleDESCryptoService.Clear();
 
             return UTF8Encoding.UTF8.GetString(MyresultArray);
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

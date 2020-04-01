@@ -25,15 +25,10 @@ namespace CTS_beta.Form_CTS
             this.radGridView1.MasterTemplate.AllowDragToGroup = false;
             this.radGridView1.MasterTemplate.AutoExpandGroups = false;
         }
-        public  DataTable GridView
-        {
-            get { return radGridView1.DataSource as DataTable; }
-            set { radGridView1.DataSource = value; }
-        }
         void loadData()
         {
             Load:
-            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/Missionavailableemp?apiKey=" + frmUser.Instance.ApiKey);
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/Missionavailableemp?apiKey=" + Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             if (!response.IsSuccessful)
@@ -130,7 +125,11 @@ namespace CTS_beta.Form_CTS
                 PicSyn.Visible = false;
             }
             PicSyn.Visible = true;
-            frmUser.Instance.worker.RunWorkerAsync();
+        }
+        public Telerik.WinControls.UI.RadGridView GridView
+        {
+            get { return radGridView1; }
+            set { radGridView1 = value; }
         }
     }
     }
