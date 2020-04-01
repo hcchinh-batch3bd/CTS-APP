@@ -25,6 +25,11 @@ namespace CTS_beta.Form_CTS
             this.radGridView1.MasterTemplate.AllowDragToGroup = false;
             this.radGridView1.MasterTemplate.AutoExpandGroups = false;
         }
+        public  DataTable GridView
+        {
+            get { return radGridView1.DataSource as DataTable; }
+            set { radGridView1.DataSource = value; }
+        }
         void loadData()
         {
             Load:

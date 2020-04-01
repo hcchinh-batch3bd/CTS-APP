@@ -207,5 +207,25 @@ namespace CTS_beta.Form_CTS
             frmChangePassword frm = new frmChangePassword();
             frm.ShowDialog();
         }
+
+        private void btnSeach_Click(object sender, EventArgs e)
+        {
+            if (txtSearch.Text != "")
+            {
+
+                foreach (Control c in panelDesktop.Controls)
+                {
+                    if(c.ToString().Equals("CTS_beta.Form_CTS.frmMissionAreThere"))
+                    {
+                        frmMissionAreThere frm = c as frmMissionAreThere;
+                        DataTable source = frm.GridView;
+                        //foreach(DataRow row in source)
+                        break;
+                    }
+                }
+            }
+            else
+                MessageBox.Show("Bạn cần nhập tên hoặc mô tả vào !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
