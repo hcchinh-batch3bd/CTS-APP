@@ -33,10 +33,21 @@ namespace CTS_beta.Form_CTS
         }
         void LoadData()
         {
+            Load:
             var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/ListMissionComplete?apiKey="+Properties.Settings.Default.apiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
-            try
+            if (!response.IsSuccessful)
+            {
+                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.Retry)
+                    goto Load;
+                else
+                {
+                    Application.Exit();
+                }
+            }
+            else
             {
                 if (!data.InvokeRequired)
                     data.Rows.Clear();
@@ -51,10 +62,6 @@ namespace CTS_beta.Form_CTS
                     else
                         data.Invoke(new Action(() => data.Rows.Add(mission.name_mission, mission.date, mission.name_type_mission, mission.point, "Đã hoàn thành")));               
                 }
-            }
-           catch
-            {
-                MessageBox.Show("Máy chủ " + ConfigurationManager.AppSettings["server"] +  "bị mất kết nối");
             }
             
             
