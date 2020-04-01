@@ -58,10 +58,15 @@ namespace CTS_beta
                     else
                     {
                         Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
-                        MessageBox.Show(obj.message);
-                        Properties.Settings.Default.apiKey = "";
-                        Properties.Settings.Default.Save();
-                        Application.Exit();
+                        if (obj.status)
+                        {
+                            MessageBox.Show(obj.message);
+                            Properties.Settings.Default.apiKey = "";
+                            Properties.Settings.Default.Save();
+                            Application.Exit();
+                        }
+                        else
+                            MessageBox.Show(obj.message);
                     }
                 }
                else
@@ -73,6 +78,7 @@ namespace CTS_beta
         public class Message
         {
             public string message { get; set; }
+            public bool status { get; set; }
         }
 
         private void frmChangePassword_MouseDown(object sender, MouseEventArgs e)
