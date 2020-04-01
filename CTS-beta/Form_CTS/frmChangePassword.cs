@@ -30,10 +30,13 @@ namespace CTS_beta
         {
             if (txtPasswordOld.Text == "")
                 MessageBox.Show("Vui lòng nhập vào mật khẩu cũ !!");
+            else
             if (txtPasswordNew.Text == "")
                 MessageBox.Show("Vui lòng nhập vào mật khẩu mới !!");
+            else
             if (txtPasswordNewComfirm.Text == "")
                 MessageBox.Show("Vui lòng nhập lại mật khẩu mới !!");
+            else
             if (txtPasswordNew.Text.Equals(txtPasswordNewComfirm.Text))
             {
                 if(CheckPassword(txtPasswordNew.Text))
