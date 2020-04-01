@@ -192,7 +192,7 @@ namespace CTS_beta.Form_CTS
                 Properties.Settings.Default.id_employee = obj.id_employee;
                 Properties.Settings.Default.Save();
                 _obj = this;
-                client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Missison/Missionavailable?apiKey=" + frmUser.Instance.ApiKey);
+                client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Missison/Missionavailable?apiKey=" + apiKey);
                 request = new RestRequest(Method.GET);
                 response = client.Execute(request);
                 RootObject ob = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
@@ -265,7 +265,7 @@ namespace CTS_beta.Form_CTS
                     {
                         Application.DoEvents();
                     Load:
-                        var client = new RestClient(ConfigurationManager.AppSettings["server"]+ "/Mission/Missionavailableemp/Search?key=" + txtSearch.Text+"&apiKey="+Properties.Settings.Default.apiKey);
+                        var client = new RestClient(ConfigurationManager.AppSettings["server"]+ "/Mission/Missionavailableemp/Search?key=" + txtSearch.Text+"&apiKey="+apiKey);
                         var request = new RestRequest(Method.GET);
                         IRestResponse response = client.Execute(request);
                         if (!response.IsSuccessful)
@@ -311,7 +311,7 @@ namespace CTS_beta.Form_CTS
                     {
                         Application.DoEvents();
                     Load:
-                        var client = new RestClient(ConfigurationManager.AppSettings["server"]+ "/Mission/ListMissionComplete/Search?key=" + txtSearch.Text+"&apiKey="+Properties.Settings.Default.apiKey);
+                        var client = new RestClient(ConfigurationManager.AppSettings["server"]+ "/Mission/ListMissionComplete/Search?key=" + txtSearch.Text+"&apiKey="+apiKey);
                         var request = new RestRequest(Method.GET);
                         IRestResponse response = client.Execute(request);
                         if (!response.IsSuccessful)

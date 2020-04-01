@@ -33,8 +33,8 @@ namespace CTS_beta.Form_CTS
         }
         void LoadData()
         {
-            Load:
-            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/ListMissionComplete?apiKey="+Properties.Settings.Default.apiKey);
+        Load:
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/ListMissionComplete?apiKey=" + frmUser.Instance.ApiKey);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             if (!response.IsSuccessful)
@@ -55,6 +55,7 @@ namespace CTS_beta.Form_CTS
                     data.Invoke(new Action(() => data.Rows.Clear()));
                 RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
                 List<MissionComplete> missionCompletes = obj.results;
+                if(missionCompletes!=null)
                 foreach (var mission in missionCompletes)
                 {
                     if(!data.InvokeRequired)
