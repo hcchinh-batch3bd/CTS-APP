@@ -88,7 +88,7 @@ namespace CTS_beta
         }
         public bool CheckPassword(string password)
         {
-            string MatchEmailPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,15}$";
+            string MatchEmailPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,30}$";
 
             if (password != null) return Regex.IsMatch(password, MatchEmailPattern);
             else return false;

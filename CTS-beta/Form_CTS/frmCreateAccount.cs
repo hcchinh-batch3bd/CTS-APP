@@ -66,7 +66,7 @@ namespace CTS_beta.Form_CTS
                             request.AddHeader("content-type", "application/json");
                             Employee employee = new Employee();
                             employee.name_employee = txtname_employee.Text;
-                            employee.email = txtemail.Text;
+                            employee.email = txtemail.Text.ToLower();
                             employee.password = txtpassword.Text;
                             employee.date = txtdate.Value.Date;
                             employee.level_employee = txtlevel.SelectedValue.ToString();
@@ -90,12 +90,13 @@ namespace CTS_beta.Form_CTS
                             {
                                 RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
                                 MessageBox.Show(obj.message);
-                                this.Close();
+                                if(obj.status)
+                                    this.Close();
                             }
                         }
                     }
                     else
-                        MessageBox.Show("Mật khẩu phải dài từ 8 đến 30 ký tự.\nMật phải chứa ít nhất một số.\nMật khẩu phải chứa ít nhất một chữ cái viết hoa.\nMật khẩu phải chứa ít nhất một chữ cái viết thường", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Mật khẩu phải dài từ 8 đến 30 ký tự.\nMật phải chứa ít nhất một số.\nMật khẩu phải chứa ít nhất một chữ cái viết hoa.\nMật khẩu phải chứa ít nhất một chữ cái viết thường\nMật khẩu phải chứa ít nhất một kí tự đặc biệt.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
                 else
@@ -128,7 +129,7 @@ namespace CTS_beta.Form_CTS
         }
         public bool CheckPassword(string password)
         {
-            string MatchEmailPattern = "(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,30})$";
+            string MatchEmailPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,30}$";
 
             if (password != null) return Regex.IsMatch(password, MatchEmailPattern);
             else return false;
