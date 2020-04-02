@@ -50,6 +50,7 @@ namespace CTS_beta.Form_CTS
         }
         void LoadData()
         {
+            //System.Configuration.ConfigurationSettings.AppSettings["server"]+"/Type_Mission/GetAll"+frmUser.Instance.ApiKey
             var typeMission = new RestClient("https://api.hotrogame.online/Type_Mission/GetAll");
             var request = new RestRequest(Method.GET);
             IRestResponse response = typeMission.Execute(request);
@@ -107,32 +108,36 @@ namespace CTS_beta.Form_CTS
             var nameType = txtaddnametypemisson.TextName;
             if (nameType != "")
             {
-                if (!check(txtaddnametypemisson.TextName))
+                if(nameType.Trim().Length > 0)
                 {
+                    if (!check(txtaddnametypemisson.TextName))
+                    {
+                        //System.Configuration.ConfigurationSettings.AppSettings["server"]+"/Type_Mission/Create?apiKey="+frmUser.Instance.ApiKey
+                        var client = new RestClient("https://api.hotrogame.online/Type_Mission/Create?apiKey=admin");
+                        var request = new RestRequest(Method.POST);
+                        request.AddHeader("content-type", "application/json");
+                        TypeMission typeMission = new TypeMission();
+                        typeMission.name_type_mission = txtaddnametypemisson.TextName;
+                        typeMission.id_employee = 189212;
+                        typeMission.status = true;
+                        typeMission.date = DateTime.Now;
+                        string output = JsonConvert.SerializeObject(typeMission);
+                        request.AddParameter("application/json", output, ParameterType.RequestBody);
+                        IRestResponse response = client.Execute(request);
+                        RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                        MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Thread thread = new Thread(new ThreadStart(LoadData));
+                        thread.Start();
+                        txtaddnametypemisson.TextName = "";
+                    }
 
-                    var client = new RestClient("https://api.hotrogame.online/Type_Mission/Create?apiKey=admin");
-                    var request = new RestRequest(Method.POST);
-                    request.AddHeader("content-type", "application/json");
-                    TypeMission typeMission = new TypeMission();
-                    typeMission.name_type_mission = txtaddnametypemisson.TextName;
-                    typeMission.id_employee = 189212;
-                    typeMission.status = true;
-                    typeMission.date = DateTime.Now;
-                    string output = JsonConvert.SerializeObject(typeMission);
-                    request.AddParameter("application/json", output, ParameterType.RequestBody);
-                    IRestResponse response = client.Execute(request);
-                    RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-                    MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Thread thread = new Thread(new ThreadStart(LoadData));
-                    thread.Start();
-                    txtaddnametypemisson.TextName = "";
+                    else
+                    {
+                        MessageBox.Show("Tên loại nhiệm vụ đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        txtaddnametypemisson.TextName = "";
+                    }
                 }
-
-                else
-                {
-                    MessageBox.Show("Tên loại nhiệm vụ đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                    txtaddnametypemisson.TextName = "";
-                }
+                else MessageBox.Show("Tên loại nhiệm vụ không hơp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
             else MessageBox.Show("Bạn chưa nhập tên loại nhiệm vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Hand);
         }
@@ -149,23 +154,36 @@ namespace CTS_beta.Form_CTS
 
             if (data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value != null)
             {
-                typeMission.name_type_mission = data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value.ToString();
-                typeMission.id_employee = 189212;
-                typeMission.status = true;
-                typeMission.date = DateTime.Now;
-                string output = JsonConvert.SerializeObject(typeMission);
-                request.AddParameter("application/json", output, ParameterType.RequestBody);
-                IRestResponse response = client.Execute(request);
-                //RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-                //MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                MessageBox.Show(response.Content.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                data.Rows.Clear();
-                LoadData();
+                if (!check(data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value.ToString()))
+                    {
+                    DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        typeMission.name_type_mission = data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value.ToString();
+                        typeMission.id_employee = 189212;
+                        typeMission.status = true;
+                        typeMission.date = DateTime.Now;
+                        string output = JsonConvert.SerializeObject(typeMission);
+                        request.AddParameter("application/json", output, ParameterType.RequestBody);
+                        IRestResponse response = client.Execute(request);
+                        //RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                        //MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(response.Content.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        data.Rows.Clear();
+                        LoadData();
+                        btnEdit.Enabled = false;
+                        btnDel.Enabled = true;
+                    }
+                }
+                else MessageBox.Show("Tên loại nhiệm vụ đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnEdit.Enabled = false;
+                btnDel.Enabled = true;
             }
             else MessageBox.Show("Bạn chưa nhập tên loại nhiệm vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             data.Rows.Clear();
             LoadData();
+            btnEdit.Enabled = false;
+            btnDel.Enabled = true;
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -178,8 +196,7 @@ namespace CTS_beta.Form_CTS
                 if (dialogResult == DialogResult.Yes)
                 {
                     int id = int.Parse(data.Rows[data.CurrentCell.RowIndex].Cells["ID"].Value.ToString());
-
-
+                    //System.Configuration.ConfigurationSettings.AppSettings["server"] + "Type_Mission/" + id + "/Remove?apiKey=admin" + frmAdmin.Instance.ApiKey
                     var client = new RestClient("https://api.hotrogame.online/Type_Mission/" + id + "/Remove?apiKey=admin");
                     var request = new RestRequest(Method.PUT);
                     data.Rows.Clear();
@@ -191,22 +208,25 @@ namespace CTS_beta.Form_CTS
                 }
 
             }
-            else MessageBox.Show("Tài khoản này đã dừng hoạt động", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            else MessageBox.Show("Loại nhiệm vụ này đã dừng hoạt động", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void data_CellValueChanged(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
         {
             btnEdit.Enabled = true;
+            btnDel.Enabled = false;
         }
 
         private void data_Click(object sender, EventArgs e)
         {
-            if (data.Rows[data.CurrentCell.RowIndex].Cells["Status"].Value.ToString().Equals("Dừng hoạt động"))
+            try
             {
-                data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].ReadOnly = true;
-
+                if (data.Rows[data.CurrentCell.RowIndex].Cells["Status"].Value.ToString().Equals("Dừng hoạt động"))
+                {
+                    data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].ReadOnly = true;
+                }
             }
+           catch { }; 
         }
     }
 }
