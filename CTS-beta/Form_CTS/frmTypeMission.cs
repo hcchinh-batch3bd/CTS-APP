@@ -229,6 +229,8 @@ namespace CTS_beta.Form_CTS
             else MessageBox.Show("Bạn chưa nhập tên loại nhiệm vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             data.Rows.Clear();
             LoadData();
+            btnEdit.Enabled = false;
+            btnDel.Enabled = true;
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -276,6 +278,7 @@ namespace CTS_beta.Form_CTS
         private void data_CellValueChanged(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
         {
             btnEdit.Enabled = true;
+            btnDel.Enabled = false;
         }
 
         private void data_Click(object sender, EventArgs e)

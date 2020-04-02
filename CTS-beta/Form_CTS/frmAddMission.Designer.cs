@@ -38,14 +38,14 @@
             this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
             this.ddlTypeMission = new Telerik.WinControls.UI.RadDropDownList();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button13 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnAddNew = new System.Windows.Forms.Button();
             this.txtDescribe = new System.Windows.Forms.RichTextBox();
             this.txtNameMission = new Telerik.WinControls.UI.RadTextBox();
             this.txtExprie = new Telerik.WinControls.UI.RadTextBox();
             this.txtPoint = new Telerik.WinControls.UI.RadTextBox();
             this.txtCount = new Telerik.WinControls.UI.RadTextBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.btnAddNew = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
@@ -136,23 +136,6 @@
             this.panel3.TabIndex = 29;
             this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel3_MouseDown);
             // 
-            // button13
-            // 
-            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.Location = new System.Drawing.Point(410, 0);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(42, 42);
-            this.button13.TabIndex = 30;
-            this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.Button13_Click);
-            // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -163,23 +146,6 @@
             this.label3.Size = new System.Drawing.Size(137, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "THÊM NHIỆM VỤ";
-            // 
-            // btnAddNew
-            // 
-            this.btnAddNew.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnAddNew.FlatAppearance.BorderSize = 0;
-            this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnAddNew.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAddNew.Image = global::CTS_beta.Properties.Resources.add_new_32px;
-            this.btnAddNew.Location = new System.Drawing.Point(160, 544);
-            this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(132, 47);
-            this.btnAddNew.TabIndex = 6;
-            this.btnAddNew.Text = "Thêm mới";
-            this.btnAddNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAddNew.UseVisualStyleBackColor = false;
-            this.btnAddNew.Click += new System.EventHandler(this.BtnAddNew_Click);
             // 
             // txtDescribe
             // 
@@ -225,6 +191,40 @@
             this.txtCount.Size = new System.Drawing.Size(134, 36);
             this.txtCount.TabIndex = 3;
             this.txtCount.ThemeName = "MaterialTeal";
+            // 
+            // button13
+            // 
+            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.ForeColor = System.Drawing.Color.White;
+            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
+            this.button13.Location = new System.Drawing.Point(410, 0);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(42, 42);
+            this.button13.TabIndex = 30;
+            this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.Button13_Click);
+            // 
+            // btnAddNew
+            // 
+            this.btnAddNew.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnAddNew.FlatAppearance.BorderSize = 0;
+            this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnAddNew.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAddNew.Image = global::CTS_beta.Properties.Resources.add_new_32px;
+            this.btnAddNew.Location = new System.Drawing.Point(160, 544);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(132, 47);
+            this.btnAddNew.TabIndex = 6;
+            this.btnAddNew.Text = "Thêm mới";
+            this.btnAddNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddNew.UseVisualStyleBackColor = false;
+            this.btnAddNew.Click += new System.EventHandler(this.BtnAddNew_Click);
             // 
             // frmAddMission
             // 

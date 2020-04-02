@@ -178,5 +178,17 @@ namespace CTS_beta
 
             }
         }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword();
+            frm.ShowDialog();
+        }
+
+        private void btnQuestion_Click(object sender, EventArgs e)
+        {
+            frmAbout about = new frmAbout();
+            about.ShowDialog();
+        }
     }
 }

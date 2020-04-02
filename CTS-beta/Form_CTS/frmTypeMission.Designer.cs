@@ -36,22 +36,22 @@
             this.data = new Telerik.WinControls.UI.RadGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.PicSyn = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtaddnametypemisson = new Telerik.WinControls.UI.RadTextBox();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.txtaddnametypemisson = new Telerik.WinControls.UI.RadTextBox();
+            this.PicSyn = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtaddnametypemisson)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).BeginInit();
             this.SuspendLayout();
             // 
             // data
@@ -70,6 +70,7 @@
             gridViewTextBoxColumn1.RowSpan = 50;
             gridViewTextBoxColumn1.Width = 119;
             gridViewTextBoxColumn2.HeaderText = "Loại nhiệm vụ";
+            gridViewTextBoxColumn2.MaxLength = 50;
             gridViewTextBoxColumn2.Name = "nameType";
             gridViewTextBoxColumn2.Width = 598;
             gridViewTextBoxColumn3.HeaderText = "Trạng thái";
@@ -120,17 +121,6 @@
             this.panel1.Size = new System.Drawing.Size(942, 42);
             this.panel1.TabIndex = 10;
             // 
-            // PicSyn
-            // 
-            this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
-            this.PicSyn.Location = new System.Drawing.Point(7, 5);
-            this.PicSyn.Name = "PicSyn";
-            this.PicSyn.Size = new System.Drawing.Size(32, 32);
-            this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.PicSyn.TabIndex = 45;
-            this.PicSyn.TabStop = false;
-            this.PicSyn.Click += new System.EventHandler(this.PicSyn_Click);
-            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -162,6 +152,43 @@
             this.radLabel1.TabIndex = 26;
             this.radLabel1.Text = "Tên loại nhiệm vụ:";
             this.radLabel1.Click += new System.EventHandler(this.radLabel1_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 566);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(942, 54);
+            this.panel2.TabIndex = 1;
+            // 
+            // txtaddnametypemisson
+            // 
+            this.txtaddnametypemisson.Location = new System.Drawing.Point(218, 75);
+            this.txtaddnametypemisson.MaxLength = 50;
+            this.txtaddnametypemisson.Name = "txtaddnametypemisson";
+            this.txtaddnametypemisson.Size = new System.Drawing.Size(294, 36);
+            this.txtaddnametypemisson.TabIndex = 30;
+            this.txtaddnametypemisson.ThemeName = "MaterialTeal";
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnEdit.Enabled = false;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnEdit.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnEdit.Image = global::CTS_beta.Properties.Resources.imgpsh_fullsize_anim;
+            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEdit.Location = new System.Drawing.Point(834, 71);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(92, 44);
+            this.btnEdit.TabIndex = 29;
+            this.btnEdit.Text = "Sửa";
+            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDel
             // 
@@ -198,41 +225,16 @@
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // panel2
+            // PicSyn
             // 
-            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 566);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(942, 54);
-            this.panel2.TabIndex = 1;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnEdit.Enabled = false;
-            this.btnEdit.FlatAppearance.BorderSize = 0;
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnEdit.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnEdit.Image = global::CTS_beta.Properties.Resources.imgpsh_fullsize_anim;
-            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(834, 71);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(92, 44);
-            this.btnEdit.TabIndex = 29;
-            this.btnEdit.Text = "Sửa";
-            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // txtaddnametypemisson
-            // 
-            this.txtaddnametypemisson.Location = new System.Drawing.Point(218, 75);
-            this.txtaddnametypemisson.Name = "txtaddnametypemisson";
-            this.txtaddnametypemisson.Size = new System.Drawing.Size(294, 36);
-            this.txtaddnametypemisson.TabIndex = 30;
-            this.txtaddnametypemisson.ThemeName = "MaterialTeal";
+            this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
+            this.PicSyn.Location = new System.Drawing.Point(7, 5);
+            this.PicSyn.Name = "PicSyn";
+            this.PicSyn.Size = new System.Drawing.Size(32, 32);
+            this.PicSyn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PicSyn.TabIndex = 45;
+            this.PicSyn.TabStop = false;
+            this.PicSyn.Click += new System.EventHandler(this.PicSyn_Click);
             // 
             // frmTypeMission
             // 
@@ -256,9 +258,9 @@
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtaddnametypemisson)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
