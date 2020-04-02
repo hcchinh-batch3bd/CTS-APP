@@ -13,6 +13,7 @@ using Telerik.WinControls.UI;
 using System.Configuration;
 using CTS_beta.Models;
 using CTS_beta.Form_CTS;
+using System.Text.RegularExpressions;
 
 namespace CTS_beta
 {
@@ -45,45 +46,51 @@ namespace CTS_beta
                 MessageBox.Show("Vui lòng không được bỏ trống !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             else
             {
-                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/CheckLogin?id=" + txtID.Text + "&pw=" + txtPassword.Text);
-                var request = new RestRequest(Method.GET);
-                IRestResponse response = client.Execute(request);
-                if (!response.IsSuccessful)
+                if (CheckID(txtID.Text) && txtID.Text.Length==6)
                 {
-                    DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-                    if (dialog == DialogResult.Retry)
-                        goto Load;
-                    Application.Exit();
-                }
-                else
-                {
-
-                    RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-                    List<Session> sessions = obj.results;
-                    MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    if (sessions.Count > 0)
+                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/CheckLogin?id=" + txtID.Text + "&pw=" + txtPassword.Text);
+                    var request = new RestRequest(Method.GET);
+                    IRestResponse response = client.Execute(request);
+                    if (!response.IsSuccessful)
                     {
-                        Properties.Settings.Default.id_employee = sessions.FirstOrDefault().id_employee;
-                        if (ckbRemember.Checked)
+                        DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                        if (dialog == DialogResult.Retry)
+                            goto Load;
+                        Application.Exit();
+                    }
+                    else
+                    {
+
+                        RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                        List<Session> sessions = obj.results;
+                        MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (sessions.Count>0)
                         {
-                            Properties.Settings.Default.apiKey = sessions.FirstOrDefault().apiKey;
-                            Properties.Settings.Default.Save();
-                        }
-                        if (sessions.FirstOrDefault().level_employee)
-                        {
-                            frmAdmin frmAdmin = new frmAdmin(this, sessions.FirstOrDefault().apiKey);
-                            this.Hide();
-                            frmAdmin.Show();
-                        }
-                        else
-                        {
-                            frmUser frmUser = new frmUser(this, sessions.FirstOrDefault().apiKey);
-                            this.Hide();
-                            frmUser.Show();
-                            
+                            Properties.Settings.Default.id_employee = sessions.FirstOrDefault().id_employee;
+                            if (ckbRemember.Checked)
+                            {
+                                Properties.Settings.Default.apiKey = sessions.FirstOrDefault().apiKey;
+                                Properties.Settings.Default.Save();
+                            }
+                            if (sessions.FirstOrDefault().level_employee)
+                            {
+                                frmAdmin frmAdmin = new frmAdmin(this, sessions.FirstOrDefault().apiKey);
+                                this.Hide();
+                                frmAdmin.Show();
+                            }
+                            else
+                            {
+                                frmUser frmUser = new frmUser(this, sessions.FirstOrDefault().apiKey);
+                                this.Hide();
+                                frmUser.Show();
+
+                            }
                         }
                     }
                 }
+                else
+                    MessageBox.Show("Mã đăng nhập phải là số và có độ dài bằng 6", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
         }
         class RootObject
@@ -104,6 +111,15 @@ namespace CTS_beta
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
+
+        }
+        public bool CheckID(string id)
+        {
+            string MatchEmailPattern = "[0-9]";
+
+            if (id != null) return Regex.IsMatch(id, MatchEmailPattern);
+            else return false;
+
 
         }
     }

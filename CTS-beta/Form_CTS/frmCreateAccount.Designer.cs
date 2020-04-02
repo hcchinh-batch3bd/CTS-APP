@@ -119,9 +119,10 @@
             // txtname_employee
             // 
             this.txtname_employee.Location = new System.Drawing.Point(66, 76);
+            this.txtname_employee.MaxLength = 50;
             this.txtname_employee.Name = "txtname_employee";
             this.txtname_employee.NullText = "Tên nhân viên";
-            this.txtname_employee.Size = new System.Drawing.Size(333, 29);
+            this.txtname_employee.Size = new System.Drawing.Size(333, 36);
             this.txtname_employee.TabIndex = 44;
             this.txtname_employee.ThemeName = "MaterialTeal";
             // 
@@ -130,7 +131,8 @@
             this.txtpassword.Location = new System.Drawing.Point(66, 128);
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.NullText = "Mật khẩu";
-            this.txtpassword.Size = new System.Drawing.Size(127, 29);
+            this.txtpassword.PasswordChar = '●';
+            this.txtpassword.Size = new System.Drawing.Size(127, 36);
             this.txtpassword.TabIndex = 44;
             this.txtpassword.ThemeName = "MaterialTeal";
             // 
@@ -139,7 +141,7 @@
             this.txtdate.CalendarSize = new System.Drawing.Size(290, 320);
             this.txtdate.Location = new System.Drawing.Point(144, 176);
             this.txtdate.Name = "txtdate";
-            this.txtdate.Size = new System.Drawing.Size(255, 29);
+            this.txtdate.Size = new System.Drawing.Size(255, 36);
             this.txtdate.TabIndex = 45;
             this.txtdate.TabStop = false;
             this.txtdate.Text = "Monday, March 23, 2020";
@@ -161,7 +163,7 @@
             this.txtemail.Location = new System.Drawing.Point(66, 228);
             this.txtemail.Name = "txtemail";
             this.txtemail.NullText = "Email";
-            this.txtemail.Size = new System.Drawing.Size(333, 29);
+            this.txtemail.Size = new System.Drawing.Size(333, 36);
             this.txtemail.TabIndex = 48;
             this.txtemail.ThemeName = "MaterialTeal";
             // 

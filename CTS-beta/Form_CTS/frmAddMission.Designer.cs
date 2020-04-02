@@ -196,6 +196,7 @@
             // txtNameMission
             // 
             this.txtNameMission.Location = new System.Drawing.Point(48, 97);
+            this.txtNameMission.MaxLength = 100;
             this.txtNameMission.Name = "txtNameMission";
             this.txtNameMission.Size = new System.Drawing.Size(360, 36);
             this.txtNameMission.TabIndex = 1;

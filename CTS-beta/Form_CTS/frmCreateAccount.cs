@@ -53,51 +53,59 @@ namespace CTS_beta.Form_CTS
             }
             else
             {
-                if (txtname_employee.Text != "" && txtpassword.Text != "" && txtlevel.SelectedValue.ToString() != "")
+                if (txtname_employee.Text != "" && txtpassword.Text != "")
                 {
-                    if (CheckPassword(txtpassword.Text))
-                    {
-                        DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tạo không", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (dialogResult == DialogResult.Yes)
+                    if (txtname_employee.Text.Length <= 50 && CheckName(txtname_employee.Text))
+                        if (CheckPassword(txtpassword.Text))
                         {
-                            Load:
-                            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Employee/Create?apiKey=" + Properties.Settings.Default.apiKey);
-                            var request = new RestRequest(Method.POST);
-                            request.AddHeader("content-type", "application/json");
-                            Employee employee = new Employee();
-                            employee.name_employee = txtname_employee.Text;
-                            employee.email = txtemail.Text.ToLower();
-                            employee.password = txtpassword.Text;
-                            employee.date = txtdate.Value.Date;
-                            employee.level_employee = txtlevel.SelectedValue.ToString();
-                            string output = JsonConvert.SerializeObject(employee);
-                            request.AddParameter("application/json", output, ParameterType.RequestBody);
-                            IRestResponse response = client.Execute(request);
-                            if (!response.IsSuccessful)
+                            if (txtlevel.SelectedValue != null)
                             {
-                                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-                                if (dialog == DialogResult.Retry)
-                                    goto Load;
-                                else
+
+                                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tạo không ?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                                if (dialogResult == DialogResult.Yes)
                                 {
-                                    Properties.Settings.Default.apiKey = "";
-                                    Properties.Settings.Default.id_employee = 0;
-                                    Properties.Settings.Default.Save();
-                                    Application.Exit();
+                                Load:
+                                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Employee/Create?apiKey=" + Properties.Settings.Default.apiKey);
+                                    var request = new RestRequest(Method.POST);
+                                    request.AddHeader("content-type", "application/json");
+                                    Employee employee = new Employee();
+                                    employee.name_employee = txtname_employee.Text;
+                                    employee.email = txtemail.Text.ToLower();
+                                    employee.password = txtpassword.Text;
+                                    employee.date = txtdate.Value.Date;
+                                    employee.level_employee = txtlevel.SelectedValue.ToString();
+                                    string output = JsonConvert.SerializeObject(employee);
+                                    request.AddParameter("application/json", output, ParameterType.RequestBody);
+                                    IRestResponse response = client.Execute(request);
+                                    if (!response.IsSuccessful)
+                                    {
+                                        DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                                        if (dialog == DialogResult.Retry)
+                                            goto Load;
+                                        else
+                                        {
+                                            Properties.Settings.Default.apiKey = "";
+                                            Properties.Settings.Default.id_employee = 0;
+                                            Properties.Settings.Default.Save();
+                                            Application.Exit();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                                        MessageBox.Show(obj.message);
+                                        if (obj.status)
+                                            this.Close();
+                                    }
                                 }
                             }
                             else
-                            {
-                                RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
-                                MessageBox.Show(obj.message);
-                                if(obj.status)
-                                    this.Close();
-                            }
+                                MessageBox.Show("Bạn phải chọn chức vụ đang có trên hệ thống !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-                    }
+                        else
+                            MessageBox.Show("Mật khẩu phải dài từ 8 đến 30 ký tự.\nMật phải chứa ít nhất một số.\nMật khẩu phải chứa ít nhất một chữ cái viết hoa.\nMật khẩu phải chứa ít nhất một chữ cái viết thường\nMật khẩu phải chứa ít nhất một kí tự đặc biệt.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
-                        MessageBox.Show("Mật khẩu phải dài từ 8 đến 30 ký tự.\nMật phải chứa ít nhất một số.\nMật khẩu phải chứa ít nhất một chữ cái viết hoa.\nMật khẩu phải chứa ít nhất một chữ cái viết thường\nMật khẩu phải chứa ít nhất một kí tự đặc biệt.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        MessageBox.Show("Tên nhân viên phải toàn là chữ cái", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                     MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
@@ -129,12 +137,15 @@ namespace CTS_beta.Form_CTS
         }
         public bool CheckPassword(string password)
         {
-            string MatchEmailPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,30}$";
-
-            if (password != null) return Regex.IsMatch(password, MatchEmailPattern);
+            string Pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,30}$";
+            if (password != null) return Regex.IsMatch(password, Pattern);
             else return false;
-
-
+        }
+        public bool CheckName(string name)
+        {
+            string Pattern = "[a-zA-Z]";
+            if (name != null) return Regex.IsMatch(name, Pattern);
+            else return false;
         }
     }
 }
