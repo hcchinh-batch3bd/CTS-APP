@@ -54,7 +54,7 @@ namespace CTS_beta.Form_CTS
 
         private void LoadTypeMission()
         {
-            Load:
+        Load:
             var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/GetAll");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
@@ -99,41 +99,54 @@ namespace CTS_beta.Form_CTS
             {
                 if (txtCount.Text.All(char.IsDigit) && txtExprie.Text.All(char.IsDigit) && txtPoint.Text.All(char.IsDigit))
                 {
-
-                    string nameMission = txtNameMission.Text;
-                    int idTypeMission = int.Parse(ddlTypeMission.SelectedItem.Value.ToString());
-                    int count = int.Parse(txtCount.Text);
-                    int point = int.Parse(txtPoint.Text);
-                    string Stardate = DateTime.Today.ToShortDateString();
-                    int exprie = int.Parse(txtExprie.Text);
-                    string describe = txtDescribe.Text;
-                    int status = 0;
-                    int idEmployee = Properties.Settings.Default.id_employee;
-                Load:
-                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/Create?apiKey=" + frmUser.Instance.ApiKey);
-                    var request = new RestRequest(Method.POST);
-                    request.AddHeader("content-type", "application/json");
-                    request.AddParameter("undefined", "{\"name_mission\":\'" + nameMission + "',\"Stardate\":\'" + Stardate + "',\"point\":" + point + " ,\"exprie\":" + exprie + ",\"describe\":\'" + describe + "',\"status\":\'" + status + "',\"count\":" + count + ",\"id_type\":" + idTypeMission + ",\"id_employee\":" + idEmployee + "}", ParameterType.RequestBody);
-                    IRestResponse response = client.Execute(request);
-                    if (!response.IsSuccessful)
-                    {
-                        DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-                        if (dialog == DialogResult.Retry)
-                            goto Load;
-                        else
-                        {
-                            Properties.Settings.Default.apiKey = "";
-                            Properties.Settings.Default.id_employee = 0;
-                            Properties.Settings.Default.Save();
-                            Application.Exit();
-                        }
-                    }
+                    if (int.Parse(txtCount.Text) > 100)
+                        MessageBox.Show("Số lượng nhiệm vụ phải từ 0-100.\n*Với 0: Không giới hạn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     else
                     {
-                        Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
-                        MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+                        if (int.Parse(txtExprie.Text) > 30)
+                            MessageBox.Show("Số ngày hết hạn phải từ 0-30.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            if (int.Parse(txtPoint.Text) > 1000 || int.Parse(txtPoint.Text) == 0)
+                            MessageBox.Show("Điểm của nhiệm vụ phải từ 1-1000.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                        {
+                            string nameMission = txtNameMission.Text;
+                            int idTypeMission = int.Parse(ddlTypeMission.SelectedItem.Value.ToString());
+                            int count = int.Parse(txtCount.Text);
+                            int point = int.Parse(txtPoint.Text);
+                            string Stardate = DateTime.Today.ToShortDateString();
+                            int exprie = int.Parse(txtExprie.Text);
+                            string describe = txtDescribe.Text;
+                            int status = 0;
+                            int idEmployee = Properties.Settings.Default.id_employee;
+                        Load:
+                            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/Create?apiKey=" + frmUser.Instance.ApiKey);
+                            var request = new RestRequest(Method.POST);
+                            request.AddHeader("content-type", "application/json");
+                            request.AddParameter("undefined", "{\"name_mission\":\'" + nameMission + "',\"Stardate\":\'" + Stardate + "',\"point\":" + point + " ,\"exprie\":" + exprie + ",\"describe\":\'" + describe + "',\"status\":\'" + status + "',\"count\":" + count + ",\"id_type\":" + idTypeMission + ",\"id_employee\":" + idEmployee + "}", ParameterType.RequestBody);
+                            IRestResponse response = client.Execute(request);
+                            if (!response.IsSuccessful)
+                            {
+                                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                                if (dialog == DialogResult.Retry)
+                                    goto Load;
+                                else
+                                {
+                                    Properties.Settings.Default.apiKey = "";
+                                    Properties.Settings.Default.id_employee = 0;
+                                    Properties.Settings.Default.Save();
+                                    Application.Exit();
+                                }
+                            }
+                            else
+                            {
+                                Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
+                                MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.Close();
+                            }
+                        }
                     }
+
                 }
                 else
                     MessageBox.Show("Vui lòng nhập dữ liệu là số nguyên !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -81,6 +81,15 @@ namespace CTS_beta.Form_CTS
 
                 frmDetailMission f = new frmDetailMission(idMission);
                 f.ShowDialog();
+                Thread thread = new Thread(new ThreadStart(loadData)) { IsBackground = true };
+                thread.Start();
+                while (thread.IsAlive)
+                {
+                    Application.DoEvents();
+                    PicSyn.Visible = false;
+                }
+                PicSyn.Visible = true;
+                frmUser.Instance.worker.RunWorkerAsync();
             }
         }
 
