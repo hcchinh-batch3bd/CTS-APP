@@ -67,6 +67,8 @@ namespace CTS_beta
                         if (sessions.Count>0)
                         {
                             Properties.Settings.Default.id_employee = sessions.FirstOrDefault().id_employee;
+                            txtID.Text = "";
+                            txtPassword.Text = "";
                             if (ckbRemember.Checked)
                             {
                                 Properties.Settings.Default.apiKey = sessions.FirstOrDefault().apiKey;

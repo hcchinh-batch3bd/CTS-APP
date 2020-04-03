@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbout));
-            this.crystalDarkTheme1 = new Telerik.WinControls.Themes.CrystalDarkTheme();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
@@ -161,7 +160,6 @@
 
         #endregion
 
-        private Telerik.WinControls.Themes.CrystalDarkTheme crystalDarkTheme1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadLabel radLabel2;

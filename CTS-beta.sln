@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTS_beta", "CTS-beta\CTS_beta.csproj", "{213804BD-2471-4DD1-9347-64BF430843DC}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CTS Launcher", "CTS Launcher\CTS Launcher.vdproj", "{BABCBF14-232E-462E-A270-3A186A66D245}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{213804BD-2471-4DD1-9347-64BF430843DC}.Release|Any CPU.ActiveCfg = Release|x86
 		{213804BD-2471-4DD1-9347-64BF430843DC}.Release|x86.ActiveCfg = Release|x86
 		{213804BD-2471-4DD1-9347-64BF430843DC}.Release|x86.Build.0 = Release|x86
+		{BABCBF14-232E-462E-A270-3A186A66D245}.Debug|Any CPU.ActiveCfg = Debug
+		{BABCBF14-232E-462E-A270-3A186A66D245}.Debug|x86.ActiveCfg = Debug
+		{BABCBF14-232E-462E-A270-3A186A66D245}.Release|Any CPU.ActiveCfg = Release
+		{BABCBF14-232E-462E-A270-3A186A66D245}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

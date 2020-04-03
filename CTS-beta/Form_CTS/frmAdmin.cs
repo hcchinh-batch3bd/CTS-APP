@@ -190,5 +190,13 @@ namespace CTS_beta
             frmAbout about = new frmAbout();
             about.ShowDialog();
         }
+
+        private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.apiKey = "";
+            Properties.Settings.Default.id_employee = 0;
+            Properties.Settings.Default.Save();
+            Application.Exit();
+        }
     }
 }

@@ -41,6 +41,7 @@ namespace CTS_beta.Form_CTS
             {
                 if (type.name_type_mission.Equals(name))
                 {
+                    if(type.status)
                     return true;
                 }
             }
@@ -133,7 +134,7 @@ namespace CTS_beta.Form_CTS
                 if (nameType.Trim().Length > 0 && checkstring!="")
                 {
                     string checkString = Regex.Replace(nameType, @"\s+", " ");
-                    if (!check(txtaddnametypemisson.Text) && checkString.Trim()!="")
+                    if (!check(checkString.Trim()) && checkString.Trim()!="")
                     {
                     Load:
                         var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/Create?apiKey=" + Properties.Settings.Default.apiKey);
@@ -182,59 +183,68 @@ namespace CTS_beta.Form_CTS
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Load:
-            string id = data.Rows[data.CurrentCell.RowIndex].Cells["ID"].Value.ToString();
-            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/Edit?apiKey="+Properties.Settings.Default.apiKey);
-            var request = new RestRequest(Method.PUT);
-            request.AddHeader("content-type", "application/json");
-            TypeMission typeMission = new TypeMission();
-            typeMission.id_type = int.Parse(id.ToString());
-
             if (data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value != null)
             {
-                if (!check(data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value.ToString()))
+                string checkstring = Regex.Replace(data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value.ToString(), @"\s+", " ");
+            Load:
+                string id = data.Rows[data.CurrentCell.RowIndex].Cells["ID"].Value.ToString();
+                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/Edit?apiKey=" + Properties.Settings.Default.apiKey);
+                var request = new RestRequest(Method.PUT);
+                request.AddHeader("content-type", "application/json");
+                TypeMission typeMission = new TypeMission();
+                typeMission.id_type = int.Parse(id.ToString());
+
+                if (data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value != null)
                 {
-                    string checkstring = Regex.Replace(data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value.ToString(), @"\s+", " ");
-                    if (checkstring.Trim() != "")
+                    if (!check(checkstring.Trim()))
                     {
-                        typeMission.name_type_mission = checkstring.Trim();
-                        typeMission.id_employee = Properties.Settings.Default.id_employee;
-                        typeMission.status = true;
-                        typeMission.date = DateTime.Now;
-                        string output = JsonConvert.SerializeObject(typeMission);
-                        request.AddParameter("application/json", output, ParameterType.RequestBody);
-                        IRestResponse response = client.Execute(request);
-                        if (!response.IsSuccessful)
+
+                        if (checkstring.Trim() != "")
                         {
-                            DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-                            if (dialog == DialogResult.Retry)
-                                goto Load;
+                            typeMission.name_type_mission = checkstring.Trim();
+                            typeMission.id_employee = Properties.Settings.Default.id_employee;
+                            typeMission.status = true;
+                            typeMission.date = DateTime.Now;
+                            string output = JsonConvert.SerializeObject(typeMission);
+                            request.AddParameter("application/json", output, ParameterType.RequestBody);
+                            IRestResponse response = client.Execute(request);
+                            if (!response.IsSuccessful)
+                            {
+                                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                                if (dialog == DialogResult.Retry)
+                                    goto Load;
+                                else
+                                {
+                                    Properties.Settings.Default.apiKey = "";
+                                    Properties.Settings.Default.id_employee = 0;
+                                    Properties.Settings.Default.Save();
+                                    Application.Exit();
+                                }
+                            }
                             else
                             {
-                                Properties.Settings.Default.apiKey = "";
-                                Properties.Settings.Default.id_employee = 0;
-                                Properties.Settings.Default.Save();
-                                Application.Exit();
+                                Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
+                                MessageBox.Show("Sửa thành công !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                data.Rows.Clear();
+                                LoadData();
+                                btnEdit.Enabled = false;
+                                btnDel.Enabled = true;
                             }
                         }
                         else
                         {
-                            Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
-                            MessageBox.Show("Sửa thành công !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            data.Rows.Clear();
-                            LoadData();
+                            MessageBox.Show("Vui lòng nhập tên nhiệm vụ hợp lệ !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnEdit.Enabled = false;
                             btnDel.Enabled = true;
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("Vui lòng nhập tên nhiệm vụ hợp lệ !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        btnEdit.Enabled = false;
-                        btnDel.Enabled = true;
-                    }
+                    else MessageBox.Show("Tên loại nhiệm vụ đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnEdit.Enabled = false;
+                    btnDel.Enabled = true;
                 }
-                else MessageBox.Show("Tên loại nhiệm vụ đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else MessageBox.Show("Bạn chưa nhập tên loại nhiệm vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                data.Rows.Clear();
+                LoadData();
                 btnEdit.Enabled = false;
                 btnDel.Enabled = true;
             }

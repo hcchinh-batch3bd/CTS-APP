@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
-            this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.txtID = new Telerik.WinControls.UI.RadTextBox();
             this.txtPassword = new Telerik.WinControls.UI.RadTextBox();
             this.ckbRemember = new Telerik.WinControls.UI.RadCheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLogin = new Telerik.WinControls.UI.RadButton();
+            this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckbRemember)).BeginInit();
@@ -135,7 +135,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::CTS_beta.Properties.Resources.abc;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(339, 527);
+            this.ClientSize = new System.Drawing.Size(337, 523);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.ckbRemember);
@@ -167,13 +167,12 @@
         }
 
         #endregion
-
-        private Telerik.WinControls.Themes.MaterialTheme materialTheme1;
         private Telerik.WinControls.UI.RadTextBox txtID;
         private Telerik.WinControls.UI.RadTextBox txtPassword;
         private Telerik.WinControls.UI.RadButton btnLogin;
         private Telerik.WinControls.UI.RadCheckBox ckbRemember;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Telerik.WinControls.Themes.MaterialTheme materialTheme1;
     }
 }
