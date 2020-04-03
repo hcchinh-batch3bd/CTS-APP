@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Threading;
 using System.Configuration;
+using System.Text.RegularExpressions;
 
 namespace CTS_beta.Form_CTS
 {
@@ -128,17 +129,18 @@ namespace CTS_beta.Form_CTS
             var nameType = txtaddnametypemisson.Text;
             if (nameType != "")
             {
-                if (nameType.Trim().Length > 0)
+                string checkstring = Regex.Replace(nameType.Trim(), @"\s+", " ");
+                if (nameType.Trim().Length > 0 && checkstring!="")
                 {
-
-                    if (!check(txtaddnametypemisson.Text))
+                    string checkString = Regex.Replace(nameType, @"\s+", " ");
+                    if (!check(txtaddnametypemisson.Text) && checkString.Trim()!="")
                     {
                     Load:
                         var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/Create?apiKey=" + Properties.Settings.Default.apiKey);
                         var request = new RestRequest(Method.POST);
                         request.AddHeader("content-type", "application/json");
                         TypeMission typeMission = new TypeMission();
-                        typeMission.name_type_mission = txtaddnametypemisson.Text;
+                        typeMission.name_type_mission = checkstring.Trim();
                         typeMission.id_employee = Properties.Settings.Default.id_employee;
                         typeMission.status = true;
                         typeMission.date = DateTime.Now;
@@ -192,32 +194,42 @@ namespace CTS_beta.Form_CTS
             {
                 if (!check(data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value.ToString()))
                 {
-                    typeMission.name_type_mission = data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value.ToString();
-                    typeMission.id_employee = Properties.Settings.Default.id_employee;
-                    typeMission.status = true;
-                    typeMission.date = DateTime.Now;
-                    string output = JsonConvert.SerializeObject(typeMission);
-                    request.AddParameter("application/json", output, ParameterType.RequestBody);
-                    IRestResponse response = client.Execute(request);
-                    if (!response.IsSuccessful)
+                    string checkstring = Regex.Replace(data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value.ToString(), @"\s+", " ");
+                    if (checkstring.Trim() != "")
                     {
-                        DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-                        if (dialog == DialogResult.Retry)
-                            goto Load;
+                        typeMission.name_type_mission = checkstring.Trim();
+                        typeMission.id_employee = Properties.Settings.Default.id_employee;
+                        typeMission.status = true;
+                        typeMission.date = DateTime.Now;
+                        string output = JsonConvert.SerializeObject(typeMission);
+                        request.AddParameter("application/json", output, ParameterType.RequestBody);
+                        IRestResponse response = client.Execute(request);
+                        if (!response.IsSuccessful)
+                        {
+                            DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            if (dialog == DialogResult.Retry)
+                                goto Load;
+                            else
+                            {
+                                Properties.Settings.Default.apiKey = "";
+                                Properties.Settings.Default.id_employee = 0;
+                                Properties.Settings.Default.Save();
+                                Application.Exit();
+                            }
+                        }
                         else
                         {
-                            Properties.Settings.Default.apiKey = "";
-                            Properties.Settings.Default.id_employee = 0;
-                            Properties.Settings.Default.Save();
-                            Application.Exit();
+                            Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
+                            MessageBox.Show("Sửa thành công !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            data.Rows.Clear();
+                            LoadData();
+                            btnEdit.Enabled = false;
+                            btnDel.Enabled = true;
                         }
                     }
                     else
                     {
-                        Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
-                        MessageBox.Show("Sửa thành công !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        data.Rows.Clear();
-                        LoadData();
+                        MessageBox.Show("Vui lòng nhập tên nhiệm vụ hợp lệ !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnEdit.Enabled = false;
                         btnDel.Enabled = true;
                     }
@@ -283,11 +295,16 @@ namespace CTS_beta.Form_CTS
 
         private void data_Click(object sender, EventArgs e)
         {
-            if (data.Rows[data.CurrentCell.RowIndex].Cells["Status"].Value.ToString().Equals("Dừng hoạt động"))
+            try
             {
-                data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].ReadOnly = true;
+                if (data.Rows[data.CurrentCell.RowIndex].Cells["Status"].Value.ToString().Equals("Dừng hoạt động"))
+                {
+                    data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].ReadOnly = true;
 
+                }
             }
+            catch
+            { }
         }
 
         private void PicSyn_Click(object sender, EventArgs e)

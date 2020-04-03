@@ -95,7 +95,9 @@ namespace CTS_beta.Form_CTS
         //Add a Mission
         private void AddMission()
         {
-            if (!txtNameMission.Text.Equals("") && !txtCount.Text.Equals("") && !txtPoint.Text.Equals("") && !txtExprie.Text.Equals("") && !txtDescribe.Text.Equals(""))
+            string Namemission = Regex.Replace(txtNameMission.Text, @"\s+", " ");
+            string Describe = Regex.Replace(txtDescribe.Text, @"\s+", " ");
+            if (Namemission.Trim()!="" && !txtCount.Text.Equals("") && !txtPoint.Text.Equals("") && !txtExprie.Text.Equals("") && Describe.Trim()!="")
             {
                 if (txtCount.Text.All(char.IsDigit) && txtExprie.Text.All(char.IsDigit) && txtPoint.Text.All(char.IsDigit))
                 {
@@ -110,13 +112,13 @@ namespace CTS_beta.Form_CTS
                             MessageBox.Show("Điểm của nhiệm vụ phải từ 1-1000.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else
                         {
-                            string nameMission = txtNameMission.Text;
+                            string nameMission = Namemission.Trim();
                             int idTypeMission = int.Parse(ddlTypeMission.SelectedItem.Value.ToString());
                             int count = int.Parse(txtCount.Text);
                             int point = int.Parse(txtPoint.Text);
                             string Stardate = DateTime.Today.ToShortDateString();
                             int exprie = int.Parse(txtExprie.Text);
-                            string describe = txtDescribe.Text;
+                            string describe = Describe.Trim();
                             int status = 0;
                             int idEmployee = Properties.Settings.Default.id_employee;
                         Load:
