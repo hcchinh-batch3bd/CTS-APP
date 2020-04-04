@@ -36,11 +36,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLogin = new Telerik.WinControls.UI.RadButton();
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
+            this.radWaitingBar1 = new Telerik.WinControls.UI.RadWaitingBar();
+            this.dotsLineWaitingBarIndicatorElement1 = new Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckbRemember)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnLogin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,6 +134,21 @@
             this.btnLogin.ThemeName = "Material";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // radWaitingBar1
+            // 
+            this.radWaitingBar1.Location = new System.Drawing.Point(117, 164);
+            this.radWaitingBar1.Name = "radWaitingBar1";
+            this.radWaitingBar1.Size = new System.Drawing.Size(130, 24);
+            this.radWaitingBar1.TabIndex = 5;
+            this.radWaitingBar1.Text = "radWaitingBar1";
+            this.radWaitingBar1.WaitingIndicators.Add(this.dotsLineWaitingBarIndicatorElement1);
+            this.radWaitingBar1.WaitingSpeed = 80;
+            this.radWaitingBar1.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.DotsLine;
+            // 
+            // dotsLineWaitingBarIndicatorElement1
+            // 
+            this.dotsLineWaitingBarIndicatorElement1.Name = "dotsLineWaitingBarIndicatorElement1";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,6 +156,7 @@
             this.BackgroundImage = global::CTS_beta.Properties.Resources.abc;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(337, 523);
+            this.Controls.Add(this.radWaitingBar1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.ckbRemember);
@@ -162,6 +181,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ckbRemember)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnLogin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -176,5 +196,7 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Telerik.WinControls.Themes.MaterialTheme materialTheme1;
+        private Telerik.WinControls.UI.RadWaitingBar radWaitingBar1;
+        private Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement dotsLineWaitingBarIndicatorElement1;
     }
 }

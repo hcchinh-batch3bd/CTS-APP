@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
@@ -40,21 +41,26 @@
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.data = new Telerik.WinControls.UI.RadGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnView = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.btnAddMission = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.PicSyn = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.data.MasterTemplate)).BeginInit();
             this.data.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).BeginInit();
             this.SuspendLayout();
             // 
             // data
             // 
+            this.data.ContextMenuStrip = this.contextMenuStrip1;
             this.data.Controls.Add(this.panel1);
             this.data.Dock = System.Windows.Forms.DockStyle.Fill;
             this.data.Location = new System.Drawing.Point(0, 42);
@@ -62,6 +68,7 @@
             // 
             // 
             this.data.MasterTemplate.AllowAddNewRow = false;
+            this.data.MasterTemplate.AllowCellContextMenu = false;
             this.data.MasterTemplate.AllowColumnReorder = false;
             this.data.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             gridViewTextBoxColumn1.HeaderText = "ID";
@@ -118,6 +125,53 @@
             this.panel1.Size = new System.Drawing.Size(942, 54);
             this.panel1.TabIndex = 10;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.Controls.Add(this.PicSyn);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.ForeColor = System.Drawing.Color.White;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(942, 42);
+            this.panel3.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label3.Location = new System.Drawing.Point(403, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(187, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "DANH SÁCH NHIỆM VỤ";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnView,
+            this.btnEdit});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(138, 48);
+            // 
+            // btnView
+            // 
+            this.btnView.Image = global::CTS_beta.Properties.Resources.eye;
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(137, 22);
+            this.btnView.Text = "Xem chi tiết";
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Image = global::CTS_beta.Properties.Resources.test;
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(137, 22);
+            this.btnEdit.Text = "Sửa";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
@@ -153,18 +207,6 @@
             this.btnAddMission.UseVisualStyleBackColor = false;
             this.btnAddMission.Click += new System.EventHandler(this.btnAddMission_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel3.Controls.Add(this.PicSyn);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.ForeColor = System.Drawing.Color.White;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(942, 42);
-            this.panel3.TabIndex = 9;
-            // 
             // PicSyn
             // 
             this.PicSyn.Image = global::CTS_beta.Properties.Resources.synchronize_32px;
@@ -175,17 +217,6 @@
             this.PicSyn.TabIndex = 43;
             this.PicSyn.TabStop = false;
             this.PicSyn.Click += new System.EventHandler(this.PicSyn_Click);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(403, 12);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(187, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "DANH SÁCH NHIỆM VỤ";
             // 
             // frmListMission
             // 
@@ -204,6 +235,7 @@
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PicSyn)).EndInit();
             this.ResumeLayout(false);
 
@@ -218,5 +250,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnAddMission;
         private System.Windows.Forms.PictureBox PicSyn;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem btnView;
+        private System.Windows.Forms.ToolStripMenuItem btnEdit;
     }
 }

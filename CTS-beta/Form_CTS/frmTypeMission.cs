@@ -139,7 +139,7 @@ namespace CTS_beta.Form_CTS
                         var request = new RestRequest(Method.POST);
                         request.AddHeader("content-type", "application/json");
                         TypeMission typeMission = new TypeMission();
-                        typeMission.name_type_mission = HttpUtility.UrlEncode(checkstring.Trim());
+                        typeMission.name_type_mission = checkstring.Trim();
                         typeMission.id_employee = Properties.Settings.Default.id_employee;
                         typeMission.status = true;
                         typeMission.date = DateTime.Now;

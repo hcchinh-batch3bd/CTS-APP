@@ -323,6 +323,8 @@
     <None Include="Resources\login_32px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\resume.png" />
+    <None Include="Resources\test1.png" />
     <None Include="Resources\synchronize_32px.png" />
     <None Include="Resources\synchronize_64px.png" />
     <None Include="Resources\sync_30px.png" />
@@ -372,6 +374,8 @@
     <None Include="Resources\networking.ico" />
     <None Include="Resources\icons8-cat-profile-64.png" />
     <None Include="Resources\icons8-cat-profile-64 %281%29.png" />
+    <None Include="Resources\eye1.png" />
+    <None Include="Resources\portfolio.png" />
     <Content Include="Resources\profile.ico" />
     <Content Include="Resources\profile.png" />
     <None Include="Resources\profile1.png" />

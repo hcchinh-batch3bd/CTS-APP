@@ -20,7 +20,8 @@ namespace CTS_beta.Form_CTS
 {
     public partial class frmAddMission : Form
     {
-
+        int id_misison;
+        bool keyEdit= false;
         public frmAddMission()
         {
             InitializeComponent();
@@ -33,7 +34,25 @@ namespace CTS_beta.Form_CTS
             btnAddNew.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnAddNew.Width, btnAddNew.Height, 10, 10));
             txtDescribe.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtDescribe.Width, txtDescribe.Height, 10, 10));
         }
+        public frmAddMission(int id)
+        {
+            InitializeComponent();
+            this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 10, 10));
+            txtNameMission.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtNameMission.Width, txtNameMission.Height, 10, 10));
+            ddlTypeMission.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, ddlTypeMission.Width, ddlTypeMission.Height, 10, 10));
+            txtCount.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtCount.Width, txtCount.Height, 10, 10));
+            txtExprie.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtExprie.Width, txtExprie.Height, 10, 10));
+            txtPoint.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtPoint.Width, txtPoint.Height, 10, 10));
+            btnAddNew.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnAddNew.Width, btnAddNew.Height, 10, 10));
+            txtDescribe.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtDescribe.Width, txtDescribe.Height, 10, 10));
+            id_misison = id;
+            keyEdit = true;
+            txtPoint.Enabled = false;
+            txtExprie.Enabled = false;
+            btnAddNew.Text = "Thay đổi";
+            btnAddNew.Image = Properties.Resources.resume;
 
+        }
 
 
         private void Button13_Click(object sender, EventArgs e)
@@ -80,13 +99,24 @@ namespace CTS_beta.Form_CTS
                     if (list.status)
                         dt.Rows.Add(list.id_type, list.name_type_mission);
                 }
-                ddlTypeMission.Invoke(new Action(() =>
+                if(ddlTypeMission.InvokeRequired)
+                    ddlTypeMission.Invoke(new Action(() =>
+                    {
+                        ddlTypeMission.DataSource = dt;
+                        ddlTypeMission.ValueMember = "id_type";
+                        ddlTypeMission.DisplayMember = "name_type_mission";
+                    }
+                    ));
+                else
                 {
                     ddlTypeMission.DataSource = dt;
                     ddlTypeMission.ValueMember = "id_type";
                     ddlTypeMission.DisplayMember = "name_type_mission";
                 }
-                ));
+            }
+            if (keyEdit)
+            {
+                loadData();
             }
         }
 
@@ -122,11 +152,39 @@ namespace CTS_beta.Form_CTS
                                 int status = 0;
                                 int idEmployee = Properties.Settings.Default.id_employee;
                             Load:
-                                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/Create?apiKey=" + frmUser.Instance.ApiKey);
-                                var request = new RestRequest(Method.POST);
-                                request.AddHeader("content-type", "application/json");
-                                request.AddParameter("undefined", "{\"name_mission\":\'" + nameMission + "',\"Stardate\":\'" + Stardate + "',\"point\":" + point + " ,\"exprie\":" + exprie + ",\"describe\":\'" + describe + "',\"status\":\'" + status + "',\"count\":" + count + ",\"id_type\":" + idTypeMission + ",\"id_employee\":" + idEmployee + "}", ParameterType.RequestBody);
-                                IRestResponse response = client.Execute(request);
+                                radWaitingBar1.Refresh();
+                                radWaitingBar1.Visible = true;
+                                radWaitingBar1.StartWaiting();
+                                IRestResponse response = null;
+                                Thread t = new Thread(() =>
+                                {
+                                    if(!keyEdit)
+                                    {
+                                        var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/Create?apiKey=" + Properties.Settings.Default.apiKey);
+                                        var request = new RestRequest(Method.POST);
+                                        request.AddHeader("content-type", "application/json");
+                                        request.AddParameter("undefined", "{\"name_mission\":\'" + nameMission + "',\"Stardate\":\'" + Stardate + "',\"point\":" + point + " ,\"exprie\":" + exprie + ",\"describe\":\'" + describe + "',\"status\":\'" + status + "',\"count\":" + count + ",\"id_type\":" + idTypeMission + ",\"id_employee\":" + idEmployee + "}", ParameterType.RequestBody);
+                                        response = client.Execute(request);
+                                    }
+                                    else
+                                    {
+                                        var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/Edit?apiKey=" + Properties.Settings.Default.apiKey);
+                                        var request = new RestRequest(Method.PUT);
+                                        request.AddHeader("content-type", "application/json");
+                                        request.AddParameter("undefined", "{\"id_mission\":\'" + id_misison + "',\"name_mission\":\'" + nameMission + "',\"exprie\":" + exprie + ",\"describe\":\'" + describe + "',\"count\":" + count + ",\"id_type\":" + idTypeMission + ",\"id_employee\":" + idEmployee + "}", ParameterType.RequestBody);
+                                        response = client.Execute(request);
+                                    }
+                                })
+                                { IsBackground = true };
+                                t.Start();
+                                while (t.IsAlive)
+                                {
+                                    Application.DoEvents();
+                                    btnAddNew.Enabled = false;
+                                }
+                                radWaitingBar1.StopWaiting();
+                                radWaitingBar1.Visible = false;
+                                btnAddNew.Enabled = true;
                                 if (!response.IsSuccessful)
                                 {
                                     DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
@@ -159,8 +217,9 @@ namespace CTS_beta.Form_CTS
         private void FrmAddMission_Load(object sender, EventArgs e)
         {
 
-            Thread thread = new Thread(new ThreadStart(LoadTypeMission));
-            thread.Start();
+            LoadTypeMission();
+            
+
         }
 
         private void BtnAddNew_Click(object sender, EventArgs e)
@@ -170,6 +229,41 @@ namespace CTS_beta.Form_CTS
         public class Message
         {
             public string message { get; set; }
+        }
+        public void loadData()
+        {
+        Load:
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" + id_misison + "/Describe");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            if (!response.IsSuccessful)
+            {
+                DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                if (dialog == DialogResult.Retry)
+                    goto Load;
+                else
+                {
+                    Application.Exit();
+                }
+            }
+            else
+            {
+                RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
+                List<Mission> misssion = obj.results;
+                txtNameMission.Text = misssion.SingleOrDefault().name_mission;
+                txtPoint.Text = misssion.SingleOrDefault().point.ToString();
+                txtExprie.Text = misssion.SingleOrDefault().exprie.ToString();
+                txtDescribe.Text = misssion.SingleOrDefault().describe.ToString();
+                txtCount.Text = misssion.SingleOrDefault().Count.ToString();
+                foreach (var item in ddlTypeMission.Items)
+                {
+                    if (int.Parse(item.Value.ToString()) == misssion.SingleOrDefault().id_type)
+                    {
+                        ddlTypeMission.SelectedItem = item;
+                        break;
+                    }
+                }
+            }
         }
     }
 }

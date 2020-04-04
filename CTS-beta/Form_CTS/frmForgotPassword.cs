@@ -10,6 +10,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Web;
 using System.Windows.Forms;
 using Telerik.WinControls;
@@ -38,9 +39,26 @@ namespace CTS_beta
                 otp = otpcode;
                 string otpEcrypt = Encrypt(otpcode.ToString());
             Load:
-                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/OTP?OTP=" + otpEcrypt + "&mail=" + txtEmail.Text);
-                var request = new RestRequest(Method.GET);
-                IRestResponse response = client.Execute(request);
+                radWaitingBar1.Refresh();
+                radWaitingBar1.Visible = true;
+                radWaitingBar1.StartWaiting();
+                IRestResponse response = null;
+                Thread t = new Thread(() =>
+                {
+                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/OTP?OTP=" + otpEcrypt + "&mail=" + txtEmail.Text);
+                    var request = new RestRequest(Method.GET);
+                    response = client.Execute(request);
+                })
+                { IsBackground = true};
+                t.Start();
+                while(t.IsAlive)
+                {
+                    Application.DoEvents();
+                    btnSendCode.Enabled = false;
+                }
+                btnSendCode.Enabled = true;
+                radWaitingBar1.StopWaiting();
+                radWaitingBar1.Enabled = true;
                 if (!response.IsSuccessful)
                 {
                     DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
@@ -91,9 +109,26 @@ namespace CTS_beta
                                 {
                                     string passnew = HttpUtility.UrlEncode(txtPassword.Text);
                                     Load:
-                                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/ChangepasswordOTP?passnew=" + passnew + "&apiKey=" + HttpUtility.UrlEncode(apiKey));
-                                    var request = new RestRequest(Method.PUT);
-                                    IRestResponse response = client.Execute(request);
+                                    radWaitingBar1.Refresh();
+                                    radWaitingBar1.Visible = true;
+                                    radWaitingBar1.StartWaiting();
+                                    IRestResponse response = null;
+                                    Thread t = new Thread(() =>
+                                    {
+                                        var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/ChangepasswordOTP?passnew=" + passnew + "&apiKey=" + HttpUtility.UrlEncode(apiKey));
+                                        var request = new RestRequest(Method.PUT);
+                                        response = client.Execute(request);
+                                    })
+                                    { IsBackground = true };
+                                    t.Start();
+                                    while (t.IsAlive)
+                                    {
+                                        Application.DoEvents();
+                                        btnChangePass.Enabled = false;
+                                    }
+                                    btnChangePass.Enabled = true;
+                                    radWaitingBar1.StopWaiting();
+                                    radWaitingBar1.Enabled = true;
                                     if (!response.IsSuccessful)
                                     {
                                         DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);

@@ -38,6 +38,7 @@ namespace CTS_beta.Form_CTS
             pictureBox1.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, pictureBox1.Width, pictureBox1.Height, 5, 5));
             idMission = id;
             btnNhanNhiemVu.Enabled = false;
+               
             MoveControl.ReleaseCapture();
         }
         private void button13_Click(object sender, EventArgs e)
@@ -95,9 +96,26 @@ namespace CTS_beta.Form_CTS
             if (dialogResult == DialogResult.Yes)
             {
                 Load:
-                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" + idMission + "/Order?apiKey=" + HttpUtility.UrlEncode(frmUser.Instance.ApiKey));
-                var request = new RestRequest(Method.POST);
-                IRestResponse response = client.Execute(request);
+                radWaitingBar1.Refresh();
+                radWaitingBar1.Visible = true;
+                radWaitingBar1.StartWaiting();
+                IRestResponse response = null;
+                Thread t = new Thread(() =>
+                {
+                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" + idMission + "/Order?apiKey=" + HttpUtility.UrlEncode(frmUser.Instance.ApiKey));
+                    var request = new RestRequest(Method.POST);
+                    response = client.Execute(request);
+                })
+                { IsBackground = true };
+                t.Start();
+                while (t.IsAlive)
+                {
+                    Application.DoEvents();
+                    btnNhanNhiemVu.Enabled = false;
+                }
+                radWaitingBar1.StopWaiting();
+                radWaitingBar1.Visible = false;
+                btnNhanNhiemVu.Enabled = true;
                 if (!response.IsSuccessful)
                 {
                     DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);

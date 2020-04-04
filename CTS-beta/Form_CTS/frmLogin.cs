@@ -15,6 +15,7 @@ using CTS_beta.Models;
 using CTS_beta.Form_CTS;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Threading;
 
 namespace CTS_beta
 {
@@ -56,10 +57,27 @@ namespace CTS_beta
                         Properties.Settings.Default.Save();
                     }
                         string ID = HttpUtility.UrlEncode(txtID.Text);
-                    string Password = HttpUtility.UrlEncode(txtPassword.Text);
-                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/CheckLogin?id=" + ID + "&pw=" + Password);
-                    var request = new RestRequest(Method.GET);
-                    IRestResponse response = client.Execute(request);
+                    radWaitingBar1.Refresh();
+                    radWaitingBar1.Visible = true;
+                    radWaitingBar1.StartWaiting();
+                    IRestResponse response = null;
+                    Thread t = new Thread(() =>
+                     {
+                         string Password = HttpUtility.UrlEncode(txtPassword.Text);
+                         var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/CheckLogin?id=" + ID + "&pw=" + Password);
+                         var request = new RestRequest(Method.GET);
+                         response = client.Execute(request);
+                     })
+                    { IsBackground = true };
+                    t.Start();
+                    while(t.IsAlive)
+                    {
+                        Application.DoEvents();
+                        btnLogin.Enabled = false;
+                    }
+                    radWaitingBar1.StopWaiting();
+                    radWaitingBar1.Visible = false;
+                    btnLogin.Enabled = true;
                     if (!response.IsSuccessful)
                     {
                         DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);

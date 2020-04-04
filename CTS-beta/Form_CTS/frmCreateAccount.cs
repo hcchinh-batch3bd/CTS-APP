@@ -73,18 +73,35 @@ namespace CTS_beta.Form_CTS
                                     if (dialogResult == DialogResult.Yes)
                                     {
                                     Load:
-                                        var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Employee/Create?apiKey=" + Properties.Settings.Default.apiKey);
-                                        var request = new RestRequest(Method.POST);
-                                        request.AddHeader("content-type", "application/json");
-                                        Employee employee = new Employee();
-                                        employee.name_employee = txtname_employee.Text;
-                                        employee.email = txtemail.Text.ToLower();
-                                        employee.password = txtpassword.Text;
-                                        employee.date = txtdate.Value.Date;
-                                        employee.level_employee = txtlevel.SelectedValue.ToString();
-                                        string output = JsonConvert.SerializeObject(employee);
-                                        request.AddParameter("application/json", output, ParameterType.RequestBody);
-                                        IRestResponse response = client.Execute(request);
+                                        radWaitingBar1.Refresh();
+                                        radWaitingBar1.Visible = true;
+                                        radWaitingBar1.StartWaiting();
+                                        IRestResponse response = null;
+                                        Thread t = new Thread(() =>
+                                        {
+                                            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Employee/Create?apiKey=" + Properties.Settings.Default.apiKey);
+                                            var request = new RestRequest(Method.POST);
+                                            request.AddHeader("content-type", "application/json");
+                                            Employee employee = new Employee();
+                                            employee.name_employee = txtname_employee.Text;
+                                            employee.email = txtemail.Text.ToLower();
+                                            employee.password = txtpassword.Text;
+                                            employee.date = txtdate.Value.Date;
+                                            employee.level_employee = txtlevel.SelectedValue.ToString();
+                                            string output = JsonConvert.SerializeObject(employee);
+                                            request.AddParameter("application/json", output, ParameterType.RequestBody);
+                                            response = client.Execute(request);
+                                        })
+                                        { IsBackground = true };
+                                        t.Start();
+                                        while (t.IsAlive)
+                                        {
+                                            Application.DoEvents();
+                                            btnCreateAccount.Enabled = false;
+                                        }
+                                        radWaitingBar1.StopWaiting();
+                                        radWaitingBar1.Visible = false;
+                                        btnCreateAccount.Enabled = true;
                                         if (!response.IsSuccessful)
                                         {
                                             DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);

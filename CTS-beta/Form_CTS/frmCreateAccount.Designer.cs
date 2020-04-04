@@ -42,12 +42,15 @@
             this.txtemail = new Telerik.WinControls.UI.RadTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtlevel = new System.Windows.Forms.ComboBox();
+            this.radWaitingBar1 = new Telerik.WinControls.UI.RadWaitingBar();
+            this.dotsLineWaitingBarIndicatorElement1 = new Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtname_employee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtpassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtdate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtemail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCreateAccount
@@ -189,11 +192,27 @@
             this.txtlevel.Size = new System.Drawing.Size(121, 33);
             this.txtlevel.TabIndex = 1;
             // 
+            // radWaitingBar1
+            // 
+            this.radWaitingBar1.Location = new System.Drawing.Point(171, 270);
+            this.radWaitingBar1.Name = "radWaitingBar1";
+            this.radWaitingBar1.Size = new System.Drawing.Size(130, 24);
+            this.radWaitingBar1.TabIndex = 50;
+            this.radWaitingBar1.Text = "radWaitingBar1";
+            this.radWaitingBar1.WaitingIndicators.Add(this.dotsLineWaitingBarIndicatorElement1);
+            this.radWaitingBar1.WaitingSpeed = 80;
+            this.radWaitingBar1.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.DotsLine;
+            // 
+            // dotsLineWaitingBarIndicatorElement1
+            // 
+            this.dotsLineWaitingBarIndicatorElement1.Name = "dotsLineWaitingBarIndicatorElement1";
+            // 
             // frmCreateAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(452, 413);
+            this.Controls.Add(this.radWaitingBar1);
             this.Controls.Add(this.txtlevel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtemail);
@@ -217,6 +236,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtpassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtdate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtemail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,5 +257,7 @@
         private Telerik.WinControls.UI.RadTextBox txtemail;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox txtlevel;
+        private Telerik.WinControls.UI.RadWaitingBar radWaitingBar1;
+        private Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement dotsLineWaitingBarIndicatorElement1;
     }
 }

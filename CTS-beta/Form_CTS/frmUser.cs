@@ -110,7 +110,7 @@ namespace CTS_beta.Form_CTS
         private void btnCreateMission_Click(object sender, EventArgs e)
         {
             frmAddMission fAdd = new frmAddMission();
-            fAdd.Show();
+            fAdd.ShowDialog();
         }
 
         private void panelTitle_MouseDown(object sender, MouseEventArgs e)
@@ -386,6 +386,14 @@ namespace CTS_beta.Form_CTS
         }
 
         private void btnSeach_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSeach_Click(this, new EventArgs());
+            }
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {

@@ -142,6 +142,32 @@ namespace CTS_beta.Form_CTS
             }
             PicSyn.Visible = true;
         }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            frmDetailMission frm = new frmDetailMission(int.Parse(data.Rows[data.CurrentCell.RowIndex].Cells["id"].Value.ToString()), false);
+            frm.ShowDialog();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (data.Rows[data.CurrentCell.RowIndex].Cells["status"].Value.ToString().Equals("Hủy"))
+                MessageBox.Show("Nhiệm vụ bị hủy bạn không thể sửa nhiệm vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+            {
+                frmAddMission frm = new frmAddMission(int.Parse(data.Rows[data.CurrentCell.RowIndex].Cells["id"].Value.ToString()));
+                frm.ShowDialog();
+                Thread thread = new Thread(new ThreadStart(LoadData)) { IsBackground = true };
+                thread.Start();
+                while (thread.IsAlive)
+                {
+                    Application.DoEvents();
+                    PicSyn.Visible = false;
+                }
+                PicSyn.Visible = true;
+            }
+                
+        }
     }
 
     class RootObject

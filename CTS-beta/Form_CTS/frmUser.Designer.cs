@@ -31,51 +31,55 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUser));
             this.panelTitle = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnMinimize = new System.Windows.Forms.Button();
-            this.btnMaximize = new System.Windows.Forms.Button();
-            this.btnExitUser = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblCountComplete = new System.Windows.Forms.TextBox();
             this.lblCountProcess = new System.Windows.Forms.TextBox();
             this.lblCountAreThere = new System.Windows.Forms.TextBox();
             this.txtSearch = new Telerik.WinControls.UI.RadTextBox();
-            this.btnSeach = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.materialTealTheme1 = new Telerik.WinControls.Themes.MaterialTealTheme();
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.button14 = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblPoint = new System.Windows.Forms.Label();
+            this.lblNameEmployee = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnSeach = new System.Windows.Forms.Button();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnChangePass = new System.Windows.Forms.Button();
             this.btnCreateMission = new System.Windows.Forms.Button();
             this.btnMissionCompleted = new System.Windows.Forms.Button();
             this.btnMissionDoing = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
             this.btnMissionAreThere = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.lblPoint = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblNameEmployee = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnMinimize = new System.Windows.Forms.Button();
+            this.btnMaximize = new System.Windows.Forms.Button();
+            this.btnExitUser = new System.Windows.Forms.Button();
+            this.radWaitingBar1 = new Telerik.WinControls.UI.RadWaitingBar();
+            this.dotsLineWaitingBarIndicatorElement1 = new Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement();
             this.panelTitle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
+            this.panelDesktop.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitle
@@ -103,65 +107,6 @@
             this.label4.Size = new System.Drawing.Size(224, 21);
             this.label4.TabIndex = 9;
             this.label4.Text = "Contribute Tracking System";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::CTS_beta.Properties.Resources.networking;
-            this.pictureBox2.Location = new System.Drawing.Point(4, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(37, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // btnMinimize
-            // 
-            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimize.FlatAppearance.BorderSize = 0;
-            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinimize.ForeColor = System.Drawing.Color.White;
-            this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
-            this.btnMinimize.Location = new System.Drawing.Point(1224, 5);
-            this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(29, 29);
-            this.btnMinimize.TabIndex = 8;
-            this.btnMinimize.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMinimize.UseVisualStyleBackColor = true;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
-            // 
-            // btnMaximize
-            // 
-            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximize.FlatAppearance.BorderSize = 0;
-            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaximize.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaximize.ForeColor = System.Drawing.Color.White;
-            this.btnMaximize.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximize.Image")));
-            this.btnMaximize.Location = new System.Drawing.Point(1259, 5);
-            this.btnMaximize.Name = "btnMaximize";
-            this.btnMaximize.Size = new System.Drawing.Size(29, 29);
-            this.btnMaximize.TabIndex = 8;
-            this.btnMaximize.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMaximize.UseVisualStyleBackColor = true;
-            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
-            // 
-            // btnExitUser
-            // 
-            this.btnExitUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExitUser.FlatAppearance.BorderSize = 0;
-            this.btnExitUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnExitUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExitUser.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitUser.ForeColor = System.Drawing.Color.White;
-            this.btnExitUser.Image = ((System.Drawing.Image)(resources.GetObject("btnExitUser.Image")));
-            this.btnExitUser.Location = new System.Drawing.Point(1294, 5);
-            this.btnExitUser.Name = "btnExitUser";
-            this.btnExitUser.Size = new System.Drawing.Size(29, 29);
-            this.btnExitUser.TabIndex = 8;
-            this.btnExitUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExitUser.UseVisualStyleBackColor = true;
-            this.btnExitUser.Click += new System.EventHandler(this.btnExitUser_Click);
             // 
             // label9
             // 
@@ -241,22 +186,7 @@
             this.txtSearch.Size = new System.Drawing.Size(291, 36);
             this.txtSearch.TabIndex = 31;
             this.txtSearch.ThemeName = "MaterialTeal";
-            // 
-            // btnSeach
-            // 
-            this.btnSeach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSeach.BackColor = System.Drawing.Color.White;
-            this.btnSeach.FlatAppearance.BorderSize = 0;
-            this.btnSeach.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.btnSeach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSeach.Image = ((System.Drawing.Image)(resources.GetObject("btnSeach.Image")));
-            this.btnSeach.Location = new System.Drawing.Point(1004, 29);
-            this.btnSeach.Name = "btnSeach";
-            this.btnSeach.Size = new System.Drawing.Size(64, 36);
-            this.btnSeach.TabIndex = 30;
-            this.btnSeach.UseVisualStyleBackColor = false;
-            this.btnSeach.Click += new System.EventHandler(this.btnSeach_Click);
-            this.btnSeach.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSeach_KeyDown);
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // label7
             // 
@@ -280,45 +210,10 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Nhiệm vụ đang có";
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(446, 17);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(240, 14);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(37, 14);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            // 
             // panelDesktop
             // 
             this.panelDesktop.BackColor = System.Drawing.Color.White;
+            this.panelDesktop.Controls.Add(this.radWaitingBar1);
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktop.Location = new System.Drawing.Point(265, 134);
             this.panelDesktop.Name = "panelDesktop";
@@ -358,6 +253,130 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(255, 749);
             this.panel5.TabIndex = 40;
+            // 
+            // button14
+            // 
+            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button14.FlatAppearance.BorderSize = 0;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.ForeColor = System.Drawing.Color.White;
+            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button14.Location = new System.Drawing.Point(0, 712);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(36, 34);
+            this.button14.TabIndex = 4;
+            this.button14.Text = "?";
+            this.button14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel4.Controls.Add(this.lblPoint);
+            this.panel4.Controls.Add(this.pictureBox1);
+            this.panel4.Controls.Add(this.lblNameEmployee);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(255, 148);
+            this.panel4.TabIndex = 5;
+            // 
+            // lblPoint
+            // 
+            this.lblPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblPoint.ForeColor = System.Drawing.Color.White;
+            this.lblPoint.Location = new System.Drawing.Point(16, 112);
+            this.lblPoint.Name = "lblPoint";
+            this.lblPoint.Size = new System.Drawing.Size(223, 25);
+            this.lblPoint.TabIndex = 42;
+            this.lblPoint.Text = "Điểm: ";
+            this.lblPoint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblNameEmployee
+            // 
+            this.lblNameEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameEmployee.ForeColor = System.Drawing.Color.White;
+            this.lblNameEmployee.Location = new System.Drawing.Point(12, 68);
+            this.lblNameEmployee.Name = "lblNameEmployee";
+            this.lblNameEmployee.Size = new System.Drawing.Size(237, 44);
+            this.lblNameEmployee.TabIndex = 44;
+            this.lblNameEmployee.Text = "Loading....";
+            this.lblNameEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel6
+            // 
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel6.Location = new System.Drawing.Point(255, 134);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(10, 654);
+            this.panel6.TabIndex = 41;
+            // 
+            // panel7
+            // 
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel7.Location = new System.Drawing.Point(265, 783);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1055, 5);
+            this.panel7.TabIndex = 42;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
+            // btnSeach
+            // 
+            this.btnSeach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSeach.BackColor = System.Drawing.Color.White;
+            this.btnSeach.FlatAppearance.BorderSize = 0;
+            this.btnSeach.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnSeach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSeach.Image = ((System.Drawing.Image)(resources.GetObject("btnSeach.Image")));
+            this.btnSeach.Location = new System.Drawing.Point(1004, 29);
+            this.btnSeach.Name = "btnSeach";
+            this.btnSeach.Size = new System.Drawing.Size(64, 36);
+            this.btnSeach.TabIndex = 30;
+            this.btnSeach.UseVisualStyleBackColor = false;
+            this.btnSeach.Click += new System.EventHandler(this.btnSeach_Click);
+            this.btnSeach.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSeach_KeyDown);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(446, 17);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 0;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(240, 14);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(37, 14);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
             // 
             // btnLogout
             // 
@@ -454,23 +473,6 @@
             this.btnMissionDoing.UseVisualStyleBackColor = true;
             this.btnMissionDoing.Click += new System.EventHandler(this.btnMissionDoing_Click);
             // 
-            // button14
-            // 
-            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.ForeColor = System.Drawing.Color.White;
-            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(0, 712);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(36, 34);
-            this.button14.TabIndex = 4;
-            this.button14.Text = "?";
-            this.button14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
             // btnMissionAreThere
             // 
             this.btnMissionAreThere.Dock = System.Windows.Forms.DockStyle.Top;
@@ -490,29 +492,6 @@
             this.btnMissionAreThere.UseVisualStyleBackColor = true;
             this.btnMissionAreThere.Click += new System.EventHandler(this.btnMissionAreThere_Click);
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel4.Controls.Add(this.lblPoint);
-            this.panel4.Controls.Add(this.pictureBox1);
-            this.panel4.Controls.Add(this.lblNameEmployee);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(255, 148);
-            this.panel4.TabIndex = 5;
-            // 
-            // lblPoint
-            // 
-            this.lblPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblPoint.ForeColor = System.Drawing.Color.White;
-            this.lblPoint.Location = new System.Drawing.Point(16, 112);
-            this.lblPoint.Name = "lblPoint";
-            this.lblPoint.Size = new System.Drawing.Size(223, 25);
-            this.lblPoint.TabIndex = 42;
-            this.lblPoint.Text = "Điểm: ";
-            this.lblPoint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::CTS_beta.Properties.Resources.icons8_cat_profile_64__1_;
@@ -523,37 +502,79 @@
             this.pictureBox1.TabIndex = 41;
             this.pictureBox1.TabStop = false;
             // 
-            // lblNameEmployee
+            // pictureBox2
             // 
-            this.lblNameEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameEmployee.ForeColor = System.Drawing.Color.White;
-            this.lblNameEmployee.Location = new System.Drawing.Point(12, 68);
-            this.lblNameEmployee.Name = "lblNameEmployee";
-            this.lblNameEmployee.Size = new System.Drawing.Size(237, 44);
-            this.lblNameEmployee.TabIndex = 44;
-            this.lblNameEmployee.Text = "Loading....";
-            this.lblNameEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pictureBox2.Image = global::CTS_beta.Properties.Resources.networking;
+            this.pictureBox2.Location = new System.Drawing.Point(4, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(37, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
-            // panel6
+            // btnMinimize
             // 
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(255, 134);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(10, 654);
-            this.panel6.TabIndex = 41;
+            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimize.FlatAppearance.BorderSize = 0;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinimize.ForeColor = System.Drawing.Color.White;
+            this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
+            this.btnMinimize.Location = new System.Drawing.Point(1224, 5);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(29, 29);
+            this.btnMinimize.TabIndex = 8;
+            this.btnMinimize.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
-            // panel7
+            // btnMaximize
             // 
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(265, 783);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1055, 5);
-            this.panel7.TabIndex = 42;
+            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximize.FlatAppearance.BorderSize = 0;
+            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaximize.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMaximize.ForeColor = System.Drawing.Color.White;
+            this.btnMaximize.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximize.Image")));
+            this.btnMaximize.Location = new System.Drawing.Point(1259, 5);
+            this.btnMaximize.Name = "btnMaximize";
+            this.btnMaximize.Size = new System.Drawing.Size(29, 29);
+            this.btnMaximize.TabIndex = 8;
+            this.btnMaximize.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMaximize.UseVisualStyleBackColor = true;
+            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
             // 
-            // backgroundWorker1
+            // btnExitUser
             // 
-            this.backgroundWorker1.WorkerReportsProgress = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.btnExitUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExitUser.FlatAppearance.BorderSize = 0;
+            this.btnExitUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnExitUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExitUser.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExitUser.ForeColor = System.Drawing.Color.White;
+            this.btnExitUser.Image = ((System.Drawing.Image)(resources.GetObject("btnExitUser.Image")));
+            this.btnExitUser.Location = new System.Drawing.Point(1294, 5);
+            this.btnExitUser.Name = "btnExitUser";
+            this.btnExitUser.Size = new System.Drawing.Size(29, 29);
+            this.btnExitUser.TabIndex = 8;
+            this.btnExitUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExitUser.UseVisualStyleBackColor = true;
+            this.btnExitUser.Click += new System.EventHandler(this.btnExitUser_Click);
+            // 
+            // radWaitingBar1
+            // 
+            this.radWaitingBar1.Location = new System.Drawing.Point(390, 191);
+            this.radWaitingBar1.Name = "radWaitingBar1";
+            this.radWaitingBar1.Size = new System.Drawing.Size(130, 24);
+            this.radWaitingBar1.TabIndex = 33;
+            this.radWaitingBar1.Text = "radWaitingBar1";
+            this.radWaitingBar1.WaitingIndicators.Add(this.dotsLineWaitingBarIndicatorElement1);
+            this.radWaitingBar1.WaitingSpeed = 80;
+            this.radWaitingBar1.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.DotsLine;
+            // 
+            // dotsLineWaitingBarIndicatorElement1
+            // 
+            this.dotsLineWaitingBarIndicatorElement1.Name = "dotsLineWaitingBarIndicatorElement1";
             // 
             // frmUser
             // 
@@ -576,16 +597,18 @@
             this.Load += new System.EventHandler(this.frmUser_Load);
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
+            this.panelDesktop.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -628,5 +651,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Telerik.WinControls.UI.RadTextBox txtSearch;
         private System.Windows.Forms.Button btnSeach;
+        private Telerik.WinControls.UI.RadWaitingBar radWaitingBar1;
+        private Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement dotsLineWaitingBarIndicatorElement1;
     }
 }

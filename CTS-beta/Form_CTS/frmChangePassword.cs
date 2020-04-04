@@ -12,6 +12,7 @@ using System.Web;
 using Newtonsoft.Json;
 using System.Configuration;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace CTS_beta
 {
@@ -45,11 +46,28 @@ namespace CTS_beta
                     if (!txtPasswordNew.Text.Equals(txtPasswordOld.Text))
                     {
                     Load:
-                        string pwold = HttpUtility.UrlEncode(txtPasswordOld.Text);
-                        string pwnew = HttpUtility.UrlEncode(txtPasswordNew.Text);
-                        var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/Changepassword?passold=" + pwold + "&passnew=" + pwnew + "&apiKey=" + frmUser.Instance.ApiKey);
-                        var request = new RestRequest(Method.PUT);
-                        IRestResponse response = client.Execute(request);
+                        radWaitingBar1.Refresh();
+                        radWaitingBar1.Visible = true;
+                        radWaitingBar1.StartWaiting();
+                        IRestResponse response = null;
+                        Thread t = new Thread(() =>
+                        {
+                            string pwold = HttpUtility.UrlEncode(txtPasswordOld.Text);
+                            string pwnew = HttpUtility.UrlEncode(txtPasswordNew.Text);
+                            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/Changepassword?passold=" + pwold + "&passnew=" + pwnew + "&apiKey=" + frmUser.Instance.ApiKey);
+                            var request = new RestRequest(Method.PUT);
+                            response = client.Execute(request);
+                        })
+                        { IsBackground = true };
+                        t.Start();
+                        while (t.IsAlive)
+                        {
+                            Application.DoEvents();
+                            btnChangePassword.Enabled = false;
+                        }
+                        radWaitingBar1.StopWaiting();
+                        radWaitingBar1.Visible = false;
+                        btnChangePassword.Enabled = true;
                         if (!response.IsSuccessful)
                         {
                             DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);

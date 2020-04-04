@@ -35,11 +35,14 @@
             this.txtPasswordNewComfirm = new Telerik.WinControls.UI.RadTextBox();
             this.btnChangePassword = new Telerik.WinControls.UI.RadButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.radWaitingBar1 = new Telerik.WinControls.UI.RadWaitingBar();
+            this.dotsLineWaitingBarIndicatorElement1 = new Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordNewComfirm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnChangePassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,6 +108,21 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // radWaitingBar1
+            // 
+            this.radWaitingBar1.Location = new System.Drawing.Point(102, 357);
+            this.radWaitingBar1.Name = "radWaitingBar1";
+            this.radWaitingBar1.Size = new System.Drawing.Size(135, 20);
+            this.radWaitingBar1.TabIndex = 5;
+            this.radWaitingBar1.Text = "radWaitingBar1";
+            this.radWaitingBar1.WaitingIndicators.Add(this.dotsLineWaitingBarIndicatorElement1);
+            this.radWaitingBar1.WaitingSpeed = 80;
+            this.radWaitingBar1.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.DotsLine;
+            // 
+            // dotsLineWaitingBarIndicatorElement1
+            // 
+            this.dotsLineWaitingBarIndicatorElement1.Name = "dotsLineWaitingBarIndicatorElement1";
+            // 
             // frmChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,6 +130,7 @@
             this.BackgroundImage = global::CTS_beta.Properties.Resources.abc;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(339, 527);
+            this.Controls.Add(this.radWaitingBar1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnChangePassword);
             this.Controls.Add(this.txtPasswordNewComfirm);
@@ -134,6 +153,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordNewComfirm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnChangePassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -148,5 +168,7 @@
         private Telerik.WinControls.UI.RadTextBox txtPasswordNewComfirm;
         private Telerik.WinControls.UI.RadButton btnChangePassword;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Telerik.WinControls.UI.RadWaitingBar radWaitingBar1;
+        private Telerik.WinControls.UI.DotsLineWaitingBarIndicatorElement dotsLineWaitingBarIndicatorElement1;
     }
 }
