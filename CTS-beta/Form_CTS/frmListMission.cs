@@ -42,14 +42,11 @@ namespace CTS_beta.Form_CTS
             IRestResponse response = client.Execute(request);
             if (!response.IsSuccessful)
             {
-                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                 if (dialog == DialogResult.Retry)
                     goto Load;
                 else
                 {
-                    Properties.Settings.Default.apiKey = "";
-                    Properties.Settings.Default.id_employee = 0;
-                    Properties.Settings.Default.Save();
                     Application.Exit();
                 }
             }
@@ -99,8 +96,15 @@ namespace CTS_beta.Form_CTS
         private void btnAddMission_Click(object sender, EventArgs e)
         {
             frmAddMission fAdd = new frmAddMission();
-            fAdd.Show();
-
+            fAdd.ShowDialog();
+            Thread thread = new Thread(new ThreadStart(LoadData)) { IsBackground = true };
+            thread.Start();
+            while (thread.IsAlive)
+            {
+                Application.DoEvents();
+                PicSyn.Visible = false;
+            }
+            PicSyn.Visible = true;
         }
 
         private void DeleteMission()

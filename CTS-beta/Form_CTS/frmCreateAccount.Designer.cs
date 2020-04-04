@@ -161,11 +161,14 @@
             // txtemail
             // 
             this.txtemail.Location = new System.Drawing.Point(66, 228);
+            this.txtemail.MaxLength = 50;
             this.txtemail.Name = "txtemail";
             this.txtemail.NullText = "Email";
             this.txtemail.Size = new System.Drawing.Size(333, 36);
             this.txtemail.TabIndex = 48;
             this.txtemail.ThemeName = "MaterialTeal";
+            this.txtemail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtemail_KeyDown);
+            this.txtemail.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtemail_MouseDown);
             // 
             // label2
             // 
@@ -179,10 +182,11 @@
             // 
             // txtlevel
             // 
+            this.txtlevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtlevel.FormattingEnabled = true;
-            this.txtlevel.Location = new System.Drawing.Point(278, 130);
+            this.txtlevel.Location = new System.Drawing.Point(278, 128);
             this.txtlevel.Name = "txtlevel";
-            this.txtlevel.Size = new System.Drawing.Size(121, 21);
+            this.txtlevel.Size = new System.Drawing.Size(121, 33);
             this.txtlevel.TabIndex = 1;
             // 
             // frmCreateAccount

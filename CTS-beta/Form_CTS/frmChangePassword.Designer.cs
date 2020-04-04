@@ -78,6 +78,7 @@
             this.txtPasswordNewComfirm.TabIndex = 2;
             this.txtPasswordNewComfirm.ThemeName = "Material";
             this.txtPasswordNewComfirm.UseSystemPasswordChar = true;
+            this.txtPasswordNewComfirm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPasswordNewComfirm_KeyDown);
             // 
             // btnChangePassword
             // 

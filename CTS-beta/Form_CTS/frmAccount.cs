@@ -36,7 +36,7 @@ namespace CTS_beta.Form_CTS
             IRestResponse response = client.Execute(request);
             if (!response.IsSuccessful)
             {
-                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                 if (dialog == DialogResult.Retry)
                     goto Load;
                 else
@@ -74,21 +74,31 @@ namespace CTS_beta.Form_CTS
             {
                 try
                 {
-                    DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa không", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
                     {
+                        Load:
                         int idEmployee = int.Parse(GridViewAccount.Rows[GridViewAccount.CurrentCell.RowIndex].Cells["ID"].Value.ToString());
                         var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/" + idEmployee + "/DeleteEmployee?apiKey=" + Properties.Settings.Default.apiKey);
                         var request = new RestRequest(Method.PUT);
                         IRestResponse response = client.Execute(request);
-                        try
+                        if (!response.IsSuccessful)
+                        {
+                            DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            if (dialog == DialogResult.Retry)
+                                goto Load;
+                            else
+                            {
+                                Application.Exit();
+                            }
+                        }
+                        else
                         {
                             RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
                             MessageBox.Show(obj.Message);
                             this.GridViewAccount.Rows.Clear();
                             LoadData();
                         }
-                        catch { MessageBox.Show("Server bị mất kết nối"); }
                     }
                     else
                     {
@@ -106,7 +116,16 @@ namespace CTS_beta.Form_CTS
         private void Button3_Click(object sender, EventArgs e)
         {
             frmCreateAccount frm = new frmCreateAccount();
-            frm.Show();
+            frm.ShowDialog();
+            GridViewAccount.Rows.Clear();
+            Thread thread = new Thread(new ThreadStart(LoadData)) { IsBackground = true };
+            thread.Start();
+            while (thread.IsAlive)
+            {
+                Application.DoEvents();
+                PicSyn.Visible = false;
+            }
+            PicSyn.Visible = true;
         }
 
         private void FrmAccount_Load(object sender, EventArgs e)

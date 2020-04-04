@@ -46,5 +46,41 @@ namespace CTS_beta.Properties {
                 this["id_employee"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string password {
+            get {
+                return ((string)(this["password"]));
+            }
+            set {
+                this["password"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool level {
+            get {
+                return ((bool)(this["level"]));
+            }
+            set {
+                this["level"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int id {
+            get {
+                return ((int)(this["id"]));
+            }
+            set {
+                this["id"] = value;
+            }
+        }
     }
 }

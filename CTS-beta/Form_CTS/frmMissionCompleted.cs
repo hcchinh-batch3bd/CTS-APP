@@ -12,6 +12,7 @@ using CTS_beta.Models;
 using Newtonsoft.Json;
 using System.Threading;
 using System.Configuration;
+using System.Web;
 
 namespace CTS_beta.Form_CTS
 {
@@ -34,12 +35,12 @@ namespace CTS_beta.Form_CTS
         void LoadData()
         {
         Load:
-            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/ListMissionComplete?apiKey=" + frmUser.Instance.ApiKey);
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/ListMissionComplete?apiKey=" + HttpUtility.UrlEncode(frmUser.Instance.ApiKey));
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             if (!response.IsSuccessful)
             {
-                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                 if (dialog == DialogResult.Retry)
                     goto Load;
                 else

@@ -14,6 +14,7 @@ using Newtonsoft.Json.Linq;
 using System.Threading;
 using System.Configuration;
 using System.Text.RegularExpressions;
+using System.Web;
 
 namespace CTS_beta.Form_CTS
 {
@@ -59,14 +60,11 @@ namespace CTS_beta.Form_CTS
             IRestResponse response = typeMission.Execute(request);
             if (!response.IsSuccessful)
             {
-                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                 if (dialog == DialogResult.Retry)
                     goto Load;
                 else
                 {
-                    Properties.Settings.Default.apiKey = "";
-                    Properties.Settings.Default.id_employee = 0;
-                    Properties.Settings.Default.Save();
                     Application.Exit();
                 }
             }
@@ -137,11 +135,11 @@ namespace CTS_beta.Form_CTS
                     if (!check(checkString.Trim()) && checkString.Trim()!="")
                     {
                     Load:
-                        var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/Create?apiKey=" + Properties.Settings.Default.apiKey);
+                        var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/Create?apiKey=" + HttpUtility.UrlEncode(Properties.Settings.Default.apiKey));
                         var request = new RestRequest(Method.POST);
                         request.AddHeader("content-type", "application/json");
                         TypeMission typeMission = new TypeMission();
-                        typeMission.name_type_mission = checkstring.Trim();
+                        typeMission.name_type_mission = HttpUtility.UrlEncode(checkstring.Trim());
                         typeMission.id_employee = Properties.Settings.Default.id_employee;
                         typeMission.status = true;
                         typeMission.date = DateTime.Now;
@@ -150,14 +148,11 @@ namespace CTS_beta.Form_CTS
                         IRestResponse response = client.Execute(request);
                         if (!response.IsSuccessful)
                         {
-                            DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                             if (dialog == DialogResult.Retry)
                                 goto Load;
                             else
                             {
-                                Properties.Settings.Default.apiKey = "";
-                                Properties.Settings.Default.id_employee = 0;
-                                Properties.Settings.Default.Save();
                                 Application.Exit();
                             }
                         }
@@ -188,7 +183,7 @@ namespace CTS_beta.Form_CTS
                 string checkstring = Regex.Replace(data.Rows[data.CurrentCell.RowIndex].Cells["nameType"].Value.ToString(), @"\s+", " ");
             Load:
                 string id = data.Rows[data.CurrentCell.RowIndex].Cells["ID"].Value.ToString();
-                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/Edit?apiKey=" + Properties.Settings.Default.apiKey);
+                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/Edit?apiKey=" + HttpUtility.UrlEncode(Properties.Settings.Default.apiKey));
                 var request = new RestRequest(Method.PUT);
                 request.AddHeader("content-type", "application/json");
                 TypeMission typeMission = new TypeMission();
@@ -201,7 +196,7 @@ namespace CTS_beta.Form_CTS
 
                         if (checkstring.Trim() != "")
                         {
-                            typeMission.name_type_mission = checkstring.Trim();
+                            typeMission.name_type_mission = HttpUtility.UrlEncode(checkstring.Trim());
                             typeMission.id_employee = Properties.Settings.Default.id_employee;
                             typeMission.status = true;
                             typeMission.date = DateTime.Now;
@@ -210,7 +205,7 @@ namespace CTS_beta.Form_CTS
                             IRestResponse response = client.Execute(request);
                             if (!response.IsSuccessful)
                             {
-                                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                                DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                                 if (dialog == DialogResult.Retry)
                                     goto Load;
                                 else
@@ -233,7 +228,7 @@ namespace CTS_beta.Form_CTS
                         }
                         else
                         {
-                            MessageBox.Show("Vui lòng nhập tên nhiệm vụ hợp lệ !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Vui lòng nhập tên loại nhiệm vụ hợp lệ !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnEdit.Enabled = false;
                             btnDel.Enabled = true;
                         }
@@ -266,20 +261,17 @@ namespace CTS_beta.Form_CTS
                 {
                     Load:
                     int id = int.Parse(data.Rows[data.CurrentCell.RowIndex].Cells["ID"].Value.ToString());
-                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/" + id + "/Remove?apiKey="+Properties.Settings.Default.apiKey);
+                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Type_Mission/" + id + "/Remove?apiKey="+ HttpUtility.UrlEncode(Properties.Settings.Default.apiKey));
                     var request = new RestRequest(Method.PUT);
                     data.Rows.Clear();
                     IRestResponse response = client.Execute(request);
                     if (!response.IsSuccessful)
                     {
-                        DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                        DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                         if (dialog == DialogResult.Retry)
                             goto Load;
                         else
                         {
-                            Properties.Settings.Default.apiKey = "";
-                            Properties.Settings.Default.id_employee = 0;
-                            Properties.Settings.Default.Save();
                             Application.Exit();
                         }
                     }

@@ -10,6 +10,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 using System.Windows.Forms;
 using Telerik.WinControls;
 
@@ -42,7 +43,7 @@ namespace CTS_beta
                 IRestResponse response = client.Execute(request);
                 if (!response.IsSuccessful)
                 {
-                    DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                     if (dialog == DialogResult.Retry)
                         goto Load;
                     else
@@ -88,18 +89,23 @@ namespace CTS_beta
                             {
                                 if (timeCode != 0)
                                 {
-                                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/ChangepasswordOTP?passnew=" + txtPassword.Text + "&apiKey=" + apiKey);
+                                    string passnew = HttpUtility.UrlEncode(txtPassword.Text);
+                                    Load:
+                                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/ChangepasswordOTP?passnew=" + passnew + "&apiKey=" + HttpUtility.UrlEncode(apiKey));
                                     var request = new RestRequest(Method.PUT);
                                     IRestResponse response = client.Execute(request);
-                                    if (response.IsSuccessful)
+                                    if (!response.IsSuccessful)
+                                    {
+                                        DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                                        if (dialog == DialogResult.Retry)
+                                            goto Load;
+                                        Application.Exit();
+                                    }
+                                    else
                                     {
                                         Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
                                         MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         this.Close();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Server bị mất kết nối");
                                     }
                                 }
                                 else
@@ -147,6 +153,7 @@ namespace CTS_beta
                 btnSendCode.Enabled = true;
                 btnSendCode.Text = "";
                 btnSendCode.Image = Properties.Resources.mail;
+                count = 60;
             }
         }
         bool IsValidEmail(string email)
@@ -175,7 +182,11 @@ namespace CTS_beta
         {
             timeCode--;
             if (timeCode == 0)
+            {
                 timer2.Stop();
+                timeCode = 5;
+            }
+                
         }
         private const string mysecurityKey = "CTSOTP12";
         public static string Encrypt(string TextToEncrypt)
@@ -239,6 +250,22 @@ namespace CTS_beta
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtPasswordComfirm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnChangePass_Click(this, new EventArgs());
+            }
+        }
+
+        private void txtEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSendCode_Click(this, new EventArgs());
+            }
         }
     }
 }

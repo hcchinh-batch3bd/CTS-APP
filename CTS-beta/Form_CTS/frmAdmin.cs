@@ -20,6 +20,7 @@ namespace CTS_beta
     public partial class frmAdmin : Telerik.WinControls.UI.RadForm
     {
         int numNotify=0;
+        frmLogin frmLogin;
         public frmAdmin()
         {
             InitializeComponent();
@@ -31,15 +32,34 @@ namespace CTS_beta
             Properties.Settings.Default.apiKey = apiKey;
             Properties.Settings.Default.Save();
             panel5.AutoScroll = true;
+            frmLogin = frm;
         }
         private void Button13_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.apiKey = "";
-            Properties.Settings.Default.id_employee = 0;
-            Properties.Settings.Default.Save();
-            frmLogin frm = new frmLogin();
-            frm.Show();
-            this.Hide();
+            DialogResult result = MessageBox.Show("Bạn có muốn đăng xuất khỏi hệ thống hay không? ", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result== DialogResult.Yes)
+            {
+                if(frmLogin!=null)
+                {
+                    Properties.Settings.Default.apiKey = "";
+                    Properties.Settings.Default.Save();
+                    frmLogin.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    Properties.Settings.Default.apiKey = "";
+                    Properties.Settings.Default.Save();
+                    frmLogin login = new frmLogin();
+                    login.Show();
+                    this.Hide();
+                }
+            }
+            else
+            {
+                Application.Exit();
+            }
+           
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -120,20 +140,20 @@ namespace CTS_beta
         }
         void loadNotify()
         {
-            Load:
+        Load:
             var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/ListMission");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
-            if (!response.IsSuccessful)
+            var clientMissionProcess = new RestClient(ConfigurationManager.AppSettings["server"] + "/MissionProcess?apiKey="+Properties.Settings.Default.apiKey);
+            var requestMissionPrcess = new RestRequest(Method.GET);
+            IRestResponse responseMissionProcess = clientMissionProcess.Execute(requestMissionPrcess);
+            if (!response.IsSuccessful || !responseMissionProcess.IsSuccessful)
             {
-                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                 if (dialog == DialogResult.Retry)
                     goto Load;
                 else
                 {
-                    Properties.Settings.Default.apiKey = "";
-                    Properties.Settings.Default.id_employee = 0;
-                    Properties.Settings.Default.Save();
                     Application.Exit();
                 }
             }
@@ -152,13 +172,13 @@ namespace CTS_beta
                     {
                         numNotify++;
 
-                        string content = item.name_employee+" đã yêu cầu tạo nhiệm vụ: \""+item.name_mission+"\"";
-                        MissionApproval childForm = new MissionApproval(item.id_mission, content,panel5);
+                        string content = item.name_employee + " đã yêu cầu tạo nhiệm vụ: \"" + item.name_mission + "\"";
+                        MissionApproval childForm = new MissionApproval(item.id_mission, content, panel5, true, 0);
                         if (!panel5.InvokeRequired)
                             panel5.Controls.Add(childForm);
                         else
                             panel5.Invoke(new Action(() => panel5.Controls.Add(childForm)));
-                       
+
                         if (childForm.InvokeRequired)
                         {
                             childForm.Invoke(new Action(() => childForm.BringToFront()));
@@ -171,8 +191,31 @@ namespace CTS_beta
                             childForm.Show();
                         }
                     }
-                            
+                }
+                ObjMissionProcess objMissionPrcess = JsonConvert.DeserializeObject<ObjMissionProcess>(responseMissionProcess.Content.ToString());
+                List<MissionProcess> missionProcess = objMissionPrcess.results;
+                foreach (var item in missionProcess)
+                {
+                        numNotify++;
 
+                        string content = item.name_employee + " đã yêu cầu nhận lại nhiệm vụ: \"" + item.name_mission + "\"";
+                        MissionApproval childForm = new MissionApproval(item.id, content, panel5, false, item.id_mission);
+                        if (!panel5.InvokeRequired)
+                            panel5.Controls.Add(childForm);
+                        else
+                            panel5.Invoke(new Action(() => panel5.Controls.Add(childForm)));
+
+                        if (childForm.InvokeRequired)
+                        {
+                            childForm.Invoke(new Action(() => childForm.BringToFront()));
+                            childForm.Invoke(new Action(() => childForm.Show()));
+                        }
+                        else
+                        {
+                            childForm.BringToFront();
+
+                            childForm.Show();
+                        }
                 }
                 button11.Number = numNotify;
 
@@ -193,10 +236,13 @@ namespace CTS_beta
 
         private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Properties.Settings.Default.apiKey = "";
-            Properties.Settings.Default.id_employee = 0;
-            Properties.Settings.Default.Save();
             Application.Exit();
+        }
+        class ObjMissionProcess
+        {
+            public List<MissionProcess> results { get; set; }
+            public bool status { get; set; }
+            public string message { get; set; }
         }
     }
 }

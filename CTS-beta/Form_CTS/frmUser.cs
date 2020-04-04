@@ -12,6 +12,7 @@ using System.Configuration;
 using Newtonsoft.Json;
 using CTS_beta.Models;
 using System.Threading;
+using System.Web;
 
 namespace CTS_beta.Form_CTS
 {
@@ -57,6 +58,8 @@ namespace CTS_beta.Form_CTS
             txtSearch.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, txtSearch.Width, txtSearch.Height, 5, 5));
             btnSeach.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnSeach.Width, btnSeach.Height, 5, 5));
             this.apiKey = apiKey;
+            Properties.Settings.Default.apiKey = apiKey;
+            Properties.Settings.Default.Save();
             frmLogin = frm;
         }
         private void btnExitUser_Click(object sender, EventArgs e)
@@ -150,10 +153,10 @@ namespace CTS_beta.Form_CTS
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.apiKey = "";
-            Properties.Settings.Default.id_employee = 0;
             Properties.Settings.Default.Save();
             if(frmLogin!=null)
             {
+                frmLogin.Invalidate();
                 frmLogin.Show();
                 this.Close();
             }
@@ -168,12 +171,12 @@ namespace CTS_beta.Form_CTS
         {
             Load:
 
-                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account?apiKey=" + apiKey);
+                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account?apiKey=" + HttpUtility.UrlEncode(apiKey));
                 var request = new RestRequest(Method.GET);
                 IRestResponse response = client.Execute(request);
             if (!response.IsSuccessful)
             {
-                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                 if (dialog == DialogResult.Retry)
                     goto Load;
                 else
@@ -185,14 +188,24 @@ namespace CTS_beta.Form_CTS
             {
 
                 User obj = JsonConvert.DeserializeObject<User>(response.Content.ToString());
-                lblPoint.Invoke(new Action(() => lblPoint.Text = obj.point.ToString()));
-                lblNameEmployee.Invoke(new Action(() => lblNameEmployee.Text = obj.name_employee.ToString()));
-                lblCountComplete.Invoke(new Action(() => lblCountComplete.Text = obj.totalComplete.ToString()));
-                lblCountProcess.Invoke(new Action(() => lblCountProcess.Text = obj.totalProcess.ToString()));
-                Properties.Settings.Default.id_employee = obj.id_employee;
-                Properties.Settings.Default.Save();
+                if (lblPoint.InvokeRequired)
+                    lblPoint.Invoke(new Action(() => lblPoint.Text= "Điểm: "+obj.point.ToString()));
+                else
+                    lblPoint.Text= "Điểm: "+obj.point.ToString();
+                if (lblNameEmployee.InvokeRequired)
+                    lblNameEmployee.Invoke(new Action(() => lblNameEmployee.Text = "♔ "+obj.name_employee.ToString()+ " ♔"));
+                else
+                    lblNameEmployee.Text = obj.name_employee.ToString();
+                if (lblNameEmployee.InvokeRequired)
+                    lblCountComplete.Invoke(new Action(() => lblCountComplete.Text = obj.totalComplete.ToString()));
+                else
+                    lblCountComplete.Text = obj.totalComplete.ToString();
+                if (lblCountProcess.InvokeRequired)
+                    lblCountProcess.Invoke(new Action(() => lblCountProcess.Text = obj.totalProcess.ToString()));
+                else
+                    lblCountProcess.Text = obj.totalProcess.ToString();
                 _obj = this;
-                client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Missison/Missionavailable?apiKey=" + apiKey);
+                client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Missison/Missionavailable?apiKey=" + HttpUtility.UrlEncode(apiKey));
                 request = new RestRequest(Method.GET);
                 response = client.Execute(request);
                 RootObject ob = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
@@ -227,7 +240,7 @@ namespace CTS_beta.Form_CTS
                         IRestResponse response = client.Execute(request);
                         if (!response.IsSuccessful)
                         {
-                            DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                             if (dialog == DialogResult.Retry)
                                 goto Load;
                             else
@@ -265,12 +278,12 @@ namespace CTS_beta.Form_CTS
                     {
                         Application.DoEvents();
                     Load:
-                        var client = new RestClient(ConfigurationManager.AppSettings["server"]+ "/Mission/Missionavailableemp/Search?key=" + txtSearch.Text+"&apiKey="+apiKey);
+                        var client = new RestClient(ConfigurationManager.AppSettings["server"]+ "/Mission/Missionavailableemp/Search?key=" + txtSearch.Text+"&apiKey="+ HttpUtility.UrlEncode(apiKey));
                         var request = new RestRequest(Method.GET);
                         IRestResponse response = client.Execute(request);
                         if (!response.IsSuccessful)
                         {
-                            DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                             if (dialog == DialogResult.Retry)
                                 goto Load;
                             else
@@ -311,12 +324,12 @@ namespace CTS_beta.Form_CTS
                     {
                         Application.DoEvents();
                     Load:
-                        var client = new RestClient(ConfigurationManager.AppSettings["server"]+ "/Mission/ListMissionComplete/Search?key=" + txtSearch.Text+"&apiKey="+apiKey);
+                        var client = new RestClient(ConfigurationManager.AppSettings["server"]+ "/Mission/ListMissionComplete/Search?key=" + txtSearch.Text+"&apiKey="+ HttpUtility.UrlEncode(apiKey));
                         var request = new RestRequest(Method.GET);
                         IRestResponse response = client.Execute(request);
                         if (!response.IsSuccessful)
                         {
-                            DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                             if (dialog == DialogResult.Retry)
                                 goto Load;
                             else
@@ -364,6 +377,20 @@ namespace CTS_beta.Form_CTS
             public List<MissionComplete> results { get; set; }
             public bool status { get; set; }
             public string message { get; set; }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            frmAbout about = new frmAbout();
+            about.ShowDialog();
+        }
+
+        private void btnSeach_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSeach_Click(this, new EventArgs());
+            }
         }
     }
 }

@@ -50,6 +50,7 @@
             this.txtID.BackColor = System.Drawing.Color.Transparent;
             this.txtID.ForeColor = System.Drawing.Color.Black;
             this.txtID.Location = new System.Drawing.Point(39, 194);
+            this.txtID.MaxLength = 6;
             this.txtID.Name = "txtID";
             this.txtID.NullText = "Mã đăng nhập";
             this.txtID.ShowClearButton = true;
@@ -72,6 +73,7 @@
             this.txtPassword.Size = new System.Drawing.Size(259, 36);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.ThemeName = "Material";
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // ckbRemember
             // 
@@ -79,11 +81,11 @@
             this.ckbRemember.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.ckbRemember.Location = new System.Drawing.Point(105, 320);
             this.ckbRemember.Name = "ckbRemember";
-            this.ckbRemember.Size = new System.Drawing.Size(119, 18);
+            this.ckbRemember.Size = new System.Drawing.Size(118, 18);
             this.ckbRemember.TabIndex = 2;
             this.ckbRemember.Tag = "";
-            this.ckbRemember.Text = "Tự động đăng nhập";
-            this.ckbRemember.CheckStateChanging += new Telerik.WinControls.UI.CheckStateChangingEventHandler(this.ckbRemember_CheckStateChanging);
+            this.ckbRemember.Text = "Ghi nhớ mật khẩu ?";
+            this.ckbRemember.CheckStateChanged += new System.EventHandler(this.ckbRemember_CheckStateChanged);
             // 
             // linkLabel1
             // 

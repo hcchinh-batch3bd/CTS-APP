@@ -62,7 +62,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblPoint = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.lblNameEmployee = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -257,6 +256,7 @@
             this.btnSeach.TabIndex = 30;
             this.btnSeach.UseVisualStyleBackColor = false;
             this.btnSeach.Click += new System.EventHandler(this.btnSeach_Click);
+            this.btnSeach.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSeach_KeyDown);
             // 
             // label7
             // 
@@ -469,6 +469,7 @@
             this.button14.Text = "?";
             this.button14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // btnMissionAreThere
             // 
@@ -494,7 +495,6 @@
             this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel4.Controls.Add(this.lblPoint);
             this.panel4.Controls.Add(this.pictureBox1);
-            this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.lblNameEmployee);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -504,46 +504,35 @@
             // 
             // lblPoint
             // 
-            this.lblPoint.AutoSize = true;
             this.lblPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.lblPoint.ForeColor = System.Drawing.Color.White;
-            this.lblPoint.Location = new System.Drawing.Point(135, 112);
+            this.lblPoint.Location = new System.Drawing.Point(16, 112);
             this.lblPoint.Name = "lblPoint";
-            this.lblPoint.Size = new System.Drawing.Size(45, 25);
+            this.lblPoint.Size = new System.Drawing.Size(223, 25);
             this.lblPoint.TabIndex = 42;
-            this.lblPoint.Text = "100";
+            this.lblPoint.Text = "Điểm: ";
+            this.lblPoint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(90, 6);
+            this.pictureBox1.Image = global::CTS_beta.Properties.Resources.icons8_cat_profile_64__1_;
+            this.pictureBox1.Location = new System.Drawing.Point(90, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 59);
+            this.pictureBox1.Size = new System.Drawing.Size(75, 68);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 41;
             this.pictureBox1.TabStop = false;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(74, 112);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 25);
-            this.label2.TabIndex = 43;
-            this.label2.Text = "Điểm:";
-            // 
             // lblNameEmployee
             // 
-            this.lblNameEmployee.AutoSize = true;
             this.lblNameEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNameEmployee.ForeColor = System.Drawing.Color.White;
-            this.lblNameEmployee.Location = new System.Drawing.Point(44, 75);
+            this.lblNameEmployee.Location = new System.Drawing.Point(12, 68);
             this.lblNameEmployee.Name = "lblNameEmployee";
-            this.lblNameEmployee.Size = new System.Drawing.Size(82, 20);
+            this.lblNameEmployee.Size = new System.Drawing.Size(237, 44);
             this.lblNameEmployee.TabIndex = 44;
             this.lblNameEmployee.Text = "Loading....";
+            this.lblNameEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel6
             // 
@@ -596,7 +585,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -634,7 +622,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblPoint;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblNameEmployee;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;

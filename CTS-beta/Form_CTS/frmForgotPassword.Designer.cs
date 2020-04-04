@@ -63,6 +63,7 @@
             this.txtEmail.TabIndex = 0;
             this.txtEmail.ThemeName = "Material";
             this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
+            this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
             // 
             // txtOTP
             // 
@@ -121,6 +122,7 @@
             // 
             // btnSendCode
             // 
+            this.btnSendCode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSendCode.FlatAppearance.BorderSize = 0;
             this.btnSendCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendCode.Image = global::CTS_beta.Properties.Resources.mail;
@@ -150,6 +152,7 @@
             this.txtPasswordComfirm.Size = new System.Drawing.Size(259, 36);
             this.txtPasswordComfirm.TabIndex = 3;
             this.txtPasswordComfirm.ThemeName = "Material";
+            this.txtPasswordComfirm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPasswordComfirm_KeyDown);
             // 
             // timer2
             // 

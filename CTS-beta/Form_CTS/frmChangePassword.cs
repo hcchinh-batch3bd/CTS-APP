@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Telerik.WinControls;
 using CTS_beta.Form_CTS;
+using System.Web;
 using Newtonsoft.Json;
 using System.Configuration;
 using System.Text.RegularExpressions;
@@ -41,36 +42,40 @@ namespace CTS_beta
             {
                 if(CheckPassword(txtPasswordNew.Text))
                 {
-                    Load:
-                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/Changepassword?passold=" + txtPasswordOld.Text + "&passnew=" + txtPasswordNew.Text + "&apiKey=" + frmUser.Instance.ApiKey);
-                    var request = new RestRequest(Method.PUT);
-                    IRestResponse response = client.Execute(request);
-                    if (!response.IsSuccessful)
+                    if (!txtPasswordNew.Text.Equals(txtPasswordOld.Text))
                     {
-                        DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-                        if (dialog == DialogResult.Retry)
-                            goto Load;
+                    Load:
+                        string pwold = HttpUtility.UrlEncode(txtPasswordOld.Text);
+                        string pwnew = HttpUtility.UrlEncode(txtPasswordNew.Text);
+                        var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/Changepassword?passold=" + pwold + "&passnew=" + pwnew + "&apiKey=" + frmUser.Instance.ApiKey);
+                        var request = new RestRequest(Method.PUT);
+                        IRestResponse response = client.Execute(request);
+                        if (!response.IsSuccessful)
+                        {
+                            DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                            if (dialog == DialogResult.Retry)
+                                goto Load;
+                            else
+                            {
+                                Application.Exit();
+                            }
+                        }
                         else
                         {
-                            Application.Exit();
+                            Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
+                            if (obj.status)
+                            {
+                                Application.Exit();
+                            }
+                            else
+                                MessageBox.Show(obj.message);
                         }
                     }
                     else
-                    {
-                        Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
-                        if (obj.status)
-                        {
-                            MessageBox.Show(obj.message);
-                            Properties.Settings.Default.apiKey = "";
-                            Properties.Settings.Default.Save();
-                            Application.Exit();
-                        }
-                        else
-                            MessageBox.Show(obj.message);
-                    }
+                        MessageBox.Show("Mật khẩu cần đổi phải khác mật khẩu hiện tại !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                else
-                    MessageBox.Show("Mật khẩu phải dài từ 8 đến 30 ký tự.\nMật phải chứa ít nhất một số.\nMật khẩu phải chứa ít nhất một chữ cái viết hoa.\nMật khẩu phải chứa ít nhất một chữ cái viết thường\nMật khẩu phải chứa ít nhất một kí tự đặc biệt.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("➻❥ Mật khẩu phải dài từ 8 đến 30 ký tự.\n➻❥ Mật phải chứa ít nhất một số.\n➻❥ Mật khẩu phải chứa ít nhất một chữ cái viết hoa.\n➻❥ Mật khẩu phải chứa ít nhất một chữ cái viết thường\n➻❥ Mật khẩu phải chứa ít nhất một kí tự đặc biệt.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
                 MessageBox.Show("Mật khẩu mới và mật khẩu mới nhập lại không giống nhau !!");
@@ -94,6 +99,14 @@ namespace CTS_beta
             else return false;
 
 
+        }
+
+        private void txtPasswordNewComfirm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnChangePassword_Click(this, new EventArgs());
+            }
         }
     }
 

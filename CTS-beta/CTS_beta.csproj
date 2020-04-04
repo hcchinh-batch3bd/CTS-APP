@@ -208,6 +208,7 @@
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Mission.cs" />
     <Compile Include="Models\MissionComplete.cs" />
+    <Compile Include="Models\MissionProcess.cs" />
     <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\TypeMission.cs" />
@@ -369,6 +370,8 @@
     <None Include="Resources\heart %281%29.png" />
     <Content Include="networking.ico" />
     <None Include="Resources\networking.ico" />
+    <None Include="Resources\icons8-cat-profile-64.png" />
+    <None Include="Resources\icons8-cat-profile-64 %281%29.png" />
     <Content Include="Resources\profile.ico" />
     <Content Include="Resources\profile.png" />
     <None Include="Resources\profile1.png" />

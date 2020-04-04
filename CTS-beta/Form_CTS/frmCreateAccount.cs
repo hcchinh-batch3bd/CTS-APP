@@ -49,13 +49,13 @@ namespace CTS_beta.Form_CTS
         {
             if ((DateTime.Now).Year - txtdate.Value.Year < 18)
             {
-                MessageBox.Show("Tuổi của bạn nhập không hợp lẹ.\nVui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tuổi của bạn nhập không hợp lệ.\nVui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                if (CheckEmail(txtemail.Text)==false)
+                if (CheckEmail(txtemail.Text) == false)
                 {
-                    MessageBox.Show("Vui lòng nhập đúng định dạng Email", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Vui lòng nhập đúng định dạng Email", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -87,14 +87,11 @@ namespace CTS_beta.Form_CTS
                                         IRestResponse response = client.Execute(request);
                                         if (!response.IsSuccessful)
                                         {
-                                            DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                                            DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                                             if (dialog == DialogResult.Retry)
                                                 goto Load;
                                             else
                                             {
-                                                Properties.Settings.Default.apiKey = "";
-                                                Properties.Settings.Default.id_employee = 0;
-                                                Properties.Settings.Default.Save();
                                                 Application.Exit();
                                             }
                                         }
@@ -162,13 +159,25 @@ namespace CTS_beta.Form_CTS
         }
         public bool CheckEmail(string inputEmail)
         {
-           
+
             string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
                   @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
                   @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
             if (inputEmail != null) return Regex.IsMatch(inputEmail, strRegex);
             else return false;
         }
-     
+
+        private void txtemail_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void txtemail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnCreateAccount_Click(this, new EventArgs());
+            }
+        }
     }
 }

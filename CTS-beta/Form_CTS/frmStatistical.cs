@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using CTS_beta.Models;
 using System.Threading;
 using System.Configuration;
+using System.Web;
 
 namespace CTS_beta
 {
@@ -37,19 +38,16 @@ namespace CTS_beta
         void LoadData()
         {
             Load:
-            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/RankEmployee?apiKey="+Properties.Settings.Default.apiKey);
+            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/RankEmployee?apiKey="+ HttpUtility.UrlEncode(Properties.Settings.Default.apiKey));
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             if (!response.IsSuccessful)
             {
-                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                 if (dialog == DialogResult.Retry)
                     goto Load;
                 else
                 {
-                    Properties.Settings.Default.apiKey = "";
-                    Properties.Settings.Default.id_employee = 0;
-                    Properties.Settings.Default.Save();
                     Application.Exit();
                 }
             }

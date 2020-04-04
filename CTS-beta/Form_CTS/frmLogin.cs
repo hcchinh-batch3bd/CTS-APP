@@ -14,6 +14,7 @@ using System.Configuration;
 using CTS_beta.Models;
 using CTS_beta.Form_CTS;
 using System.Text.RegularExpressions;
+using System.Web;
 
 namespace CTS_beta
 {
@@ -48,12 +49,20 @@ namespace CTS_beta
             {
                 if (CheckID(txtID.Text) && txtID.Text.Length==6)
                 {
-                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/CheckLogin?id=" + txtID.Text + "&pw=" + txtPassword.Text);
+                    if (ckbRemember.Checked)
+                    {
+                        Properties.Settings.Default.id_employee = int.Parse(txtID.Text);
+                        Properties.Settings.Default.password = txtPassword.Text;
+                        Properties.Settings.Default.Save();
+                    }
+                        string ID = HttpUtility.UrlEncode(txtID.Text);
+                    string Password = HttpUtility.UrlEncode(txtPassword.Text);
+                    var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Account/CheckLogin?id=" + ID + "&pw=" + Password);
                     var request = new RestRequest(Method.GET);
                     IRestResponse response = client.Execute(request);
                     if (!response.IsSuccessful)
                     {
-                        DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                        DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                         if (dialog == DialogResult.Retry)
                             goto Load;
                         Application.Exit();
@@ -63,17 +72,33 @@ namespace CTS_beta
 
                         RootObject obj = JsonConvert.DeserializeObject<RootObject>(response.Content.ToString());
                         List<Session> sessions = obj.results;
-                        MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (sessions.Count>0)
                         {
+                            MessageBox.Show("❀ Chào mừng bạn đến với hệ thống ❀ \n❤ Chúc một ngày tốt lành ❤ ", "♔ Thông báo ♔ ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Properties.Settings.Default.id_employee = sessions.FirstOrDefault().id_employee;
-                            txtID.Text = "";
-                            txtPassword.Text = "";
                             if (ckbRemember.Checked)
                             {
                                 Properties.Settings.Default.apiKey = sessions.FirstOrDefault().apiKey;
+                                Properties.Settings.Default.id_employee = int.Parse(txtID.Text);
+                                Properties.Settings.Default.password = txtPassword.Text;
+                                Properties.Settings.Default.level = sessions.FirstOrDefault().level_employee;
                                 Properties.Settings.Default.Save();
+                                txtID.Text = Properties.Settings.Default.id_employee.ToString();
+                                txtPassword.Text = Properties.Settings.Default.password;
+                                ckbRemember.Checked = false;
                             }
+                            else
+                            {
+                                if(Properties.Settings.Default.id_employee==0 || Properties.Settings.Default.password=="")
+                                {
+                                    txtID.Text = "";
+                                    txtPassword.Text = "";
+                                    ckbRemember.Checked = false;
+                                }
+                                
+                            }
+                            Properties.Settings.Default.level = sessions.FirstOrDefault().level_employee;
+                            Properties.Settings.Default.Save();
                             if (sessions.FirstOrDefault().level_employee)
                             {
                                 frmAdmin frmAdmin = new frmAdmin(this, sessions.FirstOrDefault().apiKey);
@@ -88,6 +113,8 @@ namespace CTS_beta
 
                             }
                         }
+                        else
+                            MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
@@ -106,23 +133,31 @@ namespace CTS_beta
         {
             Application.Exit();
         }
-
-        private void ckbRemember_CheckStateChanging(object sender, CheckStateChangingEventArgs args)
-        {
-            MessageBox.Show("Nếu bạn bật chức năng này hệ thống sẽ không yêu cầu đăng nhập cho lần tới !!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
         private void frmLogin_Load(object sender, EventArgs e)
         {
-
+            if(Properties.Settings.Default.id_employee>0 && Properties.Settings.Default.password!="")
+            {
+                txtID.Text = Properties.Settings.Default.id_employee.ToString();
+                txtPassword.Text = Properties.Settings.Default.password;
+            }
         }
         public bool CheckID(string id)
         {
-            string MatchEmailPattern = "[0-9]";
-
+            string MatchEmailPattern = "^[0-9]+$";
             if (id != null) return Regex.IsMatch(id, MatchEmailPattern);
             else return false;
+        }
 
+        private void ckbRemember_CheckStateChanged(object sender, EventArgs e)
+        {
+        }
 
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(this, new EventArgs());
+            }
         }
     }
 }

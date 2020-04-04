@@ -15,7 +15,10 @@ namespace CTS_beta.Form_CTS
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmAdmin());
             if (Properties.Settings.Default.apiKey != "")
-                Application.Run(new frmUser());
+                if (Properties.Settings.Default.level)
+                    Application.Run(new frmAdmin());
+                else
+                    Application.Run(new frmUser());
             else
                 Application.Run(new frmLogin());
         }

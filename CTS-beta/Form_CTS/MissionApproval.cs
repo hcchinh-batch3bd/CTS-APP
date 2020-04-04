@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using System.Web;
 
 namespace CTS_beta.Form_CTS
 {
@@ -17,7 +18,9 @@ namespace CTS_beta.Form_CTS
     {
         int id;
         Panel main;
-        public MissionApproval(int id, string content, Panel panel)
+        bool mission;
+        int idProcess;
+        public MissionApproval(int id, string content, Panel panel, bool Mission, int idProcess)
         {
             InitializeComponent();
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 5, 5));
@@ -26,38 +29,74 @@ namespace CTS_beta.Form_CTS
             this.id = id;
             lblContent.Text = content;
             main = panel;
+            mission = Mission;
+            this.idProcess = idProcess;
         }
 
         private void lblContent_Click(object sender, EventArgs e)
         {
-            frmDetailMission frmDetailMission = new frmDetailMission(id, true);
-            frmDetailMission.ShowDialog();
+
+            if(mission)
+            {
+                frmDetailMission frmDetailMission = new frmDetailMission(id, true);
+                frmDetailMission.ShowDialog();
+            }
+            else
+            {
+                frmDetailMission frmDetailMission = new frmDetailMission(idProcess, true);
+                frmDetailMission.ShowDialog();
+            }
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            Load:
-            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" +id+ "/Confirm?apiKey=" + Properties.Settings.Default.apiKey);
-            var request = new RestRequest(Method.PUT);
-            IRestResponse response = client.Execute(request);
-            if (!response.IsSuccessful)
+            if(mission)
             {
-                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-                if (dialog == DialogResult.Retry)
-                    goto Load;
+            Load:
+                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" + id + "/Confirm?apiKey=" + HttpUtility.UrlEncode(Properties.Settings.Default.apiKey));
+                var request = new RestRequest(Method.PUT);
+                IRestResponse response = client.Execute(request);
+                if (!response.IsSuccessful)
+                {
+                    DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    if (dialog == DialogResult.Retry)
+                        goto Load;
+                    else
+                    {
+                        Application.Exit();
+                    }
+                }
                 else
                 {
-                    Properties.Settings.Default.apiKey = "";
-                    Properties.Settings.Default.id_employee = 0;
-                    Properties.Settings.Default.Save();
-                    Application.Exit();
+                    Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
+                    MessageBox.Show(obj.message);
+                    main.Visible = false;
+                    this.Refresh();
                 }
             }
             else
             {
-                Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
-                MessageBox.Show(obj.message);
-                main.Visible = false;
+            Load:
+                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/MissionOrder/" + id + "/Confirm?apiKey=" + HttpUtility.UrlEncode(Properties.Settings.Default.apiKey));
+                var request = new RestRequest(Method.PUT);
+                IRestResponse response = client.Execute(request);
+                if (!response.IsSuccessful)
+                {
+                    DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    if (dialog == DialogResult.Retry)
+                        goto Load;
+                    else
+                    {
+                        Application.Exit();
+                    }
+                }
+                else
+                {
+                    Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
+                    MessageBox.Show(obj.message);
+                    main.Visible = false;
+                    this.Refresh();
+                }
             }
         }
         class Message
@@ -67,28 +106,53 @@ namespace CTS_beta.Form_CTS
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Load:
-            var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" +id+"/ClearMission?apiKey="+Properties.Settings.Default.apiKey);
-            var request = new RestRequest(Method.PUT);
-            IRestResponse response = client.Execute(request);
-            if (!response.IsSuccessful)
+            if(mission)
             {
-                DialogResult dialog = MessageBox.Show("Máy chủ bị mất kết nối !!!", "Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-                if (dialog == DialogResult.Retry)
-                    goto Load;
+            Load:
+                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Mission/" + id + "/ClearMission?apiKey=" + HttpUtility.UrlEncode(Properties.Settings.Default.apiKey));
+                var request = new RestRequest(Method.PUT);
+                IRestResponse response = client.Execute(request);
+                if (!response.IsSuccessful)
+                {
+                    DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    if (dialog == DialogResult.Retry)
+                        goto Load;
+                    else
+                    {
+                        Application.Exit();
+                    }
+                }
                 else
                 {
-                    Properties.Settings.Default.apiKey = "";
-                    Properties.Settings.Default.id_employee = 0;
-                    Properties.Settings.Default.Save();
-                    Application.Exit();
+                    MessageBox.Show("Xóa nhiệm vụ thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    main.Visible = false;
+                    this.Refresh();
                 }
             }
             else
             {
-                MessageBox.Show("Xóa nhiệm vụ thành công.","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                main.Visible = false;
+            Load:
+                var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/MissionOrder/" + id + "/Delete?apiKey=" + HttpUtility.UrlEncode(Properties.Settings.Default.apiKey));
+                var request = new RestRequest(Method.PUT);
+                IRestResponse response = client.Execute(request);
+                if (!response.IsSuccessful)
+                {
+                    DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    if (dialog == DialogResult.Retry)
+                        goto Load;
+                    else
+                    {
+                        Application.Exit();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Xóa nhận nhiệm vụ thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    main.Visible = false;
+                    this.Refresh();
+                }
             }
+           
         }
     }
 }
