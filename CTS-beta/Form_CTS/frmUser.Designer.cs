@@ -63,10 +63,10 @@
             this.lblPoint = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblNameEmployee = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.lblNameEmployee = new System.Windows.Forms.TextBox();
             this.panelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -494,8 +494,8 @@
             this.panel4.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel4.Controls.Add(this.lblPoint);
             this.panel4.Controls.Add(this.pictureBox1);
-            this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.lblNameEmployee);
+            this.panel4.Controls.Add(this.label2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
@@ -534,17 +534,6 @@
             this.label2.TabIndex = 43;
             this.label2.Text = "Điểm:";
             // 
-            // lblNameEmployee
-            // 
-            this.lblNameEmployee.AutoSize = true;
-            this.lblNameEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameEmployee.ForeColor = System.Drawing.Color.White;
-            this.lblNameEmployee.Location = new System.Drawing.Point(44, 75);
-            this.lblNameEmployee.Name = "lblNameEmployee";
-            this.lblNameEmployee.Size = new System.Drawing.Size(82, 20);
-            this.lblNameEmployee.TabIndex = 44;
-            this.lblNameEmployee.Text = "Loading....";
-            // 
             // panel6
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
@@ -565,6 +554,22 @@
             // 
             this.backgroundWorker1.WorkerReportsProgress = true;
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
+            // lblNameEmployee
+            // 
+            this.lblNameEmployee.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblNameEmployee.BackColor = System.Drawing.Color.RoyalBlue;
+            this.lblNameEmployee.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lblNameEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblNameEmployee.ForeColor = System.Drawing.Color.White;
+            this.lblNameEmployee.Location = new System.Drawing.Point(4, 71);
+            this.lblNameEmployee.Multiline = true;
+            this.lblNameEmployee.Name = "lblNameEmployee";
+            this.lblNameEmployee.ReadOnly = true;
+            this.lblNameEmployee.Size = new System.Drawing.Size(245, 24);
+            this.lblNameEmployee.TabIndex = 32;
+            this.lblNameEmployee.Text = "0";
+            this.lblNameEmployee.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmUser
             // 
@@ -635,11 +640,11 @@
         private System.Windows.Forms.Label lblPoint;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblNameEmployee;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Telerik.WinControls.UI.RadTextBox txtSearch;
         private System.Windows.Forms.Button btnSeach;
+        private System.Windows.Forms.TextBox lblNameEmployee;
     }
 }

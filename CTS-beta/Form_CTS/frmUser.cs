@@ -149,6 +149,7 @@ namespace CTS_beta.Form_CTS
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            
             Properties.Settings.Default.apiKey = "";
             Properties.Settings.Default.id_employee = 0;
             Properties.Settings.Default.Save();

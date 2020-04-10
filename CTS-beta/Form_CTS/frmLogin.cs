@@ -23,6 +23,7 @@ namespace CTS_beta
             InitializeComponent();
             this.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, this.Width, this.Height, 5, 5));
             btnLogin.Region = Region.FromHrgn(RoundBorder.CreateRoundRectRgn(0, 0, btnLogin.Width, btnLogin.Height, 5, 5));
+
         }
 
         private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
@@ -63,6 +64,8 @@ namespace CTS_beta
                     MessageBox.Show(obj.message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (sessions.Count > 0)
                     {
+                        txtID.Text = "";
+                        txtPassword.Text = "";
                         Properties.Settings.Default.id_employee = sessions.FirstOrDefault().id_employee;
                         if (ckbRemember.Checked)
                         {

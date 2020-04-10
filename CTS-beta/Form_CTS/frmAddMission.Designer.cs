@@ -212,6 +212,7 @@
             // txtPoint
             // 
             this.txtPoint.Location = new System.Drawing.Point(274, 253);
+            this.txtPoint.MaxLength = 4;
             this.txtPoint.Name = "txtPoint";
             this.txtPoint.Size = new System.Drawing.Size(134, 36);
             this.txtPoint.TabIndex = 5;
@@ -220,6 +221,7 @@
             // txtCount
             // 
             this.txtCount.Location = new System.Drawing.Point(274, 174);
+            this.txtCount.MaxLength = 4;
             this.txtCount.Name = "txtCount";
             this.txtCount.Size = new System.Drawing.Size(134, 36);
             this.txtCount.TabIndex = 3;

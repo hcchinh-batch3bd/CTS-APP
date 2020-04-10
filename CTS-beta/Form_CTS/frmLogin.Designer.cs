@@ -50,6 +50,7 @@
             this.txtID.BackColor = System.Drawing.Color.Transparent;
             this.txtID.ForeColor = System.Drawing.Color.Black;
             this.txtID.Location = new System.Drawing.Point(39, 194);
+            this.txtID.MaxLength = 50;
             this.txtID.Name = "txtID";
             this.txtID.NullText = "Mã đăng nhập";
             this.txtID.ShowClearButton = true;

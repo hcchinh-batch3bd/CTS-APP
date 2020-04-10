@@ -47,6 +47,11 @@ namespace CTS_beta.Form_CTS
 
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
+            int bird = DateTime.Now.Year - txtdate.Value.Year;
+            if (bird < 18)
+            {
+                MessageBox.Show("k đủ tuổi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             if (!this.txtemail.Text.Contains('@') || !this.txtemail.Text.Contains('.'))
             {
                 MessageBox.Show("Vui lòng nhập đúng định dạng Email", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
