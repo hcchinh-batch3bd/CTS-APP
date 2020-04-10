@@ -181,6 +181,8 @@ namespace CTS_beta.Form_CTS
                     goto Load;
                 else
                 {
+                    Properties.Settings.Default.apiKey = "";
+                    Properties.Settings.Default.Save();
                     Application.Exit();
                 }
             }

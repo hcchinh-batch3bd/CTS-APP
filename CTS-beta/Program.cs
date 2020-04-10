@@ -13,7 +13,6 @@ namespace CTS_beta.Form_CTS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmAdmin());
             if (Properties.Settings.Default.apiKey != "")
                 if (Properties.Settings.Default.level)
                     Application.Run(new frmAdmin());

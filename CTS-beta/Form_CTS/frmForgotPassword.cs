@@ -128,7 +128,7 @@ namespace CTS_beta
                                     }
                                     btnChangePass.Enabled = true;
                                     radWaitingBar1.StopWaiting();
-                                    radWaitingBar1.Enabled = true;
+                                    radWaitingBar1.Visible = false;
                                     if (!response.IsSuccessful)
                                     {
                                         DialogResult dialog = MessageBox.Show("☠ Máy chủ bị mất kết nối !!!", "☠ Cảnh báo", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);

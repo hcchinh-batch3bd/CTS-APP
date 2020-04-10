@@ -83,6 +83,8 @@ namespace CTS_beta
                             Message obj = JsonConvert.DeserializeObject<Message>(response.Content.ToString());
                             if (obj.status)
                             {
+                                Properties.Settings.Default.apiKey = "";
+                                Properties.Settings.Default.Save();
                                 Application.Exit();
                             }
                             else

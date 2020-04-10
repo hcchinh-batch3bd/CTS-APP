@@ -16,6 +16,7 @@ using CTS_beta.Form_CTS;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Threading;
+using System.Security.Cryptography;
 
 namespace CTS_beta
 {
@@ -53,7 +54,7 @@ namespace CTS_beta
                     if (ckbRemember.Checked)
                     {
                         Properties.Settings.Default.id_employee = int.Parse(txtID.Text);
-                        Properties.Settings.Default.password = txtPassword.Text;
+                        Properties.Settings.Default.password = Encrypt(txtPassword.Text);
                         Properties.Settings.Default.Save();
                     }
                         string ID = HttpUtility.UrlEncode(txtID.Text);
@@ -98,7 +99,7 @@ namespace CTS_beta
                             {
                                 Properties.Settings.Default.apiKey = sessions.FirstOrDefault().apiKey;
                                 Properties.Settings.Default.id_employee = int.Parse(txtID.Text);
-                                Properties.Settings.Default.password = txtPassword.Text;
+                                Properties.Settings.Default.password = Encrypt(txtPassword.Text);
                                 Properties.Settings.Default.level = sessions.FirstOrDefault().level_employee;
                                 Properties.Settings.Default.Save();
                                 txtID.Text = Properties.Settings.Default.id_employee.ToString();
@@ -156,7 +157,7 @@ namespace CTS_beta
             if(Properties.Settings.Default.id_employee>0 && Properties.Settings.Default.password!="")
             {
                 txtID.Text = Properties.Settings.Default.id_employee.ToString();
-                txtPassword.Text = Properties.Settings.Default.password;
+                txtPassword.Text = Decrypt(Properties.Settings.Default.password);
             }
         }
         public bool CheckID(string id)
@@ -177,5 +178,64 @@ namespace CTS_beta
                 btnLogin_Click(this, new EventArgs());
             }
         }
+        public static string Encrypt(string TextToEncrypt)
+        {
+            byte[] MyEncryptedArray = UTF8Encoding.UTF8
+               .GetBytes(TextToEncrypt);
+
+            MD5CryptoServiceProvider MyMD5CryptoService = new
+               MD5CryptoServiceProvider();
+
+            byte[] MysecurityKeyArray = MyMD5CryptoService.ComputeHash
+               (UTF8Encoding.UTF8.GetBytes(mysecurityKey));
+
+            MyMD5CryptoService.Clear();
+
+            var MyTripleDESCryptoService = new
+               TripleDESCryptoServiceProvider();
+
+            MyTripleDESCryptoService.Key = MysecurityKeyArray;
+
+            MyTripleDESCryptoService.Mode = CipherMode.ECB;
+
+            MyTripleDESCryptoService.Padding = PaddingMode.PKCS7;
+
+            var MyCrytpoTransform = MyTripleDESCryptoService
+               .CreateEncryptor();
+
+            byte[] MyresultArray = MyCrytpoTransform
+               .TransformFinalBlock(MyEncryptedArray, 0,
+               MyEncryptedArray.Length);
+
+            MyTripleDESCryptoService.Clear();
+
+            return Convert.ToBase64String(MyresultArray, 0,
+               MyresultArray.Length);
+        }
+        public static string Decrypt(string TextToDecrypt)
+        {
+            TextToDecrypt = TextToDecrypt.Replace(" ", "+");
+            byte[] MyDecryptArray = Convert.FromBase64String
+               (TextToDecrypt);
+            MD5CryptoServiceProvider MyMD5CryptoService = new
+               MD5CryptoServiceProvider();
+            byte[] MysecurityKeyArray = MyMD5CryptoService.ComputeHash
+               (UTF8Encoding.UTF8.GetBytes(mysecurityKey));
+            MyMD5CryptoService.Clear();
+            var MyTripleDESCryptoService = new
+               TripleDESCryptoServiceProvider();
+            MyTripleDESCryptoService.Key = MysecurityKeyArray;
+            MyTripleDESCryptoService.Mode = CipherMode.ECB;
+            MyTripleDESCryptoService.Padding = PaddingMode.PKCS7;
+            var MyCrytpoTransform = MyTripleDESCryptoService
+               .CreateDecryptor();
+            byte[] MyresultArray = MyCrytpoTransform
+               .TransformFinalBlock(MyDecryptArray, 0,
+               MyDecryptArray.Length);
+            MyTripleDESCryptoService.Clear();
+
+            return UTF8Encoding.UTF8.GetString(MyresultArray);
+        }
+        private const string mysecurityKey = "CTSOTP12";
     }
 }

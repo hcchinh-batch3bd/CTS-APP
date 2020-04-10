@@ -154,6 +154,8 @@ namespace CTS_beta
                     goto Load;
                 else
                 {
+                    Properties.Settings.Default.apiKey = "";
+                    Properties.Settings.Default.Save();
                     Application.Exit();
                 }
             }
