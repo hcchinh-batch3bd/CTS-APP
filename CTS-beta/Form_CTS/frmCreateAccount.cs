@@ -77,6 +77,7 @@ namespace CTS_beta.Form_CTS
                                         radWaitingBar1.Visible = true;
                                         radWaitingBar1.StartWaiting();
                                         IRestResponse response = null;
+                                        string level = txtlevel.SelectedValue.ToString();
                                         Thread t = new Thread(() =>
                                         {
                                             var client = new RestClient(ConfigurationManager.AppSettings["server"] + "/Employee/Create?apiKey=" + Properties.Settings.Default.apiKey);
@@ -87,7 +88,7 @@ namespace CTS_beta.Form_CTS
                                             employee.email = txtemail.Text.ToLower();
                                             employee.password = txtpassword.Text;
                                             employee.date = txtdate.Value.Date;
-                                            employee.level_employee = txtlevel.SelectedValue.ToString();
+                                            employee.level_employee = level;
                                             string output = JsonConvert.SerializeObject(employee);
                                             request.AddParameter("application/json", output, ParameterType.RequestBody);
                                             response = client.Execute(request);
