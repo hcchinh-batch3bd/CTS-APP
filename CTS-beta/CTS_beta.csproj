@@ -376,6 +376,7 @@
     <None Include="Resources\icons8-cat-profile-64 %281%29.png" />
     <None Include="Resources\eye1.png" />
     <None Include="Resources\portfolio.png" />
+    <None Include="Resources\bg-CTS.jpg" />
     <Content Include="Resources\profile.ico" />
     <Content Include="Resources\profile.png" />
     <None Include="Resources\profile1.png" />
